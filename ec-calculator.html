@@ -1,0 +1,1782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from bharatenvironmentconsultants.com/ec-calculator.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2026 18:54:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta name="robots" content="index, follow" />
+  <meta name="google-adsense-account" content="ca-pub-5032650705516653"/>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bharat Environment Consultants | #1 Environment Audit | CTE CTO Applications | Carbon Footprint | ESG Reporting | Gurugram India</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --green-deep: #0d3b1e;
+      --green-mid: #1a5c32;
+      --green-bright: #2e7d52;
+      --green-light: #4aad76;
+      --green-pale: #d4edda;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --cream: #f8f5ef;
+      --white: #ffffff;
+      --charcoal: #1c1c1c;
+      --gray: #5a5a5a;
+      --gray-light: #e8e8e8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13, 59, 30, 0.97);
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      border-bottom: 1px solid rgba(201,168,76,0.25);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-icon {
+      width: 40px; height: 40px;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+    .nav-logo-text span { color: var(--gold); display: block; font-size: 0.7rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green-deep) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+
+    .nav-ec {
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold-light) !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-ec:hover { background: rgba(201,168,76,0.3) !important; color: var(--gold-light) !important; }
+
+    .nav-weather {
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.35);
+      color: #7dd3fc !important;
+      padding: 0.5rem 1.3rem;
+      border-radius: 4px;
+      font-weight: 600 !important;
+    }
+    .nav-weather:hover { background: rgba(56,189,248,0.22) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 6rem 6vw 5rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1800&amp;q=85&amp;fit=crop');
+      background-size: cover;
+      background-position: center 30%;
+      transform: scale(1.03);
+      animation: slowzoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes slowzoom {
+      0%   { transform: scale(1.03); }
+      100% { transform: scale(1.08); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(8,32,16,0.97) 0%,
+        rgba(8,32,16,0.7) 40%,
+        rgba(8,32,16,0.25) 75%,
+        rgba(8,32,16,0.1) 100%
+      );
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold-light);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7.5vw, 7rem);
+      font-weight: 600;
+      line-height: 0.95;
+      color: #fff;
+      max-width: 16ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 54ch;
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-deep);
+      padding: 0.85rem 2rem;
+      border-radius: 5px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+    .btn-outline {
+      border: 1.5px solid rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.85);
+      padding: 0.85rem 2rem;
+      border-radius: 5px;
+      font-weight: 400;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    .btn-ec-hero {
+      border: 1.5px solid rgba(201,168,76,0.6);
+      color: var(--gold-light);
+      padding: 0.85rem 2rem;
+      border-radius: 5px;
+      font-weight: 500;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ec-hero:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+
+    .hero-stats {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 3rem;
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hero-stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.3rem;
+    }
+
+    .hero-badge-iso {
+      position: absolute;
+      top: 50%;
+      right: 6vw;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 12px;
+      text-align: center;
+      color: #fff;
+      z-index: 2;
+    }
+    .hero-badge-iso .iso-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
+    .hero-badge-iso .iso-text { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-light); }
+
+    /* ── ACCREDITATION TICKER ── */
+    .accred-bar {
+      background: var(--green-deep);
+      color: #fff;
+      padding: 0.9rem 0;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .accred-track {
+      display: flex;
+      gap: 4rem;
+      white-space: nowrap;
+      animation: ticker 25s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .accred-item {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .accred-item strong { color: var(--gold); font-weight: 600; }
+    .accred-sep { color: var(--gold); }
+
+    /* ── ABOUT ── */
+    .section-wrap { max-width: 1240px; margin: 0 auto; padding: 0 5vw; }
+
+    .about-section {
+      padding: 7rem 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+      position: relative;
+    }
+
+    .about-img {
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+      display: block;
+    }
+    .about-img-main { grid-column: 1; grid-row: 1 / 3; height: 440px; }
+    .about-img-top  { grid-column: 2; grid-row: 1; height: 210px; }
+    .about-img-bot  { grid-column: 2; grid-row: 2; height: 210px; }
+
+    .about-year-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--gold);
+      color: var(--green-deep);
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    }
+    .about-year-badge .yr { font-size: 2rem; line-height: 1; }
+    .about-year-badge .yr-sub { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+
+    .section-tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--green-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .about-desc {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--gray);
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .pillar {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .pillar:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.07); border-color: var(--green-light); }
+
+    .pillar-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
+
+    .pillar h4 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--green-deep);
+      margin-bottom: 0.2rem;
+    }
+    .pillar p { font-size: 0.78rem; color: var(--gray); line-height: 1.5; font-weight: 300; }
+
+    /* ── SERVICES ── */
+    .services-section {
+      padding: 6rem 0;
+      background: var(--green-deep);
+    }
+
+    .services-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .services-header .section-tag { color: var(--gold); }
+    .services-header .section-title { color: #fff; }
+    .services-header p { color: rgba(255,255,255,0.55); max-width: 58ch; margin: 0 auto; font-size: 0.95rem; line-height: 1.75; font-weight: 300; }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .service-card {
+      background: var(--green-deep);
+      padding: 2.5rem 2rem;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.07);
+      transition: background 0.3s;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .service-card:hover { background: rgba(255,255,255,0.04); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.12);
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      line-height: 1;
+    }
+
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card p {
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    /* EC Banner inside services */
+    .ec-banner {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+      border: 1px solid rgba(201,168,76,0.4);
+      padding: 2rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .ec-banner-text h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin-bottom: 0.3rem;
+    }
+    .ec-banner-text p { font-size: 0.83rem; color: rgba(255,255,255,0.5); }
+    .btn-ec-banner {
+      background: var(--gold);
+      color: var(--green-deep);
+      padding: 0.8rem 2rem;
+      border-radius: 5px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .btn-ec-banner:hover { background: var(--gold-light); }
+
+    /* ── PHOTO BAND ── */
+    .photo-band {
+      height: 420px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+      overflow: hidden;
+    }
+
+    .photo-panel {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .photo-panel img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .photo-panel:hover img { transform: scale(1.07); }
+
+    .photo-panel-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8,32,16,0.75) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+    .photo-panel-label {
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── WHY BEC ── */
+    .why-section { padding: 7rem 0; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .why-image-wrap { position: relative; }
+
+    .why-img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    .why-accred-strip {
+      position: absolute;
+      bottom: 2rem;
+      left: -2rem;
+      right: 2rem;
+      background: var(--green-deep);
+      padding: 1.5rem;
+      border-radius: 8px;
+      border-left: 4px solid var(--gold);
+    }
+    .why-accred-strip h4 {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .accred-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .accred-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(201,168,76,0.3);
+      color: rgba(255,255,255,0.75);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+
+    .why-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .why-card {
+      padding: 1.5rem;
+      background: #fff;
+      border: 1px solid var(--gray-light);
+      border-radius: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .why-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.07); }
+    .why-card-icon { font-size: 1.8rem; margin-bottom: 0.8rem; display: block; }
+    .why-card h4 { font-size: 0.9rem; font-weight: 600; color: var(--green-deep); margin-bottom: 0.4rem; }
+    .why-card p { font-size: 0.8rem; color: var(--gray); line-height: 1.6; font-weight: 300; }
+
+    /* ── SECTORS ── */
+    .sectors-section { padding: 6rem 0; background: var(--cream); }
+    .sectors-header { text-align: center; margin-bottom: 3.5rem; }
+    .sectors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+    .sector-card { position: relative; height: 220px; border-radius: 8px; overflow: hidden; cursor: default; }
+    .sector-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .sector-card:hover img { transform: scale(1.1); }
+    .sector-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(8,32,16,0.88) 0%, rgba(8,32,16,0.2) 100%);
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      padding: 1.2rem; text-align: center;
+    }
+    .sector-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    .sector-name { font-size: 0.85rem; font-weight: 600; color: #fff; letter-spacing: 0.04em; }
+    .sector-sub { font-size: 0.7rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+
+    /* ── PROCESS ── */
+    .process-section { padding: 7rem 0; background: var(--green-deep); }
+    .process-header { text-align: center; margin-bottom: 4rem; }
+    .process-header .section-tag { color: var(--gold); }
+    .process-header .section-title { color: #fff; }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 0; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute; top: 3rem; left: 10%; right: 10%;
+      height: 2px; background: linear-gradient(to right, transparent, var(--gold), transparent); z-index: 0;
+    }
+    .process-step { text-align: center; padding: 0 1.5rem; position: relative; z-index: 1; }
+    .step-circle {
+      width: 60px; height: 60px; border-radius: 50%;
+      background: var(--green-mid); border: 2px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700;
+      color: var(--gold); margin: 0 auto 1.5rem;
+    }
+    .process-step h4 { font-size: 0.88rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.75rem; color: rgba(255,255,255,0.45); line-height: 1.6; font-weight: 300; }
+
+    /* ── ARTICLES ── */
+    .articles-section { padding: 7rem 0; }
+    .articles-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; }
+    .articles-header a { font-size: 0.82rem; color: var(--green-bright); text-decoration: none; font-weight: 500; letter-spacing: 0.05em; }
+    .articles-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.5rem; }
+    .article-card {
+      background: #fff; border-radius: 8px; overflow: hidden;
+      border: 1px solid var(--gray-light); transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .article-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); }
+    .article-img { width: 100%; object-fit: cover; display: block; }
+    .article-card-large .article-img { height: 260px; }
+    .article-card .article-img { height: 160px; }
+    .article-body { padding: 1.5rem; }
+    .article-tag { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-bright); font-weight: 600; margin-bottom: 0.6rem; }
+    .article-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 600; line-height: 1.3; color: var(--green-deep); margin-bottom: 0.6rem; }
+    .article-card .article-body h3 { font-size: 1rem; }
+    .article-body p { font-size: 0.83rem; color: var(--gray); line-height: 1.65; font-weight: 300; }
+
+    /* ── CONTACT ── */
+    .contact-section { padding: 7rem 0; background: var(--green-deep); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 6rem; align-items: start; }
+    .contact-info .section-tag { color: var(--gold); }
+    .contact-info .section-title { color: #fff; margin-bottom: 1rem; }
+    .contact-intro { font-size: 0.95rem; color: rgba(255,255,255,0.55); line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .contact-item:last-child { border-bottom: none; }
+    .contact-icon { width: 42px; height: 42px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .contact-item h4 { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+    .contact-item p { font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.5; }
+    .contact-form { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 2.5rem; }
+    .contact-form h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: #fff; margin-bottom: 1.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+    .form-group label { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+    .form-group input, .form-group select, .form-group textarea { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 0.8rem 1rem; border-radius: 5px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; outline: none; transition: border-color 0.2s; }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-group select option { background: var(--green-deep); }
+    .btn-submit { width: 100%; background: var(--gold); color: var(--green-deep); border: none; padding: 1rem; border-radius: 5px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--gold-light); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    /* pre-query strip */
+    .prequery-strip { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.25); border-radius: 10px; padding: 1.4rem 1.8rem; margin-bottom: 1.8rem; }
+    .prequery-strip h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--gold); margin-bottom: 0.8rem; letter-spacing: 0.02em; }
+    .prequery-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .prequery-tag { font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; color: rgba(255,255,255,0.65); cursor: pointer; transition: all 0.2s; user-select: none; }
+    .prequery-tag:hover, .prequery-tag.active { background: rgba(201,168,76,0.18); border-color: var(--gold); color: var(--gold); }
+    /* form success */
+    .form-success { display: none; text-align: center; padding: 2rem 1rem; }
+    .form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+
+    /* ── LEADERSHIP ── */
+    .leadership-section { padding: 7rem 0; }
+    .leadership-grid { display: grid; grid-template-columns: 300px 1fr; gap: 4rem; align-items: center; }
+    .leader-photo-wrap { position: relative; }
+    .leader-photo { width: 100%; height: 380px; object-fit: cover; object-position: top; border-radius: 8px; display: block; }
+    .leader-photo-decor { position: absolute; top: -12px; left: -12px; right: 12px; bottom: -12px; border: 2px solid var(--green-light); border-radius: 10px; z-index: -1; }
+    .leader-info .section-tag { color: var(--green-bright); }
+    .leader-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 600; color: var(--green-deep); margin-bottom: 0.3rem; }
+    .leader-title { font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green-bright); font-weight: 600; margin-bottom: 1.5rem; }
+    .leader-bio { font-size: 0.95rem; color: var(--gray); line-height: 1.85; font-weight: 300; }
+
+    /* ── FOOTER ── */
+    footer { background: #060f09; color: rgba(255,255,255,0.4); text-align: center; padding: 2.5rem; font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid rgba(201,168,76,0.2); }
+    footer strong { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .about-section, .why-grid, .contact-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(3, 1fr); }
+      .process-steps::before { display: none; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .photo-band { grid-template-columns: 1fr 1fr; height: auto; }
+      .hero-badge-iso { display: none; }
+      .ec-banner { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr 1fr; }
+      .pillars, .why-features, .form-row { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .photo-band { grid-template-columns: 1fr; height: auto; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+
+  <!-- BEC Weather & AQI Widget Styles -->
+<style>
+/* BEC Weather & AQI Widget Styles */
+#bec-weather-section {
+  background: #0a1628;
+  padding: 60px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+.bec-weather-container { max-width: 960px; margin: 0 auto; }
+.bec-section-heading {
+  text-align: center;
+  margin-bottom: 32px;
+}
+.bec-section-heading h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+.bec-section-heading p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+}
+/* Search */
+.bec-search-box {
+  background: #111e33;
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+}
+.bec-search-row { display: flex; gap: 10px; flex-wrap: wrap; }
+.bec-city-input {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(56,189,248,0.2);
+  border-radius: 10px;
+  padding: 10px 16px;
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  outline: none;
+}
+.bec-city-input:focus { border-color: #38bdf8; }
+.bec-city-input::placeholder { color: #64748b; }
+.bec-go-btn {
+  background: #38bdf8;
+  color: #000;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.bec-gps-btn {
+  background: transparent;
+  border: 1px solid rgba(56,189,248,0.3);
+  color: #38bdf8;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.bec-cities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.bec-chip {
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.18);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  color: #38bdf8;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bec-chip:hover { background: rgba(56,189,248,0.18); }
+/* Location bar */
+.bec-loc-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111e33;
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 12px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.bec-loc-info { display: flex; align-items: center; gap: 10px; }
+.bec-loc-dot {
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  animation: bec-pulse 2s infinite;
+}
+@keyframes bec-pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(1.4);} }
+.bec-loc-name { font-size: 1rem; font-weight: 700; color: #e2e8f0; }
+.bec-loc-coords { font-size: 0.68rem; color: #64748b; }
+.bec-refresh {
+  background: transparent;
+  border: 1px solid rgba(56,189,248,0.2);
+  color: #38bdf8;
+  padding: 5px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.78rem;
+}
+/* Cards grid */
+.bec-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+@media(max-width:600px){ .bec-cards { grid-template-columns: 1fr; } }
+.bec-card {
+  background: #111e33;
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+.bec-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.bec-card.bec-weather::before { background: linear-gradient(90deg,#38bdf8,#7dd3fc); }
+.bec-card.bec-aqi::before    { background: linear-gradient(90deg,#34d399,#6ee7b7); }
+.bec-card-lbl { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 12px; }
+/* Weather card */
+.bec-w-main { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 12px; }
+.bec-w-icon { font-size: 2.6rem; line-height: 1; }
+.bec-w-temp { font-size: 2.8rem; font-weight: 700; color: #38bdf8; line-height: 1; }
+.bec-w-unit { font-size: 1rem; color: #64748b; }
+.bec-w-desc { font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; }
+.bec-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.bec-stat { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 10px; }
+.bec-stat-lbl { font-size: 0.6rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+.bec-stat-val { font-size: 0.95rem; font-weight: 600; color: #e2e8f0; margin-top: 2px; }
+/* AQI card */
+.bec-aqi-num { font-size: 3.4rem; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.bec-aqi-cat { font-size: 0.85rem; font-weight: 600; margin-bottom: 12px; letter-spacing: 1px; }
+.bec-aqi-bar-wrap { height: 6px; border-radius: 6px; background: rgba(255,255,255,0.08); margin-bottom: 12px; overflow: hidden; }
+.bec-aqi-bar { height: 100%; border-radius: 6px; transition: width 1s ease; }
+.bec-polls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+.bec-poll { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 6px 8px; text-align: center; }
+.bec-poll-name { font-size: 0.58rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; }
+.bec-poll-val { font-size: 0.9rem; font-weight: 600; color: #e2e8f0; margin-top: 2px; }
+/* Advice */
+.bec-advice {
+  background: #111e33;
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.bec-advice-icon { font-size: 1.6rem; flex-shrink: 0; }
+.bec-advice-title { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 4px; }
+.bec-advice-text { font-size: 0.83rem; color: #e2e8f0; line-height: 1.5; }
+/* Stations */
+.bec-stations { display: flex; gap: 10px; flex-wrap: wrap; }
+.bec-station-tag {
+  background: rgba(56,189,248,0.07);
+  border: 1px solid rgba(56,189,248,0.18);
+  border-radius: 8px;
+  padding: 5px 12px;
+  font-size: 0.72rem;
+  color: #38bdf8;
+}
+.bec-updated { text-align: center; font-size: 0.68rem; color: #64748b; margin-top: 14px; }
+/* 7-Day Forecast */
+.bec-forecast-title { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; color: #64748b; margin-bottom: 10px; }
+.bec-forecast {
+  background: #111e33;
+  border: 1px solid rgba(56,189,248,0.15);
+  border-radius: 16px;
+  padding: 18px 20px;
+  margin-bottom: 16px;
+}
+.bec-forecast-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+@media(max-width:600px){ .bec-forecast-days { grid-template-columns: repeat(4, 1fr); } }
+.bec-fday {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(56,189,248,0.1);
+  border-radius: 10px;
+  padding: 10px 6px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.bec-fday:hover { background: rgba(56,189,248,0.08); }
+.bec-fday-name { font-size: 0.65rem; color: #64748b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.bec-fday-icon { font-size: 1.4rem; margin-bottom: 4px; }
+.bec-fday-hi { font-size: 0.9rem; font-weight: 700; color: #38bdf8; }
+.bec-fday-lo { font-size: 0.78rem; color: #64748b; }
+.bec-fday-desc { font-size: 0.58rem; color: #94a3b8; margin-bottom: 4px; line-height: 1.2; min-height: 1.4em; }
+.bec-fday-temps { display: flex; align-items: baseline; justify-content: center; gap: 2px; margin-bottom: 3px; }
+.bec-fday-sep { font-size: 0.72rem; color: #475569; }
+.bec-fday-rain { font-size: 0.6rem; color: #7dd3fc; margin-top: 3px; }
+.bec-fday-prob { font-size: 0.6rem; color: #7dd3fc; margin-top: 3px; }
+.bec-fday-wind { font-size: 0.58rem; color: #94a3b8; margin-top: 2px; }
+/* Loading */
+.bec-loading { text-align: center; padding: 40px 20px; display: none; }
+.bec-spinner {
+  width: 40px; height: 40px;
+  border: 3px solid rgba(56,189,248,0.2);
+  border-top-color: #38bdf8;
+  border-radius: 50%;
+  animation: bec-spin 0.8s linear infinite;
+  margin: 0 auto 12px;
+}
+@keyframes bec-spin { to { transform: rotate(360deg); } }
+.bec-loading-txt { color: #64748b; font-size: 0.85rem; }
+#bec-main { display: none; }
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-icon">🌿</div>
+    <div class="nav-logo-text">
+      Bharat Environment Consultants
+      <span>Environmental Experts Since 2005</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#sectors">Sectors</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#blog">Articles</a></li>
+    <li><a href="news.html">News</a></li>
+    <li><a href="#weather-aqi" class="nav-weather">🌦 Weather & AQI</a></li>
+    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+    <li><a href="ec-calculator.html" class="nav-ec">⚖️ EC Calculator</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-badge-iso">
+    <span class="iso-icon">🌿</span>
+    <div class="iso-text">ISO 14001<br/>Compliant</div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge">✦ Environmental Excellence Since 2005 ✦</div>
+    <h1>Guiding India Towards a <em>Greener</em> Tomorrow</h1>
+    <p class="hero-sub">Bharat Environment Consultants delivers science-backed environmental audits, regulatory clearances, carbon accounting, and ESG advisory that help businesses and governments thrive responsibly.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a Consultation →</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+      <a href="ec-calculator.html" class="btn-ec-hero">⚖️ EC Calculator</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div>
+      <div class="hero-stat-num">500+</div>
+      <div class="hero-stat-label">Projects Done</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">20+</div>
+      <div class="hero-stat-label">Years Experience</div>
+    </div>
+    <div>
+      <div class="hero-stat-num">18</div>
+      <div class="hero-stat-label">Indian States</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACCREDITATION TICKER -->
+<div class="accred-bar">
+  <div class="accred-track">
+    <span class="accred-item"><strong>🏛️ CPCB &amp; SPCB Empanelled</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>✅ QCI-NABET Accredited Auditor</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>🌿 ISO 14001:2015 Certified</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>🌡️ GHG Protocol Certified</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>📊 GRI &amp; BRSR Certified Reporter</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>🏛️ CPCB &amp; SPCB Empanelled</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>✅ QCI-NABET Accredited Auditor</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>🌿 ISO 14001:2015 Certified</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>🌡️ GHG Protocol Certified</strong></span>
+    <span class="accred-sep">◆</span>
+    <span class="accred-item"><strong>📊 GRI &amp; BRSR Certified Reporter</strong></span>
+    <span class="accred-sep">◆</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-wrap">
+    <div class="about-section">
+      <div class="about-photo-grid">
+        <img class="about-img about-img-main" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&amp;q=85&amp;fit=crop" alt="Environmental field survey"/>
+        <img class="about-img about-img-top"  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&amp;q=85&amp;fit=crop" alt="Water quality testing"/>
+        <img class="about-img about-img-bot"  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&amp;q=85&amp;fit=crop" alt="Forest biodiversity study"/>
+        <div class="about-year-badge">
+          <div class="yr">20+</div>
+          <div class="yr-sub">Years of<br/>Leadership</div>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-tag">About Us</p>
+        <h2 class="section-title">Rooted in Science,<br/>Driven by Purpose</h2>
+        <p class="about-desc">Founded in 2005, Bharat Environment Consultants (BEC) is one of India's most trusted environmental consultancy firms. We bridge the gap between regulatory compliance and genuine ecological stewardship, empowering industries, infrastructure projects, and government bodies to operate sustainably.</p>
+        <p class="about-desc">Our multidisciplinary team of ecologists, engineers, legal experts, and sustainability strategists brings deep expertise to every engagement — from small industrial units to large-scale national infrastructure projects.</p>
+        <div class="pillars">
+          <div class="pillar"><span class="pillar-icon">🔬</span><div><h4>Science-Led</h4><p>All recommendations grounded in rigorous field data and research</p></div></div>
+          <div class="pillar"><span class="pillar-icon">⚖️</span><div><h4>Compliance-First</h4><p>Deep expertise in MoEFCC, CPCB, and state regulatory frameworks</p></div></div>
+          <div class="pillar"><span class="pillar-icon">🤝</span><div><h4>Client-Centric</h4><p>Tailored strategies aligned with your project timelines and budgets</p></div></div>
+          <div class="pillar"><span class="pillar-icon">🌍</span><div><h4>Impact-Driven</h4><p>Every project advances India's environmental health and biodiversity</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="services-section">
+  <div class="section-wrap">
+    <div class="services-header">
+      <p class="section-tag">What We Do</p>
+      <h2 class="section-title">Comprehensive Environmental Services</h2>
+      <p>From environment audits and regulatory consents to carbon accounting and ESG disclosures, we provide end-to-end environmental advisory across every stage of your project and operations.</p>
+    </div>
+    <div class="services-grid">
+      <div class="ec-banner">
+        <div class="ec-banner-text">
+          <h3>⚖️ Environmental Compensation Calculator</h3>
+          <p>Calculate EC as per CPCB methodology for violations of Water Act &amp; Air Act. For Red, Orange &amp; Green category industries.</p>
+        </div>
+        <a href="ec-calculator.html" class="btn-ec-banner">Use EC Calculator →</a>
+      </div>
+      <div class="service-card"><span class="service-num">01</span><span class="service-icon">🔍</span><h3>Environment Audit</h3><p>Comprehensive environmental audits covering compliance status, pollution load assessment, waste management practices, and actionable corrective action plans for industries.</p></div>
+      <div class="service-card"><span class="service-num">02</span><span class="service-icon">📄</span><h3>CTE &amp; CTO Applications</h3><p>End-to-end support for Consent to Establish (CTE) and Consent to Operate (CTO) applications before State Pollution Control Boards — documentation, liaison, and follow-up.</p></div>
+      <div class="service-card"><span class="service-num">03</span><span class="service-icon">🌡️</span><h3>Carbon Footprint Calculation</h3><p>Scope 1, 2 &amp; 3 GHG inventory across all sectors — manufacturing, logistics, real estate, agriculture, and energy — with reduction roadmaps and third-party verification support.</p></div>
+      <div class="service-card"><span class="service-num">04</span><span class="service-icon">📊</span><h3>ESG Reporting</h3><p>Structured ESG disclosure preparation aligned with GRI Standards, BRSR (SEBI), CDP, and UN SDGs — helping businesses meet investor, regulatory, and stakeholder expectations.</p></div>
+      <div class="service-card"><span class="service-num">05</span><span class="service-icon">🌬️</span><h3>Air Quality Monitoring</h3><p>Ambient and stack emission monitoring, dispersion modelling, and air quality management plans for industries, urban infrastructure, and construction projects.</p></div>
+      <div class="service-card"><span class="service-num">06</span><span class="service-icon">🌊</span><h3>Water &amp; Wastewater Management</h3><p>Water resource assessment, effluent treatment planning, Zero Liquid Discharge (ZLD) strategies, and groundwater impact studies for industrial and urban projects.</p></div>
+      <div class="service-card"><span class="service-num">07</span><span class="service-icon">♻️</span><h3>Waste Management Planning</h3><p>Hazardous &amp; non-hazardous waste characterisation, manifest management, disposal tie-ups, and solid waste management plans as per CPCB guidelines.</p></div>
+      <div class="service-card"><span class="service-num">08</span><span class="service-icon">🌲</span><h3>Biodiversity &amp; Ecology Studies</h3><p>Flora &amp; fauna surveys, biodiversity impact assessments, forest clearance support under FCA, and wildlife corridor studies for linear and area projects.</p></div>
+      <div class="service-card"><span class="service-num">09</span><span class="service-icon">🏭</span><h3>Industrial Compliance Audit</h3><p>Regulatory gap analysis, consent renewal management, and legal compliance audits aligned with state pollution control board and MoEFCC requirements.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO BAND -->
+<div class="photo-band">
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&amp;q=85&amp;fit=crop" alt="Air quality monitoring"/><div class="photo-panel-overlay"><span class="photo-panel-label">Air Quality Monitoring</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&amp;q=85&amp;fit=crop" alt="Water management"/><div class="photo-panel-overlay"><span class="photo-panel-label">Water Management</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&amp;q=85&amp;fit=crop" alt="Biodiversity studies"/><div class="photo-panel-overlay"><span class="photo-panel-label">Biodiversity Studies</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=700&amp;q=85&amp;fit=crop" alt="ESG Reporting"/><div class="photo-panel-overlay"><span class="photo-panel-label">ESG Reporting</span></div></div>
+</div>
+
+<!-- WHY BEC -->
+<section class="why-section">
+  <div class="section-wrap">
+    <div class="why-grid">
+      <div class="why-image-wrap">
+        <img class="why-img" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=900&amp;q=85&amp;fit=crop" alt="BEC team on field"/>
+        <div class="why-accred-strip">
+          <h4>Accreditations &amp; Memberships</h4>
+          <div class="accred-pills">
+            <span class="accred-pill">🏛️ CPCB &amp; SPCB Empanelled</span>
+            <span class="accred-pill">✅ QCI-NABET Accredited</span>
+            <span class="accred-pill">🌿 ISO 14001:2015</span>
+            <span class="accred-pill">🌡️ GHG Protocol Certified</span>
+            <span class="accred-pill">📊 GRI &amp; BRSR Reporter</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-tag">Why Choose BEC</p>
+        <h2 class="section-title">Your Trusted Environmental Partner</h2>
+        <div class="why-features">
+          <div class="why-card"><span class="why-card-icon">🏅</span><h4>Pan-India Accreditation</h4><p>Recognised by QCI-NABET and empanelled with MoEFCC as an accredited EIA consultant category A &amp; B.</p></div>
+          <div class="why-card"><span class="why-card-icon">🧭</span><h4>End-to-End Project Support</h4><p>From site selection to environmental clearance and beyond, we remain your partner throughout the entire project lifecycle.</p></div>
+          <div class="why-card"><span class="why-card-icon">👩‍🔬</span><h4>Expert Multidisciplinary Team</h4><p>Over 80 professionals including ecologists, civil engineers, hydrologists, legal advisors, and GIS specialists.</p></div>
+          <div class="why-card"><span class="why-card-icon">⚡</span><h4>Fast Turnaround, Zero Compromise</h4><p>Dedicated project managers ensure deliverables are on time without compromising scientific rigour or regulatory accuracy.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors" class="sectors-section">
+  <div class="section-wrap">
+    <div class="sectors-header">
+      <p class="section-tag">Industries We Serve</p>
+      <h2 class="section-title">Sectors of Expertise</h2>
+    </div>
+    <div class="sectors-grid">
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&amp;q=80&amp;fit=crop" alt="Power and Energy"/><div class="sector-overlay"><span class="sector-icon">⚡</span><div class="sector-name">Power &amp; Energy</div><div class="sector-sub">Thermal, Renewable, Nuclear</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&amp;q=80&amp;fit=crop" alt="Infrastructure"/><div class="sector-overlay"><span class="sector-icon">🏗️</span><div class="sector-name">Infrastructure</div><div class="sector-sub">Highways, Bridges, Airports</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1565034958833-0a63eecc0bab?w=600&amp;q=80&amp;fit=crop" alt="Manufacturing"/><div class="sector-overlay"><span class="sector-icon">🏭</span><div class="sector-name">Manufacturing</div><div class="sector-sub">Steel, Cement, Chemicals</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1570654639102-bdd95efeca7a?w=600&amp;q=80&amp;fit=crop" alt="Mining"/><div class="sector-overlay"><span class="sector-icon">⛏️</span><div class="sector-name">Mining</div><div class="sector-sub">Coal, Iron Ore, Limestone</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&amp;q=80&amp;fit=crop" alt="Real Estate"/><div class="sector-overlay"><span class="sector-icon">🏘️</span><div class="sector-name">Real Estate</div><div class="sector-sub">Townships, Commercial</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&amp;q=80&amp;fit=crop" alt="Agro and Food"/><div class="sector-overlay"><span class="sector-icon">🌾</span><div class="sector-name">Agro &amp; Food</div><div class="sector-sub">Processing, Storage</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;q=80&amp;fit=crop" alt="Oil and Gas"/><div class="sector-overlay"><span class="sector-icon">🛢️</span><div class="sector-name">Oil &amp; Gas</div><div class="sector-sub">Refineries, Pipelines</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?w=600&amp;q=80&amp;fit=crop" alt="Government PSU"/><div class="sector-overlay"><span class="sector-icon">🏛️</span><div class="sector-name">Government / PSU</div><div class="sector-sub">Urban Dev, NHAI, NTPC</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="process-section">
+  <div class="section-wrap">
+    <div class="process-header">
+      <p class="section-tag">How We Work</p>
+      <h2 class="section-title">Our Proven Process</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step"><div class="step-circle">1</div><h4>Initial Consultation</h4><p>Understand project scope, industry type, and applicable regulatory requirements</p></div>
+      <div class="process-step"><div class="step-circle">2</div><h4>Site Assessment</h4><p>Conduct field visits, collect air, water, soil, and emission baseline data</p></div>
+      <div class="process-step"><div class="step-circle">3</div><h4>Documentation &amp; Application</h4><p>Prepare CTE/CTO applications, audit reports, carbon inventories, and ESG disclosures</p></div>
+      <div class="process-step"><div class="step-circle">4</div><h4>Regulatory Liaison</h4><p>Submit applications, represent before SPCB/CPCB, and facilitate approvals</p></div>
+      <div class="process-step"><div class="step-circle">5</div><h4>Compliance Monitoring</h4><p>Ongoing monitoring, periodic audits, and ESG/carbon reporting updates</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES -->
+<section id="blog" class="articles-section">
+  <div class="section-wrap">
+    <div class="articles-header">
+      <div><p class="section-tag">Articles</p><h2 class="section-title">Knowledge &amp; Insights</h2></div>
+      <a href="#">View all articles →</a>
+    </div>
+    <div class="articles-grid">
+      <div class="article-card article-card-large"><img class="article-img" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&amp;q=85&amp;fit=crop" alt="Environmental compliance"/><div class="article-body"><div class="article-tag">Environmental Audit</div><h3>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h3><p>A comprehensive overview of the latest regulatory changes and what they mean for industries operating across India's environmental compliance landscape.</p></div></div>
+      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&amp;q=85&amp;fit=crop" alt="Carbon footprint"/><div class="article-body"><div class="article-tag">Carbon Footprint</div><h3>Scope 3 Emissions: Why They Matter for Indian Businesses</h3><p>How value-chain emissions are becoming central to ESG strategy and investor expectations.</p></div></div>
+      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&amp;q=85&amp;fit=crop" alt="Biodiversity"/><div class="article-body"><div class="article-tag">Biodiversity</div><h3>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h3><p>Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PASTE THIS WHERE YOU WANT THE SECTION ====== -->
+<!-- Recommended: after #services section, before #contact -->
+<section id="weather-aqi" style="scroll-margin-top:80px;">
+<div id="bec-weather-section">
+  <div class="bec-weather-container">
+
+    <div class="bec-section-heading">
+      <h2>🌦 Live Weather &amp; Air Quality</h2>
+      <p>Real-time weather and AQI data for any city in India — powered by IMD &amp; CPCB monitoring stations</p>
+    </div>
+
+    <!-- Search Box -->
+    <div class="bec-search-box">
+      <div class="bec-search-row">
+        <input class="bec-city-input" id="bec-city-input" type="text"
+          placeholder="Enter city name (e.g. Delhi, Mumbai, Gurugram...)"
+          onkeydown="if(event.key==='Enter')becSearch()"/>
+        <button class="bec-go-btn" onclick="becSearch()">Search</button>
+        <button class="bec-gps-btn" onclick="becGPS()" title="Use my location">📍</button>
+      </div>
+      <div class="bec-cities" id="bec-cities"></div>
+    </div>
+
+    <!-- Loading -->
+    <div class="bec-loading" id="bec-loading">
+      <div class="bec-spinner"></div>
+      <div class="bec-loading-txt">Fetching weather &amp; AQI data...</div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="bec-main">
+      <div class="bec-loc-bar">
+        <div class="bec-loc-info">
+          <div class="bec-loc-dot"></div>
+          <div>
+            <div class="bec-loc-name" id="bec-loc-name">—</div>
+            <div class="bec-loc-coords" id="bec-loc-coords"></div>
+          </div>
+        </div>
+        <button class="bec-refresh" onclick="becRefresh()">↻ Refresh</button>
+      </div>
+
+      <div class="bec-cards">
+        <!-- Weather -->
+        <div class="bec-card bec-weather">
+          <div class="bec-card-lbl">🌡 Current Weather</div>
+          <div class="bec-w-main">
+            <div class="bec-w-icon" id="bec-w-icon">⛅</div>
+            <div><span class="bec-w-temp" id="bec-w-temp">--</span><span class="bec-w-unit">°C</span></div>
+          </div>
+          <div class="bec-w-desc" id="bec-w-desc">Loading...</div>
+          <div class="bec-stats">
+            <div class="bec-stat"><div class="bec-stat-lbl">Humidity</div><div class="bec-stat-val" id="bec-humidity">--%</div></div>
+            <div class="bec-stat"><div class="bec-stat-lbl">Wind</div><div class="bec-stat-val" id="bec-wind">-- km/h</div></div>
+            <div class="bec-stat"><div class="bec-stat-lbl">Rainfall</div><div class="bec-stat-val" id="bec-rain">-- mm</div></div>
+            <div class="bec-stat"><div class="bec-stat-lbl">UV Index</div><div class="bec-stat-val" id="bec-uv">--</div></div>
+          </div>
+        </div>
+
+        <!-- AQI -->
+        <div class="bec-card bec-aqi">
+          <div class="bec-card-lbl">💨 Air Quality Index</div>
+          <div class="bec-aqi-num" id="bec-aqi-num">--</div>
+          <div class="bec-aqi-cat" id="bec-aqi-cat">Loading...</div>
+          <div class="bec-aqi-bar-wrap"><div class="bec-aqi-bar" id="bec-aqi-bar" style="width:0%;background:#22c55e;"></div></div>
+          <div class="bec-polls">
+            <div class="bec-poll"><div class="bec-poll-name">PM2.5</div><div class="bec-poll-val" id="bec-pm25">--</div></div>
+            <div class="bec-poll"><div class="bec-poll-name">PM10</div><div class="bec-poll-val" id="bec-pm10">--</div></div>
+            <div class="bec-poll"><div class="bec-poll-name">NO₂</div><div class="bec-poll-val" id="bec-no2">--</div></div>
+            <div class="bec-poll"><div class="bec-poll-name">SO₂</div><div class="bec-poll-val" id="bec-so2">--</div></div>
+            <div class="bec-poll"><div class="bec-poll-name">CO</div><div class="bec-poll-val" id="bec-co">--</div></div>
+            <div class="bec-poll"><div class="bec-poll-name">O₃</div><div class="bec-poll-val" id="bec-o3">--</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7-Day Forecast -->
+      <div class="bec-forecast">
+        <div class="bec-forecast-title">📅 7-Day Weather Forecast</div>
+        <div class="bec-forecast-days" id="bec-forecast-days">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Health Advice -->
+      <div class="bec-advice">
+        <div class="bec-advice-icon" id="bec-advice-icon">💡</div>
+        <div>
+          <div class="bec-advice-title">Health Advisory</div>
+          <div class="bec-advice-text" id="bec-advice-text">—</div>
+        </div>
+      </div>
+
+      <!-- Stations -->
+      <div class="bec-stations">
+        <div class="bec-station-tag">📡 <span id="bec-w-station">IMD Station</span></div>
+        <div class="bec-station-tag">🏭 <span id="bec-aq-station">CPCB Station</span></div>
+      </div>
+      <div class="bec-updated" id="bec-updated">Last updated: —</div>
+    </div>
+
+  </div>
+</div>
+</section>
+<!-- ====== END OF SECTION ====== -->
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-tag">Get In Touch</p>
+        <h2 class="section-title">Let's Work Together<br/>for a Cleaner India</h2>
+        <p class="contact-intro">Whether you need an environment audit, CTE/CTO application support, carbon footprint assessment, or ESG reporting — our expert team is ready to guide you every step of the way.</p>
+        <div class="contact-item"><div class="contact-icon">📍</div><div><h4>Office Address</h4><p>4th Floor, Green Tower, Sector 18, Gurugram, Haryana – 122015</p></div></div>
+        <div class="contact-item"><div class="contact-icon">📞</div><div><h4>Phone</h4><p>+91 99589 17292</p></div></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="c4a6aca5b6a5b0a1aab2adb6aba7abaab7b1a8b0a5aab0b784beabacaba9a5ada8eaadaa">[email&#160;protected]</a></p></div></div>
+        <div class="contact-item"><div class="contact-icon">🕐</div><div><h4>Working Hours</h4><p>Monday – Saturday, 9:00 AM – 6:30 PM IST</p></div></div>
+      </div>
+      <div class="contact-form">
+        <h3>Send Us a Query</h3>
+
+        <!-- Pre-Query: quick topic selector -->
+        <div class="prequery-strip">
+          <h4>What can we help you with?</h4>
+          <div class="prequery-tags">
+            <span class="prequery-tag" onclick="selectPrequery(this,'Environment Audit')">🔍 Environment Audit</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'CTE / CTO Application')">📋 CTE / CTO Application</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Carbon Footprint Calculation')">🌿 Carbon Footprint</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'ESG Reporting')">📊 ESG Reporting</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Air Quality Monitoring')">💨 Air Quality</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Water &amp; Wastewater Management')">💧 Water Management</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Industrial Compliance Audit')">🏭 Compliance Audit</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Other / General Query')">❓ Other Query</span>
+          </div>
+        </div>
+
+        <form id="becContactForm" action="https://formspree.io/f/xzdyqpya" method="POST" onsubmit="handleFormSubmit(event)">
+          <input type="hidden" name="_replyto" value="bharatenviroconsultants@zohomail.in"/>
+          <input type="hidden" name="_subject" id="hiddenSubject" value="New Enquiry – Bharat Environment Consultants"/>
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" placeholder="Rahul" required/></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" placeholder="Sharma" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address *</label><input type="email" name="email" placeholder="rahul@company.in" required/></div>
+            <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 98765 43210"/></div>
+          </div>
+          <div class="form-group">
+            <label>Subject / Query Type *</label>
+            <select name="subject" id="subjectSelect" required onchange="updateSubject(this.value)">
+              <option value="">Select query type…</option>
+              <option>General Enquiry</option>
+              <option>Environment Audit</option>
+              <option>CTE Application</option>
+              <option>CTO Application</option>
+              <option>Carbon Footprint Calculation</option>
+              <option>ESG Reporting</option>
+              <option>Air Quality Monitoring</option>
+              <option>Water &amp; Wastewater Management</option>
+              <option>Waste Management Planning</option>
+              <option>Biodiversity &amp; Ecology Studies</option>
+              <option>Industrial Compliance Audit</option>
+              <option>BRSR Reporting</option>
+              <option>EIA / Environment Clearance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select name="service">
+              <option value="">Select a service…</option>
+              <option>Environment Audit</option>
+              <option>CTE Application</option>
+              <option>CTO Application</option>
+              <option>Carbon Footprint Calculation</option>
+              <option>ESG Reporting</option>
+              <option>Air Quality Monitoring</option>
+              <option>Water &amp; Wastewater Management</option>
+              <option>Waste Management Planning</option>
+              <option>Biodiversity &amp; Ecology Studies</option>
+              <option>Industrial Compliance Audit</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Your Message *</label><textarea name="message" placeholder="Describe your requirement, project location, industry type, or any specific compliance need…" required></textarea></div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry →</button>
+        </form>
+
+        <!-- Success message shown after submission -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>Query Received!</h4>
+          <p>Thank you for reaching out. Our team will get back to you within 1 business day at <strong style="color:var(--gold)"><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="c3a1aba2b1a2b7a6adb5aab1aca0acadb0b6afb7a2adb7b083b9acabacaea2aaafedaaad">[email&#160;protected]</a></strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Bharat Environment Consultants</strong> &nbsp;|&nbsp; Est. 2005 &nbsp;|&nbsp; Gurugram, Haryana &nbsp;|&nbsp; +91 99589 17292 &nbsp;|&nbsp; All rights reserved © 2025
+</footer>
+
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Pre-query tag selection
+function selectPrequery(el, value) {
+  document.querySelectorAll('.prequery-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  var sel = document.getElementById('subjectSelect');
+  // Try to match option
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].text.toLowerCase().indexOf(value.split('index.html')[0].trim().toLowerCase()) !== -1) {
+      sel.value = sel.options[i].value || sel.options[i].text;
+      updateSubject(sel.value);
+      break;
+    }
+  }
+  // Also pre-fill service dropdown if matching
+  var svc = document.querySelector('select[name="service"]');
+  for (var j = 0; j < svc.options.length; j++) {
+    if (svc.options[j].text.toLowerCase().indexOf(value.split('index.html')[0].trim().toLowerCase()) !== -1) {
+      svc.value = svc.options[j].value || svc.options[j].text;
+      break;
+    }
+  }
+}
+
+function updateSubject(val) {
+  if (val) {
+    document.getElementById('hiddenSubject').value = 'Query: ' + val + ' – Bharat Environment Consultants';
+  }
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  var form = document.getElementById('becContactForm');
+  var data = new FormData(form);
+  try {
+    var res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Enquiry →';
+      alert('Something went wrong. Please email us directly at bharatenviroconsultants@zohomail.in');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Enquiry →';
+    alert('Network error. Please email us directly at bharatenviroconsultants@zohomail.in');
+  }
+}
+</script>
+
+<script>
+(function(){
+  var CITIES=['Gurugram','Delhi','Mumbai','Bengaluru','Kolkata','Chennai','Hyderabad','Pune','Jaipur','Lucknow','Patna','Chandigarh','Ahmedabad','Kochi','Bhopal'];
+  var W_ICONS={0:'☀️',1:'🌤',2:'⛅',3:'☁️',45:'🌫',48:'🌫',51:'🌦',53:'🌦',55:'🌧',61:'🌧',63:'🌧',65:'🌧',71:'❄️',73:'❄️',75:'❄️',80:'🌦',95:'⛈',96:'⛈',99:'⛈'};
+  var W_DESC={0:'Clear sky',1:'Mostly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Icy fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',95:'Thunderstorm',96:'Hail storm',99:'Heavy hail'};
+  var ADVICES={good:'😊 Air quality is excellent. Great day for outdoor activities!',satisfactory:'🙂 Air quality is acceptable. Sensitive individuals should reduce prolonged outdoor exertion.',moderate:'😐 Moderate pollution. People with respiratory issues should reduce outdoor activity.',poor:'😷 Poor air quality. Wear a mask outdoors. Avoid prolonged outdoor exposure.',verypoor:'🤧 Very poor air quality! Stay indoors. Keep windows closed.',severe:'🚨 Severe pollution! Health emergency. Avoid going outside. Seek medical help if unwell.'};
+  var ADV_ICONS={good:'😊',satisfactory:'🙂',moderate:'😐',poor:'😷',verypoor:'🤧',severe:'🚨'};
+  var lastLat=null,lastLon=null;
+
+  function aqiInfo(v){
+    if(v<=50)  return{cat:'Good',        color:'#22c55e',key:'good'};
+    if(v<=100) return{cat:'Satisfactory',color:'#84cc16',key:'satisfactory'};
+    if(v<=200) return{cat:'Moderate',    color:'#eab308',key:'moderate'};
+    if(v<=300) return{cat:'Poor',        color:'#f97316',key:'poor'};
+    if(v<=400) return{cat:'Very Poor',   color:'#ef4444',key:'verypoor'};
+    return           {cat:'Severe',      color:'#7c3aed',key:'severe'};
+  }
+
+  function buildChips(){
+    var wrap=document.getElementById('bec-cities');
+    if(!wrap)return;
+    wrap.innerHTML=CITIES.map(function(c){return'<span class="bec-chip" onclick="becQuick(\''+c+'\')">'+c+'</span>';}).join('');
+  }
+
+  function showLoading(s){
+    document.getElementById('bec-loading').style.display=s?'block':'none';
+    if(s)document.getElementById('bec-main').style.display='none';
+  }
+
+  async function becLoadData(lat,lon,label){
+    lastLat=lat;lastLon=lon;
+    showLoading(true);
+    try{
+      var r1=await fetch('https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&current=temperature_2m,relative_humidity_2m,precipitation,weather_code,wind_speed_10m,uv_index&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max&timezone=Asia%2FKolkata');
+      var r2=await fetch('https://air-quality-api.open-meteo.com/v1/air-quality?latitude='+lat+'&longitude='+lon+'&current=pm10,pm2_5,carbon_monoxide,nitrogen_dioxide,sulphur_dioxide,ozone,european_aqi&timezone=Asia%2FKolkata');
+      var w=await r1.json();var a=await r2.json();
+      var c=w.current,code=c.weather_code;
+      document.getElementById('bec-loc-name').textContent=label;
+      document.getElementById('bec-loc-coords').textContent=lat.toFixed(4)+'°N, '+lon.toFixed(4)+'°E';
+      document.getElementById('bec-w-icon').textContent=W_ICONS[code]||'🌡';
+      document.getElementById('bec-w-temp').textContent=Math.round(c.temperature_2m);
+      document.getElementById('bec-w-desc').textContent=W_DESC[code]||'Clear';
+      document.getElementById('bec-humidity').textContent=c.relative_humidity_2m+'%';
+      document.getElementById('bec-wind').textContent=Math.round(c.wind_speed_10m)+' km/h';
+      document.getElementById('bec-rain').textContent=(c.precipitation||0).toFixed(1)+' mm';
+      document.getElementById('bec-uv').textContent=(c.uv_index||0).toFixed(1);
+      var aq=a.current,val=Math.round(aq.european_aqi||0),info=aqiInfo(val);
+      document.getElementById('bec-aqi-num').textContent=val;
+      document.getElementById('bec-aqi-num').style.color=info.color;
+      document.getElementById('bec-aqi-cat').textContent=info.cat;
+      document.getElementById('bec-aqi-cat').style.color=info.color;
+      document.getElementById('bec-aqi-bar').style.width=Math.min((val/500)*100,100)+'%';
+      document.getElementById('bec-aqi-bar').style.background=info.color;
+      document.getElementById('bec-pm25').textContent=(aq.pm2_5||0).toFixed(1);
+      document.getElementById('bec-pm10').textContent=(aq.pm10||0).toFixed(1);
+      document.getElementById('bec-no2').textContent=(aq.nitrogen_dioxide||0).toFixed(1);
+      document.getElementById('bec-so2').textContent=(aq.sulphur_dioxide||0).toFixed(1);
+      document.getElementById('bec-co').textContent=(aq.carbon_monoxide||0).toFixed(0);
+      document.getElementById('bec-o3').textContent=(aq.ozone||0).toFixed(1);
+      document.getElementById('bec-advice-icon').textContent=ADV_ICONS[info.key];
+      document.getElementById('bec-advice-text').textContent=ADVICES[info.key];
+      document.getElementById('bec-w-station').textContent='IMD — '+label+' Region';
+      document.getElementById('bec-aq-station').textContent='CPCB — '+label+' Station';
+      var now=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+      document.getElementById('bec-updated').textContent='Last updated: '+now;
+      // 7-day forecast
+      var days=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+      var fd=w.daily,fc=document.getElementById('bec-forecast-days');
+      if(fd&&fc){
+        fc.innerHTML=fd.time.slice(0,7).map(function(d,i){
+          var dt=new Date(d),dayName=i===0?'Today':days[dt.getDay()];
+          var icon=W_ICONS[fd.weather_code[i]]||'🌡';
+          var desc=W_DESC[fd.weather_code[i]]||'';
+          var hi=Math.round(fd.temperature_2m_max[i]);
+          var lo=Math.round(fd.temperature_2m_min[i]);
+          var rain=(fd.precipitation_sum[i]||0).toFixed(1);
+          var prob=fd.precipitation_probability_max?Math.round(fd.precipitation_probability_max[i]||0):null;
+          var wind=fd.wind_speed_10m_max?Math.round(fd.wind_speed_10m_max[i]||0):null;
+          return'<div class="bec-fday"><div class="bec-fday-name">'+dayName+'</div><div class="bec-fday-icon">'+icon+'</div><div class="bec-fday-desc">'+desc+'</div><div class="bec-fday-temps"><span class="bec-fday-hi">'+hi+'°</span><span class="bec-fday-sep">/</span><span class="bec-fday-lo">'+lo+'°</span></div>'+(prob!==null?'<div class="bec-fday-prob">🌧 '+prob+'%</div>':'')+(wind!==null?'<div class="bec-fday-wind">💨 '+wind+' km/h</div>':'')+'</div>';
+        }).join('');
+      }
+      showLoading(false);
+      document.getElementById('bec-main').style.display='block';
+    }catch(e){showLoading(false);alert('Failed to load data. Check internet connection.');}
+  }
+
+  async function becGeocode(name){
+    var r=await fetch('https://nominatim.openstreetmap.org/search?q='+encodeURIComponent(name+', India')+'&format=json&limit=1',{headers:{'Accept-Language':'en'}});
+    var d=await r.json();
+    if(!d.length)throw new Error('Not found');
+    return{lat:parseFloat(d[0].lat),lon:parseFloat(d[0].lon),name:d[0].display_name.split(',')[0]};
+  }
+
+  async function becReverseGeo(lat,lon){
+    try{var r=await fetch('https://nominatim.openstreetmap.org/reverse?lat='+lat+'&lon='+lon+'&format=json');var d=await r.json();var a=d.address;return a.city||a.town||a.village||a.county||a.state||'Your Location';}
+    catch{return'Your Location';}
+  }
+
+  window.becSearch=async function(){
+    var val=document.getElementById('bec-city-input').value.trim();
+    if(!val){alert('Please enter a city name');return;}
+    showLoading(true);
+    try{var g=await becGeocode(val);await becLoadData(g.lat,g.lon,g.name);}
+    catch{showLoading(false);alert('City not found. Try another name.');}
+  };
+
+  window.becQuick=function(name){
+    document.getElementById('bec-city-input').value=name;
+    becSearch();
+  };
+
+  window.becGPS=function(){
+    if(!navigator.geolocation){alert('GPS not supported.');return;}
+    showLoading(true);
+    navigator.geolocation.getCurrentPosition(
+      async function(pos){var lat=pos.coords.latitude,lon=pos.coords.longitude;var name=await becReverseGeo(lat,lon);await becLoadData(lat,lon,name);},
+      function(){showLoading(false);alert('GPS denied. Please type your city.');},
+      {timeout:10000}
+    );
+  };
+
+  window.becRefresh=function(){
+    if(lastLat&&lastLon){var name=document.getElementById('bec-loc-name').textContent;becLoadData(lastLat,lastLon,name);}
+  };
+
+  // Auto-refresh every 10 min
+  setInterval(function(){if(lastLat&&lastLon)becRefresh();},600000);
+
+  // Init chips & try GPS silently
+  buildChips();
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+      async function(pos){var lat=pos.coords.latitude,lon=pos.coords.longitude;var name=await becReverseGeo(lat,lon);await becLoadData(lat,lon,name);},
+      function(){},
+      {timeout:8000}
+    );
+  }
+})();
+</script>
+
+<!-- ── CLIMATE CHANGE ARTICLES ── -->
+<style>
+  .articles-section {
+    background: var(--cream);
+    padding: 80px 5vw;
+  }
+  .articles-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--green-deep);
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .articles-section .section-sub {
+    text-align: center;
+    color: var(--gray);
+    margin-bottom: 48px;
+    font-size: 1.05rem;
+  }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .article-card {
+    background: var(--white);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(13,59,30,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid var(--green-bright);
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+  }
+  .article-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(13,59,30,0.15);
+  }
+  .article-card-body {
+    padding: 28px;
+  }
+  .article-tag {
+    display: inline-block;
+    background: var(--green-pale);
+    color: var(--green-mid);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .article-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--green-deep);
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+  .article-card p {
+    color: var(--gray);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .article-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--gray-light);
+    padding-top: 16px;
+    font-size: 0.82rem;
+    color: var(--gray);
+  }
+  .article-read-time {
+    color: var(--green-bright);
+    font-weight: 600;
+  }
+</style>
+
+<section class="articles-section" id="climate-articles">
+  <h2>Climate Change Insights</h2>
+  <p class="section-sub">Expert perspectives on India's environmental challenges and sustainable solutions</p>
+  <div class="articles-grid">
+
+    <a href="article1.html" class="article-card">
+      <div class="article-card-body">
+        <span class="article-tag">Climate Policy</span>
+        <h3>India's Net Zero 2070 Target: What It Means for Industries</h3>
+        <p>India has committed to achieving net zero carbon emissions by 2070. This ambitious goal requires industries to adopt cleaner technologies, transition to renewable energy, and implement robust carbon accounting frameworks.</p>
+        <div class="article-meta">
+          <span>By BEC Experts</span>
+          <span class="article-read-time">5 min read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article2.html" class="article-card">
+      <div class="article-card-body">
+        <span class="article-tag">Carbon Footprint</span>
+        <h3>How Indian Businesses Can Reduce Their Carbon Footprint in 2025</h3>
+        <p>Reducing carbon emissions is no longer optional — it is a business imperative. From energy audits to green procurement policies, Indian companies have multiple pathways to decarbonize operations.</p>
+        <div class="article-meta">
+          <span>By BEC Experts</span>
+          <span class="article-read-time">6 min read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article3.html" class="article-card">
+      <div class="article-card-body">
+        <span class="article-tag">ESG Reporting</span>
+        <h3>ESG Reporting and Climate Disclosure: New SEBI Regulations Explained</h3>
+        <p>SEBI's BRSR framework now mandates climate-related disclosures for India's top listed companies. Understanding scope 1, 2, and 3 emissions and aligning with GRI and TCFD is essential for compliance.</p>
+        <div class="article-meta">
+          <span>By BEC Experts</span>
+          <span class="article-read-time">7 min read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article4.html" class="article-card">
+      <div class="article-card-body">
+        <span class="article-tag">Climate Risk</span>
+        <h3>Climate Change Risks Facing Indian Manufacturing Sector</h3>
+        <p>Rising temperatures, erratic monsoons, and extreme weather events are increasingly disrupting India's manufacturing supply chains. Companies must assess physical and transition risks before they impact operations.</p>
+        <div class="article-meta">
+          <span>By BEC Experts</span>
+          <span class="article-read-time">5 min read →</span>
+        </div>
+      </div>
+    </a>
+
+    <a href="article5.html" class="article-card">
+      <div class="article-card-body">
+        <span class="article-tag">Renewable Energy</span>
+        <h3>Transitioning to Renewable Energy: A Guide for Indian Corporates</h3>
+        <p>Solar and wind energy are now cheaper than coal in most parts of India. PPAs, rooftop solar, and RECs offer practical routes for businesses to switch to clean energy and meet sustainability commitments.</p>
+        <div class="article-meta">
+          <span>By BEC Experts</span>
+          <span class="article-read-time">6 min read →</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- Cloudflare Pages Analytics --><script defer src='../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2884fb192e0e40589a98dd53d983ed4f"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+<!-- Mirrored from bharatenvironmentconsultants.com/ec-calculator.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2026 18:54:18 GMT -->
+</html>
