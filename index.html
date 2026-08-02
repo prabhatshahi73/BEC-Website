@@ -983,6 +983,74 @@
 @keyframes bec-spin { to { transform: rotate(360deg); } }
 .bec-loading-txt { color: #64748b; font-size: 0.85rem; }
 #bec-main { display: none; }
+
+/* ===== BHARAT ENVIRONMENT NEWS — HOMEPAGE HIGHLIGHT ===== */
+.news-highlight-section {
+  background: linear-gradient(135deg, var(--green-deep) 0%, #0a2e17 100%);
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.news-highlight-section::before {
+  content: "";
+  position: absolute;
+  top: -60%; right: -10%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.news-highlight-inner { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+.news-highlight-top {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;
+}
+.news-highlight-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-light); font-weight: 600; margin-bottom: 0.9rem;
+}
+.news-highlight-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  font-weight: 600; line-height: 1.1; color: #fff; margin-bottom: 0.7rem;
+}
+.news-highlight-title span { color: var(--gold-light); }
+.news-highlight-sub { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 520px; line-height: 1.6; font-weight: 300; }
+.news-highlight-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--green-deep);
+  padding: 0.9rem 1.7rem; border-radius: 40px; text-decoration: none;
+  font-weight: 700; font-size: 0.92rem; white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.news-highlight-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+.news-highlight-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; }
+.news-highlight-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; overflow: hidden; text-decoration: none;
+  display: block; transition: transform 0.2s, background 0.2s;
+}
+.news-highlight-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+.news-highlight-card img { width: 100%; object-fit: cover; display: block; }
+.news-highlight-card-large img { height: 240px; }
+.news-highlight-card:not(.news-highlight-card-large) img { height: 140px; }
+.news-highlight-card-body { padding: 1.25rem 1.4rem; }
+.news-highlight-tag {
+  font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-light); font-weight: 700; margin-bottom: 0.5rem; display: block;
+}
+.news-highlight-card h3 {
+  font-family: 'Cormorant Garamond', serif; color: #fff; font-weight: 600;
+  line-height: 1.3; margin-bottom: 0.4rem;
+}
+.news-highlight-card-large h3 { font-size: 1.4rem; }
+.news-highlight-card:not(.news-highlight-card-large) h3 { font-size: 1rem; }
+.news-highlight-card p { color: rgba(255,255,255,0.6); font-size: 0.84rem; line-height: 1.55; font-weight: 300; }
+@media (max-width: 860px) {
+  .news-highlight-grid { grid-template-columns: 1fr; }
+  .news-highlight-top { flex-direction: column; align-items: flex-start; }
+}
 </style>
 
 </head>
@@ -1009,6 +1077,44 @@
     <li><a href="ec-calculator.html" class="nav-ec">⚖️ EC Calculator</a></li>
   </ul>
 </nav>
+
+<!-- BHARAT ENVIRONMENT NEWS — HOMEPAGE HIGHLIGHT -->
+<section class="news-highlight-section" id="bec-news-highlight">
+  <div class="news-highlight-inner">
+    <div class="news-highlight-top">
+      <div>
+        <div class="news-highlight-badge">🌿 Independent Environmental Reporting</div>
+        <h2 class="news-highlight-title">Bharat Environment <span>News</span></h2>
+        <p class="news-highlight-sub">Real-time regulatory updates, investigative reporting, and expert analysis on India's environmental compliance landscape — from the team behind BEC.</p>
+      </div>
+      <a href="news.html" class="news-highlight-cta">Read Full Coverage →</a>
+    </div>
+    <div class="news-highlight-grid">
+      <a class="news-highlight-card news-highlight-card-large" href="ganga-vs-yamuna-comparison.html">
+        <img src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=800&q=80&fit=crop" alt="Ganga vs Yamuna" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Water</span>
+          <h3>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h3>
+          <p>Namami Gange and Delhi's Yamuna effort have both spent tens of thousands of crores. Only one river is showing up better in the data.</p>
+        </div>
+      </a>
+      <a class="news-highlight-card" href="delhi-vs-indore-waste-management.html">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80&fit=crop" alt="Waste management" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Waste</span>
+          <h3>Delhi's Garbage Mountains vs Indore's Zero-Landfill Model</h3>
+        </div>
+      </a>
+      <a class="news-highlight-card" href="global-warming.html">
+        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=500&q=80&fit=crop" alt="Global warming" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Climate</span>
+          <h3>Global Warming in 2026: Where the Science Stands</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero" id="hero">
