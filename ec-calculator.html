@@ -322,8 +322,19 @@
     padding:22px;
     font-size:0.78rem;
     color:var(--ink-600);
-  }
+  }  .pdf-actions{margin-top:22px;padding-top:18px;border-top:1px dashed rgba(74,124,63,0.35);display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .pdf-btn{background:var(--moss-500);color:#fff;border:none;padding:12px 20px;border-radius:8px;font-weight:600;font-size:0.88rem;cursor:pointer;font-family:inherit;}
+  .pdf-btn:hover{background:var(--moss-400);}
+  .pdf-btn.paid{background:var(--amber-500);}
+  .pdf-btn.paid:hover{background:#dd9c3c;}
+  .pdf-btn:disabled{opacity:0.6;cursor:not-allowed;}
+  .pdf-price-note{font-size:0.78rem;color:var(--ink-600);width:100%;margin-top:2px;}
+  .pdf-status{font-size:0.82rem;margin-top:8px;width:100%;}
+  .pdf-status.ok{color:var(--green-cat);}
+  .pdf-status.err{color:var(--red-cat);}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 
@@ -411,6 +422,13 @@
     </div>
     <div class="formula-line">EC = PI × N × R × S × LF</div>
     <div class="min-note" id="minNote">⚠ Calculated value is below the commonly applied minimum EC threshold (₹5,000/day). The minimum floor amount may apply instead, subject to the specific directions of the concerned SPCB/CPCB.</div>
+
+    <div class="pdf-actions">
+      <button class="pdf-btn" id="freePdfBtn" type="button">📄 Download Free Summary (PDF)</button>
+      <button class="pdf-btn paid" id="paidPdfBtn" type="button">🔒 Get Detailed Report (PDF) — ₹299</button>
+      <div class="pdf-price-note">The free summary includes your calculated amount and formula breakdown. The ₹299 detailed report additionally includes the relevant CPCB methodology clauses, applicable NGT precedent citation, and BEC letterhead formatting suitable for submission to SPCB/CPCB.</div>
+      <div class="pdf-status" id="pdfStatus"></div>
+    </div>
   </div>
 
   <details class="ref">
@@ -483,6 +501,156 @@
     document.getElementById('minNote').classList.toggle('show', belowMin);
     document.getElementById('resultPanel').classList.add('show');
     document.getElementById('resultPanel').scrollIntoView({behavior:'smooth', block:'center'});
+
+    // store last calculation for PDF generation
+    window.lastCalc = {
+      PI: PI, N: N, R: R, S: S, LF: LF,
+      EC: EC, minFloor: minFloor, belowMin: belowMin,
+      category: document.querySelector('.cat-btn.active') ? document.querySelector('.cat-btn.active').textContent.trim() : '',
+      scaleLabel: document.getElementById('scale').selectedOptions[0].textContent,
+      popLabel: document.getElementById('population').selectedOptions[0].textContent,
+      date: new Date().toLocaleDateString('en-IN', {day:'2-digit', month:'long', year:'numeric'})
+    };
+    document.getElementById('pdfStatus').textContent = '';
+    document.getElementById('pdfStatus').className = 'pdf-status';
+  });
+
+  // ---------- PDF GENERATION ----------
+  function buildPdf(detailed){
+    var c = window.lastCalc;
+    if(!c){ alert('Please calculate the Environmental Compensation first.'); return; }
+    var jsPDFCtor = window.jspdf ? window.jspdf.jsPDF : null;
+    if(!jsPDFCtor){ alert('PDF library failed to load. Please check your internet connection and try again.'); return; }
+
+    var doc = new jsPDFCtor({unit:'pt', format:'a4'});
+    var pageW = doc.internal.pageSize.getWidth();
+    var margin = 48;
+    var y = 56;
+
+    // Header band
+    doc.setFillColor(18,34,23);
+    doc.rect(0, 0, pageW, 70, 'F');
+    doc.setTextColor(247,245,239);
+    doc.setFont('helvetica','bold'); doc.setFontSize(15);
+    doc.text('Bharat Environment Consultants', margin, 32);
+    doc.setFont('helvetica','normal'); doc.setFontSize(9.5);
+    doc.text('Environmental Compensation (EC) — ' + (detailed ? 'Detailed Assessment Report' : 'Summary Report'), margin, 50);
+
+    y = 100;
+    doc.setTextColor(16,20,16);
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    doc.text('Report generated: ' + c.date, margin, y); y += 26;
+
+    doc.setFont('helvetica','bold'); doc.setFontSize(12);
+    doc.text('Estimated Environmental Compensation', margin, y); y += 22;
+    doc.setFontSize(22); doc.setTextColor(74,124,63);
+    doc.text('Rs. ' + Math.round(c.EC).toLocaleString('en-IN'), margin, y); y += 14;
+    doc.setFontSize(9.5); doc.setTextColor(75,84,76);
+    doc.text('For ' + c.N + ' day(s) of violation — ' + c.category + ' category, ' + c.scaleLabel + ', ' + c.popLabel, margin, y); y += 30;
+
+    doc.setTextColor(16,20,16);
+    doc.setFont('helvetica','bold'); doc.setFontSize(11);
+    doc.text('Calculation Breakdown', margin, y); y += 18;
+    doc.setFont('helvetica','normal'); doc.setFontSize(10);
+    var rows = [
+      ['Pollution Index (PI)', c.PI],
+      ['Duration of violation (N, days)', c.N],
+      ['Base rate (R, Rs./day)', c.R],
+      ['Scale factor (S)', c.S],
+      ['Location factor (LF)', c.LF]
+    ];
+    rows.forEach(function(r){
+      doc.text(String(r[0]), margin, y);
+      doc.text(String(r[1]), pageW - margin, y, {align:'right'});
+      y += 16;
+    });
+    y += 6;
+    doc.setFont('helvetica','italic'); doc.setFontSize(9.5);
+    doc.text('Formula: EC = PI x N x R x S x LF', margin, y); y += 20;
+
+    if(c.belowMin){
+      doc.setFont('helvetica','normal'); doc.setFontSize(9);
+      doc.setTextColor(164,57,47);
+      var minTxt = doc.splitTextToSize('Note: The calculated value is below the commonly applied minimum EC threshold of Rs. 5,000/day (Rs. ' + Math.round(c.minFloor).toLocaleString('en-IN') + ' for ' + c.N + ' day(s)). The minimum floor amount may apply instead, subject to the specific directions of the concerned SPCB/CPCB.', pageW - margin*2);
+      doc.text(minTxt, margin, y); y += minTxt.length * 12 + 10;
+      doc.setTextColor(16,20,16);
+    }
+
+    if(detailed){
+      doc.setFont('helvetica','bold'); doc.setFontSize(11);
+      doc.text('Regulatory Basis', margin, y); y += 18;
+      doc.setFont('helvetica','normal'); doc.setFontSize(9.5);
+      var basisTxt = doc.splitTextToSize('This assessment applies the methodology set out in the Report of the CPCB In-house Committee on "Methodology for Assessing Environmental Compensation and Action Plan to Utilise the Fund," as accepted by the Hon\'ble National Green Tribunal in O.A. 606/2018, Paryavaran Suraksha Samiti & Anr. v. Union of India & Ors. Some State Pollution Control Boards apply state-specific modifications to base rates, scale bands or location factors under their own notifications issued pursuant to the NGT\'s directions; the applicable state notification should be verified before relying on this figure for a formal submission.', pageW - margin*2);
+      doc.text(basisTxt, margin, y); y += basisTxt.length * 12 + 16;
+
+      doc.setFont('helvetica','bold'); doc.setFontSize(11);
+      doc.text('Reference Table Used', margin, y); y += 16;
+      doc.setFont('helvetica','normal'); doc.setFontSize(9);
+      var refRows = [
+        ['PI (Pollution Index)', 'Red = 80, Orange = 50, Green = 30'],
+        ['R (Base rate)', 'Rs. 250/day (fixed, per CPCB Committee report)'],
+        ['S (Scale of operation)', 'Micro/Small = 0.5, Medium = 1.0, Large = 1.5'],
+        ['LF (Location factor)', '1.0 to 2.0 depending on population/ecological sensitivity']
+      ];
+      refRows.forEach(function(r){
+        var wrapped = doc.splitTextToSize(r[0] + ':  ' + r[1], pageW - margin*2);
+        doc.text(wrapped, margin, y);
+        y += wrapped.length * 12 + 4;
+      });
+      y += 10;
+    }
+
+    doc.setDrawColor(228,224,211);
+    doc.line(margin, y, pageW - margin, y); y += 16;
+    doc.setFont('helvetica','italic'); doc.setFontSize(8.2);
+    doc.setTextColor(75,84,76);
+    var disc = doc.splitTextToSize('Disclaimer: This report provides an indicative estimate only, for general awareness and preliminary planning purposes. It is not a substitute for the official EC assessment issued by CPCB/SPCB, which may apply violation-specific formulas, state-specific modifications, or minimum/maximum floors and caps. For an accurate assessment or to contest an EC notice, please consult Bharat Environment Consultants directly.', pageW - margin*2);
+    doc.text(disc, margin, y);
+
+    var fname = (detailed ? 'BEC-EC-Detailed-Report-' : 'BEC-EC-Summary-') + Date.now() + '.pdf';
+    doc.save(fname);
+  }
+
+  document.getElementById('freePdfBtn').addEventListener('click', function(){ buildPdf(false); });
+
+  // ---------- PAID DETAILED REPORT (Razorpay) ----------
+  // IMPORTANT: Replace 'rzp_live_REPLACE_WITH_YOUR_KEY_ID' below with your actual
+  // Razorpay Key ID from Dashboard > Settings > API Keys before going live.
+  var RAZORPAY_KEY_ID = 'rzp_live_REPLACE_WITH_YOUR_KEY_ID';
+  var REPORT_PRICE_PAISE = 29900; // Rs. 299.00
+
+  document.getElementById('paidPdfBtn').addEventListener('click', function(){
+    if(!window.lastCalc){ alert('Please calculate the Environmental Compensation first.'); return; }
+    if(RAZORPAY_KEY_ID.indexOf('REPLACE_WITH') !== -1){
+      alert('Payments are not yet configured on this page. (Site owner: add your live Razorpay Key ID in the script to enable this button.)');
+      return;
+    }
+    var statusEl = document.getElementById('pdfStatus');
+    var options = {
+      key: RAZORPAY_KEY_ID,
+      amount: REPORT_PRICE_PAISE,
+      currency: 'INR',
+      name: 'Bharat Environment Consultants',
+      description: 'Detailed EC Assessment Report (PDF)',
+      handler: function(response){
+        statusEl.textContent = '✅ Payment successful. Generating your detailed report...';
+        statusEl.className = 'pdf-status ok';
+        buildPdf(true);
+      },
+      theme: { color: '#4a7c3f' },
+      modal: {
+        ondismiss: function(){
+          statusEl.textContent = 'Payment window closed. No charge was made.';
+          statusEl.className = 'pdf-status err';
+        }
+      }
+    };
+    var rzp = new Razorpay(options);
+    rzp.on('payment.failed', function(resp){
+      statusEl.textContent = '❌ Payment failed: ' + (resp.error && resp.error.description ? resp.error.description : 'please try again.');
+      statusEl.className = 'pdf-status err';
+    });
+    rzp.open();
   });
 })();
 </script>
