@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ground Zero: Why India's Biodiversity Is Losing the Ground Beneath It | Bharat Environment Consultants</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=PT+Serif:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c1a15;
+    --paper:#f6f2e9;
+    --paper-deep:#efe9db;
+    --rule:#1c1a15;
+    --forest:#2f4d34;
+    --forest-deep:#1f3423;
+    --soil:#8a5a34;
+    --water:#2f5f66;
+    --alert:#a53d2e;
+    --muted:#6b6656;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'PT Serif', Georgia, serif;
+    line-height:1.7;
+    font-size:18px;
+  }
+  ::selection{ background:var(--forest); color:var(--paper); }
+
+  /* Masthead */
+  .masthead{
+    max-width:900px; margin:0 auto; padding:22px 24px 14px;
+    display:flex; align-items:center; justify-content:space-between;
+    font-family:'Inter',sans-serif;
+    border-bottom:4px double var(--ink);
+  }
+  .masthead .brand{
+    font-family:'Inter',sans-serif; font-weight:700; letter-spacing:.14em;
+    font-size:12.5px; text-transform:uppercase; color:var(--forest-deep);
+  }
+  .masthead .tag{
+    font-size:11px; color:var(--muted); letter-spacing:.08em; text-transform:uppercase;
+  }
+  .kicker-bar{
+    max-width:900px; margin:0 auto; padding:10px 24px; font-family:'Inter',sans-serif;
+    font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--paper);
+    background:var(--forest-deep);
+  }
+
+  /* Article shell */
+  article{ max-width:900px; margin:0 auto; padding:34px 24px 80px; }
+
+  .section-tag{
+    display:inline-block; font-family:'Inter',sans-serif; font-weight:700;
+    font-size:12px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--paper); background:var(--alert); padding:4px 10px; margin-bottom:18px;
+  }
+
+  h1.headline{
+    font-family:'Playfair Display', serif;
+    font-weight:900;
+    font-size:44px;
+    line-height:1.12;
+    letter-spacing:-0.01em;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  p.standfirst{
+    font-family:'PT Serif', serif;
+    font-style:italic;
+    font-size:20px;
+    line-height:1.55;
+    color:#3a362c;
+    margin:0 0 20px;
+    border-left:3px solid var(--forest);
+    padding-left:16px;
+  }
+  .byline-row{
+    display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+    font-family:'Inter',sans-serif; font-size:13px; color:var(--muted);
+    padding:14px 0; border-top:1px solid #cfc7ae; border-bottom:1px solid #cfc7ae;
+    margin-bottom:26px;
+  }
+  .byline-row b{ color:var(--ink); font-weight:600; }
+
+  figure{ margin:28px 0; }
+  figure img{
+    width:100%; height:auto; display:block;
+    filter:saturate(0.94) contrast(1.02);
+    border:1px solid #cfc7ae;
+  }
+  figcaption{
+    font-family:'Inter',sans-serif; font-size:12.5px; color:var(--muted);
+    padding:8px 2px 0; line-height:1.5;
+  }
+  figcaption b{ color:var(--ink); }
+
+  .hero-figure img{ aspect-ratio:16/9; object-fit:cover; }
+
+  h2{
+    font-family:'Playfair Display', serif;
+    font-weight:700;
+    font-size:29px;
+    line-height:1.25;
+    color:var(--forest-deep);
+    margin:44px 0 6px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--ink);
+  }
+  h2 .num{
+    font-family:'Inter',sans-serif; font-size:13px; font-weight:700; color:var(--alert);
+    letter-spacing:.1em; display:block; margin-bottom:6px;
+  }
+
+  h3{
+    font-family:'Inter',sans-serif;
+    font-weight:700; font-size:16px; text-transform:uppercase; letter-spacing:.04em;
+    color:var(--soil); margin:30px 0 6px;
+  }
+
+  p{ margin:0 0 18px; color:#211f1a; }
+  p:first-of-type::first-letter{
+    font-family:'Playfair Display', serif;
+    font-weight:900; font-size:64px; line-height:0.75; float:left;
+    padding:6px 8px 0 0; color:var(--forest-deep);
+  }
+
+  .pull{
+    font-family:'Playfair Display', serif; font-style:italic; font-weight:700;
+    font-size:26px; line-height:1.4; color:var(--forest-deep);
+    margin:34px 0; padding:18px 0; border-top:1px solid var(--ink); border-bottom:1px solid var(--ink);
+    text-align:left;
+  }
+  .pull span{
+    display:block; font-family:'Inter',sans-serif; font-style:normal; font-weight:600;
+    font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--alert); margin-top:10px;
+  }
+
+  .stat-strip{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--ink); margin:30px 0; border:1px solid var(--ink);
+  }
+  .stat-strip div{ background:var(--paper-deep); padding:18px 14px; }
+  .stat-strip .num{
+    font-family:'Playfair Display', serif; font-weight:900; font-size:32px; color:var(--alert); display:block;
+  }
+  .stat-strip .lbl{
+    font-family:'Inter',sans-serif; font-size:12px; color:var(--muted); line-height:1.4; display:block; margin-top:4px;
+  }
+
+  .callout{
+    background:var(--paper-deep); border-left:4px solid var(--water);
+    padding:16px 20px; margin:26px 0; font-size:16.5px;
+  }
+  .callout h3{ margin-top:0; color:var(--water); }
+
+  ul.taglist{ list-style:none; padding:0; margin:20px 0; }
+  ul.taglist li{
+    padding:10px 0 10px 26px; border-top:1px solid #d9d2bb; position:relative; font-size:17px;
+  }
+  ul.taglist li:before{
+    content:"›"; position:absolute; left:2px; color:var(--alert); font-weight:700; font-size:20px;
+  }
+  ul.taglist li:last-child{ border-bottom:1px solid #d9d2bb; }
+  ul.taglist b{ color:var(--forest-deep); }
+
+  .two-col{ columns:2; column-gap:34px; }
+  .two-col p{ break-inside:avoid; }
+
+  .end-note{
+    margin-top:50px; padding-top:18px; border-top:4px double var(--ink);
+    font-family:'Inter',sans-serif; font-size:13px; color:var(--muted); line-height:1.7;
+  }
+  .end-note b{ color:var(--ink); }
+
+  a{ color:var(--water); }
+
+  @media (max-width:640px){
+    body{ font-size:16.5px; }
+    h1.headline{ font-size:31px; }
+    p.standfirst{ font-size:17px; }
+    h2{ font-size:23px; }
+    .stat-strip{ grid-template-columns:1fr; }
+    .two-col{ columns:1; }
+    .pull{ font-size:21px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="masthead">
+    <div class="brand">Bharat Environment Consultants</div>
+    <div class="tag">Environment &amp; Regulatory Desk</div>
+  </div>
+  <div class="kicker-bar">Biodiversity &nbsp;•&nbsp; Habitat &amp; Wildlife &nbsp;•&nbsp; Pollution &nbsp;•&nbsp; Policy</div>
+
+  <article>
+    <span class="section-tag">Ground Report</span>
+    <h1 class="headline">Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h1>
+    <p class="standfirst">Bulldozers, boreholes and borewells are eating into India's last wild spaces faster than they can be mapped. Add a poisoned river network and a quiet green invasion crawling across every forest floor, and the country's biodiversity crisis stops being a distant statistic — it becomes a countdown.</p>
+
+    <div class="byline-row">
+      <span><b>Bharat Environment Consultants</b></span>
+      <span>Environmental Compliance &amp; Policy Desk</span>
+      <span>New Delhi | Gurugram</span>
+      <span>Reading time: 10 min</span>
+    </div>
+
+    <figure class="hero-figure">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Western-Ghats-Matheran.jpg" alt="Forested hills of the Western Ghats, one of India's biodiversity hotspots">
+      <figcaption><b>Vanishing cover.</b> The Western Ghats, a UNESCO World Heritage Site and one of the world's eight "hottest hotspots" of biodiversity, are losing forest to roads, hydropower and mining faster than they can regenerate. <i>Representational image.</i></figcaption>
+    </figure>
+
+    <p>India carries an outsized share of the planet's living wealth on a comparatively small footprint of land. On roughly 2.4 per cent of the world's geographical area, the country holds close to 8 per cent of all recorded species — over 45,000 plant species and more than 91,000 animal species, spread across four global biodiversity hotspots: the Himalaya, the Indo-Burma region, the Western Ghats-Sri Lanka landscape, and Sundaland. That richness is not evenly protected, and it is not static. It is being drawn down, year after year, by three interlocking pressures that any environmental practitioner working the compliance circuit in this country will recognise immediately: the physical loss and fragmentation of habitat, the chemical degradation of rivers and soils, and the slow, largely invisible replacement of native ecosystems by invasive alien species.</p>
+
+    <p>None of these three forces operates alone. A highway that fragments a forest also opens a corridor for invasive weeds to walk in behind the earthmovers. A river dammed for irrigation loses the flushing flows that once diluted industrial effluent. A wetland drained for a housing project stops filtering the agricultural run-off it used to absorb. To understand India's biodiversity crisis is to understand how habitat loss, pollution and biological invasion feed each other in a loop that gets tighter with every monsoon.</p>
+
+    <div class="stat-strip">
+      <div><span class="num">4</span><span class="lbl">Global biodiversity hotspots located partly or wholly in India</span></div>
+      <div><span class="num">1,212+</span><span class="lbl">Species on the IUCN Red List assessed as threatened in India</span></div>
+      <div><span class="num">~40%</span><span class="lbl">Of India's tiger-occupied forest already invaded by Lantana camara</span></div>
+    </div>
+
+    <h2><span class="num">Section One</span>The Vanishing Green Cover</h2>
+    <h3>Infrastructure, mining and the arithmetic of "development"</h3>
+
+    <p>Habitat loss and fragmentation is, by most working assessments, the single largest driver of biodiversity decline in India today, and it rarely looks dramatic in the moment. It looks like a four-lane highway realignment through a wildlife corridor, a transmission line cutting a straight scar across a sanctuary buffer, a new mining lease notified inside a landscape that migratory elephants have used for generations, or a housing colony spreading across the edge of a wetland that used to flood every July. Each project, taken alone, clears an EIA, secures its forest clearance, and complies with every condition on paper. Taken together, across a district, a river basin or a state, thousands of such approvals add up to a landscape sliced into smaller and smaller islands of habitat, each too small and too disconnected to support a viable wildlife population on its own.</p>
+
+    <p>Fragmentation is often more damaging than the raw loss of forest area, because it changes the physics of an ecosystem, not just its size. A 500-hectare forest block cut into five 100-hectare fragments by roads and farmland does not retain five-fifths of its original ecological function. Edge effects — increased light, wind, temperature swings, weed invasion, and human contact — penetrate deep into small fragments, degrading the interior habitat that large-bodied and shade-dependent species need. Wide-ranging animals such as elephants, tigers and dhole packs require contiguous or connected landscapes running into hundreds of square kilometres; when a linear project severs a corridor, the resulting genetic isolation of the population on either side can take decades to show up as a population collapse, by which point the damage is very hard to reverse.</p>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Coal_mines_in_singrauli.jpg" alt="Open-cast coal mining landscape at Singrauli, Madhya Pradesh, India">
+      <figcaption><b>The extraction belt.</b> Singrauli, Madhya Pradesh — part of India's coal and power heartland — illustrates how mining and thermal infrastructure convert dense forest into an industrial landscape over a single generation.</figcaption>
+    </figure>
+
+    <p>Mining compounds this in a particularly severe way because it is not just a land-use change but a geological one. Open-cast mining for coal, iron ore, bauxite and limestone strips away not only vegetation but the soil profile itself, along with the seed bank, mycorrhizal networks and micro-fauna that make natural regeneration possible. India's major mineral belts — the Eastern Ghats, the Chhotanagpur plateau, parts of the Aravallis, and the bauxite-rich hill ranges of Odisha and Chhattisgarh — overlap heavily with some of the country's most biodiverse and tribal-forest-dependent landscapes. Even where compensatory afforestation is mandated and executed, monoculture plantations raised as an offset rarely replicate the structural complexity, species mix or ecological services of the natural forest that was lost; the CAG and multiple parliamentary standing committee reports over the years have flagged exactly this gap between compensatory afforestation on paper and functioning forest on the ground.</p>
+
+    <p>Agricultural expansion adds a third, quieter front. Unlike a highway or a mine, farmland expansion into forest margins, grasslands and wetlands rarely goes through an environmental clearance process at all, because it proceeds field by field, often informally, at the edge of protected areas and reserve forests. Grasslands are especially vulnerable, since they are frequently classified as "wasteland" in revenue records despite supporting endangered species such as the Great Indian Bustard, blackbuck and wolf, and are consequently the first landscapes diverted for irrigation projects, biofuel plantations or horticulture. The cumulative effect, tracked through India State of Forest Report data over successive cycles, is a forest cover that appears statistically stable in aggregate even as the quality, density and connectivity of that cover erodes — dense forest replaced by open and scrub forest, contiguous blocks replaced by fragments, and natural forest increasingly counted alongside plantation and agroforestry cover in the national tally.</p>
+
+    <div class="pull">"A forest cut into five islands does not keep five-fifths of its function — it keeps a fraction, and the fraction shrinks every year the fragments stay apart."<span>On habitat fragmentation</span></div>
+
+    <h2><span class="num">Section Two</span>Corridors, Not Just Cover</h2>
+    <p>Wildlife corridors have become the sharpest illustration of why fragmentation is now treated as a distinct regulatory concern, separate from gross forest-cover loss. Elephant corridors mapped by the Wildlife Trust of India and the Project Elephant division of the environment ministry number well over a hundred across the country, and a significant share of them are already compromised — narrowed by encroachment, severed by railway lines and highways, or rendered functionally unusable by linear infrastructure that was cleared without adequate mitigation such as underpasses or canopy bridges. The human-elephant conflict statistics that follow — several hundred human deaths and a comparable toll on elephants recorded most years — are, in a very direct sense, a corridor-collapse statistic as much as a wildlife-conflict one.</p>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Herd_of_elephants_in_Dhikala_chaur_AJTJ_DSCN8222.jpg" alt="Herd of wild elephants in Dhikala grassland, Corbett Tiger Reserve, India">
+      <figcaption><b>Wide-ranging, hemmed in.</b> A herd of wild elephants in the Dhikala grasslands, Corbett Tiger Reserve. Elephants need connected, hundred-kilometre-scale landscapes; fragmented corridors push herds into farmland and settlements.</figcaption>
+    </figure>
+
+    <p>This is where India's environmental clearance framework carries real leverage, and also real strain. Rapid EIAs, cumulative impact assessments across a river basin or industrial cluster, and genuine field-level wildlife conservation plans — as opposed to templated ones — are the instruments meant to catch this cumulative fragmentation before it becomes irreversible. In practice, project-by-project clearance processes are poorly suited to seeing landscape-scale cumulative effects, since each EIA is scoped to a single project boundary. Strengthening cumulative and landscape-level impact assessment, rather than only per-project mitigation, is one of the more consequential and least glamorous reforms the sector needs.</p>
+
+    <h2><span class="num">Section Three</span>Rivers Running on Empty</h2>
+    <p>If habitat loss is the slow erosion of where wildlife can live, river and chemical pollution is the faster erosion of what it can safely drink, breathe and swim in. India's major rivers — the Ganga, Yamuna, Godavari, Krishna, Cauvery and dozens of their tributaries — carry the combined load of untreated municipal sewage, industrial effluent, agricultural run-off laden with pesticide and fertiliser residue, and, increasingly, plastic. The Central Pollution Control Board's own periodically updated inventory of polluted river stretches runs into the hundreds, a number that has grown, not shrunk, over successive assessment cycles despite dedicated national river-cleaning missions running for decades.</p>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Pollution_of_Ganga.jpg" alt="Pollution along the banks of the river Ganga in India">
+      <figcaption><b>The load a river carries.</b> Untreated sewage, industrial discharge and solid waste converge on stretches of the Ganga — a pattern repeated, in varying intensity, across dozens of India's major rivers.</figcaption>
+    </figure>
+
+    <p>The ecological consequence of this is a collapse in aquatic biodiversity that is easy to overlook because it happens underwater and largely out of public view. Freshwater fish diversity in heavily polluted stretches drops sharply; species requiring high dissolved oxygen and clean gravel beds for spawning — the mahseer being the best-documented example — vanish from stretches where they were once common, replaced by a handful of pollution-tolerant species. River turtles, otters, and the critically endangered gharial depend on clean, structurally intact river channels with sandbanks for basking and nesting; sand mining, damming and pollution together have reduced gharial range to a few protected stretches of the Chambal and Girwa rivers, down from a historical range that spanned most of the Indo-Gangetic river system. The Gangetic river dolphin, India's national aquatic animal, is now confined to fragmented, disturbed stretches of its former range, its population estimated in the low thousands.</p>
+
+    <p>Chemical pollution extends well beyond visible river froth. Pesticide and fertiliser run-off from intensive agriculture accumulates in wetlands and groundwater, disrupting amphibian breeding, bird reproduction and the insect base of the food chain — a process well documented internationally as a driver of the broader "insect apocalypse," and increasingly tracked in Indian agricultural landscapes too. Industrial clusters operating without adequate common effluent treatment infrastructure, hazardous waste generators bypassing authorised disposal routes, and legacy contaminated sites left over from decades of unregulated dumping all add heavy metals and persistent organic pollutants to soil and water systems that bioaccumulate up the food chain, eventually reaching apex predators, fish-eating birds, and human populations drawing water from the same sources.</p>
+
+    <div class="callout">
+      <h3>Why this matters for compliance, not just conservation</h3>
+      <p style="margin-bottom:0;">Environmental clearance conditions on effluent treatment, zero-liquid-discharge norms for red-category industries, and Consent to Establish/Operate monitoring exist precisely because river pollution and biodiversity loss are the same regulatory problem viewed from two angles. A CETP that runs below capacity, or a ZLD system installed but not operated, shows up months later as a fish kill or a dead stretch of river — the compliance gap and the ecological gap are the same gap.</p>
+    </div>
+
+    <h2><span class="num">Section Four</span>The Silent Invasion</h2>
+    <p>The third and least visible driver is biological invasion — the spread of non-native plant and animal species that outcompete, displace or otherwise disrupt native ecosystems. It receives far less policy and media attention than deforestation or river pollution, largely because it does not photograph as dramatically: an invaded forest still looks green. But the ecological substitution underway can be just as severe.</p>
+
+    <p>Lantana camara, a flowering shrub introduced to India as an ornamental plant in the early nineteenth century, is the starkest case study. Native to tropical Central and South America, it has since spread across an estimated 40 per cent or more of India's tiger-occupied forest landscape, forming dense, thorny thickets that choke out native undergrowth, block the natural regeneration of forest trees, and reduce the availability of palatable forage for deer, gaur and other herbivores that form the prey base for large carnivores. Where lantana dominates the understorey, wildlife movement is physically restricted, pushing herbivores — and the tigers and leopards that follow them — closer to forest edges and human settlements, feeding directly into human-wildlife conflict. Parthenium hysterophorus (congress grass), Prosopis juliflora (vilayati babul) in arid and semi-arid grasslands, and water hyacinth choking lakes and reservoirs across the country follow a similar pattern: introduced for a specific purpose or by accident, then spreading unchecked because the ecosystems they invade evolved without the natural checks — herbivores, pathogens, competitors — that limit them in their native range.</p>
+
+    <ul class="taglist">
+      <li><b>Lantana camara</b> — invades an estimated 40%+ of India's tiger range; suppresses native regeneration and herbivore forage.</li>
+      <li><b>Prosopis juliflora</b> — converts open grasslands into thorn-scrub monocultures across arid and semi-arid India, displacing native grassland fauna.</li>
+      <li><b>Water hyacinth (Eichhornia crassipes)</b> — chokes lakes, tanks and reservoirs, depleting dissolved oxygen and collapsing native fish and waterfowl populations.</li>
+      <li><b>Parthenium hysterophorus</b> — an aggressive weed of disturbed and agricultural land, also a documented public health irritant.</li>
+      <li><b>African catfish and other invasive fish</b> — introduced through aquaculture and ornamental trade, now established in several river systems, preying on and outcompeting native fish.</li>
+    </ul>
+
+    <p>Invasive species thrive precisely in the disturbed, fragmented, edge-heavy landscapes created by the first two drivers described above. A road cut through intact forest creates exactly the light-gap, soil-disturbance conditions that lantana needs to establish. A river bank stripped of its native riparian vegetation by encroachment or channel modification is the easiest entry point for Prosopis or water hyacinth. In this sense, invasive species are less a fourth, independent problem than a downstream symptom of the first two — which is also why restoration efforts that only remove the invasive species without addressing the underlying disturbance regime tend to see the invader return within a few growing seasons.</p>
+
+    <h2><span class="num">Section Five</span>What a Working Response Looks Like</h2>
+    <p>None of these three drivers has a single-agency fix, and India's own regulatory architecture — the Environment Impact Assessment Notification, the Forest (Conservation) Act, the Wild Life (Protection) Act, the Water and Air Acts administered through State Pollution Control Boards, and the National Green Tribunal as an enforcement backstop — already provides most of the legal tools needed. The gap is less in the law than in three areas of implementation that recur across almost every EIA, compliance audit and NGT judgment on this subject.</p>
+
+    <div class="two-col">
+    <p><b>Cumulative, landscape-scale assessment.</b> Project-level clearances need to be read against basin-level and landscape-level cumulative impact assessments, especially in already-stressed river basins and identified wildlife corridors, rather than evaluated purely on a stand-alone project footprint.</p>
+    <p><b>Corridor-grade mitigation, not token mitigation.</b> Underpasses, canopy bridges, speed restrictions and seasonal closures for linear infrastructure crossing known wildlife corridors need to be engineered to the scale of the species using them — an elephant underpass sized for a nilgai will not function as one.</p>
+    <p><b>Effluent infrastructure that is monitored, not just installed.</b> Common Effluent Treatment Plants and Zero Liquid Discharge systems commissioned as clearance conditions need continuous, third-party-verified monitoring; a CETP built to specification but run below capacity produces the same downstream damage as no CETP at all.</p>
+    <p><b>Invasive species management tied to restoration, not removal alone.</b> Lantana and Prosopis clearance programmes succeed only when paired with active native species replanting and follow-up maintenance across multiple seasons — mechanical removal without restoration simply resets the invasion clock.</p>
+    </div>
+
+    <p>The throughline across all of this is that India's biodiversity crisis is not a wilderness problem happening somewhere else. It runs through the same EIA reports, forest clearance files, consent-to-operate renewals and compliance audits that shape industrial and infrastructure growth across the country. The Western Ghats losing canopy, the Yamuna running foam-white before Chhath Puja, and a lantana thicket swallowing a forest floor in central India are not three separate stories. They are the same story, told from three different vantage points — and the ground beneath all three is the same ground India cannot afford to keep losing.</p>
+
+    <div class="end-note">
+      <p><b>About this report:</b> Prepared by the Environmental Compliance &amp; Policy Desk at Bharat Environment Consultants, drawing on publicly available assessments including the India State of Forest Report, IUCN Red List data, Central Pollution Control Board river monitoring inventories, and published peer-reviewed research on Lantana camara invasion in Indian forest landscapes. Figures on species richness, corridor status and invasive species extent reflect the most recent publicly available assessments at the time of writing and are subject to revision as newer survey data is published.</p>
+      <p style="margin-bottom:0;">Images: Wikimedia Commons, used under Creative Commons licensing. Representational photographs; locations as captioned.</p>
+    </div>
+
+  </article>
+
+</body>
+</html>
