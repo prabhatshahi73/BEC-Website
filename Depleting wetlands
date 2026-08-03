@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>India's Vanishing Wetlands: The Indian Express Style</title>
+    <title>India's Vanishing Wetlands: </title>
     <style>
-        /* FONT SIMULATION - The Indian Express digital uses local and serif fonts. 
+        /* FONT SIMULATION - Bharat Environment News uses local and serif fonts. 
            We use highly legible Google Fonts that mimic their Tiempos (Headline) and Graphik (Body) combination. */
         @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Noto+Sans:wght@400;700&display=swap');
 
