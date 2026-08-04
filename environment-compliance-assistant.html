@@ -77,9 +77,34 @@
     background:var(--gold-300);
     padding:7px 12px;
     border-radius:20px;
-    max-width:340px;
+    max-width:360px;
     line-height:1.4;
   }
+
+  /* ---------- MODE SWITCH ---------- */
+  .mode-switch{
+    display:flex;
+    gap:0;
+    padding:0 24px;
+    border-bottom:1px solid var(--forest-700);
+    background:var(--forest-900);
+    flex-shrink:0;
+    overflow-x:auto;
+  }
+  .mode-btn{
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink-muted);
+    background:none;
+    border:none;
+    border-bottom:3px solid transparent;
+    padding:14px 18px 12px;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .mode-btn:hover{color:var(--sand-200);}
+  .mode-btn.active{color:var(--gold-300);border-bottom-color:var(--gold-500);}
 
   /* ---------- LAYOUT ---------- */
   main{
@@ -93,6 +118,8 @@
     main{grid-template-columns:1fr;}
     aside{order:2;border-top:1px solid var(--forest-700);border-right:none;}
   }
+  .view{display:contents;}
+  .view.hidden{display:none;}
 
   /* ---------- SIDEBAR ---------- */
   aside{
@@ -180,10 +207,21 @@
     color:var(--gold-300);
     font-weight:600;
   }
-  .bubble ul{margin:8px 0;padding-left:20px;}
+  .bubble h4{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.5px;
+    text-transform:uppercase;
+    color:var(--moss-300);
+    margin:14px 0 6px;
+  }
+  .bubble ul,.bubble ol{margin:8px 0;padding-left:20px;}
   .bubble li{margin-bottom:5px;}
   .bubble p{margin:0 0 8px;}
   .bubble p:last-child{margin-bottom:0;}
+  .bubble table{border-collapse:collapse;width:100%;margin:10px 0;font-size:13px;}
+  .bubble td,.bubble th{border:1px solid var(--forest-700);padding:6px 8px;text-align:left;}
+  .bubble th{background:var(--forest-800);color:var(--gold-300);font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;}
   .citation-strip{
     margin-top:12px;
     padding-top:10px;
@@ -212,6 +250,11 @@
     margin-bottom:5px;
   }
   .msg.user .sender-label{text-align:right;}
+  .typing-dots{display:inline-flex;gap:4px;align-items:center;padding:2px 0;}
+  .typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--moss-300);animation:blink 1.2s infinite ease-in-out;}
+  .typing-dots span:nth-child(2){animation-delay:.2s;}
+  .typing-dots span:nth-child(3){animation-delay:.4s;}
+  @keyframes blink{0%,80%,100%{opacity:.25;}40%{opacity:1;}}
 
   /* ---------- INPUT ---------- */
   .composer{
@@ -232,25 +275,139 @@
     font-family:'IBM Plex Sans',sans-serif;
   }
   .composer input:focus{outline:2px solid var(--moss-500);outline-offset:1px;}
-  .composer button{
+  .composer button, .form-actions button, .report-toolbar button{
     background:var(--gold-500);
     color:var(--forest-950);
     border:none;
     padding:0 22px;
+    height:46px;
     border-radius:var(--radius);
     font-weight:600;
     font-size:14px;
     cursor:pointer;
     font-family:'IBM Plex Sans',sans-serif;
   }
-  .composer button:hover{background:var(--gold-300);}
-  .composer button:focus-visible, .topic-chip:focus-visible{outline:2px solid var(--gold-300);outline-offset:2px;}
+  .composer button:hover, .form-actions button:hover, .report-toolbar button:hover{background:var(--gold-300);}
+  .composer button:disabled, .form-actions button:disabled{background:var(--forest-700);color:var(--ink-muted);cursor:not-allowed;}
+  .composer button:focus-visible, .topic-chip:focus-visible, .mode-btn:focus-visible{outline:2px solid var(--gold-300);outline-offset:2px;}
+
+  /* ---------- REPORT VIEW ---------- */
+  .report-shell{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:0;
+    min-height:0;
+    overflow:hidden;
+  }
+  @media (max-width:980px){ .report-shell{grid-template-columns:1fr;} }
+  .form-panel{
+    border-right:1px solid var(--forest-700);
+    padding:24px 28px 40px;
+    overflow-y:auto;
+  }
+  .form-panel h2, .output-panel h2{
+    font-family:'Fraunces',serif;
+    font-size:19px;
+    font-weight:600;
+    margin:0 0 4px;
+  }
+  .form-panel .sub, .output-panel .sub{
+    color:var(--ink-muted);
+    font-size:12.5px;
+    margin-bottom:20px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .form-grid.single{grid-template-columns:1fr;}
+  @media (max-width:560px){ .form-grid{grid-template-columns:1fr;} }
+  .field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+  .field label{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:var(--moss-300);
+  }
+  .field input, .field select, .field textarea{
+    background:var(--forest-900);
+    border:1px solid var(--forest-700);
+    color:var(--sand-100);
+    padding:10px 12px;
+    border-radius:8px;
+    font-size:13.5px;
+    font-family:'IBM Plex Sans',sans-serif;
+  }
+  .field textarea{resize:vertical;min-height:70px;}
+  .field input:focus, .field select:focus, .field textarea:focus{outline:2px solid var(--moss-500);outline-offset:1px;}
+  fieldset{border:1px solid var(--forest-700);border-radius:8px;padding:12px 14px;margin:0 0 14px;}
+  fieldset legend{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:10.5px;
+    letter-spacing:0.8px;
+    text-transform:uppercase;
+    color:var(--moss-300);
+    padding:0 6px;
+  }
+  .check-row{display:flex;align-items:center;gap:8px;font-size:13px;padding:4px 0;color:var(--sand-200);}
+  .check-row input{accent-color:var(--gold-500);width:15px;height:15px;}
+  .form-actions{margin-top:6px;}
+  .field-hint{font-size:11.5px;color:var(--ink-muted);margin-top:-8px;margin-bottom:10px;}
+
+  .output-panel{padding:24px 28px 40px;overflow-y:auto;}
+  .report-toolbar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+  .report-toolbar button{height:38px;padding:0 16px;font-size:12.5px;}
+  .report-toolbar button.ghost{background:none;border:1px solid var(--forest-700);color:var(--sand-200);}
+  .report-toolbar button.ghost:hover{border-color:var(--moss-500);background:var(--forest-800);}
+  .report-empty{
+    color:var(--ink-muted);
+    font-size:13.5px;
+    border:1px dashed var(--forest-700);
+    border-radius:var(--radius);
+    padding:26px;
+    text-align:center;
+    line-height:1.6;
+  }
+  #reportOutput{font-size:14.5px;line-height:1.65;}
+  #reportOutput h3{
+    font-family:'Fraunces',serif;
+    color:var(--gold-300);
+    font-size:18px;
+    margin:26px 0 10px;
+    padding-top:16px;
+    border-top:1px solid var(--forest-700);
+  }
+  #reportOutput h3:first-child{border-top:none;padding-top:0;margin-top:0;}
+  #reportOutput h4{font-family:'IBM Plex Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--moss-300);margin:16px 0 6px;}
+  #reportOutput ul,#reportOutput ol{padding-left:20px;margin:8px 0;}
+  #reportOutput li{margin-bottom:6px;}
+  #reportOutput table{border-collapse:collapse;width:100%;margin:12px 0;font-size:13px;}
+  #reportOutput td,#reportOutput th{border:1px solid var(--forest-700);padding:7px 9px;text-align:left;}
+  #reportOutput th{background:var(--forest-800);color:var(--gold-300);}
+  .report-note{
+    margin-top:24px;
+    font-size:12px;
+    color:var(--ink-muted);
+    background:var(--forest-900);
+    border:1px solid var(--forest-700);
+    border-radius:8px;
+    padding:12px 14px;
+    line-height:1.5;
+  }
 
   ::-webkit-scrollbar{width:9px;}
   ::-webkit-scrollbar-track{background:transparent;}
   ::-webkit-scrollbar-thumb{background:var(--forest-700);border-radius:20px;}
 
-  @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important;} }
+  @media (prefers-reduced-motion: reduce){ *{animation:none !important;scroll-behavior:auto !important;} }
+
+  @media print{
+    header,.mode-switch,aside,.composer,.form-panel,.report-toolbar{display:none !important;}
+    body{background:#fff;color:#111;}
+    .report-shell{display:block;}
+    .output-panel{overflow:visible;padding:0;}
+    #reportOutput h3{color:#1b3928;border-top-color:#ccc;}
+    #reportOutput{font-size:12.5px;}
+  }
 </style>
 </head>
 <body>
@@ -264,244 +421,248 @@
     </div>
   </div>
   <div class="disclaimer-pill">
-    Reference guide only — not legal advice. Rules change; always confirm the current text on the linked CPCB / NGT / SPCB / PARIVESH page before filing or relying on it.
+    AI-generated reference guide, not legal advice. Rules change; always confirm current text on CPCB / NGT / SPCB / PARIVESH and have a qualified consultant review any filing before submission.
   </div>
 </header>
 
+<div class="mode-switch">
+  <button class="mode-btn active" data-mode="chat">Ask a Question</button>
+  <button class="mode-btn" data-mode="report">Generate Pre-Feasibility Report</button>
+</div>
+
 <main>
-  <aside>
-    <div class="side-label">Ask about</div>
-    <button class="topic-chip" data-q="What is the EIA process and how do I get Environmental Clearance?">Environmental Clearance (EIA)</button>
-    <button class="topic-chip" data-q="What is the difference between CTE and CTO?">CTE / CTO (Consent)</button>
-    <button class="topic-chip" data-q="What are the Hazardous Waste Management Rules?">Hazardous Waste Rules</button>
-    <button class="topic-chip" data-q="What are the Bio-Medical Waste Management Rules?">Bio-Medical Waste Rules</button>
-    <button class="topic-chip" data-q="What is CRZ Notification 2019?">CRZ Notification 2019</button>
-    <button class="topic-chip" data-q="What is EPR for plastic waste?">EPR (Plastic/E-Waste)</button>
-    <button class="topic-chip" data-q="What are Solid Waste Management Rules?">Solid Waste Mgmt Rules</button>
-    <button class="topic-chip" data-q="What is the Red Orange Green White categorization of industries?">Industry Categorisation</button>
-    <button class="topic-chip" data-q="What are key NGT principles like polluter pays?">NGT Key Principles</button>
-    <button class="topic-chip" data-q="How do I find my state SPCB website?">Find my SPCB</button>
+  <!-- ============ CHAT VIEW ============ -->
+  <div class="view" id="chatView">
+    <aside>
+      <div class="side-label">Ask about</div>
+      <button class="topic-chip" data-q="What is the EIA process and how do I get Environmental Clearance?">Environmental Clearance (EIA)</button>
+      <button class="topic-chip" data-q="What is the difference between CTE and CTO?">CTE / CTO (Consent)</button>
+      <button class="topic-chip" data-q="What are the Hazardous Waste Management Rules?">Hazardous Waste Rules</button>
+      <button class="topic-chip" data-q="What are the Bio-Medical Waste Management Rules?">Bio-Medical Waste Rules</button>
+      <button class="topic-chip" data-q="What is CRZ Notification 2019?">CRZ Notification 2019</button>
+      <button class="topic-chip" data-q="What is EPR for plastic waste?">EPR (Plastic/E-Waste)</button>
+      <button class="topic-chip" data-q="What are Solid Waste Management Rules?">Solid Waste Mgmt Rules</button>
+      <button class="topic-chip" data-q="Explain the categories and schedule of the EIA Notification 2006 in detail, including Category A, B1 and B2.">EIA 2006 Categories (A/B1/B2)</button>
+      <button class="topic-chip" data-q="What are key NGT principles like polluter pays?">NGT Key Principles</button>
+      <button class="topic-chip" data-q="How do I find my state SPCB website?">Find my SPCB</button>
 
-    <div class="side-label">Primary sources</div>
-    <a class="source-link" target="_blank" rel="noopener" href="https://cpcb.nic.in"><span class="tag">CPCB</span>Central Pollution Control Board</a>
-    <a class="source-link" target="_blank" rel="noopener" href="https://moef.gov.in"><span class="tag">MoEFCC</span>Ministry of Env, Forest &amp; CC</a>
-    <a class="source-link" target="_blank" rel="noopener" href="https://www.greentribunal.gov.in"><span class="tag">NGT</span>National Green Tribunal</a>
-    <a class="source-link" target="_blank" rel="noopener" href="https://main.sci.gov.in/judgments"><span class="tag">SC</span>Supreme Court Judgments</a>
-    <a class="source-link" target="_blank" rel="noopener" href="https://parivesh.nic.in"><span class="tag">GOI</span>PARIVESH (EC/CTE/CTO portal)</a>
-    <a class="source-link" target="_blank" rel="noopener" href="https://cpcb.nic.in/state-pollution-control-boards/"><span class="tag">SPCB</span>Directory of all State PCBs</a>
-  </aside>
+      <div class="side-label">Primary sources</div>
+      <a class="source-link" target="_blank" rel="noopener" href="https://cpcb.nic.in"><span class="tag">CPCB</span>Central Pollution Control Board</a>
+      <a class="source-link" target="_blank" rel="noopener" href="https://moef.gov.in"><span class="tag">MoEFCC</span>Ministry of Env, Forest &amp; CC</a>
+      <a class="source-link" target="_blank" rel="noopener" href="https://www.greentribunal.gov.in"><span class="tag">NGT</span>National Green Tribunal</a>
+      <a class="source-link" target="_blank" rel="noopener" href="https://main.sci.gov.in/judgments"><span class="tag">SC</span>Supreme Court Judgments</a>
+      <a class="source-link" target="_blank" rel="noopener" href="https://parivesh.nic.in"><span class="tag">GOI</span>PARIVESH (EC/CTE/CTO portal)</a>
+      <a class="source-link" target="_blank" rel="noopener" href="https://cpcb.nic.in/state-pollution-control-boards/"><span class="tag">SPCB</span>Directory of all State PCBs</a>
+    </aside>
 
-  <div class="chat-wrap">
-    <div class="chat-log" id="chatLog"></div>
-    <form class="composer" id="composerForm">
-      <input id="queryInput" type="text" autocomplete="off"
-        placeholder="Ask about EIA, CTE/CTO, hazardous waste, CRZ, EPR, NGT orders…" />
-      <button type="submit">Ask</button>
-    </form>
+    <div class="chat-wrap">
+      <div class="chat-log" id="chatLog"></div>
+      <form class="composer" id="composerForm">
+        <input id="queryInput" type="text" autocomplete="off"
+          placeholder="Ask anything environment-related — EIA, CTE/CTO, hazardous waste, CRZ, EPR, NGT orders, specific thresholds…" />
+        <button type="submit" id="askBtn">Ask</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ REPORT VIEW ============ -->
+  <div class="view hidden" id="reportView">
+    <div class="report-shell" style="grid-column:1 / -1;">
+      <div class="form-panel">
+        <h2>Project Pre-Feasibility Report</h2>
+        <div class="sub">Fill in what you know — the assistant will fill reasonable gaps and flag assumptions. Structured per EIA Notification 2006.</div>
+
+        <form id="reportForm">
+          <div class="field">
+            <label for="projectName">Project / Unit Name</label>
+            <input id="projectName" type="text" placeholder="e.g. Shree Cement Expansion Unit" />
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="industryType">Industry / Project Type</label>
+              <input id="industryType" type="text" placeholder="e.g. Cement plant, Bulk drug unit, CETP" required />
+            </div>
+            <div class="field">
+              <label for="eiaCategory">Likely EIA 2006 Category</label>
+              <select id="eiaCategory">
+                <option value="Not sure — please assess">Not sure — please assess</option>
+                <option value="Category A">Category A</option>
+                <option value="Category B1">Category B1</option>
+                <option value="Category B2">Category B2</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="scheduleItem">Schedule Item No. (if known)</label>
+              <input id="scheduleItem" type="text" placeholder="e.g. 3(b)" />
+            </div>
+            <div class="field">
+              <label for="location">State / District / Location</label>
+              <input id="location" type="text" placeholder="e.g. Pithampur, Dhar, Madhya Pradesh" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="capacity">Proposed Capacity / Production</label>
+              <input id="capacity" type="text" placeholder="e.g. 1500 TPD clinker" />
+            </div>
+            <div class="field">
+              <label for="landArea">Land Area</label>
+              <input id="landArea" type="text" placeholder="e.g. 40 acres (16.2 ha)" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="investment">Estimated Project Cost</label>
+              <input id="investment" type="text" placeholder="e.g. ₹120 Crore" />
+            </div>
+            <div class="field">
+              <label for="water">Water Requirement</label>
+              <input id="water" type="text" placeholder="e.g. 600 KLD" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="power">Power Requirement</label>
+              <input id="power" type="text" placeholder="e.g. 3.5 MW" />
+            </div>
+            <div class="field">
+              <label for="rawMaterials">Raw Materials / Fuel</label>
+              <input id="rawMaterials" type="text" placeholder="e.g. Limestone, coal, gypsum" />
+            </div>
+          </div>
+
+          <fieldset>
+            <legend>Nearby Sensitive Features</legend>
+            <label class="check-row"><input type="checkbox" value="Within 10 km of a Protected Area / Wildlife Sanctuary"> Protected Area / Wildlife Sanctuary within 10 km</label>
+            <label class="check-row"><input type="checkbox" value="Falls within or near a Coastal Regulation Zone (CRZ)"> Coastal Regulation Zone (CRZ)</label>
+            <label class="check-row"><input type="checkbox" value="Forest land within or adjacent to the site"> Forest land within/adjacent to site</label>
+            <label class="check-row"><input type="checkbox" value="River, lake or other water body within 500 m"> River / water body within 500 m</label>
+            <label class="check-row"><input type="checkbox" value="Located in or near an identified Eco-Sensitive Zone"> Eco-Sensitive Zone</label>
+            <label class="check-row"><input type="checkbox" value="None of the above, as far as known"> None of the above, as far as known</label>
+          </fieldset>
+
+          <div class="field">
+            <label for="notes">Additional Notes (free text)</label>
+            <textarea id="notes" placeholder="Anything else worth including — process description, expansion vs greenfield, existing clearances, timeline, specific concerns…"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" id="genReportBtn">Generate Report</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="output-panel">
+        <h2>Draft Report</h2>
+        <div class="sub">AI-generated first draft — verify every figure and classification before filing.</div>
+        <div class="report-toolbar" id="reportToolbar" style="display:none;">
+          <button type="button" class="ghost" id="copyReportBtn">Copy text</button>
+          <button type="button" class="ghost" id="printReportBtn">Print / Save as PDF</button>
+        </div>
+        <div id="reportOutput">
+          <div class="report-empty" id="reportEmptyState">
+            Fill in the form on the left and click <b>Generate Report</b>. The draft — executive summary, EIA 2006 applicability, anticipated impacts, an environmental management plan outline, and a compliance checklist — will appear here.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
 
 <script>
-/* ---------------------------------------------------------
-   Curated knowledge base. Each entry: keywords for matching,
-   an HTML answer, and a citation strip of official sources.
-   Content is a plain-language summary — always verify current
-   text at the linked source before relying on it.
---------------------------------------------------------- */
-const KB = [
-  {
-    id: "ec",
-    keywords: ["eia","environmental clearance","ec process","environment clearance","impact assessment","terms of reference","tor","public hearing","appraisal committee"],
-    title: "Environmental Clearance (EIA Process)",
-    html: `<p>Projects listed under Category A or B of the EIA Notification 2006 need prior Environmental Clearance before construction/operation can start. The process generally runs through four stages:</p>
-    <ul>
-      <li><b>Screening</b> — deciding if the project needs an EC (Category B2 projects are often screened out of a full EIA).</li>
-      <li><b>Scoping</b> — the appraisal committee finalises the Terms of Reference (ToR) for the EIA study.</li>
-      <li><b>Public Consultation</b> — includes a public hearing at the project site, unless exempted.</li>
-      <li><b>Appraisal</b> — SEIAA (state-level, for Category B) or the MoEFCC Expert Appraisal Committee (Category A) reviews the EIA/EMP report and recommends grant or rejection.</li>
-    </ul>
-    <p>All applications, ToR requests, and EC status tracking are done on the PARIVESH portal.</p>`,
-    sources: [
-      {label:"PARIVESH portal", url:"https://parivesh.nic.in"},
-      {label:"MoEFCC EIA Notification page", url:"https://moef.gov.in"},
-      {label:"CPCB", url:"https://cpcb.nic.in"}
-    ]
-  },
-  {
-    id: "cte-cto",
-    keywords: ["cte","cto","consent to establish","consent to operate","consent management","air act consent","water act consent"],
-    title: "CTE vs CTO (Consent to Establish / Operate)",
-    html: `<p><b>Consent to Establish (CTE)</b> is granted under the Water (Prevention & Control of Pollution) Act, 1974 and Air Act, 1981 before a unit is built — it approves the site, pollution control design, and effluent/emission plan.</p>
-    <p><b>Consent to Operate (CTO)</b> is granted after construction, once the pollution control systems (ETP/STP, stack, scrubbers etc.) are installed and functioning, and is renewed periodically (validity depends on the unit's category — Red/Orange/Green/White).</p>
-    <p>Both are issued by the concerned State Pollution Control Board (SPCB) or Pollution Control Committee (for UTs), most now via each SPCB's online consent management system or PARIVESH.</p>`,
-    sources: [
-      {label:"SPCB directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"},
-      {label:"PARIVESH (CTE/CTO module)", url:"https://parivesh.nic.in"},
-      {label:"CPCB", url:"https://cpcb.nic.in"}
-    ]
-  },
-  {
-    id: "hwm",
-    keywords: ["hazardous waste","hwm rules","hazardous and other waste","hw authorisation","manifest system","twenty six categories"],
-    title: "Hazardous Waste Management Rules",
-    html: `<p>The Hazardous and Other Wastes (Management & Transboundary Movement) Rules, 2016 (as amended) govern generation, storage, transport, treatment and disposal of hazardous waste.</p>
-    <ul>
-      <li>Waste generators above threshold quantities need <b>Authorisation</b> from the SPCB (usually bundled with CTO).</li>
-      <li>Movement between states/for disposal uses a <b>manifest system</b> tracked through the SPCB.</li>
-      <li>Disposal must go through a <b>Common Hazardous Waste Treatment, Storage & Disposal Facility (TSDF)</b> or authorised co-processing (e.g. cement kilns), unless the unit has its own approved facility.</li>
-      <li>Import/export of hazardous waste needs MoEFCC/DGFT clearance under the Basel Convention framework.</li>
-    </ul>`,
-    sources: [
-      {label:"CPCB — Hazardous Waste", url:"https://cpcb.nic.in"},
-      {label:"MoEFCC", url:"https://moef.gov.in"},
-      {label:"SPCB directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
-    ]
-  },
-  {
-    id: "bmw",
-    keywords: ["bio-medical waste","biomedical waste","bmw rules","cbwtf","healthcare facility waste","bio medical"],
-    title: "Bio-Medical Waste Management Rules",
-    html: `<p>The Bio-Medical Waste Management Rules, 2016 (amended 2018/2019) apply to all healthcare facilities — hospitals, clinics, labs, vaccination camps, blood banks — regardless of bed strength.</p>
-    <ul>
-      <li>Waste must be <b>segregated at source</b> into colour-coded categories (yellow, red, white/translucent, blue) as per Schedule I.</li>
-      <li>Facilities tie up with a <b>Common Bio-medical Waste Treatment Facility (CBWTF)</b>, or seek CPCB/SPCB authorisation for captive treatment.</li>
-      <li>Authorisation is granted/renewed by the SPCB and is now largely integrated with the CTE/CTO consent process.</li>
-      <li>Barcoding and the CPCB's Bio-medical Waste Tracking (BMWT) app are used for real-time reporting in several states.</li>
-    </ul>`,
-    sources: [
-      {label:"CPCB — Bio-Medical Waste", url:"https://cpcb.nic.in"},
-      {label:"MoEFCC", url:"https://moef.gov.in"},
-      {label:"SPCB directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
-    ]
-  },
-  {
-    id: "crz",
-    keywords: ["crz","coastal regulation zone","coastal","crz 2019","no development zone","ntl"],
-    title: "CRZ Notification 2019",
-    html: `<p>The Coastal Regulation Zone (CRZ) Notification, 2019 regulates development along India's coastline, classifying areas into CRZ-I (ecologically sensitive/intertidal), CRZ-II (developed urban coastal areas), CRZ-III (rural/undeveloped coasts), and CRZ-IV (water area).</p>
-    <ul>
-      <li>No Development Zone (NDZ) width from the High Tide Line varies by CRZ category and state population density.</li>
-      <li>Projects in CRZ need clearance from the State/UT Coastal Zone Management Authority, with larger projects going to MoEFCC.</li>
-      <li>Sector-specific guidelines exist for ports, tourism, and CRZ-III rural area construction.</li>
-    </ul>`,
-    sources: [
-      {label:"MoEFCC — CRZ Notification", url:"https://moef.gov.in"},
-      {label:"PARIVESH (Coastal module)", url:"https://parivesh.nic.in"},
-      {label:"CPCB", url:"https://cpcb.nic.in"}
-    ]
-  },
-  {
-    id: "epr",
-    keywords: ["epr","extended producer responsibility","plastic waste","e-waste","battery waste","tyre waste","producer obligation"],
-    title: "Extended Producer Responsibility (EPR)",
-    html: `<p>EPR makes producers, importers and brand owners (PIBOs) responsible for the end-of-life management of the products/packaging they place in the market. It applies across several waste streams in India, each with its own rules and EPR portal registration on the CPCB EPR portal:</p>
-    <ul>
-      <li><b>Plastic Waste</b> — Plastic Waste Management Rules, 2016 (amended), with category-wise EPR targets for packaging.</li>
-      <li><b>E-Waste</b> — E-Waste (Management) Rules, 2022, with collection targets and a certificate-trading mechanism.</li>
-      <li><b>Battery Waste</b> — Battery Waste Management Rules, 2022.</li>
-      <li><b>Tyre Waste</b> — Hazardous & Other Waste Rules amendment covering EPR for waste tyres.</li>
-    </ul>`,
-    sources: [
-      {label:"CPCB EPR Portal", url:"https://cpcb.nic.in"},
-      {label:"MoEFCC", url:"https://moef.gov.in"}
-    ]
-  },
-  {
-    id: "swm",
-    keywords: ["solid waste","swm rules","municipal solid waste","biodegradable waste segregation","construction demolition waste","c&d waste"],
-    title: "Solid Waste Management Rules",
-    html: `<p>The Solid Waste Management Rules, 2016 place duties on waste generators (segregation at source into wet/dry/hazardous), local bodies (collection, processing, scientific landfilling) and bulk generators (in-situ processing above a threshold quantity).</p>
-    <p>Related waste-stream rules cover Construction & Demolition Waste (2016), and state-specific Integrated Solid Waste Management (ISWM) DPRs are typically required for new townships and large residential/institutional projects.</p>`,
-    sources: [
-      {label:"CPCB — SWM", url:"https://cpcb.nic.in"},
-      {label:"MoEFCC", url:"https://moef.gov.in"},
-      {label:"SPCB directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
-    ]
-  },
-  {
-    id: "categorisation",
-    keywords: ["red category","orange category","green category","white category","industry categorisation","17 categories","industrial category"],
-    title: "Industry Categorisation (Red / Orange / Green / White)",
-    html: `<p>CPCB classifies industrial sectors by Pollution Index into four categories, which determine CTE/CTO validity period and the level of scrutiny:</p>
-    <ul>
-      <li><b>Red</b> — highest polluting (e.g. thermal power, steel, cement, aluminium, tanneries, pulp & paper) — includes the well-known "17 Categories of Highly Polluting Industries."</li>
-      <li><b>Orange</b> — moderate pollution potential.</li>
-      <li><b>Green</b> — low pollution potential.</li>
-      <li><b>White</b> — practically non-polluting; only needs a one-time intimation to the SPCB, no CTE/CTO required.</li>
-    </ul>`,
-    sources: [
-      {label:"CPCB — Categorisation", url:"https://cpcb.nic.in"},
-      {label:"SPCB directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
-    ]
-  },
-  {
-    id: "ngt",
-    keywords: ["ngt","green tribunal","polluter pays","precautionary principle","sustainable development principle","ngt order","ngt judgment"],
-    title: "NGT — Key Legal Principles",
-    html: `<p>The National Green Tribunal, established under the NGT Act, 2010, applies several foundational principles when deciding environmental matters:</p>
-    <ul>
-      <li><b>Polluter Pays Principle</b> — the polluter bears the cost of remediation and compensation for harm caused.</li>
-      <li><b>Precautionary Principle</b> — lack of full scientific certainty is not a reason to postpone measures preventing environmental harm.</li>
-      <li><b>Sustainable Development</b> — balancing developmental needs against ecological carrying capacity.</li>
-      <li><b>Public Trust Doctrine</b> — certain natural resources are held in trust by the State for public use.</li>
-    </ul>
-    <p>For a specific order or case, search the NGT's judgment database directly — case-specific details shouldn't be relied on from memory as orders are frequently updated/appealed.</p>`,
-    sources: [
-      {label:"NGT Judgments", url:"https://www.greentribunal.gov.in"},
-      {label:"Supreme Court Judgments", url:"https://main.sci.gov.in/judgments"}
-    ]
-  },
-  {
-    id: "find-spcb",
-    keywords: ["find my spcb","state pollution control board","spcb website","which spcb","state board site","dpcc","mpcb","uppcb","hspcb","gpcb","tnpcb","wbpcb","ppcb","rpcb","kspcb"],
-    title: "Finding Your State Pollution Control Board",
-    html: `<p>Every state/UT has its own Pollution Control Board (or Committee for UTs) handling CTE/CTO, hazardous waste authorisation, and local compliance. A few major ones:</p>
-    <ul>
-      <li>Delhi — DPCC</li>
-      <li>Haryana — HSPCB</li>
-      <li>Uttar Pradesh — UPPCB</li>
-      <li>Maharashtra — MPCB</li>
-      <li>Gujarat — GPCB</li>
-      <li>Rajasthan — RSPCB</li>
-      <li>Karnataka — KSPCB</li>
-      <li>Tamil Nadu — TNPCB</li>
-      <li>West Bengal — WBPCB</li>
-      <li>Punjab — PPCB</li>
-    </ul>
-    <p>Board URLs change periodically — use CPCB's official directory link below to reach the current site for any state.</p>`,
-    sources: [
-      {label:"CPCB — Directory of all State PCBs", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
-    ]
+/* =========================================================
+   MODE SWITCHING
+========================================================= */
+const modeBtns = document.querySelectorAll('.mode-btn');
+const chatView = document.getElementById('chatView');
+const reportView = document.getElementById('reportView');
+modeBtns.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    modeBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const mode = btn.dataset.mode;
+    chatView.classList.toggle('hidden', mode !== 'chat');
+    reportView.classList.toggle('hidden', mode !== 'report');
+  });
+});
+
+/* =========================================================
+   CLAUDE API CALL HELPER
+========================================================= */
+async function askClaude(systemPrompt, userText){
+  const response = await fetch("https://api.anthropic.com/v1/messages", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      model: "claude-sonnet-4-6",
+      max_tokens: 1000,
+      system: systemPrompt,
+      messages: [{ role: "user", content: userText }]
+    })
+  });
+  if(!response.ok){
+    throw new Error("Request failed (" + response.status + ")");
   }
-];
+  const data = await response.json();
+  const text = (data.content || [])
+    .map(block => block.type === "text" ? block.text : "")
+    .filter(Boolean)
+    .join("\n");
+  return text;
+}
+
+// Strip markdown code fences and sanitize before inserting as HTML
+function cleanHTML(raw){
+  let out = raw.trim();
+  out = out.replace(/^```(?:html)?\s*/i, '').replace(/```\s*$/i, '');
+  // basic sanitization: drop script tags and inline event handlers / javascript: urls
+  out = out.replace(/<script[\s\S]*?<\/script>/gi, '');
+  out = out.replace(/ on\w+="[^"]*"/gi, '').replace(/ on\w+='[^']*'/gi, '');
+  out = out.replace(/href\s*=\s*["']javascript:[^"']*["']/gi, 'href="#"');
+  return out;
+}
 
 const FALLBACK_SOURCES = [
   {label:"CPCB", url:"https://cpcb.nic.in"},
   {label:"MoEFCC", url:"https://moef.gov.in"},
+  {label:"PARIVESH", url:"https://parivesh.nic.in"},
   {label:"NGT Judgments", url:"https://www.greentribunal.gov.in"},
   {label:"SC Judgments", url:"https://main.sci.gov.in/judgments"},
   {label:"SPCB Directory", url:"https://cpcb.nic.in/state-pollution-control-boards/"}
 ];
-
-function scoreEntry(entry, q){
-  let score = 0;
-  const lower = q.toLowerCase();
-  entry.keywords.forEach(k=>{
-    if(lower.includes(k)) score += k.split(" ").length; // multi-word keyword hits score higher
-  });
-  return score;
+function citationHTML(sources){
+  return `<div class="citation-strip">` +
+    sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">↗ ${s.label}</a>`).join('') +
+    `</div>`;
 }
 
-function findBestMatch(q){
-  let best = null, bestScore = 0;
-  KB.forEach(entry=>{
-    const s = scoreEntry(entry, q);
-    if(s > bestScore){ bestScore = s; best = entry; }
-  });
-  return bestScore > 0 ? best : null;
-}
-
+/* =========================================================
+   CHAT MODE
+========================================================= */
 const chatLog = document.getElementById('chatLog');
+const composerForm = document.getElementById('composerForm');
+const queryInput = document.getElementById('queryInput');
+const askBtn = document.getElementById('askBtn');
+
+const CHAT_SYSTEM_PROMPT = `You are the BEC Environment Compliance Assistant, an expert reference on Indian environmental law and regulation for Bharat Environment Consultants. Your domain covers, but is not limited to: the EIA Notification 2006 (and its amendments, categories A/B1/B2, and the full project schedule), the Water (Prevention and Control of Pollution) Act 1974, the Air (Prevention and Control of Pollution) Act 1981, the Environment (Protection) Act 1986, Hazardous and Other Wastes Rules 2016, Bio-Medical Waste Management Rules 2016, CRZ Notification 2019, Solid Waste Management Rules 2016, Construction & Demolition Waste Rules, EPR rules (plastic, e-waste, battery, tyre), Forest Conservation Act, Wildlife Protection Act, NGT Act and key NGT/Supreme Court environmental principles (polluter pays, precautionary principle, public trust doctrine), CPCB industry categorisation (Red/Orange/Green/White), CTE/CTO consent processes, groundwater (CGWA) regulation, and state-level SPCB procedures.
+
+Answer any environment-related question a project proponent, consultant, student or citizen in India might reasonably ask — not only questions that match a fixed list of topics. Give complete, accurate, well-organized answers.
+
+Formatting rules (strict):
+- Respond with a clean HTML fragment only: use <h3> for a short title, <p>, <ul>/<li>, <b>, and <table> where a table genuinely helps. 
+- Do NOT include <html>, <head>, <body>, markdown, or code fences.
+- Keep answers focused and well-structured, not padded.
+- Where exact numeric thresholds, fees, or category assignments are involved, give your best current understanding but explicitly note that these are periodically amended and must be verified against the live text on PARIVESH/CPCB/MoEFCC before being relied upon for a filing.
+- You are not a lawyer; do not present answers as definitive legal advice — frame this as a well-informed reference, and recommend a qualified EIA consultant or advocate for anything with legal/financial consequences.
+- If a question falls genuinely outside Indian environmental regulation (e.g. unrelated topics), politely note that and redirect to what you do cover.
+- End with a one-line HTML comment is not needed — do not add a citation list yourself, the interface adds official source links separately.`;
 
 function addMessage(role, html){
   const wrap = document.createElement('div');
@@ -516,51 +677,157 @@ function addMessage(role, html){
   wrap.appendChild(bubble);
   chatLog.appendChild(wrap);
   chatLog.scrollTop = chatLog.scrollHeight;
+  return bubble;
 }
 
-function citationHTML(sources){
-  return `<div class="citation-strip">` +
-    sources.map(s=>`<a href="${s.url}" target="_blank" rel="noopener">↗ ${s.label}</a>`).join('') +
-    `</div>`;
+function addTyping(){
+  return addMessage('bot', `<span class="typing-dots"><span></span><span></span><span></span></span>`);
 }
 
-function respond(query){
-  const match = findBestMatch(query);
-  if(match){
-    addMessage('bot', `<h3>${match.title}</h3>${match.html}${citationHTML(match.sources)}`);
-  } else {
-    addMessage('bot',
-      `<h3>Not in my curated list yet</h3>
-       <p>I don't have a prepared summary for that specific query. For anything outside the topics on the left — including live rule text, current amendments, or a specific NGT/SC order — go straight to the primary sources below and search there directly.</p>
-       ${citationHTML(FALLBACK_SOURCES)}`
-    );
+async function handleQuery(q){
+  addMessage('user', q.replace(/</g,'&lt;'));
+  const typingBubble = addTyping();
+  askBtn.disabled = true;
+  try{
+    const answerHTML = await askClaude(CHAT_SYSTEM_PROMPT, q);
+    typingBubble.innerHTML = cleanHTML(answerHTML) + citationHTML(FALLBACK_SOURCES);
+  }catch(err){
+    typingBubble.innerHTML = `<h3>Couldn't reach the assistant</h3>
+      <p>Something went wrong fetching an answer (${err.message}). Please try again in a moment, or go straight to the primary sources below.</p>
+      ${citationHTML(FALLBACK_SOURCES)}`;
+  }finally{
+    askBtn.disabled = false;
+    chatLog.scrollTop = chatLog.scrollHeight;
   }
 }
 
 document.querySelectorAll('.topic-chip').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const q = btn.getAttribute('data-q');
-    addMessage('user', q);
-    respond(q);
+    handleQuery(q);
   });
 });
 
-document.getElementById('composerForm').addEventListener('submit', e=>{
+composerForm.addEventListener('submit', e=>{
   e.preventDefault();
-  const input = document.getElementById('queryInput');
-  const q = input.value.trim();
+  const q = queryInput.value.trim();
   if(!q) return;
-  addMessage('user', q.replace(/</g,'&lt;'));
-  respond(q);
-  input.value = '';
+  handleQuery(q);
+  queryInput.value = '';
 });
 
-// Opening message
 addMessage('bot',
   `<h3>Namaste 🙏 — welcome to the BEC Environment Compliance Assistant</h3>
-   <p>Ask about Environmental Clearance, CTE/CTO, Hazardous Waste, Bio-Medical Waste, CRZ, EPR, Solid Waste Rules, industry categorisation, or NGT principles — or tap a topic on the left.</p>
-   <p><b>Please note:</b> this assistant answers from a curated summary of the rules, not a live feed. Every answer links straight to the CPCB / NGT / SC / SPCB page so you can confirm the current, exact position before relying on it for a filing.</p>`
+   <p>Ask anything about Indian environmental law and compliance — EIA Notification 2006, CTE/CTO, hazardous waste, CRZ, EPR, NGT principles, industry categorisation, or a specific threshold or procedure. Tap a topic on the left to get started, or type your own question below.</p>
+   <p>Need a full pre-feasibility report instead? Switch to <b>Generate Pre-Feasibility Report</b> above.</p>`
 );
+
+/* =========================================================
+   REPORT MODE
+========================================================= */
+const reportForm = document.getElementById('reportForm');
+const reportOutput = document.getElementById('reportOutput');
+const reportEmptyState = document.getElementById('reportEmptyState');
+const reportToolbar = document.getElementById('reportToolbar');
+const genReportBtn = document.getElementById('genReportBtn');
+
+const REPORT_SYSTEM_PROMPT = `You are an environmental consultant at Bharat Environment Consultants preparing a first-draft Project Pre-Feasibility Report for Environmental Clearance in India, structured around the EIA Notification 2006 (as amended).
+
+You will receive structured project data plus free-text notes from a project proponent. Using it, produce a complete, well-organized pre-feasibility report covering these sections, in this order:
+1. Executive Summary
+2. Project Proponent & Location Details
+3. Project Description
+4. Applicability under EIA Notification 2006 — state the most likely Category (A/B1/B2) and Schedule item based on the data given (using the user's own stated category/item if provided), explain the reasoning, and note whether a public hearing is typically expected. Clearly flag this classification as indicative and subject to verification.
+5. Site & Environmental Setting (generic considerations appropriate to the stated location and nearby sensitive features)
+6. Anticipated Environmental Impacts (air, water, noise, land, biodiversity, socio-economic — construction and operation phases)
+7. Proposed Environmental Management Plan / Mitigation Measures
+8. Regulatory Compliance Checklist (list every clearance/consent/authorisation likely needed: EC, CTE, CTO, Hazardous Waste Authorisation, Groundwater NOC/CGWA, Forest Clearance, CRZ Clearance, EPR registration, etc. — only include what's relevant to the stated project)
+9. Environmental Monitoring Plan (outline — parameters, frequency, indicative responsibility)
+10. Conclusion & Recommendation
+
+Formatting rules (strict):
+- Respond with a clean HTML fragment only: <h3> for each of the 10 section titles above (numbered, e.g. "1. Executive Summary"), <p>, <ul>/<li>, <b>, and <table> where useful (e.g. the compliance checklist or key project data).
+- Do NOT include <html>, <head>, <body>, markdown, or code fences.
+- Where the user has not supplied a data point, state a reasonable assumption explicitly rather than inventing a precise false figure, e.g. "Assumed X in the absence of stated data — to be confirmed."
+- Do not fabricate specific legal citations, case numbers, or numeric pollution thresholds you are not confident of; describe requirements in general, accurate terms and flag where the exact current figure must be verified against the live EIA Notification 2006 text and amendments on PARIVESH/MoEFCC.
+- This is a first draft only, not a submission-ready EIA/EMP report.`;
+
+function collectFormData(){
+  const sensitiveChecks = Array.from(document.querySelectorAll('#reportForm fieldset input[type=checkbox]:checked')).map(c=>c.value);
+  return {
+    projectName: document.getElementById('projectName').value.trim(),
+    industryType: document.getElementById('industryType').value.trim(),
+    eiaCategory: document.getElementById('eiaCategory').value,
+    scheduleItem: document.getElementById('scheduleItem').value.trim(),
+    location: document.getElementById('location').value.trim(),
+    capacity: document.getElementById('capacity').value.trim(),
+    landArea: document.getElementById('landArea').value.trim(),
+    investment: document.getElementById('investment').value.trim(),
+    water: document.getElementById('water').value.trim(),
+    power: document.getElementById('power').value.trim(),
+    rawMaterials: document.getElementById('rawMaterials').value.trim(),
+    sensitiveFeatures: sensitiveChecks,
+    notes: document.getElementById('notes').value.trim()
+  };
+}
+
+function formDataToPrompt(d){
+  const lines = [
+    `Project / Unit Name: ${d.projectName || "Not specified"}`,
+    `Industry / Project Type: ${d.industryType || "Not specified"}`,
+    `Proponent's stated EIA 2006 Category: ${d.eiaCategory}`,
+    `Schedule Item No. (if given): ${d.scheduleItem || "Not specified"}`,
+    `Location (State/District): ${d.location || "Not specified"}`,
+    `Proposed Capacity / Production: ${d.capacity || "Not specified"}`,
+    `Land Area: ${d.landArea || "Not specified"}`,
+    `Estimated Project Cost: ${d.investment || "Not specified"}`,
+    `Water Requirement: ${d.water || "Not specified"}`,
+    `Power Requirement: ${d.power || "Not specified"}`,
+    `Raw Materials / Fuel: ${d.rawMaterials || "Not specified"}`,
+    `Nearby Sensitive Features: ${d.sensitiveFeatures.length ? d.sensitiveFeatures.join("; ") : "Not specified"}`,
+    `Additional Notes from Proponent: ${d.notes || "None"}`
+  ];
+  return "Prepare the pre-feasibility report using this project data:\n\n" + lines.join("\n");
+}
+
+reportForm.addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const d = collectFormData();
+  if(!d.industryType){
+    document.getElementById('industryType').focus();
+    return;
+  }
+  genReportBtn.disabled = true;
+  genReportBtn.textContent = 'Generating…';
+  reportEmptyState.style.display = 'none';
+  reportToolbar.style.display = 'none';
+  reportOutput.innerHTML = `<div class="report-empty"><span class="typing-dots"><span></span><span></span><span></span></span> &nbsp;Drafting the pre-feasibility report — this can take a little while for a full report.</div>`;
+
+  try{
+    const html = await askClaude(REPORT_SYSTEM_PROMPT, formDataToPrompt(d));
+    reportOutput.innerHTML = cleanHTML(html) + `<div class="report-note">This is an AI-generated first draft based only on the data you supplied. Category/schedule classification, thresholds, and every figure must be verified against the current EIA Notification 2006 text and amendments (PARIVESH/MoEFCC) and reviewed by a qualified EIA consultant before use in any filing.</div>`;
+    reportToolbar.style.display = 'flex';
+  }catch(err){
+    reportOutput.innerHTML = `<div class="report-empty">Couldn't generate the report (${err.message}). Please try again in a moment.</div>`;
+  }finally{
+    genReportBtn.disabled = false;
+    genReportBtn.textContent = 'Generate Report';
+  }
+});
+
+document.getElementById('copyReportBtn').addEventListener('click', ()=>{
+  const text = reportOutput.innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.getElementById('copyReportBtn');
+    const original = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(()=>{ btn.textContent = original; }, 1600);
+  });
+});
+
+document.getElementById('printReportBtn').addEventListener('click', ()=>{
+  window.print();
+});
 </script>
 </body>
 </html>
