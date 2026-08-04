@@ -15,20 +15,16 @@
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
-
-  /* ---- TOP BAR ---- */
   .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
   .brand{display:flex;align-items:center;gap:8px;text-decoration:none;}
   .brand-mark{font-size:1.4rem;}
   .brand-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--ink);line-height:1.1;}
   .brand-text small{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.6rem;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-top:1px;}
-
   .hamburger{background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
   .hamburger span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .25s, opacity .25s;}
   .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
   .hamburger.open span:nth-child(2){opacity:0;}
   .hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
-
   .drawer{position:fixed;top:0;right:0;height:100%;width:min(78vw,320px);background:#fff;box-shadow:-6px 0 24px rgba(0,0,0,0.15);
     transform:translateX(100%);transition:transform .28s ease;z-index:300;display:flex;flex-direction:column;padding:1.4rem 1.5rem;}
   .drawer.open{transform:translateX(0);}
@@ -37,14 +33,10 @@
   .drawer a:hover{color:var(--red);}
   .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:290;opacity:0;pointer-events:none;transition:opacity .25s;}
   .drawer-overlay.open{opacity:1;pointer-events:auto;}
-
-  /* ---- CATEGORY TABS ---- */
   .cat-tabs{background:var(--green-dark);overflow-x:auto;white-space:nowrap;padding:0 1.25rem;}
   .cat-tabs::-webkit-scrollbar{display:none;}
   .cat-tab{display:inline-block;padding:0.7rem 0.9rem;color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;cursor:pointer;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;}
   .cat-tab.active{color:#fff;border-bottom-color:var(--red);}
-
-  /* ---- HAPPENING NOW STRIP ---- */
   .now-strip{padding:1.4rem 1.25rem 0.6rem;}
   .now-strip h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.8rem;color:var(--ink);}
   .now-scroll{display:flex;gap:0.9rem;overflow-x:auto;padding-bottom:0.5rem;}
@@ -55,8 +47,6 @@
   .now-card .nc-body{padding:0.6rem 0.75rem;}
   .now-card .nc-cat{color:var(--red);font-size:0.66rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
   .now-card h5{font-family:'Playfair Display',serif;font-size:0.88rem;line-height:1.3;margin-top:0.25rem;font-weight:600;}
-
-  /* ---- MAIN FEED ---- */
   .feed{max-width:760px;margin:0 auto;padding:0.4rem 1.25rem 3rem;}
   .story{display:flex;gap:1rem;align-items:flex-start;text-decoration:none;color:var(--ink);padding:1.05rem 0;}
   .story-thumb{width:150px;height:105px;object-fit:cover;border-radius:8px;flex-shrink:0;display:block;background:var(--border);}
@@ -67,18 +57,11 @@
   .story .dek{font-size:0.86rem;color:var(--muted);margin-top:0.35rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .story .story-meta{font-size:0.74rem;color:#9a9a9a;margin-top:0.45rem;}
   .divider{border:none;border-top:1px solid var(--border);}
-
   footer{background:var(--green-dark);color:rgba(255,255,255,0.7);text-align:center;padding:2rem 1rem;font-size:0.85rem;}
   footer a{color:#8fd3a8;text-decoration:none;}
   .footer-links{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:0.75rem;}
-
-  @media(min-width:640px){
-    .story h2{font-size:1.3rem;}
-  }
-  @media(max-width:520px){
-    .story{flex-direction:column;}
-    .story-thumb{width:100%;height:170px;}
-  }
+  @media(min-width:640px){ .story h2{font-size:1.3rem;} }
+  @media(max-width:520px){ .story{flex-direction:column;} .story-thumb{width:100%;height:170px;} }
 </style>
 </head>
 <body>
@@ -138,12 +121,15 @@
 
 <div class="feed" id="feed">
   <a class="story" data-cat="water" href="assam-floods-2026.html">
-  <span class="cat">Water</span>
-  <h2>
-Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</h2>
-  <p class="dek">Below-normal seasonal rainfall still produced one of Assam's deadliest flood years on record. The paradox points to a wider truth: climate change is loading the dice toward short, violent bursts of rain, while ageing embankments, vanishing wetlands and unscientific construction ensure that when the water comes, it has nowhere to go and nothing to stop it.</p>
-  <div class="story-meta">By Bharat Environment News · August 2026 · 11 min read</div>
-</a>
+    <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/EU%20Civil%20Protection%20and%20Humanitarian%20Aid%2C%20India%20-%20Assam%20floods%2C%20aug%202012.jpg?width=320" alt="Flooded village in Assam during the annual monsoon inundation" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</h2>
+      <p class="dek">Below-normal seasonal rainfall still produced one of Assam's deadliest flood years on record. The paradox points to a wider truth: climate change is loading the dice toward short, violent bursts of rain, while ageing embankments, vanishing wetlands and unscientific construction ensure that when the water comes, it has nowhere to go and nothing to stop it.</p>
+      <div class="story-meta">By Bharat Environment News · August 2026 · 11 min read</div>
+    </div>
+  </a>
+  <hr class="divider" />
 
   <a class="story" data-cat="water" href="india-wetlands-crisis.html">
     <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/Wular%20Lake%201.jpg?width=320" alt="Wular Lake, a Ramsar-designated wetland in Jammu and Kashmir" />
@@ -421,7 +407,6 @@ Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Ma
 </footer>
 
 <script>
-  // Hamburger drawer
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('drawerOverlay');
@@ -432,7 +417,6 @@ Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Ma
   drawerClose.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
 
-  // Category filter
   const tabs = document.querySelectorAll('.cat-tab');
   const stories = document.querySelectorAll('.story');
   const dividers = document.querySelectorAll('.divider');
