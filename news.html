@@ -43,10 +43,6 @@
   .cat-tabs::-webkit-scrollbar{display:none;}
   .cat-tab{display:inline-block;padding:0.7rem 0.9rem;color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;cursor:pointer;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;}
   .cat-tab.active{color:#fff;border-bottom-color:var(--red);}
-  <a href="https://bharatenvironmentconsultants.com/depleting-wetlands.html">
-  <span class="tag">Water</span>
-  The Vanishing 'Kidneys': Why India's Wetlands Are Dissolving into Wastelands
-</a>
 
   /* ---- HAPPENING NOW STRIP ---- */
   .now-strip{padding:1.4rem 1.25rem 0.6rem;}
@@ -62,11 +58,13 @@
 
   /* ---- MAIN FEED ---- */
   .feed{max-width:760px;margin:0 auto;padding:0.4rem 1.25rem 3rem;}
-  .story{display:block;text-decoration:none;color:var(--ink);padding:1.05rem 0;}
+  .story{display:flex;gap:1rem;align-items:flex-start;text-decoration:none;color:var(--ink);padding:1.05rem 0;}
+  .story-thumb{width:150px;height:105px;object-fit:cover;border-radius:8px;flex-shrink:0;display:block;background:var(--border);}
+  .story-content{flex:1;min-width:0;}
   .story .cat{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--red);margin-bottom:0.35rem;}
-  .story h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.32rem;line-height:1.32;color:var(--ink);}
+  .story h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;line-height:1.32;color:var(--ink);}
   .story:hover h2{text-decoration:underline;}
-  .story .dek{font-size:0.86rem;color:var(--muted);margin-top:0.35rem;line-height:1.5;}
+  .story .dek{font-size:0.86rem;color:var(--muted);margin-top:0.35rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
   .story .story-meta{font-size:0.74rem;color:#9a9a9a;margin-top:0.45rem;}
   .divider{border:none;border-top:1px solid var(--border);}
 
@@ -75,7 +73,11 @@
   .footer-links{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:0.75rem;}
 
   @media(min-width:640px){
-    .story h2{font-size:1.45rem;}
+    .story h2{font-size:1.3rem;}
+  }
+  @media(max-width:520px){
+    .story{flex-direction:column;}
+    .story-thumb{width:100%;height:170px;}
   }
 </style>
 </head>
@@ -124,7 +126,7 @@
       <div class="nc-body"><span class="nc-cat">Water</span><h5>Yamuna Clean-Up: ₹20,000+ Crore Spent — Where Are the Gaps?</h5></div>
     </a>
     <a class="now-card" href="environment-compliance-assistant.html">
-      <img src="https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=400&q=80&fit=crop" alt="Compliance assistant" />
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80&fit=crop" alt="Compliance assistant" />
       <div class="nc-body"><span class="nc-cat">New Tool</span><h5>Introducing the BEC Environment Compliance Assistant</h5></div>
     </a>
     <a class="now-card" href="global-warming.html">
@@ -135,191 +137,268 @@
 </div>
 
 <div class="feed" id="feed">
+
   <a class="story" data-cat="water" href="india-wetlands-crisis.html">
-  <span class="cat">Water</span>
-  <h2>India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</h2>
-  <p class="dek">Nearly one-third of India's natural wetlands have disappeared in the last four decades, swallowed by concrete, choked by sewage and carved up by real-estate expansion. As cities from Chennai to Bengaluru pay the price in floods and water scarcity, the crisis exposes a deep gap between environmental law on paper and enforcement on the ground.</p>
-  <div class="story-meta">By Bharat Environment News · August 2026 · 9 min read</div>
-</a>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1518622358385-8ea7d0794bf6?w=320&q=80&fit=crop" alt="Wetland in India" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</h2>
+      <p class="dek">Nearly one-third of India's natural wetlands have disappeared in the last four decades, swallowed by concrete, choked by sewage and carved up by real-estate expansion. As cities from Chennai to Bengaluru pay the price in floods and water scarcity, the crisis exposes a deep gap between environmental law on paper and enforcement on the ground.</p>
+      <div class="story-meta">By Bharat Environment News · August 2026 · 9 min read</div>
+    </div>
+  </a>
+  <hr class="divider" />
+
   <a class="story" data-cat="biodiversity" href="biodiversity-crisis-india.html">
-  <span class="cat">Biodiversity</span>
-  <h2>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h2>
-  <p class="dek">Bulldozers, boreholes and borewells are eating into India's last wild spaces faster than they can be mapped. Add a poisoned river network and a quiet green invasion crawling across every forest floor, and the country's biodiversity crisis stops being a distant statistic — it becomes a countdown.</p>
-  <div class="story-meta">By Bharat Environment Consultants · August 2026 · 10 min read</div>
-</a>
-<hr class="divider" />
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=320&q=80&fit=crop" alt="India wildlife biodiversity" />
+    <div class="story-content">
+      <span class="cat">Biodiversity</span>
+      <h2>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h2>
+      <p class="dek">Bulldozers, boreholes and borewells are eating into India's last wild spaces faster than they can be mapped. Add a poisoned river network and a quiet green invasion crawling across every forest floor, and the country's biodiversity crisis stops being a distant statistic — it becomes a countdown.</p>
+      <div class="story-meta">By Bharat Environment Consultants · August 2026 · 10 min read</div>
+    </div>
+  </a>
+  <hr class="divider" />
+
   <a class="story" data-cat="water" href="ganga-vs-yamuna-comparison.html">
-  <span class="cat">Water</span>
-  <h2>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h2>
-  <p class="dek">Namami Gange and Delhi's Yamuna effort have both spent tens of thousands of crores. Only one river is showing up better in the water quality data.</p>
-  <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 12 min read</div>
-</a>
-<hr class="divider" />
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1500534623283-312aade485b7?w=320&q=80&fit=crop" alt="River in India" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h2>
+      <p class="dek">Namami Gange and Delhi's Yamuna effort have both spent tens of thousands of crores. Only one river is showing up better in the water quality data.</p>
+      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 12 min read</div>
+    </div>
+  </a>
+  <hr class="divider" />
+
   <a class="story" data-cat="waste" href="delhi-vs-indore-waste-management.html">
-  <span class="cat">Waste</span>
-  <h2>Delhi's Three Garbage Mountains vs Indore's Zero-Landfill Model: Why the Capital Can't Copy What Works</h2>
-  <p class="dek">The MCD still can't get segregation right, and the new SWM Rules 2026 are barely enforced. A full comparison of Bhalaswa, Ghazipur and Okhla against the city that solved this a decade ago.</p>
-  <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 13 min read</div>
-</a>
-<hr class="divider" />
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1532996122724-9339d331fc11?w=320&q=80&fit=crop" alt="Waste and garbage management" />
+    <div class="story-content">
+      <span class="cat">Waste</span>
+      <h2>Delhi's Three Garbage Mountains vs Indore's Zero-Landfill Model: Why the Capital Can't Copy What Works</h2>
+      <p class="dek">The MCD still can't get segregation right, and the new SWM Rules 2026 are barely enforced. A full comparison of Bhalaswa, Ghazipur and Okhla against the city that solved this a decade ago.</p>
+      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 13 min read</div>
+    </div>
+  </a>
+  <hr class="divider" />
 
   <a class="story" data-cat="water" href="yamuna-cleaning-efforts-and-gaps.html">
-    <span class="cat">Water</span>
-    <h2>Yamuna Clean-Up: Three Decades, Over ₹20,000 Crore, and a River Still Waiting to Breathe</h2>
-    <p class="dek">A full account of the money spent, the governments involved, and the gaps still standing between Delhi and a living river.</p>
-    <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 11 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=320&q=80&fit=crop" alt="Yamuna river" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Yamuna Clean-Up: Three Decades, Over ₹20,000 Crore, and a River Still Waiting to Breathe</h2>
+      <p class="dek">A full account of the money spent, the governments involved, and the gaps still standing between Delhi and a living river.</p>
+      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 11 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="regulatory" href="environment-compliance-assistant.html">
-    <span class="cat">New Tool</span>
-    <h2>Introducing the BEC Environment Compliance Assistant</h2>
-    <p class="dek">A free reference tool covering EIA, CTE/CTO, Hazardous Waste, CRZ, EPR &amp; more — with direct links to CPCB, NGT, and SPCB sources.</p>
-    <div class="story-meta">August 2026 · 2 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=320&q=80&fit=crop" alt="Compliance assistant" />
+    <div class="story-content">
+      <span class="cat">New Tool</span>
+      <h2>Introducing the BEC Environment Compliance Assistant</h2>
+      <p class="dek">A free reference tool covering EIA, CTE/CTO, Hazardous Waste, CRZ, EPR &amp; more — with direct links to CPCB, NGT, and SPCB sources.</p>
+      <div class="story-meta">August 2026 · 2 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="water" href="yamuna-river-pollution.html">
-    <span class="cat">Water</span>
-    <h2>Why the Yamuna Isn't Getting Cleaner, Despite Thousands of Crores</h2>
-    <p class="dek">Billions have been spent on Yamuna rejuvenation, yet pollution levels remain critical — a look at why funding alone hasn't fixed the problem.</p>
-    <div class="story-meta">August 2026 · 7 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=320&q=80&fit=crop" alt="Polluted river water" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Why the Yamuna Isn't Getting Cleaner, Despite Thousands of Crores</h2>
+      <p class="dek">Billions have been spent on Yamuna rejuvenation, yet pollution levels remain critical — a look at why funding alone hasn't fixed the problem.</p>
+      <div class="story-meta">August 2026 · 7 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="carbon" href="global-warming.html">
-    <span class="cat">Climate</span>
-    <h2>Global Warming in 2026: Where the Science Stands</h2>
-    <p class="dek">The latest WMO data on global warming, what's driving it, and what it means for India's industries and cities.</p>
-    <div class="story-meta">August 2026 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Global warming" />
+    <div class="story-content">
+      <span class="cat">Climate</span>
+      <h2>Global Warming in 2026: Where the Science Stands</h2>
+      <p class="dek">The latest WMO data on global warming, what's driving it, and what it means for India's industries and cities.</p>
+      <div class="story-meta">August 2026 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="regulatory" href="jan-vishwas-act-environment.html">
-    <span class="cat">Regulatory</span>
-    <h2>The Jan Vishwas Act: Decriminalising Environmental Violations</h2>
-    <p class="dek">What the Jan Vishwas Act, 2023 changes for environmental compliance in India, and the debate over whether it weakens deterrence.</p>
-    <div class="story-meta">August 2026 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Law and regulation" />
+    <div class="story-content">
+      <span class="cat">Regulatory</span>
+      <h2>The Jan Vishwas Act: Decriminalising Environmental Violations</h2>
+      <p class="dek">What the Jan Vishwas Act, 2023 changes for environmental compliance in India, and the debate over whether it weakens deterrence.</p>
+      <div class="story-meta">August 2026 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="waste" href="cecb-iwmms-portal.html">
-    <span class="cat">Waste</span>
-    <h2>CECB's IWMMS: A Model for Digital Waste Governance in India</h2>
-    <p class="dek">How Chhattisgarh's Industrial Waste Management and Monitoring System is setting a benchmark for transparent, real-time waste governance.</p>
-    <div class="story-meta">August 2026 · 5 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=320&q=80&fit=crop" alt="Digital waste governance" />
+    <div class="story-content">
+      <span class="cat">Waste</span>
+      <h2>CECB's IWMMS: A Model for Digital Waste Governance in India</h2>
+      <p class="dek">How Chhattisgarh's Industrial Waste Management and Monitoring System is setting a benchmark for transparent, real-time waste governance.</p>
+      <div class="story-meta">August 2026 · 5 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="carbon" href="us-iran-war-climate-impact.html">
-    <span class="cat">Climate</span>
-    <h2>How the US-Iran Conflict Is Adding to Global Warming</h2>
-    <p class="dek">Emissions, oil-fire pollution, and reporting gaps from the conflict — and the hidden climate cost of modern war.</p>
-    <div class="story-meta">August 2026 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1541873676-a18131494184?w=320&q=80&fit=crop" alt="Oil fire and emissions" />
+    <div class="story-content">
+      <span class="cat">Climate</span>
+      <h2>How the US-Iran Conflict Is Adding to Global Warming</h2>
+      <p class="dek">Emissions, oil-fire pollution, and reporting gaps from the conflict — and the hidden climate cost of modern war.</p>
+      <div class="story-meta">August 2026 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="regulatory" href="article-moefcc2024.html">
-    <span class="cat">Regulatory</span>
-    <h2>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h2>
-    <p class="dek">A comprehensive overview of the latest regulatory changes from MoEFCC and what they mean for industries.</p>
-    <div class="story-meta">April 2026 · 8 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Environmental regulation" />
+    <div class="story-content">
+      <span class="cat">Regulatory</span>
+      <h2>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h2>
+      <p class="dek">A comprehensive overview of the latest regulatory changes from MoEFCC and what they mean for industries.</p>
+      <div class="story-meta">April 2026 · 8 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="carbon" href="article-scope3.html">
-    <span class="cat">Climate</span>
-    <h2>Scope 3 Emissions: Why They Matter for Indian Businesses in 2026</h2>
-    <p class="dek">How value-chain emissions are becoming central to ESG strategy and investor expectations in India.</p>
-    <div class="story-meta">March 2026 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=320&q=80&fit=crop" alt="Factory emissions" />
+    <div class="story-content">
+      <span class="cat">Climate</span>
+      <h2>Scope 3 Emissions: Why They Matter for Indian Businesses in 2026</h2>
+      <p class="dek">How value-chain emissions are becoming central to ESG strategy and investor expectations in India.</p>
+      <div class="story-meta">March 2026 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="biodiversity" href="article-fca.html">
-    <span class="cat">Biodiversity</span>
-    <h2>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h2>
-    <p class="dek">Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p>
-    <div class="story-meta">March 2026 · 7 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Forest" />
+    <div class="story-content">
+      <span class="cat">Biodiversity</span>
+      <h2>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h2>
+      <p class="dek">Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p>
+      <div class="story-meta">March 2026 · 7 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="esg" href="article-brsr.html">
-    <span class="cat">ESG</span>
-    <h2>BRSR Reporting: What Indian Listed Companies Must Disclose in FY 2025-26</h2>
-    <p class="dek">SEBI's Business Responsibility and Sustainability Reporting requirements explained for top 1000 listed companies.</p>
-    <div class="story-meta">February 2026 · 9 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="Business ESG reporting" />
+    <div class="story-content">
+      <span class="cat">ESG</span>
+      <h2>BRSR Reporting: What Indian Listed Companies Must Disclose in FY 2025-26</h2>
+      <p class="dek">SEBI's Business Responsibility and Sustainability Reporting requirements explained for top 1000 listed companies.</p>
+      <div class="story-meta">February 2026 · 9 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="air" href="article-naaqs.html">
-    <span class="cat">Air Quality</span>
-    <h2>National Ambient Air Quality Standards (NAAQS): 2025 Compliance Guide for Industries</h2>
-    <p class="dek">A practical guide to CPCB's NAAQS requirements, monitoring obligations, and corrective action plans.</p>
-    <div class="story-meta">February 2026 · 5 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=320&q=80&fit=crop" alt="Air quality and smog" />
+    <div class="story-content">
+      <span class="cat">Air Quality</span>
+      <h2>National Ambient Air Quality Standards (NAAQS): 2025 Compliance Guide for Industries</h2>
+      <p class="dek">A practical guide to CPCB's NAAQS requirements, monitoring obligations, and corrective action plans.</p>
+      <div class="story-meta">February 2026 · 5 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="water" href="article-zld.html">
-    <span class="cat">Water</span>
-    <h2>Zero Liquid Discharge (ZLD): Is It Mandatory for Your Industry?</h2>
-    <p class="dek">Understanding CPCB's ZLD mandates for textile, tannery, distillery, and sugar industries.</p>
-    <div class="story-meta">January 2026 · 7 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1581093458791-9d42e3c6d9db?w=320&q=80&fit=crop" alt="Industrial water treatment" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Zero Liquid Discharge (ZLD): Is It Mandatory for Your Industry?</h2>
+      <p class="dek">Understanding CPCB's ZLD mandates for textile, tannery, distillery, and sugar industries.</p>
+      <div class="story-meta">January 2026 · 7 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="esg" href="article-gri.html">
-    <span class="cat">ESG</span>
-    <h2>GRI Standards 2021: How to Align Your ESG Report with Global Best Practices</h2>
-    <p class="dek">A step-by-step breakdown of GRI Universal Standards most relevant to Indian companies.</p>
-    <div class="story-meta">January 2026 · 10 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="ESG reporting standards" />
+    <div class="story-content">
+      <span class="cat">ESG</span>
+      <h2>GRI Standards 2021: How to Align Your ESG Report with Global Best Practices</h2>
+      <p class="dek">A step-by-step breakdown of GRI Universal Standards most relevant to Indian companies.</p>
+      <div class="story-meta">January 2026 · 10 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="biodiversity" href="article-bia.html">
-    <span class="cat">Biodiversity</span>
-    <h2>Biodiversity Impact Assessment: A Growing Requirement for Infrastructure Projects</h2>
-    <p class="dek">How BIA is becoming integral to EIA processes under updated MoEFCC guidelines.</p>
-    <div class="story-meta">December 2025 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Biodiversity assessment" />
+    <div class="story-content">
+      <span class="cat">Biodiversity</span>
+      <h2>Biodiversity Impact Assessment: A Growing Requirement for Infrastructure Projects</h2>
+      <p class="dek">How BIA is becoming integral to EIA processes under updated MoEFCC guidelines.</p>
+      <div class="story-meta">December 2025 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="regulatory" href="article-cte-cto.html">
-    <span class="cat">Regulatory</span>
-    <h2>CTE vs CTO: Understanding Consent to Establish and Consent to Operate</h2>
-    <p class="dek">A plain-language guide for industries navigating the SPCB consent process.</p>
-    <div class="story-meta">November 2025 · 8 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Consent to establish and operate" />
+    <div class="story-content">
+      <span class="cat">Regulatory</span>
+      <h2>CTE vs CTO: Understanding Consent to Establish and Consent to Operate</h2>
+      <p class="dek">A plain-language guide for industries navigating the SPCB consent process.</p>
+      <div class="story-meta">November 2025 · 8 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="waste" href="article-hwm.html">
-    <span class="cat">Waste</span>
-    <h2>Hazardous Waste Management Rules 2016: Key Obligations for Indian Manufacturers</h2>
-    <p class="dek">Manifest systems, authorisation requirements, and disposal compliance for plant managers.</p>
-    <div class="story-meta">October 2025 · 7 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1532996122724-9339d331fc11?w=320&q=80&fit=crop" alt="Hazardous waste management" />
+    <div class="story-content">
+      <span class="cat">Waste</span>
+      <h2>Hazardous Waste Management Rules 2016: Key Obligations for Indian Manufacturers</h2>
+      <p class="dek">Manifest systems, authorisation requirements, and disposal compliance for plant managers.</p>
+      <div class="story-meta">October 2025 · 7 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="regulatory" href="article-mining-ec.html">
-    <span class="cat">Regulatory</span>
-    <h2>Environmental Clearance for Mining Projects: The EIA Notification Process Explained</h2>
-    <p class="dek">From Form-1 submission to public hearing and final clearance — a complete walkthrough.</p>
-    <div class="story-meta">September 2025 · 9 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=320&q=80&fit=crop" alt="Mining project clearance" />
+    <div class="story-content">
+      <span class="cat">Regulatory</span>
+      <h2>Environmental Clearance for Mining Projects: The EIA Notification Process Explained</h2>
+      <p class="dek">From Form-1 submission to public hearing and final clearance — a complete walkthrough.</p>
+      <div class="story-meta">September 2025 · 9 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="water" href="article-groundwater.html">
-    <span class="cat">Water</span>
-    <h2>Groundwater Impact Assessment: Why It Is Critical for Industrial Expansion Projects</h2>
-    <p class="dek">CGWA regulations, aquifer mapping, and groundwater extraction licensing for industries.</p>
-    <div class="story-meta">August 2025 · 6 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=320&q=80&fit=crop" alt="Groundwater assessment" />
+    <div class="story-content">
+      <span class="cat">Water</span>
+      <h2>Groundwater Impact Assessment: Why It Is Critical for Industrial Expansion Projects</h2>
+      <p class="dek">CGWA regulations, aquifer mapping, and groundwater extraction licensing for industries.</p>
+      <div class="story-meta">August 2025 · 6 min read</div>
+    </div>
   </a>
   <hr class="divider" />
 
   <a class="story" data-cat="carbon" href="article-carbon-market.html">
-    <span class="cat">Climate</span>
-    <h2>India's Carbon Credit Market: How Businesses Can Benefit from the Carbon Trading Scheme</h2>
-    <p class="dek">An explainer on India's emerging domestic carbon market under the Energy Conservation Act 2022.</p>
-    <div class="story-meta">July 2025 · 8 min read</div>
+    <img class="story-thumb" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Carbon credit market" />
+    <div class="story-content">
+      <span class="cat">Climate</span>
+      <h2>India's Carbon Credit Market: How Businesses Can Benefit from the Carbon Trading Scheme</h2>
+      <p class="dek">An explainer on India's emerging domestic carbon market under the Energy Conservation Act 2022.</p>
+      <div class="story-meta">July 2025 · 8 min read</div>
+    </div>
   </a>
 
 </div>
@@ -356,7 +435,7 @@
       tab.classList.add('active');
       const filter = tab.dataset.filter;
       stories.forEach(s => {
-        s.style.display = (filter === 'all' || s.dataset.cat === filter) ? 'block' : 'none';
+        s.style.display = (filter === 'all' || s.dataset.cat === filter) ? 'flex' : 'none';
       });
       dividers.forEach(d => d.style.display = (filter === 'all') ? 'block' : 'none');
     });
