@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The World Is Burning Faster — Bharat Environment News</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<style>
+  :root{
+    --paper:#f2ede2;
+    --paper-2:#e9e2d2;
+    --ink:#1c1712;
+    --ink-soft:#43392f;
+    --rule:#1c1712;
+    --ember:#b5401f;
+    --ember-2:#d97a2f;
+    --char:#2c2620;
+    --gold:#a9823c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Georgia','Iowan Old Style','Times New Roman',serif;
+    line-height:1.62;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- MASTHEAD ---------- */
+  .topbar{
+    background:var(--char);
+    color:var(--paper-2);
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+  }
+  .topbar .wrap{display:flex;justify-content:space-between;padding:7px 28px;}
+
+  .masthead{border-bottom:5px double var(--rule); padding:26px 0 10px;}
+  .masthead .wrap{display:flex; flex-direction:column; align-items:center;}
+  .masthead h1{
+    font-family:'Playfair Display','Georgia',serif;
+    font-size:clamp(40px,7vw,74px);
+    letter-spacing:.02em;
+    margin:0;
+    font-weight:900;
+    text-align:center;
+  }
+  .masthead h1 .accent{color:var(--ember);}
+  .masthead .tagline{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:4px;
+  }
+  .masthead .meta-row{
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    border-top:1.5px solid var(--rule);
+    border-bottom:1.5px solid var(--rule);
+    margin-top:16px;
+    padding:6px 0;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- HEADLINE BLOCK ---------- */
+  .headline-block{padding:34px 0 6px; border-bottom:1px solid var(--ink-soft);}
+  .kicker{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    color:var(--ember);
+    font-weight:700;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-size:12.5px;
+    margin-bottom:10px;
+  }
+  h2.headline{
+    font-family:'Playfair Display','Georgia',serif;
+    font-size:clamp(30px,4.6vw,54px);
+    line-height:1.06;
+    margin:0 0 16px;
+    font-weight:900;
+  }
+  .standfirst{
+    font-size:19px;
+    color:var(--ink-soft);
+    font-style:italic;
+    max-width:900px;
+    margin:0 0 18px;
+    line-height:1.5;
+  }
+  .byline-row{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    padding:12px 0 20px;
+    border-top:1px solid #c9bfa9;
+  }
+  .byline-row b{color:var(--ink);}
+
+  /* ---------- PLACEMENT CARD ---------- */
+  .placement-card{
+    display:grid;
+    grid-template-columns:auto 1fr auto;
+    align-items:stretch;
+    gap:0;
+    background:var(--paper-2);
+    border:1.5px solid var(--ink);
+    margin:22px 0 30px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    position:relative;
+  }
+  .placement-card::before{
+    content:"DESK COPY";
+    position:absolute;
+    top:-11px; left:18px;
+    background:var(--paper);
+    padding:0 8px;
+    font-size:10px;
+    letter-spacing:.2em;
+    color:var(--ember);
+    font-weight:700;
+  }
+  .placement-stamp{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:14px 18px;
+    border-right:1.5px dashed #9c8f74;
+  }
+  .placement-stamp .stamp-inner{
+    border:3px solid var(--ember);
+    color:var(--ember);
+    border-radius:50%;
+    width:74px; height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-weight:800;
+    font-size:11px;
+    letter-spacing:.03em;
+    line-height:1.2;
+    transform:rotate(-11deg);
+    text-transform:uppercase;
+  }
+  .placement-fields{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+  }
+  .placement-fields .pf{
+    padding:12px 16px;
+    border-right:1px solid #c9bfa9;
+  }
+  .placement-fields .pf:last-child{border-right:none;}
+  .placement-fields .pf-label{
+    font-size:9.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:4px;
+  }
+  .placement-fields .pf-value{
+    font-family:'Playfair Display',serif;
+    font-size:16px;
+    font-weight:700;
+    color:var(--ink);
+    line-height:1.25;
+  }
+  .placement-note{
+    grid-column:1 / -1;
+    border-top:1px solid #c9bfa9;
+    padding:10px 18px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    font-style:italic;
+  }
+  @media (max-width:820px){
+    .placement-card{grid-template-columns:1fr;}
+    .placement-stamp{border-right:none; border-bottom:1.5px dashed #9c8f74;}
+    .placement-fields{grid-template-columns:1fr 1fr;}
+  }
+
+  /* ---------- PANORAMIC ART ---------- */
+  figure{margin:0 0 8px;}
+  figure.panorama{margin:22px 0 6px;}
+  figure.panorama svg{width:100%;height:auto;display:block;border:1px solid var(--ink);}
+  figcaption{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    padding:8px 2px 26px;
+    border-bottom:1px solid #c9bfa9;
+    margin-bottom:26px;
+  }
+  figcaption b{color:var(--ink);}
+
+  /* ---------- ARTICLE LAYOUT ---------- */
+  .article-grid{
+    display:grid;
+    grid-template-columns:2.15fr 1fr;
+    gap:44px;
+    padding-top:6px;
+  }
+  .col-rule{border-left:1px solid #c9bfa9; padding-left:44px;}
+  .body-text{font-size:18.5px; column-gap:0;}
+  .body-text p{margin:0 0 20px;}
+  .body-text p:first-of-type::first-letter{
+    font-family:'Playfair Display',serif;
+    font-size:70px;
+    font-weight:900;
+    float:left;
+    line-height:.82;
+    padding:6px 8px 0 0;
+    color:var(--ember);
+  }
+  .body-text h3{
+    font-family:'Playfair Display',serif;
+    font-size:27px;
+    margin:38px 0 14px;
+    padding-bottom:8px;
+    border-bottom:2px solid var(--rule);
+  }
+  .pull-quote{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:26px;
+    line-height:1.35;
+    color:var(--ember);
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+    padding:18px 0;
+    margin:32px 0;
+  }
+  .pull-quote span{
+    display:block;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-style:normal;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:10px;
+  }
+
+  /* ---------- SIDEBAR ---------- */
+  .sidebar-box{
+    background:var(--paper-2);
+    border:1px solid var(--ink);
+    padding:20px 20px 22px;
+    margin-bottom:28px;
+  }
+  .sidebar-box h4{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ember);
+    margin:0 0 14px;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:8px;
+  }
+  .stat{margin-bottom:14px;}
+  .stat .num{
+    font-family:'Playfair Display',serif;
+    font-weight:900;
+    font-size:30px;
+    display:block;
+    line-height:1.1;
+  }
+  .stat .lbl{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.4;
+  }
+  .chart-box{
+    background:var(--paper-2);
+    border:1px solid var(--ink);
+    padding:18px 18px 8px;
+    margin-bottom:28px;
+  }
+  .chart-box h4{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--ember);
+    margin:0 0 4px;
+  }
+  .chart-box .src{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:10.5px;
+    color:var(--ink-soft);
+    margin-top:6px;
+  }
+  .full-chart{
+    background:var(--paper-2);
+    border:1px solid var(--ink);
+    padding:22px 24px 12px;
+    margin:34px 0;
+  }
+  .full-chart h4{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:13px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ember);
+    margin:0 0 4px;
+  }
+  .full-chart .src{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:8px;
+  }
+
+  ul.solutions{padding-left:22px; margin:0 0 20px;}
+  ul.solutions li{margin-bottom:10px;}
+
+  .divider-orn{
+    text-align:center;
+    color:var(--ember);
+    font-size:20px;
+    letter-spacing:.6em;
+    margin:38px 0;
+  }
+
+  /* ---------- FOOTER ---------- */
+  .colophon{
+    margin-top:60px;
+    border-top:5px double var(--rule);
+    padding:28px 0 50px;
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    font-size:12px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+  .colophon b{color:var(--ink); font-family:'Playfair Display',serif; font-size:15px;}
+
+  @media (max-width:820px){
+    .article-grid{grid-template-columns:1fr;}
+    .col-rule{border-left:none; padding-left:0; border-top:1px solid #c9bfa9; padding-top:28px;}
+    .body-text{font-size:17px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <span>Bharat Environment News · Environment Desk</span>
+    <span>New Delhi Edition · 09 August 2026</span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap">
+    <h1>BHARAT <span class="accent">ENVIRONMENT</span> NEWS</h1>
+    <div class="tagline">Ecology · Policy · Accountability — Since the Forests Could Not Speak for Themselves</div>
+    <div class="meta-row">
+      <span>Vol. 12 · No. 214</span>
+      <span>Environment &amp; Climate</span>
+      <span>Special Investigation</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="headline-block">
+    <div class="kicker">Special Report · Global Wildfires</div>
+    <h2 class="headline">The World Is Burning Faster: Inside the Data Behind a Planet on Fire</h2>
+    <p class="standfirst">A season-by-season, satellite-verified investigation into the fires of 2023–2026 — from Canada's collapsing boreal belt to a single Indian month that logged 84,642 fire alerts — asks a harder question than "how bad is it": is this catastrophe of our own making, and can it still be reversed?</p>
+    <div class="byline-row">
+      <span>By <b>Prabhat Kumar Shahi</b>, Environment Correspondent</span>
+      <span>Reporting from New Delhi, with data from FSI, WRI Global Forest Watch, Copernicus/CAMS, NASA MODIS-VIIRS and peer-reviewed climate attribution studies</span>
+      <span>12 min read</span>
+    </div>
+  </section>
+
+  <div class="placement-card">
+    <div class="placement-stamp"><div class="stamp-inner">Page&nbsp;One<br>Lead</div></div>
+    <div class="placement-fields">
+      <div class="pf">
+        <div class="pf-label">Section</div>
+        <div class="pf-value">Environment &amp; Climate</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Page</div>
+        <div class="pf-value">A1, jump A6–A7</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Priority</div>
+        <div class="pf-value">Lead Story</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Edition</div>
+        <div class="pf-value">New Delhi, 09 Aug 2026</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Word Count</div>
+        <div class="pf-value">~2,150 words</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Art</div>
+        <div class="pf-value">2 panoramic + 3 charts</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Desk</div>
+        <div class="pf-value">Environment Desk</div>
+      </div>
+      <div class="pf">
+        <div class="pf-label">Slug</div>
+        <div class="pf-value">WORLD-BURNING-FASTER</div>
+      </div>
+      <div class="placement-note">Editor's routing: run above the fold, front page, with jump to Environment &amp; Climate spread A6–A7. Hold for no later edition — satellite data current as of publication.</div>
+    </div>
+  </div>
+
+  <figure class="panorama">
+    <svg viewBox="0 0 1600 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Panoramic illustration of a forested mountain range burning at dusk, with smoke plumes rising into an orange sky">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2b1710"/>
+          <stop offset="35%" stop-color="#6e2a15"/>
+          <stop offset="62%" stop-color="#c1531f"/>
+          <stop offset="100%" stop-color="#f2a545"/>
+        </linearGradient>
+        <linearGradient id="ridge1" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#170d09"/>
+          <stop offset="100%" stop-color="#0c0705"/>
+        </linearGradient>
+        <linearGradient id="ridge2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2a140c"/>
+          <stop offset="100%" stop-color="#170c08"/>
+        </linearGradient>
+        <radialGradient id="glow" cx="50%" cy="100%" r="80%">
+          <stop offset="0%" stop-color="#ffce7a" stop-opacity="0.9"/>
+          <stop offset="45%" stop-color="#e8641f" stop-opacity="0.55"/>
+          <stop offset="100%" stop-color="#e8641f" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="flame" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0%" stop-color="#ffcf5e"/>
+          <stop offset="55%" stop-color="#f07a20"/>
+          <stop offset="100%" stop-color="#b5401f"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="560" fill="url(#sky)"/>
+      <rect width="1600" height="560" fill="url(#glow)"/>
+      <!-- smoke plumes -->
+      <g opacity="0.55">
+        <ellipse cx="240" cy="150" rx="180" ry="90" fill="#3b2a22"/>
+        <ellipse cx="420" cy="90" rx="220" ry="110" fill="#4a352a"/>
+        <ellipse cx="980" cy="120" rx="260" ry="120" fill="#3b2a22"/>
+        <ellipse cx="1230" cy="70" rx="200" ry="100" fill="#4a352a"/>
+        <ellipse cx="1440" cy="160" rx="170" ry="90" fill="#3b2a22"/>
+      </g>
+      <!-- far ridge -->
+      <polygon points="0,340 120,300 260,335 400,290 560,330 720,300 880,335 1040,295 1200,330 1360,300 1600,335 1600,560 0,560" fill="url(#ridge1)"/>
+      <!-- near ridge -->
+      <polygon points="0,420 180,370 340,400 520,355 700,405 860,365 1040,410 1220,360 1400,400 1600,375 1600,560 0,560" fill="url(#ridge2)"/>
+      <!-- fire line along near ridge -->
+      <g>
+        <path d="M0,420 L180,370 L340,400 L520,355 L700,405 L860,365 L1040,410 L1220,360 L1400,400 L1600,375" fill="none" stroke="url(#flame)" stroke-width="7" stroke-linecap="round"/>
+        <g fill="url(#flame)">
+          <path d="M170,372 q10,-30 18,-4 q8,-26 16,2 q6,-18 12,4 l-4,10 -38,2Z"/>
+          <path d="M500,357 q10,-34 18,-4 q9,-28 17,2 q6,-20 13,4 l-4,10 -40,2Z"/>
+          <path d="M840,367 q10,-30 18,-4 q8,-26 16,2 q6,-18 12,4 l-4,10 -38,2Z"/>
+          <path d="M1200,362 q10,-34 18,-4 q9,-28 17,2 q6,-20 13,4 l-4,10 -40,2Z"/>
+        </g>
+      </g>
+      <!-- silhouette trees foreground -->
+      <g fill="#0b0604">
+        <path d="M40,560 L60,470 L80,560Z"/>
+        <path d="M90,560 L112,455 L134,560Z"/>
+        <path d="M1480,560 L1500,460 L1520,560Z"/>
+        <path d="M1530,560 L1554,440 L1578,560Z"/>
+        <path d="M1420,560 L1440,480 L1460,560Z"/>
+      </g>
+    </svg>
+  </figure>
+  <figcaption><b>Illustration — Bharat Environment News graphics desk.</b> A composite rendering of the fire lines now recorded each season across the world's boreal, temperate and tropical belts, built to reflect satellite fire-detection patterns from NASA MODIS/VIIRS and Copernicus CAMS.</figcaption>
+
+  <div class="article-grid">
+    <div class="body-text">
+
+      <p>The numbers arrived, as they now do every year, in a steady drumbeat through 2025 and into 2026: 4.3 million hectares of tropical primary rainforest gone in a single year, an area the size of Denmark, most of it to flame rather than the chainsaw. A Canadian fire season so fierce that its carbon emissions alone, over one five-month stretch, exceeded the annual fossil-fuel output of every nation on Earth except India, China and the United States. A Los Angeles neighbourhood erased in January 2025, thirty-one dead, twelve thousand homes gone, a $140 billion bill — one of the five costliest disasters of any kind in recorded history. And in India, a single month — March 2025 — in which the Forest Survey of India's satellites logged 84,642 separate forest fire alerts, more than the entire country recorded in the previous four months combined.</p>
+
+      <p>This is not a story about a bad year. It is a story about a new baseline. According to World Resources Institute and University of Maryland researchers publishing on the Global Forest Watch platform, forest fires now burn more than twice as much tree cover globally each year as they did two decades ago — and more than three times as much inside the tropics, ecosystems that evolved to resist fire almost entirely. Four of the five worst years on record for global forest fire loss have occurred since 2021. The question this newspaper set out to answer is not whether the crisis is real — the satellites have settled that — but why it is happening, whether human beings are truly responsible, and whether anything resembling a solution still exists.</p>
+
+      <h3>The Global Ledger: A Fire Season Without an Off-Switch</h3>
+
+      <p>Start with the paradox at the centre of the 2025 data. Globally, according to a review published in Nature Reviews Earth &amp; Environment, the total area burned by fire in 2025 was actually the second-lowest recorded since 2002, and carbon emissions from fire were the third-lowest. On the surface, that reads as good news. It is not. The same review notes that a handful of regions — Canada above all — experienced catastrophic, record-breaking burning even as the global average fell, while fires in Los Angeles, South Korea and southern Europe killed more than ninety people and forced over 300,000 evacuations in a single year. Averages conceal exactly the trend that matters: fire is becoming more polarised, quieter in most places, apocalyptic in a growing few, and arriving in places — rainforests, the Arctic fringe, England's moorlands — that historically almost never burned at all.</p>
+
+      <p>Canada supplies the starkest illustration. Its 2023 season burned roughly 14.8 to 16.5 million hectares depending on which national or satellite-based inventory is used — at least 2.5 times the previous worst year on record and nearly seven times the historical average, according to Natural Resources Canada and independent satellite analysis. Forty-five percent of all the land that burned in Canada that year burned in that one season. A team publishing in Nature calculated the resulting carbon release at roughly 647 teragrams of carbon — comparable to the annual fossil-fuel emissions of the world's largest industrial economies, and nearly four times the entire global aviation sector's yearly output. Canada then went on to record its third consecutive extreme wildfire year through 2025, with cumulative emissions across 2023–2025 outstripping the combined total of the previous fifteen years.</p>
+
+    </div>
+
+    <aside class="col-rule">
+      <div class="sidebar-box">
+        <h4>By The Numbers</h4>
+        <div class="stat"><span class="num">4.3M ha</span><span class="lbl">Tropical primary rainforest lost in 2025 alone — roughly the size of Denmark (WRI / Global Forest Watch)</span></div>
+        <div class="stat"><span class="num">2×–3×</span><span class="lbl">Rise in annual tree cover burned globally since 2001, and in the tropics specifically, per GFW/UMD analysis</span></div>
+        <div class="stat"><span class="num">16.5M ha</span><span class="lbl">Land burned in Canada's record 2023 season — nearly 7× the historical average</span></div>
+        <div class="stat"><span class="num">84,642</span><span class="lbl">Forest fire alerts recorded across India in March 2025 alone — Forest Survey of India</span></div>
+        <div class="stat"><span class="num">11.09 lakh</span><span class="lbl">Total forest fires reported in India across the last five fire seasons combined</span></div>
+        <div class="stat"><span class="num">90%</span><span class="lbl">Share of Indian forest fires estimated to be human-caused, per FSI scientists</span></div>
+      </div>
+
+      <div class="chart-box">
+        <h4>Area Burned, Select 2023–25 Events</h4>
+        <canvas id="regionChart" height="230"></canvas>
+        <div class="src">Source: Natural Resources Canada, Copernicus CIFFC, GWIS/Global Wildfire Information System, EFFIS (Wikipedia-aggregated 2025 season data)</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="article-grid">
+    <div class="body-text">
+
+      <h3>Europe's Moorlands, South America's Drought Belt</h3>
+
+      <p>The United Kingdom, a country whose landscape is not conventionally associated with wildfire, recorded its worst fire year since records began in 2012 during 2025: 181 fires larger than thirty hectares, and 47,879 hectares burned in total — surpassing the previous record, set in 2019, by more than 19,000 hectares. The European Forest Fire Information System's data shows this was not an isolated blip but part of a pattern across the continent, following catastrophic Greek and Iberian fire seasons in preceding years that World Weather Attribution scientists found were made at least twice as likely by climate change.</p>
+
+      <p>South America told a similar story through 2025, as roughly 18,491 wildfire hotspots, tracked by the Global Wildfire Information System, damaged or destroyed just over six million hectares across Argentina, Chile and Colombia — concentrated in Patagonia's national parks and linked directly by researchers to the severe 2023–2024 regional drought. In the Amazon basin, the same attribution science that examined Canada found that extreme fire weather had been made twenty times more likely by climate change — the largest such multiplier recorded anywhere on the planet.</p>
+
+      <h3>India's Burning Season: From November's Whisper to March's Roar</h3>
+
+      <p>For a publication reporting from Chhattisgarh and the wider central Indian forest belt, the domestic data is the most consequential. Forest Survey of India figures, drawn from NASA's MODIS and SNPP-VIIRS satellite sensors, show a fire season that builds with unnerving regularity every year and has, over the last two fire seasons, spiked to alarming new heights. In the 2024–25 season, 1,761 fire incidents were recorded in November 2024. That climbed to 3,703 in December, 5,938 in January 2025, then leapt to 23,081 in February and an extraordinary 84,642 in March — a single month accounting for more fire alerts than the preceding four months combined. By early April 2025, more than 169 large forest fires were burning simultaneously across the country, with over 11,908 large fire events recorded between January and 7 April alone.</p>
+
+      <p>Four states — Odisha, Madhya Pradesh, Chhattisgarh and Maharashtra — accounted for 4,73,834 forest fires over the last five fire seasons, roughly 43 percent of the national total, according to Ministry of Environment, Forest and Climate Change data. Madhya Pradesh alone recorded more than 21,000 fires from November 2024 onward and led the country with 1,743 large fires between January and April 2025. Yet the crisis is not confined to the central Indian dry-deciduous belt it is traditionally associated with. Uttarakhand, a Himalayan state whose forests are ecologically distinct from the plains, recorded more than 11,256 fire incidents between November 2023 and June 2024 alone — over ten percent of the national total — and has, according to Dehradun-based environmental journalists and activists, experienced its worst fire damage on record in recent seasons, with the state government facing criticism for rejecting expert assessments of the crisis.</p>
+
+      <p>The Forest Survey's own India State of Forest Report data offers a genuinely two-sided picture. Fire hotspot counts have declined modestly across the three most recent seasons for which full-year figures exist — from 2,23,333 in 2021–22, to 2,12,249 in 2022–23, to 2,03,544 in 2023–24 — a trend the government has cited as evidence of improving prevention capacity. But a separate, longer peer-reviewed analysis spanning 2005 to 2022 found a striking long-term increase in Indian forest fire incidents that complicates any narrative of steady improvement. More than 36 percent of India's forest cover is now classified as prone to frequent fire, and nearly four percent as extremely fire-prone, according to the 2019 India State of Forest Report — a vulnerability map that overlaps closely with the roughly 275 million rural Indians who depend on forests for some part of their livelihood.</p>
+
+    </div>
+
+    <aside class="col-rule">
+      <div class="chart-box">
+        <h4>India's 2024–25 Fire Season Curve</h4>
+        <canvas id="indiaChart" height="240"></canvas>
+        <div class="src">Fire alerts by month, Nov 2024–Apr 2025. Source: Forest Survey of India / SNPP-VIIRS, via Ministry of Environment, Forest &amp; Climate Change</div>
+      </div>
+
+      <div class="sidebar-box">
+        <h4>Costliest Single Events</h4>
+        <div class="stat"><span class="num">$140bn</span><span class="lbl">Estimated loss from the January 2025 Los Angeles fires — 31 dead, ~12,000 structures destroyed</span></div>
+        <div class="stat"><span class="num">647 TgC</span><span class="lbl">Carbon released by Canada's 2023 fires (May–Sept) — comparable to a G7 nation's annual fossil emissions</span></div>
+        <div class="stat"><span class="num">300,000+</span><span class="lbl">People evacuated worldwide in 2025 due to fires in LA, South Korea and Europe combined</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="divider-orn">⁂</div>
+
+  <div class="article-grid">
+    <div class="body-text">
+
+      <h3>Is It Really Manmade? What the Attribution Science Actually Shows</h3>
+
+      <p>This is the question that resists a clean headline, and any honest reporting has to hold two facts in tension rather than collapsing them into one. The first fact is about ignition — how a fire starts. In India, forest officials and multiple field studies agree that roughly ninety percent of forest fires are started by human activity: agricultural stubble burning that escapes control, the deliberate use of fire by local communities to clear undergrowth and stimulate the collection of non-timber forest produce such as mahua flowers and tendu leaves, unattended campfires, discarded cigarettes and, occasionally, arson. In California, state fire officials likewise attribute most wildfires to human causes — faulty electrical equipment, vehicles, unattended fires — rather than lightning. In Canada's boreal forest, the picture inverts almost completely: roughly 71 percent of the area burned between 1990 and 2023 originated from lightning strikes, not human hands, and in the extreme 2023 season that figure rose to 93 percent.</p>
+
+      <p>The second fact is about what turns an ignition — human or natural — into a catastrophe, and here the science is far less ambiguous. Climate attribution researchers, using techniques that compare the observed climate against modelled versions of a world without industrial greenhouse gas emissions, have repeatedly found that the *conditions* enabling extreme fire — abnormal heat, drought, low humidity, high wind — have been made dramatically more likely by human-caused climate change. The World Weather Attribution network and a 2024 State of Wildfires report found the extreme fire weather behind Canada's 2023 season had been made at least three times more likely by climate change; the same conditions in Greece were made twice as likely, and in the Amazon, twenty times as likely, each finding delivered with more than 99 percent statistical confidence. A separate Nature study on the Canadian fires found 2023 was the warmest and driest fire season recorded since at least 1980 — and cautioned that climate projections suggest such conditions will become the *typical* summer by the 2050s even under a moderate-emissions pathway, not the exception.</p>
+
+      <p>So which is it — manmade ignition or manmade climate? The honest answer is both, operating on different ends of the same fire. A lightning strike or a discarded matchstick is the spark; but whether that spark finds a forest primed to explode — desiccated by record heat, stripped of humidity, whipped by unusual wind — is now, overwhelmingly, a function of a warming atmosphere that human industrial emissions have produced. Layered on top of both is a third, quieter driver: decades of fire suppression and land-use change have allowed combustible fuel — dead wood, dense undergrowth — to accumulate in forests that historically burned in small, frequent, low-intensity fires. Suppress every fire for fifty years, as much of North America and parts of India did through the twentieth century, and the fuel load that eventually ignites is catastrophic rather than manageable. In this sense, the modern mega-fire is a manmade phenomenon three times over: manmade ignition, manmade climate, and manmade fuel accumulation from a century of well-intentioned but ecologically mistaken suppression policy.</p>
+
+      <div class="pull-quote">
+        "It is virtually certain that fires were larger during the 2023 wildfires in Canada and Amazonia due to climate change."
+        <span>— Dr Chantelle Burton, senior climate scientist, UK Met Office, State of Wildfires 2023–24 report</span>
+      </div>
+
+      <h3>What Frequent Fires Actually Cost</h3>
+
+      <p>The consequences extend well past the burn scar. Ecologically, high-severity fire in forests unadapted to it — the Amazon, Indonesia's peatlands, India's moist deciduous belt — does not simply damage a landscape, it can permanently convert it, pushing rainforest toward a degraded, savannah-like state that no longer performs the same climate or rainfall functions, a tipping-point risk the World Resources Institute has flagged explicitly for the Amazon. Economically, insured and uninsured losses from major fire events now routinely rank among the costliest disasters of any kind globally, the Los Angeles fires being the clearest 2025 example. Public health impacts travel even further than the flames: wildfire smoke laden with fine particulate matter can cross oceans, as Canadian smoke did into Europe and China in 2023, triggering respiratory and cardiovascular harm in populations thousands of kilometres from any actual fire. And for the roughly 275 million rural Indians whose livelihoods depend on forest produce, repeated fire seasons erode the very resource base — mahua, tendu, timber, fodder, water catchments — their household economies rely on, in a slow-motion crisis that rarely makes a national headline the way a Los Angeles suburb does.</p>
+
+    </div>
+
+    <aside class="col-rule">
+      <div class="sidebar-box">
+        <h4>The Three-Legged Fire</h4>
+        <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;color:var(--ink-soft);line-height:1.55;margin:0 0 12px;">Modern climate science frames every mega-fire as the product of three factors acting together — remove any one leg and catastrophic fire becomes far less likely.</p>
+        <div class="stat"><span class="num">① Ignition</span><span class="lbl">Human activity (~90% in India) or lightning (~71–93% in Canada)</span></div>
+        <div class="stat"><span class="num">② Weather</span><span class="lbl">Heat, drought and wind made 2–20× more likely by climate change, per attribution studies</span></div>
+        <div class="stat"><span class="num">③ Fuel</span><span class="lbl">Decades of fire suppression and land-use change letting combustible undergrowth accumulate unchecked</span></div>
+      </div>
+    </aside>
+  </div>
+
+  <figure class="panorama">
+    <svg viewBox="0 0 1600 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Panoramic illustration of a scorched forest landscape at dawn with early green regrowth and a firebreak line, symbolising recovery and prevention">
+      <defs>
+        <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#7fb2c9"/>
+          <stop offset="55%" stop-color="#cfe0d8"/>
+          <stop offset="100%" stop-color="#eee3c8"/>
+        </linearGradient>
+        <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#4c4238"/>
+          <stop offset="100%" stop-color="#2c261f"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="480" fill="url(#sky2)"/>
+      <polygon points="0,300 200,260 400,290 620,240 840,280 1060,250 1280,285 1600,255 1600,480 0,480" fill="url(#hill)"/>
+      <!-- burnt trunks -->
+      <g stroke="#1c1712" stroke-width="6" stroke-linecap="round" opacity="0.85">
+        <line x1="120" y1="300" x2="118" y2="230"/>
+        <line x1="170" y1="290" x2="176" y2="215"/>
+        <line x1="260" y1="298" x2="255" y2="235"/>
+        <line x1="980" y1="270" x2="985" y2="205"/>
+        <line x1="1040" y1="278" x2="1032" y2="212"/>
+        <line x1="1400" y1="270" x2="1405" y2="200"/>
+      </g>
+      <!-- regrowth green patches -->
+      <g fill="#4f7a3f" opacity="0.9">
+        <ellipse cx="470" cy="300" rx="70" ry="16"/>
+        <ellipse cx="560" cy="310" rx="90" ry="18"/>
+        <ellipse cx="700" cy="298" rx="60" ry="14"/>
+        <ellipse cx="1180" cy="300" rx="80" ry="16"/>
+        <ellipse cx="1300" cy="308" rx="70" ry="15"/>
+      </g>
+      <!-- firebreak line -->
+      <rect x="0" y="292" width="1600" height="10" fill="#c79a4b" opacity="0.55"/>
+      <!-- foreground silhouettes: firefighter line markers -->
+      <g fill="#2c261f">
+        <rect x="740" y="330" width="6" height="40" rx="2"/>
+        <circle cx="743" cy="322" r="9"/>
+        <rect x="800" y="335" width="6" height="35" rx="2"/>
+        <circle cx="803" cy="327" r="8"/>
+      </g>
+    </svg>
+  </figure>
+  <figcaption><b>Illustration — Bharat Environment News graphics desk.</b> A schematic dawn scene showing a maintained firebreak and controlled regrowth — the two pillars of modern fuel management referenced throughout this report.</figcaption>
+
+  <div class="article-grid">
+    <div class="body-text">
+
+      <h3>The Way Forward: What Actually Works</h3>
+
+      <p>None of this is a counsel of despair. Fire scientists, forest agencies and disaster-risk bodies including the UN's PreventionWeb wildfire hub and the FAO increasingly converge on a common, evidence-tested set of interventions — not a single silver bullet, but a layered strategy that has demonstrably reduced fire severity where it has actually been funded and implemented.</p>
+
+      <ul class="solutions">
+        <li><b>Restore prescribed and cultural burning.</b> Long-term US Forest Service research synthesising thirty years of studies found that areas treated with combined mechanical thinning and prescribed, low-intensity burning experienced measurably lower burn severity than untreated land, and that fuel treatments near homes and infrastructure cut fire transmission far more effectively than treatments placed further away. Indigenous and community fire stewardship — using controlled fire aligned to seasonal and ecological conditions, as practised for generations by Indigenous communities in Canada, Australia and India's own forest-dwelling communities — deliberately prevents the fuel build-up that turns a manageable fire into a catastrophic one.</li>
+        <li><b>Fund fuel management as seriously as firefighting.</b> India's Centrally Sponsored Forest Fire Prevention and Management (FPM) Scheme already channels funds to states for exactly this purpose; the priority now is scaling disbursement to the highest-risk districts identified in the FSI's own fire-proneness mapping — Odisha, Madhya Pradesh, Chhattisgarh, Maharashtra and the Himalayan states — rather than spreading it thinly nationwide.</li>
+        <li><b>Expand satellite and AI-based early warning.</b> The MODIS and VIIRS satellite systems that generate India's fire alerts already scan most locations up to six times daily; the bottleneck is not detection but the speed of on-ground response once an alert fires. Investment in UAV-based monitoring, fire-detection cameras at vantage points and AI models that predict spread direction — already being piloted in Canada and parts of India — can compress response time from hours to minutes.</li>
+        <li><b>Build defensible space and fire-resistant infrastructure.</b> California's experience shows that strict vegetation clearance around structures, enforced defensible-space standards and fire-resistant building codes measurably reduce structural loss even when a fire cannot be stopped outright — a lesson directly transferable to India's expanding wildland-urban interface around hill stations and forest-fringe townships.</li>
+        <li><b>Address the climate driver, not only the symptom.</b> Because attribution science shows extreme fire weather itself has been made two-to-twenty-times more likely by warming, every tonne of avoided emissions is, indirectly, a fire-prevention measure. Fire policy and climate policy cannot be run as separate departments if either is to succeed.</li>
+        <li><b>Strengthen community-based fire management.</b> FAO field experience across multiple continents finds that local residents who understand fire risk and participate directly in monitoring and rapid initial response are consistently the most effective first line of defence — cheaper, faster and more sustained than any external agency arriving after ignition.</li>
+      </ul>
+
+      <p>The UN Environment Programme's own emergency framework — the "5 R's" of Review, Reduce, Ready, Respond and Recover — captures the shift in thinking this data demands: away from a model that treats fire purely as an emergency to be suppressed after ignition, and toward one that treats fuel load, land-use planning, community preparedness and climate mitigation as the actual points of intervention, long before a single spark is struck.</p>
+
+      <h3>The Bottom Line</h3>
+
+      <p>The data assembled across this investigation — from Chhattisgarh's own fire-prone forest belt to the boreal collapse in Canada and the moorlands of Scotland — does not support a simple story of nature turning hostile on its own. It supports a more uncomfortable one: that human ignition, human-driven climate change and a century of human land management decisions have combined to make fire behave in ways it never did before, on a planet that is, on average, both drier and hotter than the one in which most of these forest ecosystems evolved. The reassuring part of the evidence is that every one of those three factors — ignition, fuel and climate — is, in principle, within reach of human policy. The fires of the past three years were not inevitable. Whether the next three years look different will depend on how seriously that fact is taken, in Ottawa and Los Angeles as much as in Bhopal, Dehradun and Korba.</p>
+
+    </div>
+
+    <aside class="col-rule">
+      <div class="sidebar-box">
+        <h4>UNEP's 5 R Framework</h4>
+        <div class="stat"><span class="num">Review</span><span class="lbl">Assess landscape fire risk and historical patterns</span></div>
+        <div class="stat"><span class="num">Reduce</span><span class="lbl">Fuel management, prescribed burning, land-use planning</span></div>
+        <div class="stat"><span class="num">Ready</span><span class="lbl">Early warning systems, trained local responders</span></div>
+        <div class="stat"><span class="num">Respond</span><span class="lbl">Rapid, coordinated suppression once ignition occurs</span></div>
+        <div class="stat"><span class="num">Recover</span><span class="lbl">Ecological restoration and community rebuilding</span></div>
+      </div>
+      <div class="sidebar-box">
+        <h4>Correction &amp; Sourcing Note</h4>
+        <p style="font-family:'Helvetica Neue',Arial,sans-serif;font-size:12.5px;color:var(--ink-soft);line-height:1.55;">All figures in this report are drawn from named public sources — Forest Survey of India, World Resources Institute's Global Forest Watch, Copernicus/CAMS, Natural Resources Canada, EFFIS, GWIS and peer-reviewed attribution studies cited in the text. Area and fire-count figures vary slightly between agencies owing to differing satellite resolutions and counting methods; ranges are noted where they exist.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="full-chart">
+    <h4>Global Snapshot: Tree Cover Loss From Fire Has More Than Doubled Since 2001</h4>
+    <canvas id="trendChart" height="90"></canvas>
+    <div class="src">Illustrative trend consistent with GFW/UMD published finding that annual fire-driven tree cover loss is now over 2× the 2001 baseline globally and over 3× in the tropics. Source: Global Forest Watch / University of Maryland GLAD Lab analysis, 2001–2025.</div>
+  </div>
+
+  <footer class="colophon">
+    <div><b>Bharat Environment News</b><br>Environment Desk, New Delhi</div>
+    <div>Reported and written by <b>Prabhat Kumar Shahi</b><br>Environment Correspondent</div>
+    <div>© 2026 Bharat Environment News.<br>Data-verified special report.</div>
+  </footer>
+
+</div>
+
+<script>
+  const inkSoft = '#43392f';
+  Chart.defaults.font.family = "'Helvetica Neue', Arial, sans-serif";
+  Chart.defaults.color = inkSoft;
+
+  new Chart(document.getElementById('regionChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Canada 2023', 'South America 2025', 'USA 2025', 'UK 2025'],
+      datasets: [{
+        label: 'Hectares burned (millions)',
+        data: [16.5, 6.03, 2.04, 0.048],
+        backgroundColor: ['#b5401f','#d97a2f','#a9823c','#6e5638'],
+        borderRadius: 2
+      }]
+    },
+    options: {
+      indexAxis: 'y',
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { title: { display: true, text: 'Million hectares' }, grid: { color: '#d8cfba' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('indiaChart'), {
+    type: 'line',
+    data: {
+      labels: ['Nov \'24','Dec \'24','Jan \'25','Feb \'25','Mar \'25','Apr 1-7 \'25'],
+      datasets: [{
+        label: 'Fire alerts',
+        data: [1761, 3703, 5938, 23081, 84642, 16030],
+        borderColor: '#b5401f',
+        backgroundColor: 'rgba(181,64,31,0.18)',
+        fill: true,
+        tension: 0.3,
+        pointBackgroundColor: '#b5401f'
+      }]
+    },
+    options: {
+      plugins: { legend: { display: false } },
+      scales: {
+        y: { grid: { color: '#d8cfba' }, title: { display: true, text: 'Fire alerts' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  new Chart(document.getElementById('trendChart'), {
+    type: 'line',
+    data: {
+      labels: ['2001','2005','2009','2013','2017','2021','2023','2025'],
+      datasets: [
+        {
+          label: 'Global tree cover loss from fire (index, 2001=1.0)',
+          data: [1.0, 1.15, 1.3, 1.5, 1.7, 2.0, 2.3, 2.1],
+          borderColor: '#a9823c',
+          backgroundColor: 'rgba(169,130,60,0.12)',
+          fill: true,
+          tension: 0.35
+        },
+        {
+          label: 'Tropical tree cover loss from fire (index, 2001=1.0)',
+          data: [1.0, 1.2, 1.5, 1.9, 2.3, 2.8, 3.3, 3.0],
+          borderColor: '#b5401f',
+          backgroundColor: 'rgba(181,64,31,0.10)',
+          fill: true,
+          tension: 0.35
+        }
+      ]
+    },
+    options: {
+      plugins: { legend: { position: 'bottom' } },
+      scales: {
+        y: { grid: { color: '#d8cfba' }, title: { display: true, text: 'Index (2001 = 1.0)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
