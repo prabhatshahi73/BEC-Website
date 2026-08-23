@@ -10,16 +10,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --green-dark:#1a3c2e; --green-mid:#2d6a4f; --red:#c0272d; --cream:#f7f5f1;
-    --ink:#1c1c1c; --muted:#6b7280; --border:#e2ddd2;
+    --green-dark:#0c2015; --green-mid:#1f4a30; --red:#b9812c; --cream:#f2ede0;
+    --ink:#161f18; --muted:#5c6b5a; --border:#d9d2bc; --teal:#0c4f4a; --teal-light:#dcece9;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);}
-  .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;}
+  body{
+    font-family:'DM Sans',sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(31,74,48,0.05), transparent 40%),
+      radial-gradient(circle at 88% 30%, rgba(12,79,74,0.05), transparent 45%),
+      var(--cream);
+    color:var(--ink);
+  }
+  a{color:inherit;text-decoration:none;}
+
+  /* ---------- Utility bar ---------- */
+  .util-bar{background:var(--green-dark);color:#dfe8de;font-family:'DM Sans',sans-serif;font-size:0.72rem;padding:0.4rem 1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.4rem;}
+  .util-bar a{color:#dfe8de;opacity:0.85;}
+  .util-bar a:hover{opacity:1;text-decoration:underline;}
+  .util-left{display:flex;gap:1rem;flex-wrap:wrap;}
+
+  /* ---------- Masthead ---------- */
+  .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0.9rem 1.25rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:200;}
   .brand{display:flex;align-items:center;gap:8px;text-decoration:none;}
   .brand-mark{font-size:1.4rem;}
   .brand-text{font-family:'Playfair Display',serif;font-weight:700;font-size:1.15rem;color:var(--ink);line-height:1.1;}
   .brand-text small{display:block;font-family:'DM Sans',sans-serif;font-weight:500;font-size:0.6rem;letter-spacing:1.5px;color:var(--red);text-transform:uppercase;margin-top:1px;}
+  .search-box{display:flex;align-items:center;gap:8px;}
+  .search-box input{border:1px solid var(--border);border-radius:20px;padding:0.4rem 0.9rem;font-size:0.8rem;font-family:'DM Sans',sans-serif;width:180px;}
   .hamburger{background:none;border:none;cursor:pointer;width:40px;height:40px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;}
   .hamburger span{display:block;width:24px;height:2.5px;background:var(--ink);border-radius:2px;transition:transform .25s, opacity .25s;}
   .hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
@@ -33,44 +51,111 @@
   .drawer a:hover{color:var(--red);}
   .drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.35);z-index:290;opacity:0;pointer-events:none;transition:opacity .25s;}
   .drawer-overlay.open{opacity:1;pointer-events:auto;}
-  .cat-tabs{background:var(--green-dark);overflow-x:auto;white-space:nowrap;padding:0 1.25rem;}
+
+  /* ---------- Category nav ---------- */
+  .cat-tabs{background:var(--green-dark);overflow-x:auto;white-space:nowrap;padding:0 1.25rem;position:sticky;top:0;z-index:150;}
   .cat-tabs::-webkit-scrollbar{display:none;}
   .cat-tab{display:inline-block;padding:0.7rem 0.9rem;color:rgba(255,255,255,0.75);font-size:0.78rem;font-weight:600;letter-spacing:0.4px;text-transform:uppercase;cursor:pointer;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none;font-family:'DM Sans',sans-serif;}
   .cat-tab.active{color:#fff;border-bottom-color:var(--red);}
-  .now-strip{padding:1.4rem 1.25rem 0.6rem;}
-  .now-strip h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:0.8rem;color:var(--ink);}
-  .now-scroll{display:flex;gap:0.9rem;overflow-x:auto;padding-bottom:0.5rem;}
-  .now-scroll::-webkit-scrollbar{height:5px;}
-  .now-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:10px;}
-  .now-card{flex:0 0 220px;background:var(--cream);border:1px solid var(--border);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);}
-  .now-card img{width:100%;height:110px;object-fit:cover;display:block;}
-  .now-card .nc-body{padding:0.6rem 0.75rem;}
-  .now-card .nc-cat{color:var(--red);font-size:0.66rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;}
-  .now-card h5{font-family:'Playfair Display',serif;font-size:0.88rem;line-height:1.3;margin-top:0.25rem;font-weight:600;}
-  .feed{max-width:760px;margin:0 auto;padding:0.4rem 1.25rem 3rem;}
-  .story{display:flex;gap:1rem;align-items:flex-start;text-decoration:none;color:var(--ink);padding:1.05rem 0;}
-  .story-thumb{width:150px;height:105px;object-fit:cover;border-radius:8px;flex-shrink:0;display:block;background:var(--border);}
-  .story-content{flex:1;min-width:0;}
-  .story .cat{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;color:var(--red);margin-bottom:0.35rem;}
-  .story h2{font-family:'Playfair Display',serif;font-weight:600;font-size:1.15rem;line-height:1.32;color:var(--ink);}
-  .story:hover h2{text-decoration:underline;}
-  .story .dek{font-size:0.86rem;color:var(--muted);margin-top:0.35rem;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-  .story .story-meta{font-size:0.74rem;color:#9a9a9a;margin-top:0.45rem;}
-  .divider{border:none;border-top:1px solid var(--border);}
-  footer{background:var(--green-dark);color:rgba(255,255,255,0.7);text-align:center;padding:2rem 1rem;font-size:0.85rem;}
+
+  /* ---------- Breaking ticker ---------- */
+  .ticker-wrap{background:var(--teal-light);border-bottom:1px solid #bcd6d2;display:flex;align-items:center;overflow:hidden;}
+  .ticker-label{background:var(--teal);color:#fff;font-family:'DM Sans',sans-serif;font-weight:700;font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;padding:0.5rem 0.9rem;flex-shrink:0;}
+  .ticker-track{display:flex;white-space:nowrap;animation:scrollTicker 32s linear infinite;padding:0.5rem 0;}
+  .ticker-track span{margin-right:3rem;font-size:0.82rem;color:#0c332f;font-weight:500;}
+  @keyframes scrollTicker{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- Nature band ---------- */
+  .nature-band{position:relative;height:210px;overflow:hidden;}
+  .nature-band img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(0.92) brightness(0.72);}
+  .nature-band .overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(12,32,21,0.15), rgba(12,32,21,0.75));display:flex;align-items:flex-end;padding:1.4rem 1.25rem;}
+  .nature-band .overlay-text{max-width:1180px;margin:0 auto;width:100%;}
+  .nature-band .overlay-text p{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:#f2ede0;line-height:1.4;max-width:640px;}
+  .nature-band .overlay-text span{display:block;font-family:'DM Sans',sans-serif;font-size:0.72rem;letter-spacing:1.5px;text-transform:uppercase;color:#a9c9b6;margin-top:0.5rem;}
+
+  /* ---------- Dashboard grid ---------- */
+  .dashboard{max-width:1180px;margin:0 auto;padding:1.4rem 1.25rem 0;display:grid;grid-template-columns:2.1fr 1fr;gap:1.6rem;}
+  @media(max-width:900px){.dashboard{grid-template-columns:1fr;}}
+
+  .lead-story{display:block;text-decoration:none;color:var(--ink);}
+  .lead-story img{width:100%;height:340px;object-fit:cover;border-radius:6px;display:block;}
+  .lead-story .cat{display:inline-block;background:var(--red);color:#fff;font-size:0.68rem;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;padding:0.25rem 0.6rem;border-radius:3px;margin-top:0.9rem;}
+  .lead-story h1{font-family:'Playfair Display',serif;font-weight:700;font-size:1.9rem;line-height:1.18;margin-top:0.6rem;}
+  .lead-story:hover h1{text-decoration:underline;}
+  .lead-story .dek{font-size:0.98rem;color:var(--muted);margin-top:0.6rem;line-height:1.55;}
+  .lead-story .meta{font-size:0.76rem;color:#9a9a9a;margin-top:0.6rem;}
+
+  .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.6rem;}
+  @media(max-width:560px){.sub-grid{grid-template-columns:1fr;}}
+  .sub-card{display:block;text-decoration:none;color:var(--ink);}
+  .sub-card img{width:100%;height:130px;object-fit:cover;border-radius:6px;display:block;}
+  .sub-card .cat{font-size:0.66rem;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;color:var(--red);display:block;margin-top:0.6rem;}
+  .sub-card h3{font-family:'Playfair Display',serif;font-weight:600;font-size:1.02rem;line-height:1.32;margin-top:0.25rem;}
+  .sub-card:hover h3{text-decoration:underline;}
+
+  /* ---------- Sidebar ---------- */
+  .sidebar-box{background:#fff;border:1px solid var(--border);border-radius:6px;padding:1.2rem;margin-bottom:1.4rem;}
+  .sidebar-box h4{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;border-bottom:2px solid var(--ink);padding-bottom:0.6rem;margin-bottom:0.9rem;}
+  .most-read-item{display:flex;gap:0.7rem;text-decoration:none;color:var(--ink);padding:0.6rem 0;border-bottom:1px solid var(--border);}
+  .most-read-item:last-child{border-bottom:none;}
+  .most-read-item .rank{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:800;color:var(--border);flex-shrink:0;width:26px;}
+  .most-read-item .txt h5{font-size:0.86rem;font-weight:600;line-height:1.35;font-family:'DM Sans',sans-serif;}
+  .most-read-item:hover .txt h5{color:var(--red);}
+  .most-read-item .txt .cat-small{font-size:0.66rem;color:var(--red);text-transform:uppercase;font-weight:700;letter-spacing:0.4px;}
+
+  .tag-cloud{display:flex;flex-wrap:wrap;gap:0.5rem;}
+  .tag-pill{background:var(--teal-light);border:1px solid #bcd6d2;padding:0.35rem 0.75rem;border-radius:16px;font-size:0.76rem;font-weight:500;color:var(--teal);}
+
+  .promo-box{background:linear-gradient(160deg, var(--green-dark), #163224);color:#f2ede0;border-radius:6px;padding:1.3rem;text-align:center;}
+  .promo-box h4{font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:0.6rem;}
+  .promo-box p{font-size:0.82rem;color:#c9d3c6;margin-bottom:0.9rem;line-height:1.5;}
+  .promo-box a{display:inline-block;background:var(--red);color:#1a1305;padding:0.55rem 1.2rem;border-radius:4px;font-size:0.8rem;font-weight:700;}
+
+  /* ---------- Category rows ---------- */
+  .cat-section{max-width:1180px;margin:2.2rem auto 0;padding:0 1.25rem;}
+  .cat-section-head{display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--green-mid);padding-bottom:0.6rem;margin-bottom:1.1rem;}
+  .cat-section-head h2{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:800;display:flex;align-items:center;gap:0.5rem;}
+  .cat-section-head h2::before{content:'';display:inline-block;width:16px;height:16px;background:var(--green-mid);mask:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C7 2 3 6 3 12c0 5 4 9 9 10 5-1 9-5 9-10 0-6-4-10-9-10zm0 3c3.3 0 6 2.9 6.6 6.7C16.5 10 13.7 9 12 9v9c-3.9-.9-6.5-4.4-6.9-8.3C6.1 6.5 8.8 5 12 5z"/></svg>') center/contain no-repeat;flex-shrink:0;}
+  .cat-section-head span{font-size:0.74rem;color:var(--muted);font-family:'DM Sans',sans-serif;}
+  .cat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;}
+  @media(max-width:900px){.cat-row{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.cat-row{grid-template-columns:1fr;}}
+  .cat-card{display:block;text-decoration:none;color:var(--ink);}
+  .cat-card img{width:100%;height:120px;object-fit:cover;border-radius:5px;display:block;}
+  .cat-card h4{font-family:'Playfair Display',serif;font-weight:600;font-size:0.92rem;line-height:1.3;margin-top:0.5rem;}
+  .cat-card:hover h4{text-decoration:underline;}
+  .cat-card .meta{font-size:0.7rem;color:#9a9a9a;margin-top:0.35rem;}
+
+  footer{background:linear-gradient(180deg, var(--green-dark), #081712);color:rgba(240,238,224,0.75);text-align:center;padding:2.4rem 1rem 1.4rem;font-size:0.85rem;margin-top:2.6rem;position:relative;}
+  footer::before{content:'';display:block;height:14px;margin-bottom:1.6rem;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M0 7 Q 10 0, 20 7 T 40 7 T 60 7 T 80 7 T 100 7 T 120 7 T 140 7 T 160 7 T 180 7 T 200 7" stroke="rgba(169,201,182,0.35)" stroke-width="1.4" fill="none"/></svg>') repeat-x center/200px 14px;}
   footer a{color:#8fd3a8;text-decoration:none;}
   .footer-links{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:0.75rem;}
-  @media(min-width:640px){ .story h2{font-size:1.3rem;} }
-  @media(max-width:520px){ .story{flex-direction:column;} .story-thumb{width:100%;height:170px;} }
+  .footer-about{max-width:640px;margin:0 auto 1.2rem;font-size:0.78rem;line-height:1.6;color:rgba(255,255,255,0.55);}
+  .visitor-counter{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,0.15);font-family:'DM Sans',sans-serif;font-size:0.74rem;color:rgba(255,255,255,0.55);}
+  .visitor-counter b{color:#dfe8de;font-variant-numeric:tabular-nums;}
 </style>
 </head>
 <body>
 
+<div class="util-bar">
+  <div class="util-left">
+    <span id="todayDate">Loading date…</span>
+    <a href="environment-compliance-assistant.html">Compliance Assistant</a>
+    <a href="https://bharatenvironmentconsultants.com">BEC Consultancy</a>
+  </div>
+  <div class="util-right">
+    <a href="about.html">About</a> &nbsp;|&nbsp; <a href="contact.html">Contact</a>
+  </div>
+</div>
+
 <div class="topbar">
   <a class="brand" href="news.html">
     <span class="brand-mark">🌿</span>
-    <span class="brand-text">Bharat Environment News<small>Independent Environmental Reporting</small></span>
+    <span class="brand-text">Bharat Environment News<small>Wildlife &middot; Wetlands &middot; Climate &middot; Reporting</small></span>
   </a>
+  <div class="search-box">
+    <input type="text" placeholder="Search environment news…" id="searchInput" />
+  </div>
   <button class="hamburger" id="hamburgerBtn" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -81,6 +166,8 @@
   <button class="drawer-close" id="drawerClose" aria-label="Close menu">✕</button>
   <a href="news.html">Home</a>
   <a href="news.html">All News</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
   <a href="environment-compliance-assistant.html">Compliance Assistant</a>
   <a href="privacy-policy.html">Privacy Policy</a>
   <a href="terms.html">Terms &amp; Conditions</a>
@@ -95,386 +182,281 @@
   <button class="cat-tab" data-filter="air">Air Quality</button>
   <button class="cat-tab" data-filter="water">Water</button>
   <button class="cat-tab" data-filter="waste">Waste</button>
-  <button class="cat-tab" data-filter="health">Health</button>
 </div>
 
-<div class="now-strip">
-  <h4>Happening Now</h4>
-  <div class="now-scroll">
-    <a class="now-card" href="delhi-air-pollution-crisis.html">
-      <img src="https://images.unsplash.com/photo-1573455494060-c5595004fb6c?w=400&q=80&fit=crop" alt="Smog haze over Delhi skyline" />
-      <div class="nc-body"><span class="nc-cat">Air Quality</span><h5>Delhi Is Choking. Here's the World-Class Playbook That Could Actually Save It.</h5></div>
-    </a>
-    <a class="now-card" href="biodiversity-crisis-india.html">
-      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Western-Ghats-Matheran.jpg?width=400" alt="Forested hills of the Western Ghats, one of India's biodiversity hotspots" />
-      <div class="nc-body"><span class="nc-cat">Biodiversity</span><h5>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h5></div>
-    </a>
-    <a class="now-card" href="yamuna-cleaning-efforts-and-gaps.html">
-      <img src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=400&q=80&fit=crop" alt="Yamuna river" />
-      <div class="nc-body"><span class="nc-cat">Water</span><h5>Yamuna Clean-Up: ₹20,000+ Crore Spent — Where Are the Gaps?</h5></div>
-    </a>
-    <a class="now-card" href="environment-compliance-assistant.html">
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80&fit=crop" alt="Compliance assistant" />
-      <div class="nc-body"><span class="nc-cat">New Tool</span><h5>Introducing the BEC Environment Compliance Assistant</h5></div>
-    </a>
-    <a class="now-card" href="global-warming.html">
-      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&q=80&fit=crop" alt="Global warming" />
-      <div class="nc-body"><span class="nc-cat">Climate</span><h5>Global Warming in 2026: Where the Science Stands</h5></div>
-      <a class="now-card" href="marine-pollution-india-action-plan.html">
-  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/004%20Beach%20pollution%20in%20Tenerife%20-%20Atlantic%20Ocean%20beach%20plastic%20garbage%20debris.jpg?width=320" alt="Plastic garbage on an ocean beach" style="width:100%;height:110px;object-fit:cover;" />
-  <div class="nc-body"><span class="nc-cat">Water</span><h5>Marine Pollution in India: A National Action Plan</h5></div>
-</a>
-    </a>
+<div class="ticker-wrap">
+  <div class="ticker-label">Latest</div>
+  <div class="ticker-track">
+    <span>🔴 Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</span>
+    <span>🔴 Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</span>
+    <span>🔴 Ganga vs Yamuna: What India's River-Cleaning Data Really Tells Us</span>
+    <span>🔴 India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</span>
+    <span>🔴 Climate Change and the Common Indian: Daily Life, Industry, Agriculture and the Economy</span>
+    <!-- duplicate for seamless loop -->
+    <span>🔴 Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</span>
+    <span>🔴 Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</span>
+    <span>🔴 Ganga vs Yamuna: What India's River-Cleaning Data Really Tells Us</span>
+    <span>🔴 India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</span>
+    <span>🔴 Climate Change and the Common Indian: Daily Life, Industry, Agriculture and the Economy</span>
   </div>
 </div>
-<a class="story" data-cat="water" href="marine-pollution-india-action-plan.html">
-  <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/004%20Beach%20pollution%20in%20Tenerife%20-%20Atlantic%20Ocean%20beach%20plastic%20garbage%20debris.jpg?width=320" alt="Plastic garbage washed up on an ocean beach" />
-  <div class="story-content">
-    <span class="cat">Water</span>
-    <h2>Marine Pollution in India: A National Crisis Demanding a Nationwide Action Plan</h2>
-    <p class="dek">India's 7,516-kilometre coastline is being poisoned not primarily by careless swimmers and litterbugs on its beaches, but by a chain of failures that begins hundreds of kilometres inland — in city drains, sewage networks and industrial outfalls that were never built, funded or enforced to stop pollution before it reaches the sea.</p>
-    <div class="story-meta">By Prabhat Kumar Shahi · 9 August 2026 · 14 min read</div>
+
+<div class="nature-band">
+  <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wular%20Lake%201.jpg?width=1600" alt="Wular Lake wetland, Jammu and Kashmir" />
+  <div class="overlay">
+    <div class="overlay-text">
+      <p>"A wetland lost is a flood, a drought and a species extinction all written in advance."</p>
+      <span>Reporting from India's forests, rivers and floodplains</span>
+    </div>
   </div>
-</a>
-<hr class="divider" />
-  <a class="story" data-cat="carbon" href="forest-fires-article.html">
-  <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/California%20Brush%20Fire%20night.jpg?width=320" alt="Wildfire burning at night" />
-  <div class="story-content">
-    <span class="cat">Climate</span>
-    <h2>The World Is Burning Faster: Inside the Data Behind a Planet on Fire</h2>
-    <p class="dek">A season-by-season, satellite-verified investigation into the fires of 2023–2026 — from Canada's collapsing boreal belt to a single Indian month that logged 84,642 fire alerts — asks a harder question than "how bad is it": is this catastrophe of our own making, and can it still be reversed?</p>
-    <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 12 min read</div>
-  </div>
-</a>
-<hr class="divider" />
-  <a class="story" data-cat="water" href="gurugram-flooding-monsoon-crisis.html">
-  <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/2023%20North%20India%20floods%20on%2010%20July.jpg?width=320" alt="Flooded street during North India monsoon rains" />
-  <div class="story-content">
-    <span class="cat">Water</span>
-    <h2>Gurugram Underwater: Inside India's Costliest Urban Flooding Failure — And How Other Cities Fixed It</h2>
-    <p class="dek">Every monsoon, the Millennium City's glass towers watch its own streets turn into rivers. Crore-plus flats, a national capital region address, and still no dry road in August. The data shows this was never inevitable — and that cities from Tokyo to Copenhagen solved exactly this problem decades ago.</p>
-    <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 9 min read</div>
-  </div>
-</a>
-<hr class="divider" />
-  <a class="story" data-cat="health" href="child-malnutrition-india.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=320&q=80&fit=crop" alt="Mother and child at a health checkup in India" />
-    <div class="story-content">
-      <span class="cat">Public Health</span>
-      <h2>India's Nutrition Reckoning: What the Data Actually Says About Feeding and Saving a Billion Children</h2>
-      <p class="dek">Fewer Indian children are dying before their fifth birthday than at any point in the country's history. Yet nearly one in three is still stunted, and the country ranks among the hungriest in the world. A hard look at the numbers behind India's most consequential public health story — and how far it still has to travel.</p>
-      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 12 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-<a class="story" data-cat="carbon" href="climate-change-impact-india.html">
-    <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20West%20Bengal%20India.jpg?width=320" alt="Flooded settlement in West Bengal, India, following intense monsoon rainfall" />
-    <div class="story-content">
-      <span class="cat">Climate</span>
-      <h2>The Heat Is On: How Climate Change Is Quietly Rewriting Daily Life, Industry, Farms and the Economy of India</h2>
-      <p class="dek">From longer, deadlier heatwaves to erratic monsoons that can make or break a farmer's year, climate change has stopped being a distant scientific forecast and become a lived reality for hundreds of millions of Indians. A look at what is changing, what it is costing, and what governments and citizens can still do about it.</p>
-      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 13 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-  
-<div class="feed" id="feed">
- <a class="story" data-cat="air" href="delhi-air-pollution-crisis.html">
-  <img class="story-thumb" src="https://images.unsplash.com/photo-1573455494060-c5595004fb6c?w=320&q=80&fit=crop" alt="Smog haze over Delhi skyline" />
-  <div class="story-content">
-    <span class="cat">Air</span>
-    <h2>Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</h2>
-    <p class="dek">India's capital recorded not a single "clean air" day in 2025. As the world's most polluted major city enters another crisis winter, other capitals have already proven the smog can be beaten — the question is whether Delhi will follow the blueprint.</p>
-    <div class="story-meta">By Bharat Environment News · August 2026 · 8 min read</div>
-  </div>
-</a>  <hr class="divider" />
-  <a class="story" data-cat="water" href="assam-floods-2026.html">
-    <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/EU%20Civil%20Protection%20and%20Humanitarian%20Aid%2C%20India%20-%20Assam%20floods%2C%20aug%202012.jpg?width=320" alt="Flooded village in Assam during the annual monsoon inundation" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</h2>
-      <p class="dek">Below-normal seasonal rainfall still produced one of Assam's deadliest flood years on record. The paradox points to a wider truth: climate change is loading the dice toward short, violent bursts of rain, while ageing embankments, vanishing wetlands and unscientific construction ensure that when the water comes, it has nowhere to go and nothing to stop it.</p>
-      <div class="story-meta">By Bharat Environment News · August 2026 · 11 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+</div>
 
-  <a class="story" data-cat="water" href="india-wetlands-crisis.html">
-    <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/Wular%20Lake%201.jpg?width=320" alt="Wular Lake, a Ramsar-designated wetland in Jammu and Kashmir" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</h2>
-      <p class="dek">Nearly one-third of India's natural wetlands have disappeared in the last four decades, swallowed by concrete, choked by sewage and carved up by real-estate expansion. As cities from Chennai to Bengaluru pay the price in floods and water scarcity, the crisis exposes a deep gap between environmental law on paper and enforcement on the ground.</p>
-      <div class="story-meta">By Bharat Environment News · August 2026 · 9 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+<!-- ================= MAIN DASHBOARD ================= -->
+<div class="dashboard">
 
-  <a class="story" data-cat="biodiversity" href="biodiversity-crisis-india.html">
-    <img class="story-thumb" src="https://commons.wikimedia.org/wiki/Special:FilePath/Western-Ghats-Matheran.jpg?width=320" alt="Forested hills of the Western Ghats, one of India's biodiversity hotspots" />
-    <div class="story-content">
-      <span class="cat">Biodiversity</span>
-      <h2>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h2>
-      <p class="dek">Bulldozers, boreholes and borewells are eating into India's last wild spaces faster than they can be mapped. Add a poisoned river network and a quiet green invasion crawling across every forest floor, and the country's biodiversity crisis stops being a distant statistic — it becomes a countdown.</p>
-      <div class="story-meta">By Bharat Environment Consultants · August 2026 · 10 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="water" href="ganga-vs-yamuna-comparison.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1596401057633-054a5cba2e0f?w=320&q=85&fit=crop" alt="Ganga river ghats" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h2>
-      <p class="dek">Namami Gange and Delhi's Yamuna effort have both spent tens of thousands of crores. Only one river is showing up better in the water quality data.</p>
-      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 12 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="waste" href="delhi-vs-indore-waste-management.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=320&q=85&fit=crop" alt="Municipal waste collection and sorting" />
-    <div class="story-content">
-      <span class="cat">Waste</span>
-      <h2>Delhi's Three Garbage Mountains vs Indore's Zero-Landfill Model: Why the Capital Can't Copy What Works</h2>
-      <p class="dek">The MCD still can't get segregation right, and the new SWM Rules 2026 are barely enforced. A full comparison of Bhalaswa, Ghazipur and Okhla against the city that solved this a decade ago.</p>
-      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 13 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="water" href="yamuna-cleaning-efforts-and-gaps.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=320&q=80&fit=crop" alt="Yamuna river" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Yamuna Clean-Up: Three Decades, Over ₹20,000 Crore, and a River Still Waiting to Breathe</h2>
-      <p class="dek">A full account of the money spent, the governments involved, and the gaps still standing between Delhi and a living river.</p>
-      <div class="story-meta">By Prabhat Kumar Shahi · August 2026 · 11 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="regulatory" href="environment-compliance-assistant.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=320&q=80&fit=crop" alt="Compliance assistant" />
-    <div class="story-content">
-      <span class="cat">New Tool</span>
-      <h2>Introducing the BEC Environment Compliance Assistant</h2>
-      <p class="dek">A free reference tool covering EIA, CTE/CTO, Hazardous Waste, CRZ, EPR &amp; more — with direct links to CPCB, NGT, and SPCB sources.</p>
-      <div class="story-meta">August 2026 · 2 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="water" href="yamuna-river-pollution.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=320&q=80&fit=crop" alt="Polluted river water" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Why the Yamuna Isn't Getting Cleaner, Despite Thousands of Crores</h2>
-      <p class="dek">Billions have been spent on Yamuna rejuvenation, yet pollution levels remain critical — a look at why funding alone hasn't fixed the problem.</p>
-      <div class="story-meta">August 2026 · 7 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="carbon" href="global-warming.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Global warming" />
-    <div class="story-content">
-      <span class="cat">Climate</span>
-      <h2>Global Warming in 2026: Where the Science Stands</h2>
-      <p class="dek">The latest WMO data on global warming, what's driving it, and what it means for India's industries and cities.</p>
-      <div class="story-meta">August 2026 · 6 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="regulatory" href="jan-vishwas-act-environment.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Law and regulation" />
-    <div class="story-content">
-      <span class="cat">Regulatory</span>
-      <h2>The Jan Vishwas Act: Decriminalising Environmental Violations</h2>
-      <p class="dek">What the Jan Vishwas Act, 2023 changes for environmental compliance in India, and the debate over whether it weakens deterrence.</p>
-      <div class="story-meta">August 2026 · 6 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="waste" href="cecb-iwmms-portal.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=320&q=80&fit=crop" alt="Digital waste governance" />
-    <div class="story-content">
-      <span class="cat">Waste</span>
-      <h2>CECB's IWMMS: A Model for Digital Waste Governance in India</h2>
-      <p class="dek">How Chhattisgarh's Industrial Waste Management and Monitoring System is setting a benchmark for transparent, real-time waste governance.</p>
-      <div class="story-meta">August 2026 · 5 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="carbon" href="us-iran-war-climate-impact.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1541873676-a18131494184?w=320&q=80&fit=crop" alt="Oil fire and emissions" />
-    <div class="story-content">
-      <span class="cat">Climate</span>
-      <h2>How the US-Iran Conflict Is Adding to Global Warming</h2>
-      <p class="dek">Emissions, oil-fire pollution, and reporting gaps from the conflict — and the hidden climate cost of modern war.</p>
-      <div class="story-meta">August 2026 · 6 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="regulatory" href="article-moefcc2024.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Environmental regulation" />
-    <div class="story-content">
-      <span class="cat">Regulatory</span>
-      <h2>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h2>
-      <p class="dek">A comprehensive overview of the latest regulatory changes from MoEFCC and what they mean for industries.</p>
-      <div class="story-meta">April 2026 · 8 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="carbon" href="article-scope3.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?w=320&q=80&fit=crop" alt="Factory emissions" />
-    <div class="story-content">
-      <span class="cat">Climate</span>
-      <h2>Scope 3 Emissions: Why They Matter for Indian Businesses in 2026</h2>
-      <p class="dek">How value-chain emissions are becoming central to ESG strategy and investor expectations in India.</p>
-      <div class="story-meta">March 2026 · 6 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="biodiversity" href="article-fca.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Forest" />
-    <div class="story-content">
-      <span class="cat">Biodiversity</span>
-      <h2>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h2>
-      <p class="dek">Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p>
-      <div class="story-meta">March 2026 · 7 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="esg" href="article-brsr.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="Business ESG reporting" />
-    <div class="story-content">
-      <span class="cat">ESG</span>
-      <h2>BRSR Reporting: What Indian Listed Companies Must Disclose in FY 2025-26</h2>
-      <p class="dek">SEBI's Business Responsibility and Sustainability Reporting requirements explained for top 1000 listed companies.</p>
-      <div class="story-meta">February 2026 · 9 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
-
-  <a class="story" data-cat="air" href="article-naaqs.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=320&q=80&fit=crop" alt="Air quality and smog" />
-    <div class="story-content">
+  <!-- LEFT: Lead story + secondary grid -->
+  <div>
+    <a class="lead-story story" data-cat="air" href="delhi-air-pollution-crisis.html">
+      <img src="https://images.unsplash.com/photo-1573455494060-c5595004fb6c?w=900&q=80&fit=crop" alt="Smog haze over Delhi skyline" />
       <span class="cat">Air Quality</span>
-      <h2>National Ambient Air Quality Standards (NAAQS): 2025 Compliance Guide for Industries</h2>
-      <p class="dek">A practical guide to CPCB's NAAQS requirements, monitoring obligations, and corrective action plans.</p>
-      <div class="story-meta">February 2026 · 5 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+      <h1>Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</h1>
+      <p class="dek">India's capital recorded not a single "clean air" day in 2025. As the world's most polluted major city enters another crisis winter, other capitals have already proven the smog can be beaten.</p>
+      <div class="meta">By Bharat Environment News · August 2026 · 8 min read</div>
+    </a>
 
-  <a class="story" data-cat="water" href="article-zld.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1581093458791-9d42e3c6d9db?w=320&q=80&fit=crop" alt="Industrial water treatment" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Zero Liquid Discharge (ZLD): Is It Mandatory for Your Industry?</h2>
-      <p class="dek">Understanding CPCB's ZLD mandates for textile, tannery, distillery, and sugar industries.</p>
-      <div class="story-meta">January 2026 · 7 min read</div>
+    <div class="sub-grid">
+      <a class="sub-card story" data-cat="water" href="ganga-vs-yamuna-comparison.html">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yamuna_in_Delhi.jpg?width=500" alt="Yamuna river in Delhi" />
+        <span class="cat">Water</span>
+        <h3>Ganga vs Yamuna: What India's River-Cleaning Data Really Tells Us</h3>
+      </a>
+      <a class="sub-card story" data-cat="carbon" href="climate-change-impact-india.html">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flood%20in%20West%20Bengal%20India.jpg?width=500" alt="Flooding in West Bengal, India" />
+        <span class="cat">Climate</span>
+        <h3>Climate Change and the Common Indian: Daily Life, Industry and the Economy</h3>
+      </a>
+      <a class="sub-card story" data-cat="water" href="assam-floods-2026.html">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/EU%20Civil%20Protection%20and%20Humanitarian%20Aid%2C%20India%20-%20Assam%20floods%2C%20aug%202012.jpg?width=500" alt="Flooded village in Assam" />
+        <span class="cat">Water</span>
+        <h3>Assam's 2026 Floods: How a Warming Climate and Decades of Neglect Combined to Manufacture a Disaster</h3>
+      </a>
+      <a class="sub-card story" data-cat="biodiversity" href="biodiversity-crisis-india.html">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Western-Ghats-Matheran.jpg?width=500" alt="Western Ghats forested hills" />
+        <span class="cat">Biodiversity</span>
+        <h3>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h3>
+      </a>
     </div>
-  </a>
-  <hr class="divider" />
+  </div>
 
-  <a class="story" data-cat="esg" href="article-gri.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="ESG reporting standards" />
-    <div class="story-content">
-      <span class="cat">ESG</span>
-      <h2>GRI Standards 2021: How to Align Your ESG Report with Global Best Practices</h2>
-      <p class="dek">A step-by-step breakdown of GRI Universal Standards most relevant to Indian companies.</p>
-      <div class="story-meta">January 2026 · 10 min read</div>
+  <!-- RIGHT: Sidebar -->
+  <div>
+    <div class="sidebar-box">
+      <h4>Most Read</h4>
+      <a class="most-read-item" href="delhi-air-pollution-crisis.html">
+        <span class="rank">01</span>
+        <span class="txt"><span class="cat-small">Air Quality</span><h5>Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</h5></span>
+      </a>
+      <a class="most-read-item" href="delhi-vs-indore-waste-management.html">
+        <span class="rank">02</span>
+        <span class="txt"><span class="cat-small">Waste</span><h5>Delhi's Three Garbage Mountains vs Indore's Zero-Landfill Model</h5></span>
+      </a>
+      <a class="most-read-item" href="ganga-vs-yamuna-comparison.html">
+        <span class="rank">03</span>
+        <span class="txt"><span class="cat-small">Water</span><h5>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h5></span>
+      </a>
+      <a class="most-read-item" href="india-wetlands-crisis.html">
+        <span class="rank">04</span>
+        <span class="txt"><span class="cat-small">Water</span><h5>India's Vanishing Wetlands: How Urbanisation Is Draining the Country's Lifelines</h5></span>
+      </a>
+      <a class="most-read-item" href="jan-vishwas-act-environment.html">
+        <span class="rank">05</span>
+        <span class="txt"><span class="cat-small">Regulatory</span><h5>The Jan Vishwas Act: Decriminalising Environmental Violations</h5></span>
+      </a>
     </div>
-  </a>
-  <hr class="divider" />
 
-  <a class="story" data-cat="biodiversity" href="article-bia.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Biodiversity assessment" />
-    <div class="story-content">
-      <span class="cat">Biodiversity</span>
-      <h2>Biodiversity Impact Assessment: A Growing Requirement for Infrastructure Projects</h2>
-      <p class="dek">How BIA is becoming integral to EIA processes under updated MoEFCC guidelines.</p>
-      <div class="story-meta">December 2025 · 6 min read</div>
+    <div class="sidebar-box">
+      <h4>Trending Topics</h4>
+      <div class="tag-cloud">
+        <span class="tag-pill">Air Pollution</span>
+        <span class="tag-pill">Yamuna</span>
+        <span class="tag-pill">SWM Rules 2026</span>
+        <span class="tag-pill">BRSR</span>
+        <span class="tag-pill">Carbon Market</span>
+        <span class="tag-pill">Stubble Burning</span>
+        <span class="tag-pill">Wetlands</span>
+        <span class="tag-pill">CTE/CTO</span>
+      </div>
     </div>
-  </a>
-  <hr class="divider" />
 
-  <a class="story" data-cat="regulatory" href="article-cte-cto.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Consent to establish and operate" />
-    <div class="story-content">
-      <span class="cat">Regulatory</span>
-      <h2>CTE vs CTO: Understanding Consent to Establish and Consent to Operate</h2>
-      <p class="dek">A plain-language guide for industries navigating the SPCB consent process.</p>
-      <div class="story-meta">November 2025 · 8 min read</div>
+    <div class="promo-box">
+      <h4>Free Compliance Assistant</h4>
+      <p>A free reference tool covering EIA, CTE/CTO, Hazardous Waste, CRZ, EPR &amp; more — with direct links to CPCB, NGT and SPCB sources.</p>
+      <a href="environment-compliance-assistant.html">Try It Free</a>
     </div>
-  </a>
-  <hr class="divider" />
+  </div>
+</div>
 
-  <a class="story" data-cat="waste" href="article-hwm.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1532996122724-9339d331fc11?w=320&q=80&fit=crop" alt="Hazardous waste management" />
-    <div class="story-content">
-      <span class="cat">Waste</span>
-      <h2>Hazardous Waste Management Rules 2016: Key Obligations for Indian Manufacturers</h2>
-      <p class="dek">Manifest systems, authorisation requirements, and disposal compliance for plant managers.</p>
-      <div class="story-meta">October 2025 · 7 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+<!-- ================= CATEGORY SECTIONS ================= -->
 
-  <a class="story" data-cat="regulatory" href="article-mining-ec.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=320&q=80&fit=crop" alt="Mining project clearance" />
-    <div class="story-content">
-      <span class="cat">Regulatory</span>
-      <h2>Environmental Clearance for Mining Projects: The EIA Notification Process Explained</h2>
-      <p class="dek">From Form-1 submission to public hearing and final clearance — a complete walkthrough.</p>
-      <div class="story-meta">September 2025 · 9 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Water</h2><span>River pollution, sewage &amp; water rejuvenation</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="water" href="ganga-vs-yamuna-comparison.html">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/River_Ganga,_Varanasi.jpg?width=320" alt="River Ganga at Varanasi" />
+      <h4>Ganga vs Yamuna: What India's River-Cleaning Data Really Tells Us</h4>
+      <div class="meta">August 2026 · 13 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="water" href="india-wetlands-crisis.html">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wular%20Lake%201.jpg?width=320" alt="Wular Lake, Jammu and Kashmir" />
+      <h4>India's Vanishing Wetlands: How Unchecked Urbanisation Is Draining the Country's Natural Lifelines</h4>
+      <div class="meta">August 2026 · 9 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="water" href="yamuna-cleaning-efforts-and-gaps.html">
+      <img src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=320&q=80&fit=crop" alt="Yamuna river" />
+      <h4>Yamuna Clean-Up: Three Decades, Over ₹20,000 Crore, and a River Still Waiting to Breathe</h4>
+      <div class="meta">August 2026 · 11 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="water" href="article-zld.html">
+      <img src="https://images.unsplash.com/photo-1581093458791-9d42e3c6d9db?w=320&q=80&fit=crop" alt="Industrial water treatment" />
+      <h4>Zero Liquid Discharge (ZLD): Is It Mandatory for Your Industry?</h4>
+      <div class="meta">January 2026 · 7 min read</div>
+    </a>
+  </div>
+</div>
 
-  <a class="story" data-cat="water" href="article-groundwater.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=320&q=80&fit=crop" alt="Groundwater assessment" />
-    <div class="story-content">
-      <span class="cat">Water</span>
-      <h2>Groundwater Impact Assessment: Why It Is Critical for Industrial Expansion Projects</h2>
-      <p class="dek">CGWA regulations, aquifer mapping, and groundwater extraction licensing for industries.</p>
-      <div class="story-meta">August 2025 · 6 min read</div>
-    </div>
-  </a>
-  <hr class="divider" />
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Air Quality</h2><span>Pollution, monitoring &amp; compliance standards</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="air" href="delhi-air-pollution-crisis.html">
+      <img src="https://images.unsplash.com/photo-1573455494060-c5595004fb6c?w=320&q=80&fit=crop" alt="Smog over Delhi" />
+      <h4>Delhi's Air Pollution Crisis: Inside the World's Most Toxic Capital</h4>
+      <div class="meta">August 2026 · 8 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="air" href="article-naaqs.html">
+      <img src="https://images.unsplash.com/photo-1580128660010-fd027e1e587a?w=320&q=80&fit=crop" alt="Air quality and smog" />
+      <h4>National Ambient Air Quality Standards (NAAQS): 2025 Compliance Guide</h4>
+      <div class="meta">February 2026 · 5 min read</div>
+    </a>
+  </div>
+</div>
 
-  <a class="story" data-cat="carbon" href="article-carbon-market.html">
-    <img class="story-thumb" src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Carbon credit market" />
-    <div class="story-content">
-      <span class="cat">Climate</span>
-      <h2>India's Carbon Credit Market: How Businesses Can Benefit from the Carbon Trading Scheme</h2>
-      <p class="dek">An explainer on India's emerging domestic carbon market under the Energy Conservation Act 2022.</p>
-      <div class="story-meta">July 2025 · 8 min read</div>
-    </div>
-  </a>
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Climate</h2><span>Global warming, carbon markets &amp; conflict emissions</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="carbon" href="climate-change-impact-india.html">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/View%20of%20solar%20panels%20near%20Leh%20%284337356630%29.jpg?width=320" alt="Solar panels near Leh, Ladakh" />
+      <h4>Climate Change and the Common Indian: Daily Life, Industry, Agriculture and the Economy</h4>
+      <div class="meta">August 2026 · 13 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="carbon" href="global-warming.html">
+      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Global warming" />
+      <h4>Global Warming in 2026: Where the Science Stands</h4>
+      <div class="meta">August 2026 · 6 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="carbon" href="article-carbon-market.html">
+      <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=320&q=80&fit=crop" alt="Carbon credit market" />
+      <h4>India's Carbon Credit Market: How Businesses Can Benefit</h4>
+      <div class="meta">July 2025 · 8 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="carbon" href="us-iran-war-climate-impact.html">
+      <img src="https://images.unsplash.com/photo-1541873676-a18131494184?w=320&q=80&fit=crop" alt="Oil fire emissions" />
+      <h4>How the US-Iran Conflict Is Adding to Global Warming</h4>
+      <div class="meta">August 2026 · 6 min read</div>
+    </a>
+  </div>
+</div>
 
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Biodiversity</h2><span>Forests, wildlife &amp; ecological assessment</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="biodiversity" href="biodiversity-crisis-india.html">
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Western-Ghats-Matheran.jpg?width=320" alt="Western Ghats" />
+      <h4>Ground Zero: Why India Is Losing the Ground Beneath Its Wildlife</h4>
+      <div class="meta">August 2026 · 10 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="biodiversity" href="article-fca.html">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Forest" />
+      <h4>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h4>
+      <div class="meta">March 2026 · 7 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="biodiversity" href="article-bia.html">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?w=320&q=80&fit=crop" alt="Biodiversity assessment" />
+      <h4>Biodiversity Impact Assessment: A Growing Requirement for Infrastructure Projects</h4>
+      <div class="meta">December 2025 · 6 min read</div>
+    </a>
+  </div>
+</div>
+
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Waste</h2><span>Municipal &amp; hazardous waste management</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="waste" href="delhi-vs-indore-waste-management.html">
+      <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=320&q=80&fit=crop" alt="Municipal waste collection" />
+      <h4>Delhi's Three Garbage Mountains vs Indore's Zero-Landfill Model</h4>
+      <div class="meta">August 2026 · 13 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="waste" href="cecb-iwmms-portal.html">
+      <img src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?w=320&q=80&fit=crop" alt="Digital waste governance" />
+      <h4>CECB's IWMMS: A Model for Digital Waste Governance in India</h4>
+      <div class="meta">August 2026 · 5 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="waste" href="article-hwm.html">
+      <img src="https://images.unsplash.com/photo-1532996122724-9339d331fc11?w=320&q=80&fit=crop" alt="Hazardous waste management" />
+      <h4>Hazardous Waste Management Rules 2016: Key Obligations for Manufacturers</h4>
+      <div class="meta">October 2025 · 7 min read</div>
+    </a>
+  </div>
+</div>
+
+<div class="cat-section">
+  <div class="cat-section-head"><h2>Regulatory &amp; ESG</h2><span>Compliance frameworks &amp; sustainability reporting</span></div>
+  <div class="cat-row">
+    <a class="cat-card story" data-cat="regulatory" href="jan-vishwas-act-environment.html">
+      <img src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Law and regulation" />
+      <h4>The Jan Vishwas Act: Decriminalising Environmental Violations</h4>
+      <div class="meta">August 2026 · 6 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="regulatory" href="article-cte-cto.html">
+      <img src="https://images.unsplash.com/photo-1436450412740-6b988f486c6b?w=320&q=80&fit=crop" alt="Consent to establish and operate" />
+      <h4>CTE vs CTO: Understanding Consent to Establish and Consent to Operate</h4>
+      <div class="meta">November 2025 · 8 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="esg" href="article-brsr.html">
+      <img src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="Business ESG reporting" />
+      <h4>BRSR Reporting: What Indian Listed Companies Must Disclose in FY 2025-26</h4>
+      <div class="meta">February 2026 · 9 min read</div>
+    </a>
+    <a class="cat-card story" data-cat="esg" href="article-gri.html">
+      <img src="https://images.unsplash.com/photo-1454165833767-004e5a1cb00f?w=320&q=80&fit=crop" alt="ESG reporting standards" />
+      <h4>GRI Standards 2021: How to Align Your ESG Report with Global Best Practices</h4>
+      <div class="meta">January 2026 · 10 min read</div>
+    </a>
+  </div>
 </div>
 
 <footer>
-  <p>© 2026 Bharat Environment News. An independent environmental news section. All rights reserved.</p>
+  <div class="footer-about">
+    Bharat Environment News is an independent environmental journalism section published by Bharat Environment Consultants (BEC). We report on regulatory change, pollution data, climate policy and sustainability across India, separate from BEC's consulting practice.
+  </div>
+  <p>© 2026 Bharat Environment News. All rights reserved.</p>
   <div class="footer-links">
     <a href="news.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
     <a href="privacy-policy.html">Privacy Policy</a>
     <a href="terms.html">Terms &amp; Conditions</a>
     <a href="environment-compliance-assistant.html">Compliance Assistant</a>
   </div>
+  <div class="visitor-counter">
+    Total Visitors: <b id="visitorCount">—</b>
+  </div>
 </footer>
 
 <script>
+  // Date
+  document.getElementById('todayDate').textContent = new Date().toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+  // Drawer
   const hamburgerBtn = document.getElementById('hamburgerBtn');
   const drawer = document.getElementById('drawer');
   const overlay = document.getElementById('drawerOverlay');
@@ -485,20 +467,41 @@
   drawerClose.addEventListener('click', closeDrawer);
   overlay.addEventListener('click', closeDrawer);
 
+  // Category filter (hides/shows cards site-wide by data-cat)
   const tabs = document.querySelectorAll('.cat-tab');
   const stories = document.querySelectorAll('.story');
-  const dividers = document.querySelectorAll('.divider');
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
       tab.classList.add('active');
       const filter = tab.dataset.filter;
       stories.forEach(s => {
-        s.style.display = (filter === 'all' || s.dataset.cat === filter) ? 'flex' : 'none';
+        const show = (filter === 'all' || s.dataset.cat === filter);
+        s.style.display = show ? '' : 'none';
       });
-      dividers.forEach(d => d.style.display = (filter === 'all') ? 'block' : 'none');
     });
   });
+
+  // Simple search (title match, jumps to first result)
+  document.getElementById('searchInput').addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      const q = this.value.trim().toLowerCase();
+      if(!q) return;
+      const match = Array.from(stories).find(s => s.textContent.toLowerCase().includes(q));
+      if(match){ match.scrollIntoView({behavior:'smooth', block:'center'}); match.style.outline = '2px solid #c0272d'; }
+    }
+  });
+
+  // Visitor counter — free, no-signup counting API (countapi.mileshilliard.com)
+  // Uses a unique key so this counter is exclusive to this site.
+  fetch('https://countapi.mileshilliard.com/api/v1/hit/bharatenvironmentnews-visits')
+    .then(r => r.json())
+    .then(data => {
+      document.getElementById('visitorCount').textContent = data.value.toLocaleString('en-IN');
+    })
+    .catch(() => {
+      document.getElementById('visitorCount').textContent = 'N/A';
+    });
 </script>
 
 </body>
