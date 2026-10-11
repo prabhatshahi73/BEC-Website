@@ -1,0 +1,23 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{db}/documents {
+    // REPLACE with your real administrator email(s), lowercase
+    function admin() { return request.auth != null && request.auth.token.email.lower() in ['admin@yourdomain.com']; }
+    match /users/{u} {
+      allow create, update: if request.auth != null && request.auth.uid == u;
+      allow read: if request.auth != null && (request.auth.uid == u || admin());
+    }
+    match /applications/{a} {
+      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid
+        && request.resource.data.status == 'Submitted' && request.resource.data.paid == false;
+      allow read: if request.auth != null && (resource.data.uid == request.auth.uid || admin());
+      allow update, delete: if admin();
+    }
+    match /deliveries/{a} {
+      allow write: if admin();
+      allow read: if request.auth != null && (admin() ||
+        (resource.data.uid == request.auth.uid &&
+         get(/databases/$(db)/documents/applications/$(a)).data.paid == true));
+    }
+  }
+}
