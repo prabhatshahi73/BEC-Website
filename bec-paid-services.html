@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Services and Pricing | Bharat Environment Consultants</title>
 <meta name="description" content="Buy or book environmental compliance, carbon and ESG services online. Fixed starting prices in INR and USD.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://bharatenvironmentconsultants.com/services-pricing.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8C%BF%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -16,6 +19,7 @@ h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;line-height:
 a{color:inherit}.wrap{max-width:1160px;margin:auto;padding:0 20px}
 header.top{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.1rem;text-decoration:none}
+.sn{display:flex;gap:16px;font-size:.92rem}.sn a{text-decoration:none;color:var(--mute)}.sn a:hover{color:var(--ink)}@media(max-width:820px){.sn{display:none}}
 .btn{border:0;border-radius:8px;padding:10px 16px;font:600 .95rem "Public Sans",sans-serif;cursor:pointer;background:var(--moss);color:#fff}
 .btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn:disabled{opacity:.5;cursor:not-allowed}
@@ -63,7 +67,7 @@ label{font-size:.82rem;font-weight:600;display:grid;gap:4px}
 </style>
 </head>
 <body>
-<div class="wrap"><header class="top"><a class="brand" href="/">Bharat Environment Consultants</a><span><button class="btn alt" id="open2">My request (<span id="n0">0</span>)</button> <button class="btn alt" id="orders">My orders and downloads</button></span></header></div>
+<div class="wrap"><header class="top"><a class="brand" href="https://bharatenvironmentconsultants.com/">Bharat Environment Consultants</a><nav class="sn" aria-label="Main site"><a href="https://bharatenvironmentconsultants.com/#services">Services</a><a href="https://bharatenvironmentconsultants.com/ec-calculator.html">EC Calculator</a><a href="https://bharatenvironmentconsultants.com/news.html">News</a><a href="https://bharatenvironmentconsultants.com/#contact">Contact</a></nav><span><button class="btn alt" id="open2">My request (<span id="n0">0</span>)</button> <button class="btn alt" id="orders">My orders and downloads</button></span></header></div>
 
 <section class="hero"><div class="wrap">
 <h1>Environmental compliance you can buy online</h1>
@@ -87,7 +91,7 @@ label{font-size:.82rem;font-weight:600;display:grid;gap:4px}
 
 <section class="sec"><div class="note" id="legal"></div></section>
 </main>
-<footer><div class="wrap">&copy; <span id="yr"></span> Bharat Environment Consultants. Prices are indicative starting points and exclude applicable taxes. Verification, audit and registration decisions are made by independent verifiers, programme operators and regulators.</div></footer>
+<footer><div class="wrap">&copy; <span id="yr"></span> Bharat Environment Consultants. Prices are indicative starting points and exclude applicable taxes. Verification, audit and registration decisions are made by independent verifiers, programme operators and regulators.<br>Phone and WhatsApp: <a href="tel:+919958917292">+91 99589 17292</a>. 4th Floor, Green Tower, Sector 18, Gurugram, Haryana 122015. <a href="https://bharatenvironmentconsultants.com/privacy-policy.html">Privacy Policy</a>, <a href="https://bharatenvironmentconsultants.com/terms.html">Terms</a>.</div></footer>
 
 <div id="bar"><span><b id="n1">0</b> selected</span><button class="btn" id="open">Review and send request</button></div>
 
@@ -99,7 +103,9 @@ const CONFIG={
   contactEmail:"info@bharatenvironmentconsultants.com", // replace with your real address
   endpoint:"",           // optional: URL that accepts JSON POST of the request
   payment:{enabled:false}, // later: set enabled:true and implement startPayment(order)
-  testMode:true // shows a "Mark as paid" test button. Set false in production; unlock downloads only from your server after a payment webhook
+  testMode:false, // MUST stay false on the live site. true lets anyone unlock downloads for free
+  unlockSalt:"CHANGE-THIS-TO-A-LONG-RANDOM-TEXT", // secret for unlock codes. Change it before upload
+  whatsapp:"919958917292"
 };
 function startPayment(order){ /* Razorpay/Cashfree (INR) or Stripe/PayPal (USD) goes here */ }
 
@@ -161,7 +167,7 @@ function cartItems(){return S.cart.map(id=>all().find(s=>s[0]===id)).filter(Bool
 function openDlg(){
   const it=cartItems();
   const body=$("#dbody");
-  if(!it.length){body.innerHTML=`<h2>Your request is empty</h2><p>Add one or more services, then come back to send your request.</p><button class="btn" onclick="dlg.close()">Browse services</button>`;dlg.showModal();return}
+  if(!it.length){body.innerHTML=`<h2>Your request is empty</h2><p>Add one or more services, then come back to send your request.</p><button class="btn" onclick="dlg.close()">Browse services</button>`;if(!dlg.open)dlg.showModal();return}
   const mixed=new Set(it.map(s=>s[0][0])).size>1;
   body.innerHTML=`<h2>Review and send request</h2>${it.map(s=>`<div class="li"><span>${esc(s[2])}<br><small>${s[0][0]==="i"?"INR ":"USD "}${s[4].toLocaleString()}${s[5]?" \u2013 "+s[5].toLocaleString():""} ${esc(s[6])}</small></span><button data-r="${s[0]}">Remove</button></div>`).join("")}
   ${mixed?'<div class="ok">Your request includes both INR and USD services. We will quote each in its own currency.</div>':""}
@@ -171,7 +177,7 @@ function openDlg(){
   <label class="w">Project details, products or site location<textarea name="notes" rows="3"></textarea></label>
   <label class="w">Preferred payment<select name="pay"><option>Payment link</option><option>Invoice and bank transfer</option></select></label>
   <div class="w" style="display:flex;gap:10px;justify-content:flex-end"><button type="button" class="btn alt" onclick="dlg.close()">Keep browsing</button><button class="btn" type="submit">Send request</button></div></form>`;
-  dlg.showModal();
+  if(!dlg.open)dlg.showModal();
 }
 async function send(e){
   e.preventDefault();
@@ -186,7 +192,7 @@ async function send(e){
     const mail=`mailto:${CONFIG.contactEmail}?subject=${encodeURIComponent("Service request "+order.ref)}&body=${encodeURIComponent(`Name: ${d.name}\nCompany: ${d.company}\nCountry: ${d.country}\nEmail: ${d.email}\nPhone: ${d.phone}\nPayment: ${d.pay}\n\nServices:\n${lines}\n\nDetails:\n${d.notes}`)}`;
     location.href=mail;
   }
-  $("#dbody").innerHTML=`<h2>Request ${order.ref} prepared</h2><div class="ok">${sent?"We received your request.":"Your email app should have opened with the request. If it did not, email "+esc(CONFIG.contactEmail)+" and quote "+order.ref+"."} We will reply with scope and a final quote within one working day.</div><button class="btn" onclick="showOrders()">Open my orders and downloads</button>`;
+  $("#dbody").innerHTML=`<h2>Request ${order.ref} prepared</h2><div class="ok">${sent?"We received your request.":"Your email app should have opened with the request. If it did not, email "+esc(CONFIG.contactEmail)+" and quote "+order.ref+"."} We will reply with scope and a final quote within one working day.</div><a class="btn alt" style="text-decoration:none;text-align:center" target="_blank" rel="noopener" href="https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hello BEC, my service request reference is "+order.ref)}">Message us on WhatsApp</a><button class="btn" onclick="showOrders()">Open my orders and downloads</button>`;
   S.cart=[];save();render();
 }
 document.addEventListener("click",e=>{
@@ -198,6 +204,7 @@ document.addEventListener("click",e=>{
   else if(t.id==="open"||t.id==="open2")openDlg();
   else if(t.id==="orders")showOrders();
   else if(t.dataset.pay){const o=getOrders().find(x=>x.ref===t.dataset.pay);if(o){o.paid=true;o.state="paid";saveOrders(getOrders().map(x=>x.ref===o.ref?o:x));showOrders()}}
+  else if(t.dataset.unlock){const r=t.dataset.unlock,v=(document.getElementById("u-"+r).value||"").trim().toUpperCase();codeFor(r).then(c=>{if(v&&v===c){const os=getOrders();os.forEach(x=>{if(x.ref===r){x.paid=true;x.state="paid"}});saveOrders(os);showOrders()}else alert("That code does not match. Check the code we sent you after payment.")})}
   else if(t.dataset.dl){const[r,i]=t.dataset.dl.split("|");download(getOrders().find(x=>x.ref===r),i)}
 });
 document.addEventListener("submit",e=>{if(e.target.id==="frm")send(e)});
@@ -220,7 +227,7 @@ const LAWS=[["Water (Prevention and Control of Pollution) Act, 1974","State Poll
 ["Battery Waste Management Rules, 2022","CPCB","epr","EPR registration and annual return"],
 ["EU Carbon Border Adjustment Mechanism","European Commission","eu","Embedded-emissions reporting for covered goods exported to the EU"]];
 const CHK={"Advisory and filing":["Existing consents (CTE/CTO) and validity dates","Latest consent compliance and monitoring reports","Layout plan, process flow diagram, raw material and product list","Water and power consumption, effluent and waste quantities","Authorised signatory details and board resolution"],"Carbon and ESG":["12 months of electricity, fuel and refrigerant data","Production volumes by product","Existing sustainability policies or reports","Names of reporting frameworks required by buyers or lenders"],"Export compliance":["Product list with CN or HS codes","Annual production and export volumes to the EU or other buyers","Process description, raw material sources, energy and fuel use","Buyer questionnaires or supplier code of conduct received"],"Entering India":["Legal entity details and proposed site address","Products imported or manufactured and annual volumes","Existing registrations (GST, CPCB, SPCB)","Intended start date of operations"],"Lenders and global ESG":["ESIA or project documents under review","Lender standard applied (IFC PS or Equator Principles)","Site coordinates and baseline data available","Deadline and reporting format"]};
-function stamp(c,o){return `Prepared for ${c.company}, ${c.state}, ${c.country}. Sector: ${c.sector}. Scale: ${c.scale||"not stated"}. Ref ${o.ref}.`}
+function stamp(c,o){return esc(`Prepared for ${c.company}, ${c.state}, ${c.country}. Sector: ${c.sector}. Scale: ${c.scale||"not stated"}. Ref ${o.ref}.`)}
 function docx(t,h,c,o){return `<html><head><meta charset="utf-8"><style>body{font-family:Calibri,Arial;line-height:1.4}table{border-collapse:collapse;width:100%}td,th{border:1px solid #777;padding:6px;vertical-align:top}h1{color:#1e5a45}</style></head><body><h1>${t}</h1><p>${stamp(c,o)}</p>${h}<p><i>Draft prepared from the details you supplied. A qualified professional should review it before any regulatory submission.</i></p></body></html>`}
 const table=(head,rows)=>`<table><tr>${head.map(x=>`<th>${x}</th>`).join("")}</tr>${rows.map(r=>`<tr>${r.map(x=>`<td>${x||"&nbsp;"}</td>`).join("")}</tr>`).join("")}</table>`;
 const csv=rows=>rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(",")).join("\r\n");
@@ -239,7 +246,9 @@ if(!out.length){const cat=it.cat,items=CHK[cat]||["Basic company and site detail
 return out}
 function itemsOf(o){return o.items.map(i=>({...i,cat:(all().find(s=>s[0]===i.id)||[])[1]}))}
 function download(o,i){const f=files(itemsOf(o)[i],o);f.forEach((x,k)=>setTimeout(()=>{const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([x[2]],{type:x[1]}));a.download=x[0].replace(/[^\w.-]+/g,"_");a.click();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},k*300))}
-function showOrders(){const os=getOrders();$("#dbody").innerHTML=`<h2>My orders and downloads</h2>`+(os.length?os.map(o=>`<div class="note"><b>${esc(o.ref)}</b>, ${esc(o.customer.company)}: ${esc(o.state)}${o.paid?"":(CONFIG.testMode?` <button class="btn alt" data-pay="${esc(o.ref)}">Mark as paid (test)</button>`:"")}${itemsOf(o).map((it,i)=>`<div class="li"><span>${esc(it.name)}</span>${o.paid?`<button data-dl="${esc(o.ref)}|${i}">Download</button>`:"<small>Unlocks after payment</small>"}</div>`).join("")}</div>`).join(""):"<p>No orders yet. Add services and send a request to create one.</p>")+`<button class="btn" onclick="dlg.close()">Close</button>`;dlg.showModal()}
+function showOrders(){const os=getOrders();$("#dbody").innerHTML=`<h2>My orders and downloads</h2>`+(os.length?os.map(o=>`<div class="note"><b>${esc(o.ref)}</b>, ${esc(o.customer.company)}: ${esc(o.state)}${o.paid?"":(CONFIG.testMode?` <button class="btn alt" data-pay="${esc(o.ref)}">Mark as paid (test)</button>`:`<div class="f" style="margin:8px 0"><input id="u-${esc(o.ref)}" placeholder="Unlock code sent after payment" aria-label="Unlock code"><button class="btn alt" data-unlock="${esc(o.ref)}">Unlock downloads</button></div>`)}${itemsOf(o).map((it,i)=>`<div class="li"><span>${esc(it.name)}</span>${o.paid?`<button data-dl="${esc(o.ref)}|${i}">Download</button>`:"<small>Unlocks after payment</small>"}</div>`).join("")}</div>`).join(""):"<p>No orders yet. Add services and send a request to create one.</p>")+`<button class="btn" onclick="dlg.close()">Close</button>`;if(!dlg.open)dlg.showModal()}
+async function codeFor(ref){const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(ref+CONFIG.unlockSalt));return [...new Uint8Array(b)].slice(0,4).map(x=>x.toString(16).padStart(2,"0")).join("").toUpperCase()}
+if(location.hash==="#codes"){const r=prompt("Order reference (BEC-...)");if(r)codeFor(r.trim().toUpperCase()).then(c=>prompt("Unlock code for "+r.trim().toUpperCase(),c))}
 render();
 </script>
 </body>
