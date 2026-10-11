@@ -1,113 +1,553 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Client Portal | Bharat Environment Consultants</title>
-<meta name="robots" content="noindex">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--g:#0d3b1e;--g2:#1a5c32;--gold:#c9a84c;--cream:#f8f5ef;--ink:#1c1c1c;--mute:#5a5a5a;--line:#e0dccf}
-*{box-sizing:border-box}body{margin:0;font:15px/1.5 "DM Sans",system-ui,sans-serif;background:var(--cream);color:var(--ink)}
-h1,h2,h3{font-family:"Cormorant Garamond",serif;color:var(--g);margin:0}
-header{background:var(--g);color:#fff;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;border-bottom:2px solid var(--gold)}
-header a{color:#fff;text-decoration:none;font:700 1.15rem "Cormorant Garamond",serif}header small{color:var(--gold);display:block;font:500 .7rem "DM Sans"}
-.who{display:flex;gap:12px;align-items:center;font-size:.85rem}
-main{max-width:1100px;margin:auto;padding:28px 5vw 60px}
-.btn{background:var(--gold);color:var(--g);border:0;border-radius:6px;padding:10px 18px;font:700 .88rem "DM Sans";cursor:pointer}
-.btn.o{background:transparent;border:1.5px solid var(--line);color:var(--ink)}header .btn.o{color:#fff;border-color:rgba(255,255,255,.4)}
-:focus-visible{outline:3px solid var(--g2);outline-offset:2px}
-.card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;margin-bottom:18px}
-.auth{max-width:440px;margin:30px auto}.tabs{display:flex;gap:6px;margin-bottom:16px}
-.tabs button{flex:1;padding:10px;border:1.5px solid var(--line);background:#fff;border-radius:8px;font:600 .85rem "DM Sans";cursor:pointer}
-.tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
-label{display:grid;gap:4px;font-size:.78rem;font-weight:600;color:var(--mute);margin-bottom:12px}
-input,select,textarea{padding:10px;border:1.5px solid var(--line);border-radius:6px;font:inherit;background:#fff;color:var(--ink)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.msg{padding:10px 12px;border-radius:6px;background:#fff4d6;font-size:.85rem;margin-bottom:12px}.msg.ok{background:#dff3e4}
-.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:18px}
-.stat{background:var(--g);color:#fff;border-radius:10px;padding:16px}.stat b{font:700 2rem "Cormorant Garamond";color:var(--gold);display:block}
-table{width:100%;border-collapse:collapse;font-size:.86rem}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line)}th{color:var(--mute);font-size:.72rem}
-tr.c{cursor:pointer}tr.c:hover{background:#f2efe4}.wrap{overflow-x:auto}
-.pill{display:inline-block;padding:2px 10px;border-radius:99px;background:#e8efe9;color:var(--g2);font-size:.75rem;font-weight:600}
-.pill.paid{background:#dff3e4}.pill.no{background:#f3e6e6;color:#8a2a2a}
-.tl{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}.tl span{padding:4px 10px;border-radius:99px;background:#eee;font-size:.74rem;color:var(--mute)}.tl span.d{background:var(--g2);color:#fff}
-#ov{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:flex-start;justify-content:center;padding:4vh 12px;overflow:auto;z-index:20}
-#ov.on{display:flex}#md{background:#fff;border-radius:12px;padding:24px;width:min(640px,100%)}
-.kv{display:grid;grid-template-columns:130px 1fr;gap:4px 12px;font-size:.88rem;margin:10px 0}.kv b{color:var(--mute);font-weight:600}
-.demo{background:#fff4d6;text-align:center;padding:8px;font-size:.8rem}
-@media(max-width:560px){.row2{grid-template-columns:1fr}}
-</style></head><body>
-<div id="demo" class="demo" hidden>Demo mode: data stays in this browser only. Connect Firebase to go live. Demo admin: admin@demo.local / admin123</div>
-<header><a href="https://bharatenvironmentconsultants.com/">Bharat Environment Consultants<small>Client and Application Portal</small></a><div class="who" id="who"></div></header>
-<main id="app"></main>
-<div id="ov"><div id="md" role="dialog" aria-modal="true"></div></div>
+:root{--forest:#0d3b1e;--leaf:#1a5c32;--brass:#c9a84c;--brassink:#6f560f;--paper:#f8f5ef;--panel:#fffefb;--ink:#1c1c1c;--mute:#55584f;--line:#dcd7c6;--bad:#8a2a2a;--badbg:#f6e7e4;--okbg:#e1f1e5;--warnbg:#fbf1d3}
+*{box-sizing:border-box}
+html{scroll-padding-top:16px}
+body{margin:0;font:15px/1.55 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--forest);margin:0;line-height:1.15}
+h1{font-size:2rem}h2{font-size:1.4rem}h3{font-size:1.15rem}
+a{color:var(--leaf)}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:20}
+.demo{background:var(--warnbg);border-bottom:1px solid var(--brass);padding:8px 4vw;font-size:.85rem}
+.top{background:var(--forest);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4vw;border-bottom:3px solid var(--brass)}
+.brand{color:#fff;text-decoration:none;font:700 1.2rem/1.1 "Cormorant Garamond",Georgia,serif}
+.brand small{display:block;color:var(--brass);font:500 .72rem "DM Sans",sans-serif;margin-top:3px}
+.who{display:flex;align-items:center;gap:12px;font-size:.84rem;flex-wrap:wrap;justify-content:flex-end}
+.shell{display:grid;grid-template-columns:190px minmax(0,1fr);gap:36px;max-width:1260px;margin:0 auto;padding:30px 4vw 70px}
+body.out .shell{grid-template-columns:1fr;max-width:1000px}
+body.out #nav{display:none}
+#nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;position:sticky;top:16px}
+#nav a{display:block;padding:9px 12px;border-radius:6px;color:var(--ink);text-decoration:none;font-weight:500;border-left:3px solid transparent}
+#nav a:hover{background:#efebdd}
+#nav a[aria-current=page]{border-left-color:var(--brass);background:#efebdd;color:var(--forest);font-weight:700}
+main:focus{outline:none}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
+
+.btn{display:inline-block;background:var(--brass);color:var(--forest);border:1.5px solid var(--brass);border-radius:6px;padding:10px 18px;font:700 .9rem "DM Sans",sans-serif;cursor:pointer;text-decoration:none;min-height:42px;line-height:1.3}
+.btn:hover{filter:brightness(.95)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink);font-weight:500}
+.top .btn.ghost{color:#fff;border-color:rgba(255,255,255,.45)}
+.btn.sm{padding:6px 12px;min-height:34px;font-size:.82rem}
+.btn.danger{background:transparent;border-color:#d9b4ae;color:var(--bad);font-weight:500}
+.btn[disabled]{opacity:.55;cursor:wait}
+
+label{display:grid;gap:5px;font-size:.82rem;font-weight:700;color:var(--mute);margin-bottom:14px}
+label.chk{display:flex;gap:10px;align-items:center;font-weight:500;color:var(--ink);font-size:.9rem}
+input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:10px;width:100%;min-height:42px}
+input[type=checkbox]{width:18px;height:18px;min-height:0;padding:0}
+input:disabled{background:#f1eee3;color:var(--mute)}
+textarea{resize:vertical}
+.hint{font-size:.8rem;color:var(--mute);margin:-6px 0 14px;font-weight:400}
+.note{font-size:.85rem;color:var(--mute);margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+.msgbox{padding:10px 12px;border-radius:6px;background:var(--warnbg);font-size:.88rem;margin:0 0 14px}
+.msgbox.ok{background:var(--okbg)}
+
+.auth{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start;padding-top:20px}
+.auth h1{font-size:2.5rem}
+.auth ul{list-style:none;padding:0;margin:26px 0;display:grid;gap:14px}
+.auth li{padding-left:16px;border-left:3px solid var(--brass)}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px}
+.tabs{display:flex;border-bottom:1px solid var(--line);margin:0 0 20px}
+.tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:10px;font:700 .92rem "DM Sans",sans-serif;color:var(--mute);cursor:pointer;margin-bottom:-1px}
+.tabs button[aria-selected=true]{color:var(--forest);border-bottom-color:var(--brass)}
+
+.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.ph p{margin:6px 0 0;color:var(--mute)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;margin-bottom:20px}
+.panel>h2{margin-bottom:12px}
+.empty{padding:30px 10px;text-align:center;color:var(--mute)}
+.empty h2{margin-bottom:8px}.empty .btn{margin-top:12px}
+
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:20px;overflow:hidden}
+.strip button{background:none;border:0;border-right:1px solid var(--line);padding:14px 16px;text-align:left;cursor:pointer;font:inherit;font-size:.82rem;color:var(--mute)}
+.strip button:last-child{border-right:0}
+.strip button b{display:block;font:700 1.9rem/1.1 "Cormorant Garamond",Georgia,serif;color:var(--forest)}
+.strip button[aria-pressed=true]{background:var(--forest);color:#e8e4d2}
+.strip button[aria-pressed=true] b{color:var(--brass)}
+
+.wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--mute);font-size:.78rem;font-weight:700}
+tbody tr:last-child td{border-bottom:0}
+tbody tr[data-href]{cursor:pointer}
+tbody tr[data-href]:hover{background:#f3f0e4}
+td small{color:var(--mute)}
+.pill{display:inline-block;padding:2px 10px;border-radius:99px;background:#e8efe9;color:var(--leaf);font-size:.76rem;font-weight:700;white-space:nowrap}
+.pill.ok{background:var(--okbg);color:#14532d}.pill.warn{background:var(--warnbg);color:var(--brassink)}.pill.bad{background:var(--badbg);color:var(--bad)}
+
+.dgrid{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:24px;align-items:start}
+.back{display:inline-block;margin-bottom:14px;font-size:.9rem}
+dl.kv{display:grid;grid-template-columns:140px 1fr;gap:9px 16px;margin:0}
+dl.kv dt{color:var(--mute);font-size:.82rem;padding-top:2px}
+dl.kv dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.amt{font:700 2.1rem/1.1 "Cormorant Garamond",Georgia,serif;color:var(--forest);margin:0}
+.files{margin:0;padding-left:18px}.files li{margin-bottom:6px;overflow-wrap:anywhere}
+
+/* Application tracker: the stages a file passes through, with the date each was reached */
+.track{list-style:none;display:flex;margin:16px 0 4px;padding:0}
+.track li{flex:1;position:relative;text-align:center;font-size:.78rem;line-height:1.3;color:var(--mute);padding-top:28px}
+.track li::before{content:"";position:absolute;top:5px;left:50%;width:15px;height:15px;margin-left:-7px;border-radius:50%;background:var(--paper);border:2px solid var(--line);z-index:1}
+.track li::after{content:"";position:absolute;top:11px;left:-50%;width:100%;height:3px;background:var(--line)}
+.track li:first-child::after{display:none}
+.track li.done::before{background:var(--leaf);border-color:var(--leaf)}
+.track li.done::after,.track li.now::after{background:var(--leaf)}
+.track li.now::before{background:var(--brass);border-color:var(--forest);box-shadow:0 0 0 4px rgba(201,168,76,.35)}
+.track li.now{color:var(--forest);font-weight:700}
+.track span{display:block}
+.track time{display:block;font-size:.72rem;font-weight:400;color:var(--mute);margin-top:2px}
+
+.thread{display:grid;gap:12px;margin-bottom:18px}
+.m{padding:10px 14px;border-left:3px solid var(--line);background:#fff;border-radius:0 6px 6px 0}
+.m.bec{border-left-color:var(--leaf);background:#f0f6f1}
+.m header{font-size:.78rem;color:var(--mute);margin-bottom:3px;display:flex;justify-content:space-between;gap:10px}
+.m p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);background:var(--forest);color:#fff;padding:11px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;z-index:30;font-size:.9rem}
+#toast.on{opacity:1;transform:translateX(-50%)}
+#toast.bad{background:var(--bad)}
+
+@media(max-width:900px){
+ .shell{grid-template-columns:1fr;gap:16px;padding-top:18px}
+ #nav ul{display:flex;overflow-x:auto;position:static;gap:4px}
+ #nav a{border-left:0;border-bottom:3px solid transparent;white-space:nowrap;border-radius:0}
+ #nav a[aria-current=page]{border-bottom-color:var(--brass);background:none}
+ .dgrid,.auth{grid-template-columns:1fr}.auth{gap:28px}.auth h1{font-size:2rem}
+}
+@media(max-width:640px){
+ .track{flex-direction:column;margin-left:4px}
+ .track li{text-align:left;padding:0 0 18px 30px;min-height:34px}
+ .track li::before{top:2px;left:0;margin:0}
+ .track li::after{top:20px;left:7px;width:3px;height:calc(100% - 14px)}
+ .track li:first-child::after{display:block}
+ .track li:last-child::after{display:none}
+ .track li.done::after{background:var(--leaf)}
+ .track li.now::after{background:var(--line)}
+ .track li.done::after,.track li.now::after{left:7px}
+ .track time{display:inline;margin-left:8px}
+}
+@media(max-width:560px){.row2{grid-template-columns:1fr}dl.kv{grid-template-columns:1fr;gap:2px}dl.kv dd{margin-bottom:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body class="out">
+<a class="skip" href="#app">Skip to content</a>
+<div id="demo" class="demo" hidden><b>Demo mode.</b> Data stays in this browser only. Demo administrator: admin@demo.local / admin123. Add your Firebase configuration to go live.</div>
+<header class="top"><a class="brand" href="https://bharatenvironmentconsultants.com/">Bharat Environment Consultants<small>Client and application portal</small></a><div class="who" id="who"></div></header>
+<div class="shell"><nav id="nav" aria-label="Portal"></nav><main id="app" tabindex="-1"></main></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
-/* ===== SETUP: paste your Firebase web config here (empty = demo mode) ===== */
+"use strict";
+/* =====================================================================
+   SETUP. Paste your Firebase web app configuration below.
+   Leave it empty to run in demo mode (works only on localhost or when the
+   file is opened directly from disk, never on your live domain).
+   Administrators are NOT listed here. An administrator is any account that
+   has a document at admins/{their UID} in Firestore (see firestore.rules).
+   ===================================================================== */
 const CFG={apiKey:"",authDomain:"",projectId:"",appId:""};
-const ADMINS=["admin@demo.local"]; // your administrator email(s), lowercase. Must match firestore.rules
-const NOTIFY="https://formspree.io/f/xzdyqpya"; // emails you when a client submits
-const SERVICES=["Environment Audit","CTE application","CTO application","Compliance document pack","ISO 14001 / 45001 registers","Consent applicability check","Carbon footprint report","GHG inventory (ISO 14064-1)","BRSR / ESG readiness","EU CBAM readiness","Product carbon footprint / LCA","EPR registration","Environmental due diligence","IFC PS / Equator gap analysis","ESIA / EIA support","Other"];
+const NOTIFY="https://formspree.io/f/xzdyqpya"; // emails you about new applications and client messages. Empty to turn off.
+const SITE="https://bharatenvironmentconsultants.com/";
+const PHONE="+91 99589 17292";
+
 const ST=["Submitted","Under scrutiny","Query raised","Quote sent","Payment received","In progress","Delivered"];
-const $=s=>document.querySelector(s),e=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const dt=n=>new Date(n).toLocaleDateString("en-IN");
-let API,U=null,S={tab:"login",msg:"",expect:""};
-/* ---- Firebase backend ---- */
-const FB={init(){firebase.initializeApp(CFG);this.a=firebase.auth();this.d=firebase.firestore()},
-on(cb){this.a.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:u.email,admin:ADMINS.includes((u.email||"").toLowerCase())}:null))},
-async signUp(p){const c=await this.a.createUserWithEmailAndPassword(p.email,p.pw);await this.d.collection("users").doc(c.user.uid).set({name:p.name,org:p.org,phone:p.phone,email:p.email})},
-signIn(m,p){return this.a.signInWithEmailAndPassword(m,p)},signOut(){return this.a.signOut()},
-async profile(uid){const s=await this.d.collection("users").doc(uid).get();return s.exists?s.data():{}},
-createApp(a){return this.d.collection("applications").doc(a.id).set(a)},
-async list(uid){const q=uid?this.d.collection("applications").where("uid","==",uid):this.d.collection("applications");return(await q.get()).docs.map(x=>x.data()).sort((a,b)=>b.created-a.created)},
-update(id,p){return this.d.collection("applications").doc(id).update(p)},
-async delivery(id){try{const s=await this.d.collection("deliveries").doc(id).get();return s.exists?s.data():null}catch(x){return null}},
-setDelivery(id,uid,link){return this.d.collection("deliveries").doc(id).set({link,uid})}};
-/* ---- Demo backend (browser only) ---- */
-const DB=()=>JSON.parse(localStorage.getItem("becp")||'{"users":[{"uid":"A","email":"admin@demo.local","pw":"admin123","name":"Administrator"}],"apps":[],"del":{}}');
-const SV=d=>localStorage.setItem("becp",JSON.stringify(d));
-const DM={init(){},on(cb){this.cb=cb;const s=localStorage.getItem("becs");const u=s&&DB().users.find(x=>x.uid===s);cb(u?this.u(u):null)},
-u:x=>({uid:x.uid,email:x.email,admin:ADMINS.includes(x.email.toLowerCase())}),
-async signUp(p){const d=DB();if(d.users.some(x=>x.email===p.email))throw{message:"This email is already registered."};const u={uid:"U"+Date.now(),email:p.email,pw:p.pw,name:p.name,org:p.org,phone:p.phone};d.users.push(u);SV(d);localStorage.setItem("becs",u.uid);this.cb(this.u(u))},
-async signIn(m,p){const u=DB().users.find(x=>x.email===m&&x.pw===p);if(!u)throw{message:"Email or password is incorrect."};localStorage.setItem("becs",u.uid);this.cb(this.u(u))},
-async signOut(){localStorage.removeItem("becs");this.cb(null)},
-async profile(uid){return DB().users.find(x=>x.uid===uid)||{}},
-async createApp(a){const d=DB();d.apps.push(a);SV(d)},
-async list(uid){return DB().apps.filter(x=>!uid||x.uid===uid).sort((a,b)=>b.created-a.created)},
-async update(id,p){const d=DB();Object.assign(d.apps.find(x=>x.id===id),p);SV(d)},
-async delivery(id){const d=DB(),a=d.apps.find(x=>x.id===id);return a&&a.paid?d.del[id]||null:(U&&U.admin?d.del[id]||null:null)},
-async setDelivery(id,uid,link){const d=DB();d.del[id]={link,uid};SV(d)}};
-/* ---- Screens ---- */
-function go(){if(U&&S.expect==="admin"&&!U.admin){S.msg="This account is not an administrator.";S.expect="";API.signOut();return}
-S.expect="";$("#who").innerHTML=U?`<span>${e(U.email)}${U.admin?" (Administrator)":""}</span><button class="btn o" id="out">Sign out</button>`:"";
-U?(U.admin?adminScreen():clientScreen()):authScreen()}
-function authScreen(){const t=S.tab,su=t==="signup";$("#app").innerHTML=`<div class="card auth"><h2>${su?"Create client account":t==="admin"?"Administrator login":"Client login"}</h2><div class="tabs" style="margin-top:14px"><button data-t="login" class="${t==="login"?"on":""}">Client login</button><button data-t="signup" class="${su?"on":""}">Sign up</button><button data-t="admin" class="${t==="admin"?"on":""}">Administrator</button></div>${S.msg?`<div class="msg">${e(S.msg)}</div>`:""}
-<form id="af">${su?`<div class="row2"><label>Full name<input name="name" required></label><label>Organisation<input name="org" required></label></div><label>Mobile<input name="phone" type="tel" required></label>`:""}<label>Email<input name="email" type="email" required autocomplete="username"></label><label>Password${su?" (min 8 characters)":""}<input name="pw" type="password" required minlength="${su?8:1}" autocomplete="${su?"new-password":"current-password"}"></label><button class="btn" style="width:100%">${su?"Create account":"Sign in"}</button></form></div>`}
-function stat(a){const i=ST.indexOf(a.status);return`<div class="tl">${ST.map((s,k)=>`<span class="${k<=i?"d":""}">${s}</span>`).join("")}</div>`}
-async function clientScreen(){const p=await API.profile(U.uid),ap=await API.list(U.uid);window.AP=ap;
-$("#app").innerHTML=`<h2>Welcome${p.name?", "+e(p.name):""}</h2><p style="color:var(--mute)">Submit an application, track its status and download your documents once payment is confirmed.</p>
-<div class="card"><h3>New application</h3><form id="nf" style="margin-top:12px"><div class="row2"><label>Service<select name="service" required>${SERVICES.map(s=>`<option>${e(s)}</option>`).join("")}</select></label><label>State of project or site<input name="state" required></label></div><div class="row2"><label>Industry category<select name="category"><option>Not sure</option><option>Red</option><option>Orange</option><option>Green</option><option>White</option></select></label><label>Link to your documents (Drive, optional)<input name="docs" type="url" placeholder="https://"></label></div><label>Project details and what you need<textarea name="details" rows="4" required></textarea></label><button class="btn">Submit application</button></form></div>
-<div class="card"><h3>My applications</h3><div class="wrap">${ap.length?`<table><tr><th>ID</th><th>Date</th><th>Service</th><th>Status</th><th>Payment</th></tr>${ap.map(a=>`<tr class="c" data-v="${e(a.id)}"><td>${e(a.id)}</td><td>${dt(a.created)}</td><td>${e(a.service)}</td><td><span class="pill">${e(a.status)}</span></td><td><span class="pill ${a.paid?"paid":"no"}">${a.paid?"Paid":"Pending"}</span></td></tr>`).join("")}</table>`:"<p>No applications yet.</p>"}</div></div>`;
-if(S.msg){$("#app").insertAdjacentHTML("afterbegin",`<div class="msg ok">${e(S.msg)}</div>`);S.msg=""}}
-async function adminScreen(){const ap=await API.list(null);window.AP=ap;const f=S.f||"",q=(S.q||"").toLowerCase(),n=s=>ap.filter(a=>a.status===s).length;
-const rows=ap.filter(a=>(!f||a.status===f)&&(a.id+a.name+a.org+a.service+a.email).toLowerCase().includes(q));
-$("#app").innerHTML=`<h2>Administrator dashboard</h2><div class="stats" style="margin-top:14px"><div class="stat"><b>${ap.length}</b>All applications</div><div class="stat"><b>${n("Submitted")}</b>New</div><div class="stat"><b>${ap.filter(a=>["Under scrutiny","Query raised","Quote sent","In progress"].includes(a.status)).length}</b>In process</div><div class="stat"><b>${ap.filter(a=>a.paid).length}</b>Paid</div><div class="stat"><b>${n("Delivered")}</b>Delivered</div></div>
-<div class="card"><div class="row2" style="margin-bottom:12px"><label>Search<input id="aq" value="${e(S.q||"")}" placeholder="ID, client, service"></label><label>Status<select id="af2"><option value="">All</option>${ST.map(s=>`<option ${s===f?"selected":""}>${s}</option>`).join("")}</select></label></div><div class="wrap">${rows.length?`<table><tr><th>ID</th><th>Date</th><th>Client</th><th>Service</th><th>Status</th><th>Quote</th><th>Paid</th></tr>${rows.map(a=>`<tr class="c" data-v="${e(a.id)}"><td>${e(a.id)}</td><td>${dt(a.created)}</td><td>${e(a.name)}<br><small>${e(a.org)}</small></td><td>${e(a.service)}</td><td><span class="pill">${e(a.status)}</span></td><td>${e(a.quote||"")}</td><td><span class="pill ${a.paid?"paid":"no"}">${a.paid?"Yes":"No"}</span></td></tr>`).join("")}</table>`:"<p>No applications match.</p>"}</div></div>`}
-async function detail(id){const a=window.AP.find(x=>x.id===id);if(!a)return;const dl=await API.delivery(id);
-const kv=`<div class="kv"><b>Application</b><span>${e(a.id)}, ${dt(a.created)}</span><b>Client</b><span>${e(a.name)}, ${e(a.org)}<br>${e(a.email)}, ${e(a.phone)}</span><b>Service</b><span>${e(a.service)}</span><b>State, category</b><span>${e(a.state)}, ${e(a.category)}</span><b>Details</b><span style="white-space:pre-wrap">${e(a.details)}</span><b>Documents</b><span>${/^https:\/\//.test(a.docs||"")?`<a href="${e(a.docs)}" target="_blank" rel="noopener">Open link</a>`:"None"}</span></div>`;
-$("#md").innerHTML=U.admin?`<h3>${e(a.service)}</h3>${kv}<form id="uf" data-id="${e(a.id)}" data-uid="${e(a.uid)}"><div class="row2"><label>Status<select name="status">${ST.map(s=>`<option ${s===a.status?"selected":""}>${s}</option>`).join("")}</select></label><label>Quote (with currency)<input name="quote" value="${e(a.quote||"")}"></label></div><label>Remarks or query for the client<textarea name="remarks" rows="3">${e(a.remarks||"")}</textarea></label><label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="paid" ${a.paid?"checked":""}> Payment received</label><label>Private file link for the client (Drive, OneDrive, Dropbox)<input name="link" type="url" value="${e(dl?dl.link:"")}" placeholder="https://"></label><button class="btn">Save</button> <button type="button" class="btn o" id="cl">Close</button></form>`
-:`<h3>${e(a.service)}</h3>${stat(a)}${kv}${a.remarks?`<div class="msg"><b>Message from BEC:</b> ${e(a.remarks)}</div>`:""}${a.quote?`<p><b>Quote:</b> ${e(a.quote)}</p>`:""}<div class="msg ${a.paid&&dl?"ok":""}">${a.paid?(dl&&/^https:\/\//.test(dl.link)?`<a href="${e(dl.link)}" target="_blank" rel="noopener"><b>Download your file</b></a>`:"Payment received. Your file will appear here when it is ready."):"Your file will be available here after payment is confirmed."}</div><button class="btn o" id="cl">Close</button>`;
-$("#ov").classList.add("on")}
-/* ---- Events ---- */
-document.addEventListener("click",async x=>{const t=x.target.closest("[data-t],[data-v],#out,#cl");if(!t)return;
-if(t.dataset.t){S.tab=t.dataset.t;S.msg="";authScreen()}else if(t.dataset.v)detail(t.dataset.v);else if(t.id==="out")API.signOut();else if(t.id==="cl")$("#ov").classList.remove("on")});
-document.addEventListener("input",x=>{if(x.target.id==="aq"){S.q=x.target.value;const p=x.target.selectionStart;adminScreen().then(()=>{const i=$("#aq");i.focus();i.setSelectionRange(p,p)})}});
-document.addEventListener("change",x=>{if(x.target.id==="af2"){S.f=x.target.value;adminScreen()}});
-document.addEventListener("submit",async x=>{x.preventDefault();const f=x.target,d=Object.fromEntries(new FormData(f));
-try{if(f.id==="af"){S.msg="";if(S.tab==="signup")await API.signUp(d);else{S.expect=S.tab==="admin"?"admin":"";await API.signIn(d.email.trim().toLowerCase(),d.pw)}}
-else if(f.id==="nf"){const p=await API.profile(U.uid),a={id:"BEC-APP-"+Date.now().toString(36).toUpperCase(),uid:U.uid,email:U.email,name:p.name||"",org:p.org||"",phone:p.phone||"",service:d.service,state:d.state,category:d.category,details:d.details,docs:d.docs||"",status:"Submitted",remarks:"",quote:"",paid:false,created:Date.now()};await API.createApp(a);
-if(NOTIFY)fetch(NOTIFY,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:"New portal application "+a.id,email:a.email,name:a.name,organisation:a.org,phone:a.phone,service:a.service,state:a.state,message:a.details})}).catch(()=>{});S.msg="Application "+a.id+" submitted. We will review it and update the status here.";clientScreen()}
-else if(f.id==="uf"){await API.update(f.dataset.id,{status:d.status,quote:d.quote,remarks:d.remarks,paid:!!d.paid});if(d.link&&/^https:\/\//.test(d.link))await API.setDelivery(f.dataset.id,f.dataset.uid,d.link);$("#ov").classList.remove("on");adminScreen()}}
-catch(err){const m=(err&&err.message)||"Something went wrong. Try again.";if(f.id==="af"){S.msg=m;authScreen()}else alert(m)}});
-(async()=>{const live=CFG.apiKey&&window.firebase;API=live?FB:DM;if(!live)$("#demo").hidden=false;API.init();API.on(u=>{U=u;go()})})();
-</script></body></html>
+const CATS=["Not sure","Red","Orange","Green","White"];
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+const DEFAULTS=[
+["Environment Audit","Compliance status, pollution load, waste practices and a corrective action plan."],
+["CTE application","Consent to Establish documents, filing and follow-up with the State Pollution Control Board."],
+["CTO application","Consent to Operate or renewal documents, filing and follow-up with the State Pollution Control Board."],
+["Compliance document pack","Compliance records, returns and statements prepared for your unit."],
+["ISO 14001 / 45001 registers","Aspect-impact, legal and hazard registers prepared for your management system."],
+["Consent applicability check","A written opinion on which consents and authorisations your unit needs."],
+["Carbon footprint report","Scope 1, 2 and 3 emissions with a reduction roadmap."],
+["GHG inventory (ISO 14064-1)","Organisation-level greenhouse gas inventory prepared to ISO 14064-1."],
+["BRSR / ESG readiness","Gap assessment and disclosure preparation for BRSR, GRI and related frameworks."],
+["EU CBAM readiness","Embedded emissions data and reporting readiness for EU CBAM."],
+["Product carbon footprint / LCA","Product carbon footprint and life cycle assessment."],
+["EPR registration","Extended Producer Responsibility registration and annual returns."],
+["Environmental due diligence","Site and compliance review for acquisitions, lending or expansion."],
+["IFC PS / Equator gap analysis","Gap analysis of your project against IFC Performance Standards and the Equator Principles."],
+["ESIA / EIA support","Baseline data, impact assessment and report preparation for environmental clearance."],
+["Other","Anything else. Describe it in the application and we will confirm the scope."]
+].map(([name,desc],i)=>({id:slug(name),name,desc,tat:"",active:true,order:i,_builtin:true}));
+
+/* ---------- helpers ---------- */
+const $=(s,r)=>(r||document).querySelector(s);
+const e=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dt=n=>n?new Date(n).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}):"";
+const dts=n=>n?new Date(n).toLocaleDateString("en-IN",{day:"numeric",month:"short"}):"";
+const dtt=n=>n?new Date(n).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}):"";
+const inr=n=>"\u20B9"+Math.round(n||0).toLocaleString("en-IN");
+const okUrl=u=>/^https:\/\//i.test(String(u||"").trim());
+const pc=s=>s==="Delivered"?"ok":s==="Query raised"?"warn":"";
+const toast=(m,bad)=>{const t=$("#toast");t.textContent=m;t.className="on"+(bad?" bad":"");clearTimeout(toast.t);toast.t=setTimeout(()=>{t.className=""},4500)};
+const ERR={"auth/invalid-credential":"Email or password is incorrect.","auth/invalid-login-credentials":"Email or password is incorrect.","auth/wrong-password":"Email or password is incorrect.","auth/user-not-found":"Email or password is incorrect.","auth/email-already-in-use":"This email is already registered. Sign in instead.","auth/weak-password":"Choose a password of at least 8 characters.","auth/too-many-requests":"Too many attempts. Wait a few minutes and try again.","auth/network-request-failed":"Network problem. Check your connection and try again.","auth/invalid-email":"Enter a valid email address.","permission-denied":"You do not have permission to do that. If this is unexpected, sign out and sign in again."};
+const msg=x=>ERR[x&&x.code]||(x&&x.message)||"Something went wrong. Try again.";
+const go=h=>{if(location.hash===h)render();else location.hash=h};
+const idx=s=>ST.indexOf(s);
+
+/* ---------- Firebase backend ---------- */
+const FB={
+ init(){firebase.initializeApp(CFG);this.a=firebase.auth();this.d=firebase.firestore()},
+ onAuth(cb){this.a.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:(u.email||"").toLowerCase()}:null))},
+ async signUp(m,p){const c=await this.a.createUserWithEmailAndPassword(m,p);return{uid:c.user.uid,email:m}},
+ signIn(m,p){return this.a.signInWithEmailAndPassword(m,p)},
+ signOut(){return this.a.signOut()},
+ reset(m){return this.a.sendPasswordResetEmail(m)},
+ async get(c,id){try{const s=await this.d.collection(c).doc(id).get();return s.exists?s.data():null}catch(x){if(x&&x.code==="permission-denied")return null;throw x}},
+ set(c,id,v){return this.d.collection(c).doc(id).set(v)},
+ upd(c,id,p){return this.d.collection(c).doc(id).update(p)},
+ del(c,id){return this.d.collection(c).doc(id).delete()},
+ async add(c,v){return(await this.d.collection(c).add(v)).id},
+ async list(c,f){let q=this.d.collection(c);if(f)q=q.where(f[0],"==",f[1]);return(await q.get()).docs.map(x=>({id:x.id,...x.data()}))}
+};
+
+/* ---------- Demo backend (browser only, for testing) ---------- */
+const DM={
+ K:"bec_portal_demo",
+ load(){try{const d=JSON.parse(localStorage.getItem(this.K));if(d)return d}catch(x){}return{users:[{uid:"A1",email:"admin@demo.local",pw:"admin123"}],data:{admins:{A1:{demo:true}}},sess:null}},
+ save(d){localStorage.setItem(this.K,JSON.stringify(d))},
+ init(){},
+ onAuth(cb){this.cb=cb;const d=this.load(),u=d.users.find(x=>x.uid===d.sess);cb(u?{uid:u.uid,email:u.email}:null)},
+ async signUp(m,p){const d=this.load();if(d.users.some(x=>x.email===m))throw{code:"auth/email-already-in-use"};const u={uid:"U"+Date.now().toString(36),email:m,pw:p};d.users.push(u);d.sess=u.uid;this.save(d);return{uid:u.uid,email:m}},
+ async signIn(m,p){const d=this.load(),u=d.users.find(x=>x.email===m&&x.pw===p);if(!u)throw{code:"auth/invalid-credential"};d.sess=u.uid;this.save(d);this.cb({uid:u.uid,email:u.email})},
+ async signOut(){const d=this.load();d.sess=null;this.save(d);this.cb(null)},
+ async reset(){},
+ async get(c,id){const d=this.load();if(c==="deliveries"&&!U.admin){const a=(d.data.applications||{})[id];if(!a||!a.paid||a.uid!==U.uid)return null}return(d.data[c]||{})[id]||null},
+ async set(c,id,v){const d=this.load();(d.data[c]=d.data[c]||{})[id]=JSON.parse(JSON.stringify(v));this.save(d)},
+ async upd(c,id,p){const d=this.load(),o=(d.data[c]||{})[id];if(!o)throw{message:"Record not found."};Object.assign(o,JSON.parse(JSON.stringify(p)));this.save(d)},
+ async del(c,id){const d=this.load();if(d.data[c])delete d.data[c][id];this.save(d)},
+ async add(c,v){const id="M"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);await this.set(c,id,v);return id},
+ async list(c,f){const d=this.load();return Object.entries(d.data[c]||{}).map(([id,v])=>({id,...v})).filter(x=>!f||x[f[0]]===f[1])}
+};
+
+/* ---------- state ---------- */
+let API,U=null,SVC=[],SET={},APPS=[],RT=0;
+const S={tab:"in",q:"",f:"",k:"all",busy:false};
+const FLT={all:()=>true,new:a=>a.status==="Submitted",quote:a=>a.quoteStatus==="Sent",pay:a=>a.quoteStatus==="Accepted"&&!a.paid,work:a=>a.paid&&a.status!=="Delivered",done:a=>a.status==="Delivered"};
+const STRIP=[["all","All applications"],["new","New"],["quote","Quote with client"],["pay","Awaiting payment"],["work","Paid, in delivery"],["done","Delivered"]];
+
+function nextC(a){
+ if(a.paid&&a.status==="Delivered")return"Download your files";
+ if(a.quoteStatus==="Sent")return"Review the quote";
+ if(a.quoteStatus==="Accepted"&&!a.paid)return"Complete payment";
+ if(a.status==="Query raised")return"Reply to our query";
+ if(a.quoteStatus==="Declined")return"Quote declined";
+ if(a.status==="Submitted")return"Waiting for our review";
+ return"With BEC";
+}
+function nextA(a){
+ if(a.status==="Submitted")return"Review application";
+ if(a.quoteStatus==="Accepted"&&!a.paid)return"Confirm payment";
+ if(a.paid&&a.status!=="Delivered")return"Complete the work";
+ if(a.status==="Delivered")return"Done";
+ if(a.quoteStatus==="Sent"||a.status==="Query raised")return"Waiting for client";
+ if(a.status==="Under scrutiny")return"Raise a query or send a quote";
+ return"Open";
+}
+function notify(subject,body){if(!NOTIFY||API===DM)return;fetch(NOTIFY,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:subject,...body})}).catch(()=>{})}
+
+/* ---------- session ---------- */
+async function loadServices(){const l=await API.list("services");if(!l.length)return DEFAULTS.map(x=>({...x}));return l.sort((a,b)=>(a.order||0)-(b.order||0))}
+async function boot(au){
+ U={uid:au.uid,email:au.email,admin:false,profile:{}};
+ try{
+  U.admin=!!(await API.get("admins",au.uid));
+  U.profile=(await API.get("users",au.uid))||{};
+  SVC=await loadServices();
+  SET=(await API.get("settings","main"))||{};
+ }catch(x){toast(msg(x),true)}
+ render();
+}
+
+/* ---------- views ---------- */
+const route=()=>{const p=location.hash.replace(/^#\/?/,"").split("/");return{v:p[0]||"",id:decodeURIComponent(p[1]||"")}};
+function hdr(){$("#who").innerHTML=U?`<span>${e(U.email)}${U.admin?" (administrator)":""}</span><button class="btn ghost sm" data-act="out">Sign out</button>`:""}
+function nav(r){
+ const items=U.admin?[["","Applications"],["clients","Clients"],["services","Services"],["settings","Settings"]]:[["","My applications"],["new","New application"],["profile","My profile"]];
+ const cur=r.v==="app"?"":r.v;
+ $("#nav").innerHTML=`<ul>${items.map(([v,t])=>`<li><a href="#/${v}"${v===cur?' aria-current="page"':""}>${t}</a></li>`).join("")}</ul>`;
+}
+function authMsg(t,ok){const m=$("#amsg");if(!m)return;m.textContent=t;m.hidden=false;m.className="msgbox"+(ok?" ok":"")}
+function authView(){
+ const up=S.tab==="up";
+ return`<section class="auth"><div><h1>Apply for environmental services and follow them through to delivery</h1>
+<ul><li>Submit an application for any BEC service</li><li>See every stage, from scrutiny to delivery</li><li>Message our team on the application itself</li><li>Download your files once payment is confirmed</li></ul>
+<p>Questions before you register? Call ${e(PHONE)} or visit <a href="${SITE}#contact">our contact page</a>.</p></div>
+<div class="box"><div class="tabs" role="tablist"><button role="tab" data-act="tab" data-v="in" aria-selected="${!up}">Sign in</button><button role="tab" data-act="tab" data-v="up" aria-selected="${up}">Create account</button></div>
+<p id="amsg" class="msgbox" role="alert" hidden></p>
+<form id="af">${up?`<div class="row2"><label>Full name<input name="name" required autocomplete="name"></label><label>Organisation<input name="org" required autocomplete="organization"></label></div><label>Mobile number<input name="phone" type="tel" required autocomplete="tel"></label>`:""}
+<label>Email<input name="email" type="email" required autocomplete="username"></label>
+<label>Password${up?" (at least 8 characters)":""}<input name="pw" type="password" required minlength="${up?8:1}" autocomplete="${up?"new-password":"current-password"}"></label>
+<button class="btn" style="width:100%">${up?"Create account":"Sign in"}</button>
+${up?"":`<p style="margin:14px 0 0;text-align:center"><a href="#" data-act="reset">Forgot your password?</a></p>`}</form>
+<p class="note">BEC staff sign in here too and see the administrator tools automatically.</p></div></section>`;
+}
+function tracker(a){
+ const i=idx(a.status),h=a.history||[],last=ST.length-1;
+ return`<ol class="track">${ST.map((s,k)=>{
+  const x=[...h].reverse().find(z=>z.s===s),cls=(k<i||(k===i&&i===last))?"done":k===i?"now":"";
+  return`<li class="${cls}"${k===i?' aria-current="step"':""}><span>${s}</span>${x?`<time>${dts(x.at)}</time>`:""}</li>`}).join("")}</ol>`;
+}
+
+function newView(){
+ const act=SVC.filter(s=>s.active!==false);
+ return`<div class="ph"><div><h1>New application</h1><p>Tell us what you need. We review every application and reply here with questions or a quote.</p></div></div>
+<form id="nf" class="panel"><label>Service<select name="service" id="svsel" required>${act.map(s=>`<option>${e(s.name)}</option>`).join("")}</select></label>
+<p class="hint" id="svdesc">${act[0]?e(act[0].desc)+(act[0].tat?" Typical turnaround: "+e(act[0].tat)+".":""):""}</p>
+<div class="row2"><label>Project or site name<input name="project" required></label><label>State of the project or site<input name="state" required></label></div>
+<div class="row2"><label>Industry category<select name="category">${CATS.map(c=>`<option>${c}</option>`).join("")}</select></label><label>Link to your documents (optional)<input name="docs" type="url" placeholder="https://"></label></div>
+<p class="hint">Category is the CPCB Red, Orange, Green or White classification. Choose Not sure if you do not know it. Share documents through a Drive, OneDrive or Dropbox link that we can open.</p>
+<label>What do you need?<textarea name="details" rows="6" required maxlength="5000" placeholder="Capacity, products, existing consents, deadlines, anything that helps us scope the work"></textarea></label>
+<button class="btn">Submit application</button></form>`;
+}
+function profileView(){
+ const p=U.profile||{};
+ return`<div class="ph"><h1>My profile</h1></div>
+<form id="pf" class="panel"><div class="row2"><label>Full name<input name="name" value="${e(p.name)}" required></label><label>Organisation<input name="org" value="${e(p.org)}" required></label></div>
+<div class="row2"><label>Mobile number<input name="phone" type="tel" value="${e(p.phone)}" required></label><label>GSTIN (optional, for invoices)<input name="gstin" value="${e(p.gstin)}" maxlength="15"></label></div>
+<label>Email<input value="${e(U.email)}" disabled></label>
+<button class="btn">Save profile</button> <button type="button" class="btn ghost" data-act="pwreset">Email me a password reset link</button></form>`;
+}
+function clientHome(ap){
+ return`<div class="ph"><div><h1>My applications</h1><p>Track each application, reply to our team and download your files.</p></div><a class="btn" href="#/new">New application</a></div>
+${ap.length?`<div class="panel wrap"><table><thead><tr><th>Application</th><th>Service</th><th>Status</th><th>Quote</th><th>Next step</th></tr></thead><tbody>${ap.map(a=>`<tr data-href="#/app/${e(a.id)}"><td><a href="#/app/${e(a.id)}">${e(a.id)}</a><br><small>${dt(a.created)}</small></td><td>${e(a.service)}<br><small>${e(a.project)}</small></td><td><span class="pill ${pc(a.status)}">${e(a.status)}</span></td><td>${a.quote?inr(a.quote)+"<br><small>"+(a.paid?"Paid":e(a.quoteStatus||""))+"</small>":""}</td><td>${nextC(a)}</td></tr>`).join("")}</tbody></table></div>`
+:`<div class="panel empty"><h2>No applications yet</h2><p>Choose a service, describe your project, and we will take it from there.</p><a class="btn" href="#/new">Start an application</a></div>`}`;
+}
+function stripHtml(){return STRIP.map(([k,t])=>`<button data-act="flt" data-k="${k}" aria-pressed="${S.k===k}"><b>${APPS.filter(FLT[k]).length}</b>${t}</button>`).join("")}
+function adminRows(){
+ const q=(S.q||"").toLowerCase().trim(),k=FLT[S.k]||FLT.all;
+ const r=APPS.filter(a=>k(a)&&(!S.f||a.status===S.f)&&(!q||[a.id,a.name,a.org,a.email,a.service,a.project,a.state].join(" ").toLowerCase().includes(q)));
+ if(!r.length)return`<p class="empty">No applications match these filters.</p>`;
+ return`<table><thead><tr><th>Application</th><th>Client</th><th>Service</th><th>Status</th><th>Quote</th><th>Next step</th></tr></thead><tbody>${r.map(a=>`<tr data-href="#/app/${e(a.id)}"><td><a href="#/app/${e(a.id)}">${e(a.id)}</a><br><small>${dt(a.created)}</small></td><td>${e(a.name)}<br><small>${e(a.org)}</small></td><td>${e(a.service)}<br><small>${e(a.state)}</small></td><td><span class="pill ${pc(a.status)}">${e(a.status)}</span></td><td>${a.quote?inr(a.quote)+"<br><small>"+(a.paid?"Paid":e(a.quoteStatus||""))+"</small>":""}</td><td>${nextA(a)}</td></tr>`).join("")}</tbody></table>`;
+}
+function adminHome(ap){
+ APPS=ap;const paid=ap.filter(a=>a.paid).reduce((s,a)=>s+(a.quote||0),0);
+ return`<div class="ph"><div><h1>Applications</h1><p>Payments received so far: <b>${inr(paid)}</b></p></div><button class="btn ghost" data-act="csv">Export CSV</button></div>
+<div class="strip" id="strip">${stripHtml()}</div>
+<div class="panel"><div class="row2"><label>Search<input id="aq" value="${e(S.q)}" placeholder="ID, client, organisation, service, state"></label><label>Status<select id="af2"><option value="">All statuses</option>${ST.map(s=>`<option${s===S.f?" selected":""}>${s}</option>`).join("")}</select></label></div><div class="wrap" id="tbl">${adminRows()}</div></div>`;
+}
+async function homeView(){
+ const ap=await API.list("applications",U.admin?null:["uid",U.uid]);
+ ap.sort((a,b)=>(b.created||0)-(a.created||0));
+ return U.admin?adminHome(ap):clientHome(ap);
+}
+async function detailView(id){
+ const a=await API.get("applications",id);
+ if(!a||(!U.admin&&a.uid!==U.uid))return`<div class="panel empty"><h2>Application not found</h2><p>It may have been removed, or it belongs to another account.</p><a class="btn" href="#/">Back to applications</a></div>`;
+ const[ms,dl,nt]=await Promise.all([API.list(`applications/${id}/messages`),API.get("deliveries",id),U.admin?API.get("notes",id):Promise.resolve(null)]);
+ ms.sort((x,y)=>(x.at||0)-(y.at||0));
+ const thread=ms.length?`<div class="thread">${ms.map(m=>`<article class="m${m.from==="admin"?" bec":""}"><header><b>${m.from==="admin"?"BEC team":(U.admin?e(a.name||"Client"):"You")}</b><time>${dtt(m.at)}</time></header><p>${e(m.text)}</p></article>`).join("")}</div>`:`<p class="note" style="margin:0 0 16px">No messages yet.</p>`;
+ const left=`<a class="back" href="#/">Back to applications</a>
+<div class="ph"><div><h1>${e(a.service)}</h1><p>${e(a.project)}</p></div><span class="pill ${pc(a.status)}">${e(a.status)}</span></div>
+<section class="panel" aria-label="Progress"><h2>Progress</h2>${tracker(a)}</section>
+<section class="panel"><h2>Application details</h2><dl class="kv"><dt>Application ID</dt><dd>${e(a.id)}</dd><dt>Submitted</dt><dd>${dt(a.created)}</dd>${U.admin?`<dt>Client</dt><dd>${e(a.name)}, ${e(a.org)}\n${e(a.email)}, ${e(a.phone)}</dd>`:""}<dt>State</dt><dd>${e(a.state)}</dd><dt>Category</dt><dd>${e(a.category)}</dd><dt>Details</dt><dd>${e(a.details)}</dd><dt>Documents</dt><dd>${okUrl(a.docs)?`<a href="${e(a.docs)}" target="_blank" rel="noopener noreferrer">Open the shared documents</a>`:"None shared"}</dd></dl></section>
+<section class="panel"><h2>Messages</h2>${thread}<form id="cf" data-id="${e(a.id)}"><label>${U.admin?"Reply to the client":"Message to BEC"}<textarea name="text" rows="3" required maxlength="2000"></textarea></label><button class="btn">Send message</button></form></section>`;
+ let side;
+ if(U.admin){
+  const files=(dl&&dl.files||[]).map(f=>f.name+" | "+f.link).join("\n");
+  side=`<form id="mf" class="panel" data-id="${e(a.id)}"><h2>Manage application</h2>
+<label>Status<select name="status">${ST.map(s=>`<option${s===a.status?" selected":""}>${s}</option>`).join("")}</select></label>
+<label>Quote amount in rupees<input name="quote" type="number" min="0" step="1" value="${a.quote||""}"></label>
+<label>Quote note (shown to the client)<input name="quoteNote" value="${e(a.quoteNote)}" placeholder="e.g. Includes GST. Excludes government fees."></label>
+<p class="hint">Quote status: ${e(a.quoteStatus||"not sent")}. Saving a new amount sends the quote to the client.</p>
+<label class="chk"><input type="checkbox" name="paid"${a.paid?" checked":""}> Payment received</label>
+<label>Payment reference<input name="payRef" value="${e(a.payRef)}"></label>
+<label>Files for the client<textarea name="files" rows="4" placeholder="Report name | https://drive.google.com/...">${e(files)}</textarea></label>
+<p class="hint">One file per line as name | link. Clients can open these only after payment is marked received.</p>
+<label>Private notes<textarea name="notes" rows="3">${e(nt?nt.text:"")}</textarea></label>
+<p class="hint">Visible to administrators only.</p>
+<button class="btn">Save changes</button> <a class="btn ghost" href="mailto:${e(a.email)}?subject=${encodeURIComponent("Your BEC application "+a.id)}">Email client</a></form>`;
+ }else{
+  let q=`<section class="panel"><h2>Quote and payment</h2>`;
+  if(!(a.quote>0))q+=`<p>No quote yet. We will send one here after reviewing your application.</p>`;
+  else{
+   q+=`<p class="amt">${inr(a.quote)}</p>${a.quoteNote?`<p class="note">${e(a.quoteNote)}</p>`:""}`;
+   if(a.quoteStatus==="Sent")q+=`<p>Please accept or decline this quote.</p><button class="btn" data-act="qy" data-id="${e(a.id)}">Accept quote</button> <button class="btn ghost" data-act="qn" data-id="${e(a.id)}">Decline</button>`;
+   else if(a.quoteStatus==="Declined")q+=`<p>You declined this quote. Send us a message if you want it revised.</p>`;
+   else if(a.paid)q+=`<p><span class="pill ok">Payment received</span> ${dt(a.paidOn)}${a.payRef?`<br><small>Reference ${e(a.payRef)}</small>`:""}</p>`;
+   else q+=`<p><span class="pill warn">Awaiting payment</span></p>${SET.payInfo?`<p class="note">${e(SET.payInfo)}</p>`:""}<p class="note">After you pay, send us the transaction reference in a message. We confirm payment here.</p>`;
+  }
+  q+=`</section><section class="panel"><h2>Your files</h2>`;
+  const fl=(dl&&dl.files||[]).filter(f=>okUrl(f.link));
+  if(!a.paid)q+=`<p>Files are released here after we confirm payment.</p>`;
+  else if(fl.length)q+=`<ul class="files">${fl.map(f=>`<li><a href="${e(f.link)}" target="_blank" rel="noopener noreferrer">${e(f.name||"Download file")}</a></li>`).join("")}</ul>`;
+  else q+=`<p>Payment received. Your files will appear here when they are ready.</p>`;
+  side=q+`</section>`;
+ }
+ return`<div class="dgrid"><div>${left}</div><aside>${side}</aside></div>`;
+}
+async function clientsView(){
+ const[us,ap]=await Promise.all([API.list("users"),API.list("applications")]);
+ us.sort((a,b)=>(b.created||0)-(a.created||0));
+ return`<div class="ph"><div><h1>Clients</h1><p>${us.length} registered ${us.length===1?"account":"accounts"}</p></div></div>
+<div class="panel wrap">${us.length?`<table><thead><tr><th>Name</th><th>Organisation</th><th>Contact</th><th>GSTIN</th><th>Applications</th><th>Joined</th></tr></thead><tbody>${us.map(u=>{const n=ap.filter(a=>a.uid===u.id).length;return`<tr><td>${e(u.name)}</td><td>${e(u.org)}</td><td>${e(u.email)}<br><small>${e(u.phone)}</small></td><td>${e(u.gstin)}</td><td>${n?`<a href="#/" data-act="cap" data-q="${e(u.email)}">${n}</a>`:"0"}</td><td>${dt(u.created)}</td></tr>`}).join("")}</tbody></table>`:`<p class="empty">No clients have registered yet.</p>`}</div>`;
+}
+function servicesView(){
+ const b=SVC.length&&SVC[0]._builtin;
+ const head=`<div class="ph"><div><h1>Services</h1><p>The services clients can choose when they apply.</p></div></div>`;
+ if(b)return head+`<div class="panel"><h2>Built-in list in use</h2><p>Clients currently see the standard list of ${SVC.length} services. Make the list editable to rename, describe, hide or add services.</p><button class="btn" data-act="svcconv">Make the list editable</button></div>`;
+ return head+`<form id="sf" class="panel"><h2 id="sfh">Add a service</h2><input type="hidden" name="sid"><label>Name<input name="name" required></label><label>What it covers<textarea name="desc" rows="2" required></textarea></label>
+<div class="row2"><label>Typical turnaround (optional)<input name="tat" placeholder="e.g. 2 to 3 weeks"></label><label class="chk" style="align-self:end"><input type="checkbox" name="active" checked> Show to clients</label></div>
+<button class="btn">Save service</button> <button type="button" class="btn ghost" data-act="svcnew">Clear form</button></form>
+<div class="panel wrap"><table><thead><tr><th>Service</th><th>Visibility</th><th></th></tr></thead><tbody>${SVC.map(s=>`<tr><td><b>${e(s.name)}</b><br><small>${e(s.desc)}${s.tat?" Turnaround: "+e(s.tat):""}</small></td><td><span class="pill ${s.active===false?"warn":"ok"}">${s.active===false?"Hidden":"Shown"}</span></td><td style="white-space:nowrap"><button class="btn ghost sm" data-act="svce" data-id="${e(s.id)}">Edit</button> <button class="btn danger sm" data-act="svcd" data-id="${e(s.id)}">Delete</button></td></tr>`).join("")}</tbody></table></div>`;
+}
+function settingsView(){
+ return`<div class="ph"><h1>Settings</h1></div><form id="stf" class="panel"><h2>Payment instructions</h2><label>Shown to a client after they accept a quote<textarea name="payInfo" rows="6" placeholder="Bank name, account name, account number, IFSC, UPI ID, and any billing note">${e(SET.payInfo)}</textarea></label><button class="btn">Save settings</button></form>`;
+}
+async function render(){
+ const t=++RT;hdr();
+ if(!U){document.body.className="out";$("#nav").innerHTML="";$("#app").innerHTML=authView();return}
+ document.body.className="in";
+ const r=route();nav(r);let h;
+ try{
+  if(r.v==="app"&&r.id)h=await detailView(r.id);
+  else if(r.v==="new"&&!U.admin)h=newView();
+  else if(r.v==="profile"&&!U.admin)h=profileView();
+  else if(U.admin&&r.v==="clients")h=await clientsView();
+  else if(U.admin&&r.v==="services")h=servicesView();
+  else if(U.admin&&r.v==="settings")h=settingsView();
+  else h=await homeView();
+ }catch(x){h=`<div class="panel empty"><h2>This page did not load</h2><p>${e(msg(x))}</p></div>`}
+ if(t===RT)$("#app").innerHTML=h;
+}
+
+/* ---------- actions ---------- */
+async function auth(d){
+ const em=d.email.trim().toLowerCase();
+ if(S.tab==="up"){
+  S.busy=true;let au;
+  try{au=await API.signUp(em,d.pw);await API.set("users",au.uid,{name:d.name.trim(),org:d.org.trim(),phone:d.phone.trim(),gstin:"",email:em,created:Date.now()})}
+  finally{S.busy=false;if(au)await boot(au)}
+ }else await API.signIn(em,d.pw);
+}
+async function createApp(d){
+ const p=U.profile||{},t=Date.now();
+ const a={id:"BEC-APP-"+t.toString(36).toUpperCase(),uid:U.uid,email:U.email,name:p.name||"",org:p.org||"",phone:p.phone||"",service:d.service,project:d.project.trim(),state:d.state.trim(),category:d.category,details:d.details.trim(),docs:okUrl(d.docs)?d.docs.trim():"",status:"Submitted",quote:0,quoteNote:"",quoteStatus:"",paid:false,payRef:"",paidOn:0,history:[{s:"Submitted",at:t}],created:t,updated:t};
+ await API.set("applications",a.id,a);
+ notify("New portal application "+a.id,{application:a.id,name:a.name,organisation:a.org,email:a.email,phone:a.phone,service:a.service,state:a.state,message:a.details});
+ toast("Application "+a.id+" submitted.");go("#/app/"+a.id);
+}
+async function sendMsg(f,d){
+ const id=f.dataset.id,text=(d.text||"").trim();if(!text)return;
+ await API.add(`applications/${id}/messages`,{from:U.admin?"admin":"client",uid:U.uid,text,at:Date.now()});
+ if(!U.admin)notify("New message on "+id,{application:id,client:U.email,message:text});
+ render();
+}
+async function answerQuote(id,ans){
+ await API.upd("applications",id,{quoteStatus:ans});
+ await API.add(`applications/${id}/messages`,{from:"client",uid:U.uid,text:ans==="Accepted"?"I accept the quote.":"I decline the quote.",at:Date.now()});
+ notify("Quote "+ans.toLowerCase()+" on "+id,{application:id,client:U.email});
+ toast("Quote "+ans.toLowerCase()+".");render();
+}
+async function saveManage(f,d){
+ const id=f.dataset.id,a=await API.get("applications",id);if(!a)throw{message:"Application not found."};
+ const now=Date.now(),status0=d.status,patch={quoteNote:(d.quoteNote||"").trim(),payRef:(d.payRef||"").trim(),updated:now};
+ let status=d.status;
+ const q=Math.max(0,Math.round(Number(d.quote)||0));patch.quote=q;
+ if(!q)patch.quoteStatus="";
+ else if(q!==(a.quote||0)){patch.quoteStatus="Sent";if(status===a.status&&idx(a.status)<idx("Quote sent"))status="Quote sent"}
+ const paid=d.paid==="on";patch.paid=paid;
+ if(paid&&!a.paid){patch.paidOn=now;if(status===a.status&&idx(status)<idx("Payment received"))status="Payment received"}
+ if(!paid)patch.paidOn=0;
+ patch.status=status;
+ if(status!==a.status)patch.history=[...(a.history||[]),{s:status,at:now}];
+ await API.upd("applications",id,patch);
+ const lines=(d.files||"").split("\n").map(l=>l.trim()).filter(Boolean);
+ const files=lines.map(l=>{const i=l.lastIndexOf("|");return{name:(i>0?l.slice(0,i):"").trim()||"Download file",link:(i>=0?l.slice(i+1):l).trim()}}).filter(x=>okUrl(x.link));
+ await API.set("deliveries",id,{uid:a.uid,files});
+ await API.set("notes",id,{text:d.notes||"",at:now});
+ if(files.length<lines.length)toast("Saved. "+(lines.length-files.length)+" file line(s) ignored: each needs an https link.",true);
+ else if(status==="Delivered"&&!paid)toast("Saved. The client cannot open files until payment is marked received.",true);
+ else toast("Changes saved.");
+ render();
+}
+async function saveProfile(d){
+ const p={name:d.name.trim(),org:d.org.trim(),phone:d.phone.trim(),gstin:(d.gstin||"").trim().toUpperCase(),email:U.email,created:(U.profile&&U.profile.created)||Date.now()};
+ await API.set("users",U.uid,p);U.profile=p;toast("Profile saved.");
+}
+async function saveService(d){
+ let id=d.sid||slug(d.name)||("service-"+Date.now().toString(36));
+ if(!d.sid&&SVC.some(s=>s.id===id))id+="-"+Date.now().toString(36).slice(-4);
+ const ex=SVC.find(s=>s.id===id);
+ await API.set("services",id,{name:d.name.trim(),desc:d.desc.trim(),tat:(d.tat||"").trim(),active:d.active==="on",order:ex?(ex.order||0):Date.now()});
+ SVC=await loadServices();toast("Service saved.");render();
+}
+async function saveSettings(d){await API.set("settings","main",{payInfo:(d.payInfo||"").trim()});SET.payInfo=(d.payInfo||"").trim();toast("Settings saved.")}
+function csv(){
+ const cell=v=>{let s=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return'"'+s.replace(/"/g,'""')+'"'};
+ const rows=[["ID","Submitted","Client","Organisation","Email","Phone","Service","Project","State","Category","Status","Quote","Quote status","Paid","Paid on","Payment reference"]].concat(APPS.map(a=>[a.id,dt(a.created),a.name,a.org,a.email,a.phone,a.service,a.project,a.state,a.category,a.status,a.quote||0,a.quoteStatus||"",a.paid?"Yes":"No",dt(a.paidOn),a.payRef||""]));
+ const b=new Blob(["\ufeff"+rows.map(r=>r.map(cell).join(",")).join("\n")],{type:"text/csv"}),u=URL.createObjectURL(b),l=document.createElement("a");
+ l.href=u;l.download="bec-applications-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);
+}
+const refreshAdmin=()=>{const s=$("#strip"),t=$("#tbl");if(s)s.innerHTML=stripHtml();if(t)t.innerHTML=adminRows()};
+
+/* ---------- events ---------- */
+document.addEventListener("click",async x=>{
+ const tr=x.target.closest("tr[data-href]");
+ if(tr&&!x.target.closest("a,button")){location.hash=tr.dataset.href;return}
+ const t=x.target.closest("[data-act]");if(!t)return;const a=t.dataset.act;
+ try{
+  if(a==="tab"){S.tab=t.dataset.v;render()}
+  else if(a==="out"){S.tab="in";await API.signOut()}
+  else if(a==="reset"){x.preventDefault();const m=($("#af [name=email]").value||"").trim().toLowerCase();if(!m)return authMsg("Enter your email above, then select Forgot your password again.");await API.reset(m);authMsg("If an account exists for that email, a reset link is on its way.",true)}
+  else if(a==="pwreset"){await API.reset(U.email);toast("Password reset link sent to "+U.email+".")}
+  else if(a==="qy"||a==="qn")await answerQuote(t.dataset.id,a==="qy"?"Accepted":"Declined");
+  else if(a==="flt"){S.k=t.dataset.k;refreshAdmin()}
+  else if(a==="csv")csv();
+  else if(a==="cap"){x.preventDefault();S.q=t.dataset.q;S.f="";S.k="all";go("#/")}
+  else if(a==="svce"){const s=SVC.find(z=>z.id===t.dataset.id),f=$("#sf");if(!s||!f)return;const el=f.elements;el.sid.value=s.id;el.name.value=s.name;el.desc.value=s.desc;el.tat.value=s.tat||"";el.active.checked=s.active!==false;$("#sfh").textContent="Edit service";f.scrollIntoView({behavior:"smooth",block:"start"});el.name.focus()}
+  else if(a==="svcd"){if(confirm("Delete this service? Existing applications keep their service name.")){await API.del("services",t.dataset.id);SVC=await loadServices();render()}}
+  else if(a==="svcnew"){const f=$("#sf");f.reset();f.elements.sid.value="";$("#sfh").textContent="Add a service"}
+  else if(a==="svcconv"){await Promise.all(DEFAULTS.map(s=>API.set("services",s.id,{name:s.name,desc:s.desc,tat:"",active:true,order:s.order})));SVC=await loadServices();toast("The service list is now editable.");render()}
+ }catch(err){toast(msg(err),true)}
+});
+document.addEventListener("input",x=>{if(x.target.id==="aq"){S.q=x.target.value;refreshAdmin()}});
+document.addEventListener("change",x=>{
+ if(x.target.id==="af2"){S.f=x.target.value;refreshAdmin()}
+ else if(x.target.id==="svsel"){const s=SVC.find(z=>z.name===x.target.value);$("#svdesc").textContent=s?s.desc+(s.tat?" Typical turnaround: "+s.tat+".":""):""}
+});
+document.addEventListener("submit",async x=>{
+ const f=x.target;x.preventDefault();
+ const d=Object.fromEntries(new FormData(f)),b=f.querySelector("button:not([type])");
+ if(b)b.disabled=true;
+ try{
+  if(f.id==="af")await auth(d);
+  else if(f.id==="nf")await createApp(d);
+  else if(f.id==="mf")await saveManage(f,d);
+  else if(f.id==="cf")await sendMsg(f,d);
+  else if(f.id==="pf")await saveProfile(d);
+  else if(f.id==="sf")await saveService(d);
+  else if(f.id==="stf")await saveSettings(d);
+ }catch(err){if(f.id==="af")authMsg(msg(err));else toast(msg(err),true)}
+ finally{if(b)b.disabled=false}
+});
+
+/* ---------- start ---------- */
+(function(){
+ const local=/^(localhost|127\.0\.0\.1|\[::1\])?$/.test(location.hostname),has=!!CFG.apiKey;
+ const stop=(t,p)=>{$("#app").innerHTML=`<div class="box" style="max-width:560px;margin:40px auto"><h2>${t}</h2><p>${p}</p></div>`};
+ if(has&&!window.firebase)return stop("The portal could not load","The Firebase scripts did not load. Check your connection and reload the page.");
+ if(!has&&!local)return stop("The portal is not connected yet","The site owner needs to add the Firebase configuration to this page. Until then, please call "+e(PHONE)+".");
+ API=has?FB:DM;if(!has)$("#demo").hidden=false;
+ API.init();
+ window.addEventListener("hashchange",()=>{if(U){render();window.scrollTo(0,0)}});
+ API.onAuth(au=>{if(S.busy)return;if(au)boot(au);else{U=null;render()}});
+})();
+</script>
+</body>
+</html>

@@ -1,23 +1,82 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{db}/documents {
-    // REPLACE with your real administrator email(s), lowercase
-    function admin() { return request.auth != null && request.auth.token.email.lower() in ['admin@yourdomain.com']; }
-    match /users/{u} {
-      allow create, update: if request.auth != null && request.auth.uid == u;
-      allow read: if request.auth != null && (request.auth.uid == u || admin());
+
+    function signedIn() { return request.auth != null; }
+
+    // An administrator is any account that has a document at /admins/{uid}.
+    // Create that document by hand in the Firebase console (see setup notes).
+    // Nobody can write to /admins from the portal, so a client cannot promote themselves.
+    function isAdmin() {
+      return signedIn() && exists(/databases/$(db)/documents/admins/$(request.auth.uid));
     }
-    match /applications/{a} {
-      allow create: if request.auth != null && request.resource.data.uid == request.auth.uid
-        && request.resource.data.status == 'Submitted' && request.resource.data.paid == false;
-      allow read: if request.auth != null && (resource.data.uid == request.auth.uid || admin());
-      allow update, delete: if admin();
+    function appDoc(id) { return get(/databases/$(db)/documents/applications/$(id)).data; }
+
+    match /admins/{uid} {
+      allow get: if signedIn() && request.auth.uid == uid;
     }
-    match /deliveries/{a} {
-      allow write: if admin();
-      allow read: if request.auth != null && (admin() ||
-        (resource.data.uid == request.auth.uid &&
-         get(/databases/$(db)/documents/applications/$(a)).data.paid == true));
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(['name', 'org', 'phone', 'gstin', 'email', 'created']);
+    }
+
+    match /services/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /settings/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /applications/{id} {
+      allow read: if signedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+
+      // Clients can only create a fresh, unpaid, unquoted application for themselves.
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email.lower() == request.auth.token.email.lower()
+        && request.resource.data.status == 'Submitted'
+        && request.resource.data.paid == false
+        && request.resource.data.quote == 0
+        && request.resource.data.quoteStatus == ''
+        && request.resource.data.details.size() <= 5000;
+
+      // Administrators can change anything. A client can only answer a quote that was sent to them.
+      allow update: if isAdmin() || (signedIn()
+        && resource.data.uid == request.auth.uid
+        && resource.data.quoteStatus == 'Sent'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['quoteStatus'])
+        && request.resource.data.quoteStatus in ['Accepted', 'Declined']);
+
+      allow delete: if isAdmin();
+
+      match /messages/{mid} {
+        allow read: if signedIn() && (isAdmin() || appDoc(id).uid == request.auth.uid);
+        allow create: if signedIn()
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() <= 2000
+          && ((isAdmin() && request.resource.data.from == 'admin')
+              || (appDoc(id).uid == request.auth.uid && request.resource.data.from == 'client'));
+        allow update, delete: if false;
+      }
+    }
+
+    // Private administrator notes. Clients can never read these.
+    match /notes/{id} {
+      allow read, write: if isAdmin();
+    }
+
+    // Delivered files. A client can read them only after payment is marked received.
+    match /deliveries/{id} {
+      allow write: if isAdmin();
+      allow read: if signedIn() && (isAdmin()
+        || (resource.data.uid == request.auth.uid && appDoc(id).paid == true));
     }
   }
 }
