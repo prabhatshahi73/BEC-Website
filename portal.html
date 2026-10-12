@@ -1,709 +1,236 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Client Portal | Bharat Environment Consultants</title>
-<meta name="robots" content="noindex,nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BEC Store | Bharat Environment Consultants</title><meta name="robots" content="noindex,nofollow">
 <style>
-:root{--forest:#0d3b1e;--leaf:#1a5c32;--brass:#c9a84c;--brassink:#6f560f;--paper:#f8f5ef;--panel:#fffefb;--ink:#1c1c1c;--mute:#55584f;--line:#dcd7c6;--bad:#8a2a2a;--badbg:#f6e7e4;--okbg:#e1f1e5;--warnbg:#fbf1d3}
-*{box-sizing:border-box}
-html{scroll-padding-top:16px}
-body{margin:0;font:15px/1.55 "DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--paper);color:var(--ink)}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;color:var(--forest);margin:0;line-height:1.15}
-h1{font-size:2rem}h2{font-size:1.4rem}h3{font-size:1.15rem}
-a{color:var(--leaf)}
-.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:20}
-.demo{background:var(--warnbg);border-bottom:1px solid var(--brass);padding:8px 4vw;font-size:.85rem}
-.top{background:var(--forest);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4vw;border-bottom:3px solid var(--brass)}
-.brand{color:#fff;text-decoration:none;font:700 1.2rem/1.1 "Cormorant Garamond",Georgia,serif}
-.brand small{display:block;color:var(--brass);font:500 .72rem "DM Sans",sans-serif;margin-top:3px}
-.who{display:flex;align-items:center;gap:12px;font-size:.84rem;flex-wrap:wrap;justify-content:flex-end}
-.shell{display:grid;grid-template-columns:190px minmax(0,1fr);gap:36px;max-width:1260px;margin:0 auto;padding:30px 4vw 70px}
-body.out .shell{grid-template-columns:1fr;max-width:1000px}
-body.out #nav{display:none}
-#nav ul{list-style:none;margin:0;padding:0;display:grid;gap:2px;position:sticky;top:16px}
-#nav a{display:block;padding:9px 12px;border-radius:6px;color:var(--ink);text-decoration:none;font-weight:500;border-left:3px solid transparent}
-#nav a:hover{background:#efebdd}
-#nav a[aria-current=page]{border-left-color:var(--brass);background:#efebdd;color:var(--forest);font-weight:700}
-main:focus{outline:none}
-:focus-visible{outline:3px solid var(--leaf);outline-offset:2px}
-
-.btn{display:inline-block;background:var(--brass);color:var(--forest);border:1.5px solid var(--brass);border-radius:6px;padding:10px 18px;font:700 .9rem "DM Sans",sans-serif;cursor:pointer;text-decoration:none;min-height:42px;line-height:1.3}
-.btn:hover{filter:brightness(.95)}
-.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink);font-weight:500}
-.top .btn.ghost{color:#fff;border-color:rgba(255,255,255,.45)}
-.btn.sm{padding:6px 12px;min-height:34px;font-size:.82rem}
-.btn.danger{background:transparent;border-color:#d9b4ae;color:var(--bad);font-weight:500}
-.btn[disabled]{opacity:.55;cursor:wait}
-
-label{display:grid;gap:5px;font-size:.82rem;font-weight:700;color:var(--mute);margin-bottom:14px}
-label.chk{display:flex;gap:10px;align-items:center;font-weight:500;color:var(--ink);font-size:.9rem}
-input,select,textarea{font:inherit;font-weight:400;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:10px;width:100%;min-height:42px}
-input[type=checkbox]{width:18px;height:18px;min-height:0;padding:0}
-input:disabled{background:#f1eee3;color:var(--mute)}
-textarea{resize:vertical}
-.hint{font-size:.8rem;color:var(--mute);margin:-6px 0 14px;font-weight:400}
-.note{font-size:.85rem;color:var(--mute);margin:8px 0 0;white-space:pre-wrap;overflow-wrap:anywhere}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
-.msgbox{padding:10px 12px;border-radius:6px;background:var(--warnbg);font-size:.88rem;margin:0 0 14px}
-.msgbox.ok{background:var(--okbg)}
-
-.auth{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start;padding-top:20px}
-.auth h1{font-size:2.5rem}
-.auth ul{list-style:none;padding:0;margin:26px 0;display:grid;gap:14px}
-.auth li{padding-left:16px;border-left:3px solid var(--brass)}
-.box{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:24px}
-.tabs{display:flex;border-bottom:1px solid var(--line);margin:0 0 20px}
-.tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:10px;font:700 .92rem "DM Sans",sans-serif;color:var(--mute);cursor:pointer;margin-bottom:-1px}
-.tabs button[aria-selected=true]{color:var(--forest);border-bottom-color:var(--brass)}
-
-.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
-.ph p{margin:6px 0 0;color:var(--mute)}
-.panel{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:22px;margin-bottom:20px}
-.panel>h2{margin-bottom:12px}
-.empty{padding:30px 10px;text-align:center;color:var(--mute)}
-.empty h2{margin-bottom:8px}.empty .btn{margin-top:12px}
-
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));border:1px solid var(--line);border-radius:8px;background:var(--panel);margin-bottom:20px;overflow:hidden}
-.strip button{background:none;border:0;border-right:1px solid var(--line);padding:14px 16px;text-align:left;cursor:pointer;font:inherit;font-size:.82rem;color:var(--mute)}
-.strip button:last-child{border-right:0}
-.strip button b{display:block;font:700 1.9rem/1.1 "Cormorant Garamond",Georgia,serif;color:var(--forest)}
-.strip button[aria-pressed=true]{background:var(--forest);color:#e8e4d2}
-.strip button[aria-pressed=true] b{color:var(--brass)}
-
-.wrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:.88rem}
-th,td{text-align:left;padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--mute);font-size:.78rem;font-weight:700}
-tbody tr:last-child td{border-bottom:0}
-tbody tr[data-href]{cursor:pointer}
-tbody tr[data-href]:hover{background:#f3f0e4}
-td small{color:var(--mute)}
-.pill{display:inline-block;padding:2px 10px;border-radius:99px;background:#e8efe9;color:var(--leaf);font-size:.76rem;font-weight:700;white-space:nowrap}
-.pill.ok{background:var(--okbg);color:#14532d}.pill.warn{background:var(--warnbg);color:var(--brassink)}.pill.bad{background:var(--badbg);color:var(--bad)}
-
-.dgrid{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:24px;align-items:start}
-.back{display:inline-block;margin-bottom:14px;font-size:.9rem}
-dl.kv{display:grid;grid-template-columns:140px 1fr;gap:9px 16px;margin:0}
-dl.kv dt{color:var(--mute);font-size:.82rem;padding-top:2px}
-dl.kv dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-.amt{font:700 2.1rem/1.1 "Cormorant Garamond",Georgia,serif;color:var(--forest);margin:0}
-.files{margin:0;padding-left:18px}.files li{margin-bottom:6px;overflow-wrap:anywhere}
-
-/* Application tracker: the stages a file passes through, with the date each was reached */
-.track{list-style:none;display:flex;margin:16px 0 4px;padding:0}
-.track li{flex:1;position:relative;text-align:center;font-size:.78rem;line-height:1.3;color:var(--mute);padding-top:28px}
-.track li::before{content:"";position:absolute;top:5px;left:50%;width:15px;height:15px;margin-left:-7px;border-radius:50%;background:var(--paper);border:2px solid var(--line);z-index:1}
-.track li::after{content:"";position:absolute;top:11px;left:-50%;width:100%;height:3px;background:var(--line)}
-.track li:first-child::after{display:none}
-.track li.done::before{background:var(--leaf);border-color:var(--leaf)}
-.track li.done::after,.track li.now::after{background:var(--leaf)}
-.track li.now::before{background:var(--brass);border-color:var(--forest);box-shadow:0 0 0 4px rgba(201,168,76,.35)}
-.track li.now{color:var(--forest);font-weight:700}
-.track span{display:block}
-.track time{display:block;font-size:.72rem;font-weight:400;color:var(--mute);margin-top:2px}
-
-.thread{display:grid;gap:12px;margin-bottom:18px}
-.m{padding:10px 14px;border-left:3px solid var(--line);background:#fff;border-radius:0 6px 6px 0}
-.m.bec{border-left-color:var(--leaf);background:#f0f6f1}
-.m header{font-size:.78rem;color:var(--mute);margin-bottom:3px;display:flex;justify-content:space-between;gap:10px}
-.m p{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
-
-#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);background:var(--forest);color:#fff;padding:11px 18px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;z-index:30;font-size:.9rem}
-#toast.on{opacity:1;transform:translateX(-50%)}
-#toast.bad{background:var(--bad)}
-
-/* Quotation builder */
-.qh,.qr{display:grid;grid-template-columns:minmax(120px,1.4fr) minmax(140px,2fr) 70px 100px 100px 38px;gap:8px;align-items:center;margin-bottom:8px}
-.qh{font-size:.75rem;font-weight:700;color:var(--mute)}
-.qr input,.qr select{min-width:0}
-.qr output{text-align:right;font-weight:700}
-.qtot{margin:16px 0 16px auto;max-width:320px}
-.qtot div{display:flex;justify-content:space-between;padding:4px 0}
-.qtot .g{border-top:2px solid var(--forest);font-weight:700;font-size:1.1rem;color:var(--forest);padding-top:8px;margin-top:4px}
-@media(max-width:700px){.qh{display:none}.qr{grid-template-columns:1fr 1fr}.qr .qd,.qr .qsel{grid-column:1/-1}}
-@media(max-width:900px){
- .shell{grid-template-columns:1fr;gap:16px;padding-top:18px}
- #nav ul{display:flex;overflow-x:auto;position:static;gap:4px}
- #nav a{border-left:0;border-bottom:3px solid transparent;white-space:nowrap;border-radius:0}
- #nav a[aria-current=page]{border-bottom-color:var(--brass);background:none}
- .dgrid,.auth{grid-template-columns:1fr}.auth{gap:28px}.auth h1{font-size:2rem}
-}
-@media(max-width:640px){
- .track{flex-direction:column;margin-left:4px}
- .track li{text-align:left;padding:0 0 18px 30px;min-height:34px}
- .track li::before{top:2px;left:0;margin:0}
- .track li::after{top:20px;left:7px;width:3px;height:calc(100% - 14px)}
- .track li:first-child::after{display:block}
- .track li:last-child::after{display:none}
- .track li.done::after{background:var(--leaf)}
- .track li.now::after{background:var(--line)}
- .track li.done::after,.track li.now::after{left:7px}
- .track time{display:inline;margin-left:8px}
-}
-@media(max-width:560px){.row2{grid-template-columns:1fr}dl.kv{grid-template-columns:1fr;gap:2px}dl.kv dd{margin-bottom:10px}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-</style>
-</head>
-<body class="out">
-<a class="skip" href="#app">Skip to content</a>
-<div id="demo" class="demo" hidden><b>Demo mode.</b> Data stays in this browser only. Demo administrator: admin@demo.local / admin123. Add your Firebase configuration to go live.</div>
-<header class="top"><a class="brand" href="https://bharatenvironmentconsultants.com/">Bharat Environment Consultants<small>Client and application portal</small></a><div class="who" id="who"></div></header>
-<div class="shell"><nav id="nav" aria-label="Portal"></nav><main id="app" tabindex="-1"></main></div>
-<div id="toast" role="status" aria-live="polite"></div>
-
+:root{--nav:#131921;--nav2:#232f3e;--or:#ff9900;--or2:#febd69;--bg:#eaeded;--ink:#0f1111;--mute:#565959;--line:#d5d9d9;--link:#007185;--bad:#b12704;--ok:#067d62}
+*{box-sizing:border-box}body{margin:0;font:14px/1.5 Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink)}
+a{color:var(--link)}h1{font-size:1.5rem;margin:0 0 12px}h2{font-size:1.1rem;margin:0 0 10px}
+.top{background:var(--nav);color:#fff;display:flex;gap:14px;align-items:center;padding:10px 3vw;flex-wrap:wrap}
+.brand{color:#fff;text-decoration:none;font-size:1.4rem}.brand b{color:var(--or)}
+.srch{flex:1;display:flex;min-width:200px}.srch input{flex:1;border:0;border-radius:6px 0 0 6px;padding:10px}.srch button{border:0;background:var(--or2);border-radius:0 6px 6px 0;padding:0 16px;cursor:pointer;font-weight:700}
+body:not(.cust) .srch{display:none}
+#nav{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:.85rem}#nav a,#nav button{color:#fff;text-decoration:none;background:none;border:1px solid transparent;padding:6px 10px;border-radius:4px;cursor:pointer;font:inherit}#nav a:hover,#nav button:hover{border-color:#fff}
+main{max-width:1200px;margin:0 auto;padding:20px 3vw 60px}
+.btn{background:var(--or2);border:1px solid #a88734;border-radius:20px;padding:7px 16px;cursor:pointer;font:inherit;color:var(--ink);text-decoration:none;display:inline-block}.btn:hover{filter:brightness(.95)}
+.btn.buy{background:var(--or);border-color:#c88b1c}.btn.ghost{background:#fff;border-color:var(--line)}.btn.sm{padding:3px 12px}.btn.danger{background:#fff;color:var(--bad);border-color:#e3b3a6}.btn[disabled]{opacity:.5}
+.card,.box{background:#fff;border:1px solid var(--line);border-radius:8px;padding:18px;margin-bottom:16px}
+label{display:grid;gap:4px;font-weight:700;font-size:.85rem;margin-bottom:12px}label.chk{display:flex;gap:8px;align-items:center;font-weight:400}
+input,select,textarea{font:inherit;padding:9px;border:1px solid #888;border-radius:4px;width:100%}input[type=checkbox]{width:auto}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.hint{color:var(--mute);font-size:.8rem}
+.auth{max-width:380px;margin:30px auto}.tabs{display:flex;margin-bottom:14px;border-bottom:1px solid var(--line)}.tabs button{flex:1;background:none;border:0;border-bottom:3px solid transparent;padding:9px;font-weight:700;cursor:pointer}.tabs [aria-selected=true]{border-color:var(--or)}
+.msg{background:#fcf4e3;padding:9px;border-radius:4px;margin-bottom:12px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.chips button{border:1px solid var(--line);background:#fff;border-radius:16px;padding:5px 14px;cursor:pointer}.chips [aria-pressed=true]{background:var(--nav2);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px}
+.p{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.pi{height:140px;display:grid;place-items:center;font-size:4rem;background:#f7f8f8;border-radius:6px;overflow:hidden}.pi img{max-width:100%;max-height:100%}
+.pr{font-size:1.2rem;font-weight:700}.pr small{font-size:.7rem;font-weight:400;color:var(--mute)}.ok{color:var(--ok)}.bad{color:var(--bad)}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:9px 8px;border-bottom:1px solid var(--line);vertical-align:top}th{font-size:.8rem;color:var(--mute)}.wrap{overflow-x:auto}tr[data-h]{cursor:pointer}tr[data-h]:hover{background:#f7f8f8}
+.pill{background:#e7f4f1;color:var(--ok);padding:2px 10px;border-radius:12px;font-size:.78rem;font-weight:700;white-space:nowrap}.pill.w{background:#fcf4e3;color:#8a5a00}.pill.x{background:#fbe9e5;color:var(--bad)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}.ln{display:flex;gap:12px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}.ln .pi{width:70px;height:70px;font-size:2rem;flex:none}.ln>div:nth-child(2){flex:1}
+.qty{display:inline-flex;align-items:center;gap:6px}.qty button{width:26px;height:26px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer}
+.tot{font-size:1.1rem;font-weight:700}.kpi{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-bottom:16px}.kpi div{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px}.kpi b{display:block;font-size:1.5rem}
+.track{list-style:none;display:flex;padding:0;margin:14px 0}.track li{flex:1;text-align:center;font-size:.75rem;color:var(--mute);position:relative;padding-top:24px}
+.track li:before{content:"";position:absolute;top:4px;left:50%;width:14px;height:14px;margin-left:-7px;border-radius:50%;background:#fff;border:2px solid var(--line);z-index:1}.track li:after{content:"";position:absolute;top:10px;left:-50%;width:100%;height:3px;background:var(--line)}.track li:first-child:after{display:none}
+.track .d:before{background:var(--ok);border-color:var(--ok)}.track .d:after{background:var(--ok)}.track .d{color:var(--ink);font-weight:700}.track time{display:block;font-weight:400}
+#toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--nav2);color:#fff;padding:10px 18px;border-radius:6px;opacity:0;pointer-events:none;transition:.2s}#toast.on{opacity:1}#toast.bad{background:var(--bad)}
+.demo{background:#fcf4e3;padding:7px 3vw;font-size:.82rem}
+@media(max-width:800px){.two{grid-template-columns:1fr}.row{grid-template-columns:1fr}.track{flex-direction:column}.track li{text-align:left;padding:0 0 12px 26px}.track li:before{top:2px;left:0;margin:0}.track li:after{display:none}}
+</style></head><body>
+<div id="demo" class="demo" hidden><b>Demo mode.</b> Data stays in this browser. Demo admin: admin@demo.local / admin123. Add your Firebase configuration to go live.</div>
+<header class="top"><a class="brand" href="#/">BEC <b>Store</b></a><form id="sq" class="srch"><input id="q" placeholder="Search products" aria-label="Search products"><button>Search</button></form><nav id="nav"></nav></header>
+<main id="app"></main><div id="toast" role="status" aria-live="polite"></div>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script>
 "use strict";
-/* =====================================================================
-   SETUP. Paste your Firebase web app configuration below.
-   Leave it empty to run in demo mode (works only on localhost or when the
-   file is opened directly from disk, never on your live domain).
-   Administrators are NOT listed here. An administrator is any account that
-   has a document at admins/{their UID} in Firestore (see firestore.rules).
-   ===================================================================== */
+/* SETUP: paste your Firebase web config. Empty = demo mode (localhost / local file only).
+   Administrators: create a document at admins/{their UID} in Firestore. Same login page for everyone. */
 const CFG={apiKey:"",authDomain:"",projectId:"",appId:""};
-const NOTIFY="https://formspree.io/f/xzdyqpya"; // emails you about new applications and client messages. Empty to turn off.
-const SITE="https://bharatenvironmentconsultants.com/";
-const PHONE="+91 99589 17292";
-
-const ST=["Submitted","Under scrutiny","Query raised","Quote sent","Payment received","In progress","Delivered"];
-const CATS=["Not sure","Red","Orange","Green","White"];
+const ST=["Placed","Packed","Shipped","Out for delivery","Delivered"];
+const SEED=[["Reusable steel water bottle","Home",499,"🍶",50],["Bamboo toothbrush (pack of 4)","Personal care",199,"🪥",120],["Compost bin 20 L","Garden",1299,"🗑️",25],["Solar LED lantern","Electronics",899,"🔦",40],["Cotton shopping bag","Home",149,"👜",200],["Neem soil conditioner 5 kg","Garden",349,"🌱",60]];
 const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
-/* Starting fees in rupees, taken from your services-pricing.html "from" prices. Edit them under Services after setup. 0 means quoted after review. */
-const PRICE={"CTE application":15000,"CTO application":15000,"Compliance document pack":1000,"ISO 14001 / 45001 registers":3000,"Consent applicability check":2500,"Carbon footprint report":5000,"BRSR / ESG readiness":10000};
-const DEFAULTS=[
-["Environment Audit","Compliance status, pollution load, waste practices and a corrective action plan."],
-["CTE application","Consent to Establish documents, filing and follow-up with the State Pollution Control Board."],
-["CTO application","Consent to Operate or renewal documents, filing and follow-up with the State Pollution Control Board."],
-["Compliance document pack","Compliance records, returns and statements prepared for your unit."],
-["ISO 14001 / 45001 registers","Aspect-impact, legal and hazard registers prepared for your management system."],
-["Consent applicability check","A written opinion on which consents and authorisations your unit needs."],
-["Carbon footprint report","Scope 1, 2 and 3 emissions with a reduction roadmap."],
-["GHG inventory (ISO 14064-1)","Organisation-level greenhouse gas inventory prepared to ISO 14064-1."],
-["BRSR / ESG readiness","Gap assessment and disclosure preparation for BRSR, GRI and related frameworks."],
-["EU CBAM readiness","Embedded emissions data and reporting readiness for EU CBAM."],
-["Product carbon footprint / LCA","Product carbon footprint and life cycle assessment."],
-["EPR registration","Extended Producer Responsibility registration and annual returns."],
-["Environmental due diligence","Site and compliance review for acquisitions, lending or expansion."],
-["IFC PS / Equator gap analysis","Gap analysis of your project against IFC Performance Standards and the Equator Principles."],
-["ESIA / EIA support","Baseline data, impact assessment and report preparation for environmental clearance."],
-["Other","Anything else. Describe it in the application and we will confirm the scope."]
-].map(([name,desc],i)=>({id:slug(name),name,desc,tat:"",active:true,order:i,price:PRICE[name]||0,unit:"per application",_builtin:true}));
-
-/* ---------- helpers ---------- */
-const $=(s,r)=>(r||document).querySelector(s);
+const SD=SEED.map(([name,cat,price,emoji,stock])=>({id:slug(name),name,cat,price,emoji,stock,img:"",desc:""}));
+const $=s=>document.querySelector(s);
 const e=v=>String(v==null?"":v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const dt=n=>n?new Date(n).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}):"";
-const dts=n=>n?new Date(n).toLocaleDateString("en-IN",{day:"numeric",month:"short"}):"";
-const dtt=n=>n?new Date(n).toLocaleString("en-IN",{day:"numeric",month:"short",hour:"numeric",minute:"2-digit"}):"";
 const inr=n=>"\u20B9"+Math.round(n||0).toLocaleString("en-IN");
+const dt=n=>n?new Date(n).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}):"";
 const okUrl=u=>/^https:\/\//i.test(String(u||"").trim());
-const pc=s=>s==="Delivered"?"ok":s==="Query raised"?"warn":"";
-const toast=(m,bad)=>{const t=$("#toast");t.textContent=m;t.className="on"+(bad?" bad":"");clearTimeout(toast.t);toast.t=setTimeout(()=>{t.className=""},4500)};
-const ERR={"auth/invalid-credential":"Email or password is incorrect.","auth/invalid-login-credentials":"Email or password is incorrect.","auth/wrong-password":"Email or password is incorrect.","auth/user-not-found":"Email or password is incorrect.","auth/email-already-in-use":"This email is already registered. Sign in instead.","auth/weak-password":"Choose a password of at least 8 characters.","auth/too-many-requests":"Too many attempts. Wait a few minutes and try again.","auth/network-request-failed":"Network problem. Check your connection and try again.","auth/invalid-email":"Enter a valid email address.","permission-denied":"You do not have permission to do that. If this is unexpected, sign out and sign in again."};
-const msg=x=>ERR[x&&x.code]||(x&&x.message)||"Something went wrong. Try again.";
-const go=h=>{if(location.hash===h)render();else location.hash=h};
-const idx=s=>ST.indexOf(s);
+const toast=(m,b)=>{const t=$("#toast");t.textContent=m;t.className="on"+(b?" bad":"");clearTimeout(toast.t);toast.t=setTimeout(()=>t.className="",4000)};
+const ERR={"auth/invalid-credential":"Email or password is incorrect.","auth/wrong-password":"Email or password is incorrect.","auth/user-not-found":"Email or password is incorrect.","auth/email-already-in-use":"This email is already registered. Sign in instead.","auth/weak-password":"Use a password of at least 8 characters.","permission-denied":"You do not have permission to do that."};
+const msg=x=>ERR[x&&x.code]||(x&&x.message)||"Something went wrong.";
+const img=p=>`<div class="pi">${okUrl(p.img)?`<img src="${e(p.img)}" alt="">`:e(p.emoji||"📦")}</div>`;
 
-/* ---------- Firebase backend ---------- */
-const FB={
- init(){firebase.initializeApp(CFG);this.a=firebase.auth();this.d=firebase.firestore()},
- onAuth(cb){this.a.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:(u.email||"").toLowerCase()}:null))},
- async signUp(m,p){const c=await this.a.createUserWithEmailAndPassword(m,p);return{uid:c.user.uid,email:m}},
- signIn(m,p){return this.a.signInWithEmailAndPassword(m,p)},
- signOut(){return this.a.signOut()},
- reset(m){return this.a.sendPasswordResetEmail(m)},
- async get(c,id){try{const s=await this.d.collection(c).doc(id).get();return s.exists?s.data():null}catch(x){if(x&&x.code==="permission-denied")return null;throw x}},
- set(c,id,v){return this.d.collection(c).doc(id).set(v)},
- upd(c,id,p){return this.d.collection(c).doc(id).update(p)},
- del(c,id){return this.d.collection(c).doc(id).delete()},
- async add(c,v){return(await this.d.collection(c).add(v)).id},
- async list(c,f){let q=this.d.collection(c);if(f)q=q.where(f[0],"==",f[1]);return(await q.get()).docs.map(x=>({id:x.id,...x.data()}))}
-};
+/* ---- backends ---- */
+const FB={init(){firebase.initializeApp(CFG);this.a=firebase.auth();this.d=firebase.firestore()},
+onAuth(cb){this.a.onAuthStateChanged(u=>cb(u?{uid:u.uid,email:(u.email||"").toLowerCase()}:null))},
+async signUp(m,p){const c=await this.a.createUserWithEmailAndPassword(m,p);return{uid:c.user.uid,email:m}},
+signIn(m,p){return this.a.signInWithEmailAndPassword(m,p)},signOut(){return this.a.signOut()},
+async get(c,id){try{const s=await this.d.collection(c).doc(id).get();return s.exists?s.data():null}catch(x){if(x.code==="permission-denied")return null;throw x}},
+set(c,id,v){return this.d.collection(c).doc(id).set(v)},upd(c,id,p){return this.d.collection(c).doc(id).update(p)},del(c,id){return this.d.collection(c).doc(id).delete()},
+async list(c,f){let q=this.d.collection(c);if(f)q=q.where(f[0],"==",f[1]);return(await q.get()).docs.map(x=>({id:x.id,...x.data()}))}};
+const DM={K:"bec_store_demo",
+load(){try{const d=JSON.parse(localStorage.getItem(this.K));if(d)return d}catch(x){}const p={};SD.forEach(s=>p[s.id]=s);return{users:[{uid:"A1",email:"admin@demo.local",pw:"admin123"}],data:{admins:{A1:{}},products:p},sess:null}},
+save(d){localStorage.setItem(this.K,JSON.stringify(d))},init(){},
+onAuth(cb){this.cb=cb;const d=this.load(),u=d.users.find(x=>x.uid===d.sess);cb(u?{uid:u.uid,email:u.email}:null)},
+async signUp(m,p){const d=this.load();if(d.users.some(x=>x.email===m))throw{code:"auth/email-already-in-use"};const u={uid:"U"+Date.now().toString(36),email:m,pw:p};d.users.push(u);d.sess=u.uid;this.save(d);return{uid:u.uid,email:m}},
+async signIn(m,p){const d=this.load(),u=d.users.find(x=>x.email===m&&x.pw===p);if(!u)throw{code:"auth/invalid-credential"};d.sess=u.uid;this.save(d);this.cb({uid:u.uid,email:u.email})},
+async signOut(){const d=this.load();d.sess=null;this.save(d);this.cb(null)},
+async get(c,id){return(this.load().data[c]||{})[id]||null},
+async set(c,id,v){const d=this.load();(d.data[c]=d.data[c]||{})[id]=JSON.parse(JSON.stringify(v));this.save(d)},
+async upd(c,id,p){const d=this.load();Object.assign(d.data[c][id],JSON.parse(JSON.stringify(p)));this.save(d)},
+async del(c,id){const d=this.load();delete(d.data[c]||{})[id];this.save(d)},
+async list(c,f){return Object.entries(this.load().data[c]||{}).map(([id,v])=>({id,...v})).filter(x=>!f||x[f[0]]===f[1])}};
 
-/* ---------- Demo backend (browser only, for testing) ---------- */
-const DM={
- K:"bec_portal_demo",
- load(){try{const d=JSON.parse(localStorage.getItem(this.K));if(d)return d}catch(x){}return{users:[{uid:"A1",email:"admin@demo.local",pw:"admin123"}],data:{admins:{A1:{demo:true}}},sess:null}},
- save(d){localStorage.setItem(this.K,JSON.stringify(d))},
- init(){},
- onAuth(cb){this.cb=cb;const d=this.load(),u=d.users.find(x=>x.uid===d.sess);cb(u?{uid:u.uid,email:u.email}:null)},
- async signUp(m,p){const d=this.load();if(d.users.some(x=>x.email===m))throw{code:"auth/email-already-in-use"};const u={uid:"U"+Date.now().toString(36),email:m,pw:p};d.users.push(u);d.sess=u.uid;this.save(d);return{uid:u.uid,email:m}},
- async signIn(m,p){const d=this.load(),u=d.users.find(x=>x.email===m&&x.pw===p);if(!u)throw{code:"auth/invalid-credential"};d.sess=u.uid;this.save(d);this.cb({uid:u.uid,email:u.email})},
- async signOut(){const d=this.load();d.sess=null;this.save(d);this.cb(null)},
- async reset(){},
- async get(c,id){const d=this.load();if(c==="deliveries"&&!U.admin){const a=(d.data.applications||{})[id];if(!a||!a.paid||a.uid!==U.uid)return null}return(d.data[c]||{})[id]||null},
- async set(c,id,v){const d=this.load();(d.data[c]=d.data[c]||{})[id]=JSON.parse(JSON.stringify(v));this.save(d)},
- async upd(c,id,p){const d=this.load(),o=(d.data[c]||{})[id];if(!o)throw{message:"Record not found."};Object.assign(o,JSON.parse(JSON.stringify(p)));this.save(d)},
- async del(c,id){const d=this.load();if(d.data[c])delete d.data[c][id];this.save(d)},
- async add(c,v){const id="M"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);await this.set(c,id,v);return id},
- async list(c,f){const d=this.load();return Object.entries(d.data[c]||{}).map(([id,v])=>({id,...v})).filter(x=>!f||x[f[0]]===f[1])}
-};
+/* ---- state ---- */
+let API,U=null,P=[],RT=0,CART={};
+const S={tab:"in",q:"",cat:"",of:""};
+try{CART=JSON.parse(localStorage.getItem("bec_cart"))||{}}catch(x){}
+const saveCart=()=>{try{localStorage.setItem("bec_cart",JSON.stringify(CART))}catch(x){}};
+const lines=()=>Object.keys(CART).map(id=>({p:P.find(x=>x.id===id),q:CART[id]})).filter(l=>l.p);
+const cartN=()=>lines().reduce((t,l)=>t+l.q,0),cartT=()=>lines().reduce((t,l)=>t+l.q*l.p.price,0);
+const pill=s=>`<span class="pill${s==="Cancelled"?" x":s==="Placed"?" w":""}">${e(s)}</span>`;
+const route=()=>{const p=location.hash.replace(/^#\/?/,"").split("/");return{v:p[0]||"",id:decodeURIComponent(p[1]||"")}};
 
-/* ---------- state ---------- */
-let API,U=null,SVC=[],SET={},APPS=[],RT=0;
-const S={tab:"in",q:"",f:"",k:"all",busy:false};
-const FLT={all:()=>true,new:a=>a.status==="Submitted",quote:a=>a.quoteStatus==="Sent",pay:a=>a.quoteStatus==="Accepted"&&!a.paid,work:a=>a.paid&&a.status!=="Delivered",done:a=>a.status==="Delivered"};
-const STRIP=[["all","All applications"],["new","New"],["quote","Quote with client"],["pay","Awaiting payment"],["work","Paid, in delivery"],["done","Delivered"]];
-
-function nextC(a){
- if(a.paid&&a.status==="Delivered")return"Download your files";
- if(a.quoteStatus==="Sent")return"Review the quote";
- if(a.quoteStatus==="Accepted"&&!a.paid)return"Complete payment";
- if(a.status==="Query raised")return"Reply to our query";
- if(a.quoteStatus==="Declined")return"Quote declined";
- if(a.status==="Submitted")return"Waiting for our review";
- return"With BEC";
-}
-function nextA(a){
- if(a.status==="Submitted")return"Review application";
- if(a.quoteStatus==="Accepted"&&!a.paid)return"Confirm payment";
- if(a.paid&&a.status!=="Delivered")return"Complete the work";
- if(a.status==="Delivered")return"Done";
- if(a.quoteStatus==="Sent"||a.status==="Query raised")return"Waiting for client";
- if(a.status==="Under scrutiny")return"Raise a query or send a quote";
- return"Open";
-}
-function notify(subject,body){if(!NOTIFY||API===DM)return;fetch(NOTIFY,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({_subject:subject,...body})}).catch(()=>{})}
-
-/* ---------- session ---------- */
-async function loadServices(){const l=await API.list("services");if(!l.length)return DEFAULTS.map(x=>({...x}));return l.sort((a,b)=>(a.order||0)-(b.order||0))}
 async function boot(au){
  U={uid:au.uid,email:au.email,admin:false,profile:{}};
- try{
-  U.admin=!!(await API.get("admins",au.uid));
-  U.profile=(await API.get("users",au.uid))||{};
-  SVC=await loadServices();
-  SET=(await API.get("settings","main"))||{};
- }catch(x){toast(msg(x),true)}
+ try{U.admin=!!(await API.get("admins",au.uid));U.profile=(await API.get("users",au.uid))||{};P=await API.list("products");P.sort((a,b)=>a.name.localeCompare(b.name))}catch(x){toast(msg(x),true)}
  render();
 }
 
-/* ---------- quotation helpers ---------- */
-const DEF_TERMS="1. This quotation is valid until the date shown above.\n2. Fees exclude government fees, laboratory charges and travel unless stated.\n3. Work starts after the quotation is accepted and payment is confirmed in the client portal.\n4. Approvals and clearances are decided by the competent authorities. BEC does not guarantee a regulatory outcome.\n5. GST is charged as applicable.";
-const num=(v,d)=>{const n=parseFloat(v);return isFinite(n)&&n>=0?n:d};
-function QS(){
- const s=SET||{};
- let urg=String(s.urgency||"Standard | 1\nPriority | 1.25\nUrgent | 1.5").split("\n").map(l=>l.split("|")).map(q=>[(q[0]||"").trim(),num(q[1],1)]).filter(q=>q[0]);
- if(!urg.length)urg=[["Standard",1]];
- return{gst:num(s.gst,18),validity:Math.max(1,Math.round(num(s.validity,15))),cat:{Red:num(s.mRed,1.5),Orange:num(s.mOrange,1.25),Green:num(s.mGreen,1),White:num(s.mWhite,0.8),"Not sure":1},urg,terms:s.terms||DEF_TERMS,
-  co:{name:s.coName||"Bharat Environment Consultants",addr:s.coAddr||"4th Floor, Green Tower, Sector 18, Gurugram, Haryana 122015",gstin:s.coGstin||"",email:s.coEmail||"bharatenviroconsultants@zohomail.in",phone:s.coPhone||PHONE}};
+/* ---- views ---- */
+function header(){
+ document.body.className=U&&!U.admin?"cust":"";
+ $("#nav").innerHTML=!U?"":U.admin?`<a href="#/">Orders</a><a href="#/products">Products</a><span>${e(U.email)} (admin)</span><button data-a="out">Sign out</button>`
+  :`<a href="#/orders">Orders</a><a href="#/cart">&#128722; Cart (${cartN()})</a><span>${e(U.profile.name||U.email)}</span><button data-a="out">Sign out</button>`;
 }
-const urgMult=(Q,u)=>(Q.urg.find(x=>x[0]===u)||[0,1])[1];
-const catMult=(Q,c)=>Q.cat[c]==null?1:Q.cat[c];
-const calcRate=(s,cat,u)=>{const Q=QS();return Math.round((s.price||0)*catMult(Q,cat)*urgMult(Q,u))};
-function est(name,cat,u,qty){
- const s=SVC.find(z=>z.name===name);if(!s||!(s.price>0))return null;
- const Q=QS(),rate=calcRate(s,cat,u),q=Math.max(1,num(qty,1)),sub=Math.round(rate*q),gst=Math.round(sub*Q.gst/100);
- return{rate,qty:q,sub,gstRate:Q.gst,gst,total:sub+gst,base:s.price,cm:catMult(Q,cat),um:urgMult(Q,u)};
-}
-function qTotals(lines,dp,gr){const sub=lines.reduce((t,l)=>t+l.amount,0),disc=Math.round(sub*dp/100),tx=sub-disc,gst=Math.round(tx*gr/100);return{sub,disc,gst,total:tx+gst,dp,gr}}
-function words(n){
- const a=["","One","Two","Three","Four","Five","Six","Seven","Eight","Nine","Ten","Eleven","Twelve","Thirteen","Fourteen","Fifteen","Sixteen","Seventeen","Eighteen","Nineteen"],b=["","","Twenty","Thirty","Forty","Fifty","Sixty","Seventy","Eighty","Ninety"];
- const t=k=>k<20?a[k]:k<100?b[Math.floor(k/10)]+(k%10?" "+a[k%10]:""):a[Math.floor(k/100)]+" Hundred"+(k%100?" "+t(k%100):"");
- n=Math.round(n);if(!n)return"Zero";let s="";
- const cr=Math.floor(n/1e7);n%=1e7;const lk=Math.floor(n/1e5);n%=1e5;const th=Math.floor(n/1e3);n%=1e3;
- if(cr)s+=t(cr)+" Crore ";if(lk)s+=t(lk)+" Lakh ";if(th)s+=t(th)+" Thousand ";if(n)s+=t(n);return s.trim();
-}
-function openDoc(h){const u=URL.createObjectURL(new Blob([h],{type:"text/html"}));const w=window.open(u,"_blank");if(!w)toast("Allow pop-ups for this site to open the quotation.",true);setTimeout(()=>URL.revokeObjectURL(u),60000)}
-function quoteHtml(a,d){
- const Q=QS(),c=Q.co,terms=Q.terms.split("\n").map(x=>x.trim()).filter(Boolean);
- const rows=d.lines.map((l,i)=>`<tr><td>${i+1}</td><td>${e(l.desc)}</td><td class="r">${e(l.qty)}</td><td class="r">${inr(l.rate)}</td><td class="r">${inr(l.amount)}</td></tr>`).join("");
- return`<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quotation ${e(d.no)}</title><style>
-body{margin:0;background:#e9e6dc;font:14px/1.5 Arial,Helvetica,sans-serif;color:#1c1c1c}
-.pg{max-width:800px;margin:20px auto;background:#fff;padding:40px 44px;border-top:8px solid #0d3b1e}
-h1{font:700 26px Georgia,serif;color:#0d3b1e;margin:0 0 4px}h3{font:700 16px Georgia,serif;color:#0d3b1e;margin:22px 0 6px}
-.hd{display:flex;justify-content:space-between;gap:20px;border-bottom:2px solid #c9a84c;padding-bottom:16px;margin-bottom:18px}
-.hd p{margin:0;color:#444;font-size:13px}.qt{text-align:right;font-size:13px}.qt b{font:700 20px Georgia,serif;color:#0d3b1e}
-table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid #cfcab8;padding:7px 9px;text-align:left;vertical-align:top}th{background:#f1eee3;font-size:12px}
-.r{text-align:right}.tt{width:55%;margin-left:auto}.tt td{border-color:#cfcab8}.tt .g td{font-weight:700;background:#f1eee3}
-ol{margin:0;padding-left:20px;font-size:13px}.sg{margin-top:40px}.fn{color:#777;font-size:11px;margin-top:24px}
-.np{text-align:center;margin-top:20px}.np button{background:#c9a84c;color:#0d3b1e;border:0;border-radius:6px;padding:10px 20px;font-weight:700;cursor:pointer}
-@media print{body{background:#fff}.pg{margin:0;max-width:none;padding:0;border-top:0}.np{display:none}}
-</style></head><body><div class="pg">
-<div class="hd"><div><h1>${e(c.name)}</h1><p>${e(c.addr)}<br>${e(c.phone)}, ${e(c.email)}${c.gstin?"<br>GSTIN "+e(c.gstin):""}</p></div>
-<div class="qt"><b>Quotation</b><br>No. ${e(d.no)}<br>Date ${dt(d.date)}<br>Valid until ${dt(d.validUntil)}</div></div>
-<p><b>Quotation for</b><br>${e(a.name)}${a.org?", "+e(a.org):""}<br>${e(a.email)}${a.phone?", "+e(a.phone):""}${a.gstin?"<br>GSTIN "+e(a.gstin):""}</p>
-<p><b>Reference</b> ${e(a.id)}. ${e(a.service)}, ${e(a.project)}, ${e(a.state)}.</p>
-<table><thead><tr><th>#</th><th>Description</th><th class="r">Qty</th><th class="r">Rate</th><th class="r">Amount</th></tr></thead><tbody>${rows}</tbody></table>
-<table class="tt"><tr><td>Subtotal</td><td class="r">${inr(d.sub)}</td></tr>${d.dp?`<tr><td>Discount (${e(d.dp)}%)</td><td class="r">-${inr(d.disc)}</td></tr>`:""}<tr><td>GST (${e(d.gr)}%)</td><td class="r">${inr(d.gst)}</td></tr><tr class="g"><td>Total</td><td class="r">${inr(d.total)}</td></tr></table>
-<p>Amount in words: Rupees ${e(words(d.total))} only.</p>
-${d.notes?`<p><b>Notes</b><br>${e(d.notes)}</p>`:""}
-<h3>Terms</h3><ol>${terms.map(x=>`<li>${e(x.replace(/^\d+[.)]\s*/,""))}</li>`).join("")}</ol>
-<p class="sg">For ${e(c.name)}<br><br>Authorised signatory</p>
-<p class="fn">This quotation was generated from the BEC client portal.</p>
-<p class="np"><button onclick="window.print()">Print or save as PDF</button></p></div></body></html>`;
-}
-function qrow(l){
- l=l||{};
- return`<div class="qr"><select class="qsel" aria-label="Service"><option value="">Custom item</option>${SVC.map(s=>`<option value="${e(s.id)}"${l.svc===s.id?" selected":""}>${e(s.name)}</option>`).join("")}</select><input class="qd" aria-label="Description" value="${e(l.desc||"")}" placeholder="Description"><input class="qq" type="number" min="0" step="any" aria-label="Quantity" value="${l.qty!=null?e(l.qty):1}"><input class="qrt" type="number" min="0" step="any" aria-label="Rate in rupees" value="${l.rate!=null?e(l.rate):""}" placeholder="Rate"><output class="qa">${inr(0)}</output><button type="button" class="btn danger sm" data-act="qdel" aria-label="Remove line">&times;</button></div>`;
-}
-function qBuilder(a){
- const d=a.quoteDoc,Q=QS();let lines=d?d.lines:null;
- if(!lines){const s=SVC.find(z=>z.name===a.service);lines=[{svc:s?s.id:"",desc:a.service,qty:a.qty||1,rate:s&&s.price>0?calcRate(s,a.category,a.urgency):""}]}
- return`<section class="panel"><h2>Quotation</h2><form id="qf" data-id="${e(a.id)}" data-cat="${e(a.category)}" data-urg="${e(a.urgency||"")}">
-<p class="hint" style="margin-top:-4px">Pick a service to fill the description and rate from your price list. The rate already reflects this client's category (${e(a.category)}) and turnaround (${e(a.urgency||"Standard")}). You can overwrite any value.</p>
-<div class="qh"><span>Service</span><span>Description</span><span>Qty</span><span>Rate (&#8377;)</span><span>Amount</span><span></span></div>
-<div id="qrows">${lines.map(qrow).join("")}</div><button type="button" class="btn ghost sm" data-act="qadd">Add line</button>
-<div class="row2" style="margin-top:16px"><label>Discount (%)<input name="disc" type="number" min="0" max="100" step="any" value="${d?e(d.dp):0}"></label><label>GST (%)<input name="gst" type="number" min="0" step="any" value="${d?e(d.gr):Q.gst}"></label></div>
-<label>Notes shown on the quotation<textarea name="notes" rows="2">${e(d?d.notes:"")}</textarea></label>
-<div class="qtot" id="qtot"></div>
-<button class="btn">${d?"Revise and send quotation":"Generate and send quotation"}</button> <button type="button" class="btn ghost" data-act="qprev">Preview</button>${d?` <button type="button" class="btn danger" data-act="qclear" data-id="${e(a.id)}">Withdraw quotation</button>`:""}</form></section>`;
-}
-function qRead(f){
- const lines=[...f.querySelectorAll(".qr")].map(r=>{const q=num(r.querySelector(".qq").value,0),rt=num(r.querySelector(".qrt").value,0);return{svc:r.querySelector(".qsel").value,desc:r.querySelector(".qd").value.trim(),qty:q,rate:rt,amount:Math.round(q*rt)}}).filter(l=>l.desc||l.amount);
- return{lines,t:qTotals(lines,Math.min(100,num(f.elements.disc.value,0)),num(f.elements.gst.value,0))};
-}
-function qRecalc(){
- const f=$("#qf");if(!f)return;
- f.querySelectorAll(".qr").forEach(r=>{r.querySelector(".qa").textContent=inr(Math.round(num(r.querySelector(".qq").value,0)*num(r.querySelector(".qrt").value,0)))});
- const t=qRead(f).t;
- $("#qtot").innerHTML=`<div><span>Subtotal</span><span>${inr(t.sub)}</span></div>${t.dp?`<div><span>Discount (${e(t.dp)}%)</span><span>-${inr(t.disc)}</span></div>`:""}<div><span>GST (${e(t.gr)}%)</span><span>${inr(t.gst)}</span></div><div class="g"><span>Total</span><span>${inr(t.total)}</span></div>`;
-}
-function qDoc(a,f){
- const r=qRead(f);if(!r.lines.some(l=>l.amount>0))throw{message:"Add at least one line with a quantity and a rate."};
- const Q=QS(),now=Date.now(),rev=(a.quoteDoc?a.quoteDoc.rev:0)+1,t=r.t;
- return{no:"BEC-Q-"+a.id.slice(8)+"-R"+rev,rev,date:now,validUntil:now+Q.validity*86400000,lines:r.lines,sub:t.sub,dp:t.dp,disc:t.disc,gr:t.gr,gst:t.gst,total:t.total,notes:f.elements.notes.value.trim()};
-}
-function updEst(){
- const f=$("#nf"),b=$("#est");if(!f||!b)return;
- const d=Object.fromEntries(new FormData(f)),r=est(d.service,d.category,d.urgency,d.qty);
- b.innerHTML=r?`<b>Indicative estimate: ${inr(r.total)} including GST</b><br>${inr(r.sub)} plus GST at ${e(r.gstRate)}% (${inr(r.gst)}). Based on a starting fee of ${inr(r.base)}, category factor ${e(r.cm)}, turnaround factor ${e(r.um)} and quantity ${e(r.qty)}. We confirm the final quotation after reviewing your application.`:`This service is quoted after we review your application. We will send a formal quotation on this page.`;
-}
-
-/* ---------- views ---------- */
-const route=()=>{const p=location.hash.replace(/^#\/?/,"").split("/");return{v:p[0]||"",id:decodeURIComponent(p[1]||"")}};
-function hdr(){$("#who").innerHTML=U?`<span>${e(U.email)}${U.admin?" (administrator)":""}</span><button class="btn ghost sm" data-act="out">Sign out</button>`:""}
-function nav(r){
- const items=U.admin?[["","Applications"],["clients","Clients"],["services","Services"],["settings","Settings"]]:[["","My applications"],["new","New application"],["profile","My profile"]];
- const cur=r.v==="app"?"":r.v;
- $("#nav").innerHTML=`<ul>${items.map(([v,t])=>`<li><a href="#/${v}"${v===cur?' aria-current="page"':""}>${t}</a></li>`).join("")}</ul>`;
-}
-function authMsg(t,ok){const m=$("#amsg");if(!m)return;m.textContent=t;m.hidden=false;m.className="msgbox"+(ok?" ok":"")}
 function authView(){
  const up=S.tab==="up";
- return`<section class="auth"><div><h1>Apply for environmental services and follow them through to delivery</h1>
-<ul><li>Submit an application for any BEC service</li><li>See every stage, from scrutiny to delivery</li><li>Message our team on the application itself</li><li>Download your files once payment is confirmed</li></ul>
-<p>Questions before you register? Call ${e(PHONE)} or visit <a href="${SITE}#contact">our contact page</a>.</p></div>
-<div class="box"><div class="tabs" role="tablist"><button role="tab" data-act="tab" data-v="in" aria-selected="${!up}">Sign in</button><button role="tab" data-act="tab" data-v="up" aria-selected="${up}">Create account</button></div>
-<p id="amsg" class="msgbox" role="alert" hidden></p>
-<form id="af">${up?`<div class="row2"><label>Full name<input name="name" required autocomplete="name"></label><label>Organisation<input name="org" required autocomplete="organization"></label></div><label>Mobile number<input name="phone" type="tel" required autocomplete="tel"></label>`:""}
-<label>Email<input name="email" type="email" required autocomplete="username"></label>
-<label>Password${up?" (at least 8 characters)":""}<input name="pw" type="password" required minlength="${up?8:1}" autocomplete="${up?"new-password":"current-password"}"></label>
-<button class="btn" style="width:100%">${up?"Create account":"Sign in"}</button>
-${up?"":`<p style="margin:14px 0 0;text-align:center"><a href="#" data-act="reset">Forgot your password?</a></p>`}</form>
-<p class="note">BEC staff sign in here too and see the administrator tools automatically.</p></div></section>`;
+ return`<div class="box auth"><h1>${up?"Create account":"Sign in"}</h1><div class="tabs" role="tablist"><button role="tab" data-a="tab" data-v="in" aria-selected="${!up}">Sign in</button><button role="tab" data-a="tab" data-v="up" aria-selected="${up}">Create account</button></div>
+<p id="am" class="msg" role="alert" hidden></p><form id="af">${up?`<label>Full name<input name="name" required autocomplete="name"></label><label>Mobile number<input name="phone" type="tel" required autocomplete="tel"></label>`:""}
+<label>Email<input name="email" type="email" required autocomplete="username"></label><label>Password${up?" (min 8 characters)":""}<input name="pw" type="password" required minlength="${up?8:1}" autocomplete="${up?"new-password":"current-password"}"></label>
+<button class="btn buy" style="width:100%">${up?"Create your account":"Sign in"}</button></form><p class="hint">Customers and store administrators use this same page. Administrators see the admin tools automatically after signing in.</p></div>`;
 }
-function tracker(a){
- const i=idx(a.status),h=a.history||[],last=ST.length-1;
- return`<ol class="track">${ST.map((s,k)=>{
-  const x=[...h].reverse().find(z=>z.s===s),cls=(k<i||(k===i&&i===last))?"done":k===i?"now":"";
-  return`<li class="${cls}"${k===i?' aria-current="step"':""}><span>${s}</span>${x?`<time>${dts(x.at)}</time>`:""}</li>`}).join("")}</ol>`;
+function shopView(){
+ const q=S.q.toLowerCase(),cats=[...new Set(P.map(p=>p.cat).filter(Boolean))],r=P.filter(p=>(!S.cat||p.cat===S.cat)&&(!q||(p.name+" "+p.cat+" "+p.desc).toLowerCase().includes(q)));
+ return`<h1>Shop</h1><div class="chips"><button data-a="cat" data-v="" aria-pressed="${!S.cat}">All</button>${cats.map(c=>`<button data-a="cat" data-v="${e(c)}" aria-pressed="${S.cat===c}">${e(c)}</button>`).join("")}</div>
+${r.length?`<div class="grid">${r.map(p=>`<div class="p">${img(p)}<b>${e(p.name)}</b><span class="hint">${e(p.cat)}</span>${p.desc?`<span class="hint">${e(p.desc)}</span>`:""}<span class="pr">${inr(p.price)} <small>incl. taxes</small></span>${p.stock>0?`<span class="ok">${p.stock<=5?"Only "+p.stock+" left":"In stock"}</span><button class="btn" data-a="add" data-id="${e(p.id)}">Add to cart</button>`:`<span class="bad">Out of stock</span>`}</div>`).join("")}</div>`:`<div class="card">No products found.</div>`}`;
 }
-
-function newView(){
- const act=SVC.filter(s=>s.active!==false),Q=QS(),f0=act[0];
- return`<div class="ph"><div><h1>New application</h1><p>Choose your options and see an indicative estimate straight away. We review every application and confirm a formal quotation on this site.</p></div></div>
-<form id="nf" class="panel"><label>Service<select name="service" id="svsel" required>${act.map(s=>`<option>${e(s.name)}</option>`).join("")}</select></label>
-<p class="hint" id="svdesc">${f0?e(f0.desc)+(f0.tat?" Typical turnaround: "+e(f0.tat)+".":""):""}</p>
-<div class="row2"><label>Project or site name<input name="project" required></label><label>State of the project or site<input name="state" required></label></div>
-<div class="row2"><label>Industry category<select name="category">${CATS.map(c=>`<option>${c}</option>`).join("")}</select></label><label>Turnaround<select name="urgency">${Q.urg.map(u=>`<option>${e(u[0])}</option>`).join("")}</select></label></div>
-<div class="row2"><label>Number of units or sites<input name="qty" type="number" min="1" step="1" value="1" required></label><label>Link to your documents (optional)<input name="docs" type="url" placeholder="https://"></label></div>
-<p class="hint">Category is the CPCB Red, Orange, Green or White classification. Choose Not sure if you do not know it. Share documents through a Drive, OneDrive or Dropbox link that we can open.</p>
-<div class="msgbox ok" id="est" aria-live="polite"></div>
-<label>What do you need?<textarea name="details" rows="6" required maxlength="5000" placeholder="Capacity, products, existing consents, deadlines, anything that helps us scope the work"></textarea></label>
-<button class="btn">Submit application</button></form>`;
+function cartView(){
+ const l=lines();if(!l.length)return`<div class="card"><h1>Your cart is empty</h1><a class="btn buy" href="#/">Continue shopping</a></div>`;
+ return`<div class="two"><div class="card"><h1>Shopping cart</h1>${l.map(({p,q})=>`<div class="ln">${img(p)}<div><b>${e(p.name)}</b><br><span class="hint">${inr(p.price)} each</span></div><span class="qty"><button data-a="dec" data-id="${e(p.id)}" aria-label="Decrease">&minus;</button>${q}<button data-a="inc" data-id="${e(p.id)}" aria-label="Increase">+</button></span><b>${inr(p.price*q)}</b><button class="btn danger sm" data-a="rm" data-id="${e(p.id)}">Delete</button></div>`).join("")}</div>
+<div class="card"><p class="tot">Subtotal (${cartN()} items): ${inr(cartT())}</p><a class="btn buy" href="#/checkout">Proceed to checkout</a></div></div>`;
 }
-function profileView(){
- const p=U.profile||{};
- return`<div class="ph"><h1>My profile</h1></div>
-<form id="pf" class="panel"><div class="row2"><label>Full name<input name="name" value="${e(p.name)}" required></label><label>Organisation<input name="org" value="${e(p.org)}" required></label></div>
-<div class="row2"><label>Mobile number<input name="phone" type="tel" value="${e(p.phone)}" required></label><label>GSTIN (optional, for invoices)<input name="gstin" value="${e(p.gstin)}" maxlength="15"></label></div>
-<label>Email<input value="${e(U.email)}" disabled></label>
-<button class="btn">Save profile</button> <button type="button" class="btn ghost" data-act="pwreset">Email me a password reset link</button></form>`;
+function checkoutView(){
+ if(!lines().length)return cartView();const p=U.profile||{};
+ return`<div class="two"><form id="cf" class="card"><h1>Checkout</h1><h2>Delivery address</h2><div class="row"><label>Full name<input name="name" value="${e(p.name)}" required></label><label>Mobile number<input name="phone" type="tel" value="${e(p.phone)}" required></label></div>
+<label>Address<textarea name="addr" rows="3" required maxlength="500" placeholder="House, street, city, state, PIN"></textarea></label><h2>Payment</h2>
+<label class="chk"><input type="radio" name="pay" value="Cash on delivery" checked> Cash on delivery</label><label class="chk"><input type="radio" name="pay" value="UPI on delivery"> UPI on delivery</label><button class="btn buy">Place your order</button></form>
+<div class="card"><h2>Order summary</h2>${lines().map(({p,q})=>`<div>${e(p.name)} &times; ${q}</div>`).join("")}<p class="tot">Order total: ${inr(cartT())}</p></div></div>`;
 }
-function clientHome(ap){
- return`<div class="ph"><div><h1>My applications</h1><p>Track each application, reply to our team and download your files.</p></div><a class="btn" href="#/new">New application</a></div>
-${ap.length?`<div class="panel wrap"><table><thead><tr><th>Application</th><th>Service</th><th>Status</th><th>Quote</th><th>Next step</th></tr></thead><tbody>${ap.map(a=>`<tr data-href="#/app/${e(a.id)}"><td><a href="#/app/${e(a.id)}">${e(a.id)}</a><br><small>${dt(a.created)}</small></td><td>${e(a.service)}<br><small>${e(a.project)}</small></td><td><span class="pill ${pc(a.status)}">${e(a.status)}</span></td><td>${a.quote?inr(a.quote)+"<br><small>"+(a.paid?"Paid":e(a.quoteStatus||""))+"</small>":""}</td><td>${nextC(a)}</td></tr>`).join("")}</tbody></table></div>`
-:`<div class="panel empty"><h2>No applications yet</h2><p>Choose a service, describe your project, and we will take it from there.</p><a class="btn" href="#/new">Start an application</a></div>`}`;
+async function ordersView(){
+ const o=await API.list("orders",U.admin?null:["uid",U.uid]);o.sort((a,b)=>b.created-a.created);
+ let h="";
+ if(U.admin){const rev=o.filter(x=>x.status!=="Cancelled").reduce((t,x)=>t+x.total,0);
+  h=`<h1>Orders</h1><div class="kpi"><div><b>${o.length}</b>Total orders</div><div><b>${o.filter(x=>x.status==="Placed").length}</b>New</div><div><b>${o.filter(x=>["Packed","Shipped","Out for delivery"].includes(x.status)).length}</b>In transit</div><div><b>${inr(rev)}</b>Sales</div></div>
+<label style="max-width:240px">Filter by status<select id="of"><option value="">All</option>${[...ST,"Cancelled"].map(s=>`<option${S.of===s?" selected":""}>${s}</option>`).join("")}</select></label>`;
+ }else h=`<h1>Your orders</h1>`;
+ const r=o.filter(x=>!S.of||!U.admin||x.status===S.of);
+ return h+(r.length?`<div class="card wrap"><table><thead><tr><th>Order</th>${U.admin?"<th>Customer</th>":""}<th>Items</th><th>Total</th><th>Status</th></tr></thead><tbody>${r.map(x=>`<tr data-h="#/order/${e(x.id)}"><td><a href="#/order/${e(x.id)}">${e(x.id)}</a><br><span class="hint">${dt(x.created)}</span></td>${U.admin?`<td>${e(x.name)}<br><span class="hint">${e(x.email)}</span></td>`:""}<td>${x.items.map(i=>e(i.name)+" &times; "+i.q).join("<br>")}</td><td>${inr(x.total)}</td><td>${pill(x.status)}</td></tr>`).join("")}</tbody></table></div>`:`<div class="card">No orders yet. <a href="#/">Start shopping</a></div>`);
 }
-function stripHtml(){return STRIP.map(([k,t])=>`<button data-act="flt" data-k="${k}" aria-pressed="${S.k===k}"><b>${APPS.filter(FLT[k]).length}</b>${t}</button>`).join("")}
-function adminRows(){
- const q=(S.q||"").toLowerCase().trim(),k=FLT[S.k]||FLT.all;
- const r=APPS.filter(a=>k(a)&&(!S.f||a.status===S.f)&&(!q||[a.id,a.name,a.org,a.email,a.service,a.project,a.state].join(" ").toLowerCase().includes(q)));
- if(!r.length)return`<p class="empty">No applications match these filters.</p>`;
- return`<table><thead><tr><th>Application</th><th>Client</th><th>Service</th><th>Status</th><th>Quote</th><th>Next step</th></tr></thead><tbody>${r.map(a=>`<tr data-href="#/app/${e(a.id)}"><td><a href="#/app/${e(a.id)}">${e(a.id)}</a><br><small>${dt(a.created)}</small></td><td>${e(a.name)}<br><small>${e(a.org)}</small></td><td>${e(a.service)}<br><small>${e(a.state)}</small></td><td><span class="pill ${pc(a.status)}">${e(a.status)}</span></td><td>${a.quote?inr(a.quote)+"<br><small>"+(a.paid?"Paid":e(a.quoteStatus||""))+"</small>":""}</td><td>${nextA(a)}</td></tr>`).join("")}</tbody></table>`;
+async function orderView(id){
+ const o=await API.get("orders",id);if(!o||(!U.admin&&o.uid!==U.uid))return`<div class="card">Order not found. <a href="#/orders">Back</a></div>`;
+ const h=o.history||[],i=ST.indexOf(o.status);
+ const trk=o.status==="Cancelled"?`<p>${pill("Cancelled")}</p>`:`<ol class="track">${ST.map((s,k)=>{const x=h.find(z=>z.s===s);return`<li class="${k<=i?"d":""}">${s}${x?`<time>${dt(x.at)}</time>`:""}</li>`}).join("")}</ol>`;
+ const side=U.admin?`<form id="mf" class="card" data-id="${e(o.id)}"><h2>Update order</h2><label>Status<select name="status">${[...ST,"Cancelled"].map(s=>`<option${s===o.status?" selected":""}>${s}</option>`).join("")}</select></label><button class="btn buy">Save status</button></form>`
+  :`<div class="card"><h2>Need to change this?</h2>${o.status==="Placed"?`<button class="btn danger" data-a="cancel" data-id="${e(o.id)}">Cancel order</button>`:`<p class="hint">Orders can be cancelled only before they are packed.</p>`}</div>`;
+ return`<p><a href="#/${U.admin?"":"orders"}">&larr; Back to orders</a></p><div class="two"><div><div class="card"><h1>Order ${e(o.id)}</h1><p>Placed ${dt(o.created)} ${pill(o.status)}</p>${trk}</div>
+<div class="card"><h2>Items</h2>${o.items.map(it=>`<div class="ln"><div class="pi">${okUrl(it.img)?`<img src="${e(it.img)}" alt="">`:e(it.emoji||"📦")}</div><div><b>${e(it.name)}</b><br>${inr(it.price)} &times; ${it.q}</div><b>${inr(it.price*it.q)}</b></div>`).join("")}<p class="tot">Total: ${inr(o.total)}</p></div></div>
+<aside><div class="card"><h2>Delivery</h2><p style="white-space:pre-wrap">${e(o.name)}\n${e(o.phone)}\n${e(o.addr)}</p><p class="hint">Payment: ${e(o.pay)}${U.admin?"<br>Customer: "+e(o.email):""}</p></div>${side}</aside></div>`;
 }
-function adminHome(ap){
- APPS=ap;const paid=ap.filter(a=>a.paid).reduce((s,a)=>s+(a.quote||0),0);
- return`<div class="ph"><div><h1>Applications</h1><p>Payments received so far: <b>${inr(paid)}</b></p></div><button class="btn ghost" data-act="csv">Export CSV</button></div>
-<div class="strip" id="strip">${stripHtml()}</div>
-<div class="panel"><div class="row2"><label>Search<input id="aq" value="${e(S.q)}" placeholder="ID, client, organisation, service, state"></label><label>Status<select id="af2"><option value="">All statuses</option>${ST.map(s=>`<option${s===S.f?" selected":""}>${s}</option>`).join("")}</select></label></div><div class="wrap" id="tbl">${adminRows()}</div></div>`;
-}
-async function homeView(){
- const ap=await API.list("applications",U.admin?null:["uid",U.uid]);
- ap.sort((a,b)=>(b.created||0)-(a.created||0));
- return U.admin?adminHome(ap):clientHome(ap);
-}
-async function detailView(id){
- const a=await API.get("applications",id);
- if(!a||(!U.admin&&a.uid!==U.uid))return`<div class="panel empty"><h2>Application not found</h2><p>It may have been removed, or it belongs to another account.</p><a class="btn" href="#/">Back to applications</a></div>`;
- const[ms,dl,nt]=await Promise.all([API.list(`applications/${id}/messages`),API.get("deliveries",id),U.admin?API.get("notes",id):Promise.resolve(null)]);
- ms.sort((x,y)=>(x.at||0)-(y.at||0));
- const thread=ms.length?`<div class="thread">${ms.map(m=>`<article class="m${m.from==="admin"?" bec":""}"><header><b>${m.from==="admin"?"BEC team":(U.admin?e(a.name||"Client"):"You")}</b><time>${dtt(m.at)}</time></header><p>${e(m.text)}</p></article>`).join("")}</div>`:`<p class="note" style="margin:0 0 16px">No messages yet.</p>`;
- const es=a.estimate;
- const left=`<a class="back" href="#/">Back to applications</a>
-<div class="ph"><div><h1>${e(a.service)}</h1><p>${e(a.project)}</p></div><span class="pill ${pc(a.status)}">${e(a.status)}</span></div>
-<section class="panel" aria-label="Progress"><h2>Progress</h2>${tracker(a)}</section>
-<section class="panel"><h2>Application details</h2><dl class="kv"><dt>Application ID</dt><dd>${e(a.id)}</dd><dt>Submitted</dt><dd>${dt(a.created)}</dd>${U.admin?`<dt>Client</dt><dd>${e(a.name)}, ${e(a.org)}\n${e(a.email)}, ${e(a.phone)}${a.gstin?"\nGSTIN "+e(a.gstin):""}</dd>`:""}<dt>State</dt><dd>${e(a.state)}</dd><dt>Category</dt><dd>${e(a.category)}</dd><dt>Turnaround</dt><dd>${e(a.urgency||"Standard")}</dd><dt>Units or sites</dt><dd>${e(a.qty||1)}</dd>${U.admin&&es?`<dt>Client estimate</dt><dd>${inr(es.total)} including GST (indicative, shown to the client at submission)</dd>`:""}<dt>Details</dt><dd>${e(a.details)}</dd><dt>Documents</dt><dd>${okUrl(a.docs)?`<a href="${e(a.docs)}" target="_blank" rel="noopener noreferrer">Open the shared documents</a>`:"None shared"}</dd></dl></section>
-${U.admin?qBuilder(a):""}
-<section class="panel"><h2>Messages</h2>${thread}<form id="cf" data-id="${e(a.id)}"><label>${U.admin?"Reply to the client":"Message to BEC"}<textarea name="text" rows="3" required maxlength="2000"></textarea></label><button class="btn">Send message</button></form></section>`;
- let side;
- if(U.admin){
-  const files=(dl&&dl.files||[]).map(f=>f.name+" | "+f.link).join("\n");
-  side=`<form id="mf" class="panel" data-id="${e(a.id)}"><h2>Manage application</h2>
-<label>Status<select name="status">${ST.map(s=>`<option${s===a.status?" selected":""}>${s}</option>`).join("")}</select></label>
-<p class="hint">Quotation: ${a.quote>0?inr(a.quote)+", "+e(a.quoteStatus||"not sent"):"not sent"}. Create or revise it in the Quotation panel.</p>
-<label class="chk"><input type="checkbox" name="paid"${a.paid?" checked":""}> Payment received</label>
-<label>Payment reference<input name="payRef" value="${e(a.payRef)}"></label>
-<label>Files for the client<textarea name="files" rows="4" placeholder="Report name | https://drive.google.com/...">${e(files)}</textarea></label>
-<p class="hint">One file per line as name | link. Clients can open these only after payment is marked received.</p>
-<label>Private notes<textarea name="notes" rows="3">${e(nt?nt.text:"")}</textarea></label>
-<p class="hint">Visible to administrators only.</p>
-<button class="btn">Save changes</button> <a class="btn ghost" href="mailto:${e(a.email)}?subject=${encodeURIComponent("Your BEC application "+a.id)}">Email client</a></form>`;
- }else{
-  const d=a.quoteDoc;
-  let q=`<section class="panel"><h2>Quotation and payment</h2>`;
-  if(!(a.quote>0))q+=`<p>No quotation yet. We will send one here after reviewing your application.</p>${es?`<p class="note">Your indicative estimate at submission was ${inr(es.total)} including GST. The final quotation may differ.</p>`:""}`;
-  else{
-   q+=`<p class="amt">${inr(a.quote)}</p><p class="note">Including GST${d?". Quotation "+e(d.no)+", valid until "+dt(d.validUntil)+".":"."}</p>`;
-   if(d)q+=`<ul class="files" style="margin-top:12px">${d.lines.map(l=>`<li>${e(l.desc)}: ${e(l.qty)} &times; ${inr(l.rate)} = ${inr(l.amount)}</li>`).join("")}</ul><p style="margin:12px 0"><button class="btn ghost sm" data-act="qview" data-id="${e(a.id)}">View or print quotation</button></p>`;
-   if(a.quoteStatus==="Sent")q+=`<p>Please accept or decline this quotation.</p><button class="btn" data-act="qy" data-id="${e(a.id)}">Accept quotation</button> <button class="btn ghost" data-act="qn" data-id="${e(a.id)}">Decline</button>`;
-   else if(a.quoteStatus==="Declined")q+=`<p>You declined this quotation. Send us a message if you want it revised.</p>`;
-   else if(a.paid)q+=`<p><span class="pill ok">Payment received</span> ${dt(a.paidOn)}${a.payRef?`<br><small>Reference ${e(a.payRef)}</small>`:""}</p>`;
-   else q+=`<p><span class="pill warn">Awaiting payment</span></p>${SET.payInfo?`<p class="note">${e(SET.payInfo)}</p>`:""}<p class="note">After you pay, send us the transaction reference in a message. We confirm payment here.</p>`;
-  }
-  q+=`</section><section class="panel"><h2>Your files</h2>`;
-  const fl=(dl&&dl.files||[]).filter(f=>okUrl(f.link));
-  if(!a.paid)q+=`<p>Files are released here after we confirm payment.</p>`;
-  else if(fl.length)q+=`<ul class="files">${fl.map(f=>`<li><a href="${e(f.link)}" target="_blank" rel="noopener noreferrer">${e(f.name||"Download file")}</a></li>`).join("")}</ul>`;
-  else q+=`<p>Payment received. Your files will appear here when they are ready.</p>`;
-  side=q+`</section>`;
- }
- return`<div class="dgrid"><div>${left}</div><aside>${side}</aside></div>`;
-}
-async function clientsView(){
- const[us,ap]=await Promise.all([API.list("users"),API.list("applications")]);
- us.sort((a,b)=>(b.created||0)-(a.created||0));
- return`<div class="ph"><div><h1>Clients</h1><p>${us.length} registered ${us.length===1?"account":"accounts"}</p></div></div>
-<div class="panel wrap">${us.length?`<table><thead><tr><th>Name</th><th>Organisation</th><th>Contact</th><th>GSTIN</th><th>Applications</th><th>Joined</th></tr></thead><tbody>${us.map(u=>{const n=ap.filter(a=>a.uid===u.id).length;return`<tr><td>${e(u.name)}</td><td>${e(u.org)}</td><td>${e(u.email)}<br><small>${e(u.phone)}</small></td><td>${e(u.gstin)}</td><td>${n?`<a href="#/" data-act="cap" data-q="${e(u.email)}">${n}</a>`:"0"}</td><td>${dt(u.created)}</td></tr>`}).join("")}</tbody></table>`:`<p class="empty">No clients have registered yet.</p>`}</div>`;
-}
-function servicesView(){
- const b=SVC.length&&SVC[0]._builtin;
- const head=`<div class="ph"><div><h1>Services</h1><p>The services clients can choose, with the starting fee used for estimates and quotations.</p></div></div>`;
- if(b)return head+`<div class="panel"><h2>Built-in list in use</h2><p>Clients currently see the standard list of ${SVC.length} services. Starting fees come from your services-pricing page where one exists. Make the list editable to change fees, rename, describe, hide or add services.</p><button class="btn" data-act="svcconv">Make the list editable</button></div>`;
- return head+`<form id="sf" class="panel"><h2 id="sfh">Add a service</h2><input type="hidden" name="sid"><label>Name<input name="name" required></label><label>What it covers<textarea name="desc" rows="2" required></textarea></label>
-<div class="row2"><label>Starting fee in rupees (0 means quoted after review)<input name="price" type="number" min="0" step="1" value="0"></label><label>Fee applies<input name="unit" value="per application" placeholder="per application"></label></div>
-<div class="row2"><label>Typical turnaround (optional)<input name="tat" placeholder="e.g. 2 to 3 weeks"></label><label class="chk" style="align-self:end"><input type="checkbox" name="active" checked> Show to clients</label></div>
-<button class="btn">Save service</button> <button type="button" class="btn ghost" data-act="svcnew">Clear form</button></form>
-<div class="panel wrap"><table><thead><tr><th>Service</th><th>Starting fee</th><th>Visibility</th><th></th></tr></thead><tbody>${SVC.map(s=>`<tr><td><b>${e(s.name)}</b><br><small>${e(s.desc)}${s.tat?" Turnaround: "+e(s.tat):""}</small></td><td>${s.price>0?inr(s.price)+"<br><small>"+e(s.unit||"")+"</small>":"On request"}</td><td><span class="pill ${s.active===false?"warn":"ok"}">${s.active===false?"Hidden":"Shown"}</span></td><td style="white-space:nowrap"><button class="btn ghost sm" data-act="svce" data-id="${e(s.id)}">Edit</button> <button class="btn danger sm" data-act="svcd" data-id="${e(s.id)}">Delete</button></td></tr>`).join("")}</tbody></table></div>`;
-}
-function settingsView(){
- const s=SET||{},v=(k,d)=>e(s[k]!=null&&s[k]!==""?s[k]:d);
- return`<div class="ph"><div><h1>Settings</h1><p>These control estimates, quotations and what clients see after they accept a quotation.</p></div></div>
-<form id="stf"><section class="panel"><h2>Quotation defaults</h2>
-<div class="row2"><label>GST rate (%)<input name="gst" type="number" min="0" step="any" value="${v("gst",18)}"></label><label>Quotation valid for (days)<input name="validity" type="number" min="1" step="1" value="${v("validity",15)}"></label></div>
-<p class="hint">A service's starting fee is multiplied by the factor for the client's industry category and the factor for the turnaround they choose.</p>
-<div class="row2"><label>Red category factor<input name="mRed" type="number" min="0" step="any" value="${v("mRed",1.5)}"></label><label>Orange category factor<input name="mOrange" type="number" min="0" step="any" value="${v("mOrange",1.25)}"></label></div>
-<div class="row2"><label>Green category factor<input name="mGreen" type="number" min="0" step="any" value="${v("mGreen",1)}"></label><label>White category factor<input name="mWhite" type="number" min="0" step="any" value="${v("mWhite",0.8)}"></label></div>
-<label>Turnaround options (one per line: label | factor)<textarea name="urgency" rows="3">${e(s.urgency||"Standard | 1\nPriority | 1.25\nUrgent | 1.5")}</textarea></label>
-<label>Terms printed on the quotation<textarea name="terms" rows="7">${e(s.terms||DEF_TERMS)}</textarea></label>
-<p class="hint">These default terms are a starting point. Have them reviewed before you rely on them.</p></section>
-<section class="panel"><h2>Company details on the quotation</h2>
-<div class="row2"><label>Company name<input name="coName" value="${v("coName","Bharat Environment Consultants")}"></label><label>GSTIN<input name="coGstin" value="${v("coGstin","")}" maxlength="15"></label></div>
-<label>Address<input name="coAddr" value="${v("coAddr","4th Floor, Green Tower, Sector 18, Gurugram, Haryana 122015")}"></label>
-<div class="row2"><label>Phone<input name="coPhone" value="${v("coPhone",PHONE)}"></label><label>Email<input name="coEmail" type="email" value="${v("coEmail","bharatenviroconsultants@zohomail.in")}"></label></div></section>
-<section class="panel"><h2>Payment instructions</h2><label>Shown to a client after they accept a quotation<textarea name="payInfo" rows="5" placeholder="Bank name, account name, account number, IFSC, UPI ID, and any billing note">${e(s.payInfo)}</textarea></label></section>
-<button class="btn">Save settings</button></form>`;
+function productsView(){
+ return`<h1>Products</h1><form id="pf" class="card"><h2 id="pfh">Add a product</h2><input type="hidden" name="pid"><div class="row"><label>Name<input name="name" required></label><label>Category<input name="cat" required></label></div>
+<div class="row"><label>Price (&#8377;)<input name="price" type="number" min="0" step="1" required></label><label>Stock<input name="stock" type="number" min="0" step="1" required value="10"></label></div>
+<div class="row"><label>Emoji (fallback picture)<input name="emoji" maxlength="4" value="📦"></label><label>Image link (https, optional)<input name="img" type="url"></label></div>
+<label>Description<input name="desc" maxlength="200"></label><button class="btn buy">Save product</button> <button type="button" class="btn ghost" data-a="pclr">Clear</button>${P.length?"":` <button type="button" class="btn ghost" data-a="seed">Load sample products</button>`}</form>
+<div class="card wrap"><table><thead><tr><th>Product</th><th>Price</th><th>Stock</th><th></th></tr></thead><tbody>${P.map(p=>`<tr><td><b>${e(p.emoji)} ${e(p.name)}</b><br><span class="hint">${e(p.cat)}</span></td><td>${inr(p.price)}</td><td>${e(p.stock)}</td><td style="white-space:nowrap"><button class="btn ghost sm" data-a="pe" data-id="${e(p.id)}">Edit</button> <button class="btn danger sm" data-a="pd" data-id="${e(p.id)}">Delete</button></td></tr>`).join("")}</tbody></table></div>`;
 }
 async function render(){
- const t=++RT;hdr();
- if(!U){document.body.className="out";$("#nav").innerHTML="";$("#app").innerHTML=authView();return}
- document.body.className="in";
- const r=route();nav(r);let h;
+ const t=++RT;header();let h;
+ if(!U){$("#app").innerHTML=authView();return}
+ const r=route();
  try{
-  if(r.v==="app"&&r.id)h=await detailView(r.id);
-  else if(r.v==="new"&&!U.admin)h=newView();
-  else if(r.v==="profile"&&!U.admin)h=profileView();
-  else if(U.admin&&r.v==="clients")h=await clientsView();
-  else if(U.admin&&r.v==="services")h=servicesView();
-  else if(U.admin&&r.v==="settings")h=settingsView();
-  else h=await homeView();
- }catch(x){h=`<div class="panel empty"><h2>This page did not load</h2><p>${e(msg(x))}</p></div>`}
- if(t===RT){$("#app").innerHTML=h;if(r.v==="new"&&!U.admin)updEst();if(r.v==="app"&&U.admin)qRecalc()}
+  if(r.v==="order")h=await orderView(r.id);
+  else if(U.admin)h=r.v==="products"?productsView():await ordersView();
+  else if(r.v==="cart")h=cartView();
+  else if(r.v==="checkout")h=checkoutView();
+  else if(r.v==="orders")h=await ordersView();
+  else h=shopView();
+ }catch(x){h=`<div class="card">${e(msg(x))}</div>`}
+ if(t===RT)$("#app").innerHTML=h;
 }
 
-/* ---------- actions ---------- */
+/* ---- actions ---- */
+const authMsg=t=>{const m=$("#am");m.textContent=t;m.hidden=false};
 async function auth(d){
  const em=d.email.trim().toLowerCase();
- if(S.tab==="up"){
-  S.busy=true;let au;
-  try{au=await API.signUp(em,d.pw);await API.set("users",au.uid,{name:d.name.trim(),org:d.org.trim(),phone:d.phone.trim(),gstin:"",email:em,created:Date.now()})}
-  finally{S.busy=false;if(au)await boot(au)}
- }else await API.signIn(em,d.pw);
+ if(S.tab==="up"){let au;try{au=await API.signUp(em,d.pw);await API.set("users",au.uid,{name:d.name.trim(),org:"",phone:d.phone.trim(),gstin:"",email:em,created:Date.now()})}finally{if(au){S.busy=0;await boot(au)}}}
+ else await API.signIn(em,d.pw);
 }
-async function createApp(d){
- const p=U.profile||{},t=Date.now(),qty=Math.max(1,Math.round(num(d.qty,1))),r=est(d.service,d.category,d.urgency,qty);
- const a={id:"BEC-APP-"+t.toString(36).toUpperCase(),uid:U.uid,email:U.email,name:p.name||"",org:p.org||"",phone:p.phone||"",gstin:p.gstin||"",service:d.service,project:d.project.trim(),state:d.state.trim(),category:d.category,urgency:d.urgency||"Standard",qty,estimate:r?{rate:r.rate,qty:r.qty,sub:r.sub,gst:r.gst,total:r.total}:null,details:d.details.trim(),docs:okUrl(d.docs)?d.docs.trim():"",status:"Submitted",quote:0,quoteNote:"",quoteStatus:"",paid:false,payRef:"",paidOn:0,history:[{s:"Submitted",at:t}],created:t,updated:t};
- await API.set("applications",a.id,a);
- notify("New portal application "+a.id,{application:a.id,name:a.name,organisation:a.org,email:a.email,phone:a.phone,service:a.service,state:a.state,estimate:r?inr(r.total):"quoted after review",message:a.details});
- toast("Application "+a.id+" submitted.");go("#/app/"+a.id);
+async function placeOrder(d){
+ const l=lines(),t=Date.now();if(!l.length)return;
+ const o={id:"ORD-"+t.toString(36).toUpperCase(),uid:U.uid,email:U.email,name:d.name.trim(),phone:d.phone.trim(),addr:d.addr.trim(),pay:d.pay,
+  items:l.map(({p,q})=>({id:p.id,name:p.name,price:p.price,q,emoji:p.emoji||"",img:okUrl(p.img)?p.img:""})),total:cartT(),status:"Placed",history:[{s:"Placed",at:t}],created:t};
+ await API.set("orders",o.id,o);CART={};saveCart();toast("Order "+o.id+" placed. Thank you!");location.hash="#/order/"+o.id;
 }
-async function sendMsg(f,d){
- const id=f.dataset.id,text=(d.text||"").trim();if(!text)return;
- await API.add(`applications/${id}/messages`,{from:U.admin?"admin":"client",uid:U.uid,text,at:Date.now()});
- if(!U.admin)notify("New message on "+id,{application:id,client:U.email,message:text});
- render();
+async function setStatus(id,s){
+ const o=await API.get("orders",id),p={status:s};
+ if(s!==o.status&&s!=="Cancelled")p.history=[...(o.history||[]).filter(x=>ST.indexOf(x.s)<ST.indexOf(s)),{s,at:Date.now()}];
+ await API.upd("orders",id,p);toast("Order updated.");render();
 }
-async function answerQuote(id,ans){
- await API.upd("applications",id,{quoteStatus:ans});
- await API.add(`applications/${id}/messages`,{from:"client",uid:U.uid,text:ans==="Accepted"?"I accept the quote.":"I decline the quote.",at:Date.now()});
- notify("Quote "+ans.toLowerCase()+" on "+id,{application:id,client:U.email});
- toast("Quote "+ans.toLowerCase()+".");render();
+async function saveProduct(d){
+ const id=d.pid||slug(d.name)||"p-"+Date.now().toString(36);
+ await API.set("products",id,{name:d.name.trim(),cat:d.cat.trim(),price:Math.max(0,Math.round(+d.price||0)),stock:Math.max(0,Math.round(+d.stock||0)),emoji:d.emoji||"📦",img:okUrl(d.img)?d.img.trim():"",desc:(d.desc||"").trim()});
+ P=await API.list("products");P.sort((a,b)=>a.name.localeCompare(b.name));toast("Product saved.");render();
 }
-async function saveManage(f,d){
- const id=f.dataset.id,a=await API.get("applications",id);if(!a)throw{message:"Application not found."};
- const now=Date.now(),patch={payRef:(d.payRef||"").trim(),updated:now};
- let status=d.status;
- const paid=d.paid==="on";patch.paid=paid;
- if(paid&&!a.paid){patch.paidOn=now;if(status===a.status&&idx(status)<idx("Payment received"))status="Payment received"}
- if(!paid)patch.paidOn=0;
- patch.status=status;
- if(status!==a.status)patch.history=[...(a.history||[]),{s:status,at:now}];
- await API.upd("applications",id,patch);
- const lines=(d.files||"").split("\n").map(l=>l.trim()).filter(Boolean);
- const files=lines.map(l=>{const i=l.lastIndexOf("|");return{name:(i>0?l.slice(0,i):"").trim()||"Download file",link:(i>=0?l.slice(i+1):l).trim()}}).filter(x=>okUrl(x.link));
- await API.set("deliveries",id,{uid:a.uid,files});
- await API.set("notes",id,{text:d.notes||"",at:now});
- if(files.length<lines.length)toast("Saved. "+(lines.length-files.length)+" file line(s) ignored: each needs an https link.",true);
- else if(status==="Delivered"&&!paid)toast("Saved. The client cannot open files until payment is marked received.",true);
- else toast("Changes saved.");
- render();
-}
-async function sendQuote(f){
- const id=f.dataset.id,a=await API.get("applications",id);if(!a)throw{message:"Application not found."};
- if(a.paid)throw{message:"Payment is already recorded for this application. Create a new application for additional work."};
- const d=qDoc(a,f),now=Date.now(),patch={quoteDoc:d,quote:d.total,quoteStatus:"Sent",updated:now};
- if(idx(a.status)<idx("Quote sent")){patch.status="Quote sent";patch.history=[...(a.history||[]),{s:"Quote sent",at:now}]}
- await API.upd("applications",id,patch);
- await API.add(`applications/${id}/messages`,{from:"admin",uid:U.uid,text:"Quotation "+d.no+" for "+inr(d.total)+" including GST is ready. Review it on this page, then accept or decline.",at:now});
- toast("Quotation "+d.no+" sent to the client.");render();
-}
-async function clearQuote(id){
- const a=await API.get("applications",id);
- if(a&&a.paid)throw{message:"Payment is already recorded, so the quotation cannot be withdrawn."};
- if(!confirm("Withdraw this quotation? The client will no longer see it."))return;
- await API.upd("applications",id,{quote:0,quoteStatus:"",quoteDoc:null,updated:Date.now()});
- toast("Quotation withdrawn.");render();
-}
-async function saveProfile(d){
- const p={name:d.name.trim(),org:d.org.trim(),phone:d.phone.trim(),gstin:(d.gstin||"").trim().toUpperCase(),email:U.email,created:(U.profile&&U.profile.created)||Date.now()};
- await API.set("users",U.uid,p);U.profile=p;toast("Profile saved.");
-}
-async function saveService(d){
- let id=d.sid||slug(d.name)||("service-"+Date.now().toString(36));
- if(!d.sid&&SVC.some(s=>s.id===id))id+="-"+Date.now().toString(36).slice(-4);
- const ex=SVC.find(s=>s.id===id);
- await API.set("services",id,{name:d.name.trim(),desc:d.desc.trim(),tat:(d.tat||"").trim(),active:d.active==="on",order:ex?(ex.order||0):Date.now(),price:Math.max(0,Math.round(Number(d.price)||0)),unit:(d.unit||"per application").trim()});
- SVC=await loadServices();toast("Service saved.");render();
-}
-async function saveSettings(d){
- const o={};Object.keys(d).forEach(k=>{o[k]=String(d[k]).trim()});
- await API.set("settings","main",o);SET=o;toast("Settings saved.");
-}
-function csv(){
- const cell=v=>{let s=String(v==null?"":v);if(/^[=+\-@\t\r]/.test(s))s="'"+s;return'"'+s.replace(/"/g,'""')+'"'};
- const rows=[["ID","Submitted","Client","Organisation","Email","Phone","Service","Project","State","Category","Status","Quote","Quote status","Paid","Paid on","Payment reference"]].concat(APPS.map(a=>[a.id,dt(a.created),a.name,a.org,a.email,a.phone,a.service,a.project,a.state,a.category,a.status,a.quote||0,a.quoteStatus||"",a.paid?"Yes":"No",dt(a.paidOn),a.payRef||""]));
- const b=new Blob(["\ufeff"+rows.map(r=>r.map(cell).join(",")).join("\n")],{type:"text/csv"}),u=URL.createObjectURL(b),l=document.createElement("a");
- l.href=u;l.download="bec-applications-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(l);l.click();l.remove();setTimeout(()=>URL.revokeObjectURL(u),1500);
-}
-const refreshAdmin=()=>{const s=$("#strip"),t=$("#tbl");if(s)s.innerHTML=stripHtml();if(t)t.innerHTML=adminRows()};
+const chg=(id,n)=>{const p=P.find(x=>x.id===id);if(!p)return;const q=(CART[id]||0)+n;if(q<=0)delete CART[id];else CART[id]=Math.min(q,p.stock||q);saveCart();header();if(route().v==="cart")render()};
 
-/* ---------- events ---------- */
 document.addEventListener("click",async x=>{
- const tr=x.target.closest("tr[data-href]");
- if(tr&&!x.target.closest("a,button")){location.hash=tr.dataset.href;return}
- const t=x.target.closest("[data-act]");if(!t)return;const a=t.dataset.act;
+ const tr=x.target.closest("tr[data-h]");if(tr&&!x.target.closest("a,button")){location.hash=tr.dataset.h;return}
+ const t=x.target.closest("[data-a]");if(!t)return;const a=t.dataset.a,id=t.dataset.id;
  try{
   if(a==="tab"){S.tab=t.dataset.v;render()}
-  else if(a==="out"){S.tab="in";await API.signOut()}
-  else if(a==="reset"){x.preventDefault();const m=($("#af [name=email]").value||"").trim().toLowerCase();if(!m)return authMsg("Enter your email above, then select Forgot your password again.");await API.reset(m);authMsg("If an account exists for that email, a reset link is on its way.",true)}
-  else if(a==="pwreset"){await API.reset(U.email);toast("Password reset link sent to "+U.email+".")}
-  else if(a==="qy"||a==="qn")await answerQuote(t.dataset.id,a==="qy"?"Accepted":"Declined");
-  else if(a==="flt"){S.k=t.dataset.k;refreshAdmin()}
-  else if(a==="csv")csv();
-  else if(a==="cap"){x.preventDefault();S.q=t.dataset.q;S.f="";S.k="all";go("#/")}
-  else if(a==="qadd"){$("#qrows").insertAdjacentHTML("beforeend",qrow({qty:1}));qRecalc()}
-  else if(a==="qdel"){t.closest(".qr").remove();qRecalc()}
-  else if(a==="qprev"){const f=$("#qf"),ap=await API.get("applications",f.dataset.id);openDoc(quoteHtml(ap,qDoc(ap,f)))}
-  else if(a==="qview"){const ap=await API.get("applications",t.dataset.id);if(ap&&ap.quoteDoc)openDoc(quoteHtml(ap,ap.quoteDoc))}
-  else if(a==="qclear")await clearQuote(t.dataset.id);
-  else if(a==="svce"){const s=SVC.find(z=>z.id===t.dataset.id),f=$("#sf");if(!s||!f)return;const el=f.elements;el.sid.value=s.id;el.name.value=s.name;el.desc.value=s.desc;el.tat.value=s.tat||"";el.price.value=s.price||0;el.unit.value=s.unit||"per application";el.active.checked=s.active!==false;$("#sfh").textContent="Edit service";f.scrollIntoView({behavior:"smooth",block:"start"});el.name.focus()}
-  else if(a==="svcd"){if(confirm("Delete this service? Existing applications keep their service name.")){await API.del("services",t.dataset.id);SVC=await loadServices();render()}}
-  else if(a==="svcnew"){const f=$("#sf");f.reset();f.elements.sid.value="";$("#sfh").textContent="Add a service"}
-  else if(a==="svcconv"){await Promise.all(DEFAULTS.map(s=>API.set("services",s.id,{name:s.name,desc:s.desc,tat:"",active:true,order:s.order,price:s.price,unit:s.unit})));SVC=await loadServices();toast("The service list is now editable.");render()}
+  else if(a==="out"){S.tab="in";location.hash="#/";await API.signOut()}
+  else if(a==="cat"){S.cat=t.dataset.v;render()}
+  else if(a==="add"){chg(id,1);toast("Added to cart.")}
+  else if(a==="inc")chg(id,1);else if(a==="dec")chg(id,-1);
+  else if(a==="rm"){delete CART[id];saveCart();render();header()}
+  else if(a==="cancel"){if(confirm("Cancel this order?"))await setStatus(id,"Cancelled")}
+  else if(a==="pe"){const p=P.find(z=>z.id===id),el=$("#pf").elements;el.pid.value=p.id;["name","cat","price","stock","emoji","img","desc"].forEach(k=>el[k].value=p[k]||"");$("#pfh").textContent="Edit product";el.name.focus()}
+  else if(a==="pd"){if(confirm("Delete this product?")){await API.del("products",id);P=P.filter(z=>z.id!==id);render()}}
+  else if(a==="pclr"){$("#pf").reset();$("#pf").elements.pid.value="";$("#pfh").textContent="Add a product"}
+  else if(a==="seed"){await Promise.all(SD.map(s=>API.set("products",s.id,s)));P=await API.list("products");render()}
  }catch(err){toast(msg(err),true)}
 });
-document.addEventListener("input",x=>{
- if(x.target.id==="aq"){S.q=x.target.value;refreshAdmin()}
- else if(x.target.closest("#qf"))qRecalc();
- else if(x.target.closest("#nf"))updEst();
-});
-document.addEventListener("change",x=>{
- const el=x.target;
- if(el.id==="af2"){S.f=el.value;refreshAdmin()}
- else if(el.id==="svsel"){const s=SVC.find(z=>z.name===el.value);$("#svdesc").textContent=s?s.desc+(s.tat?" Typical turnaround: "+s.tat+".":""):"";updEst()}
- else if(el.closest("#nf"))updEst();
- else if(el.classList.contains("qsel")){
-  const f=$("#qf"),r=el.closest(".qr"),s=SVC.find(z=>z.id===el.value);
-  if(s){r.querySelector(".qd").value=s.name+(s.desc?". "+s.desc:"");r.querySelector(".qrt").value=s.price>0?calcRate(s,f.dataset.cat,f.dataset.urg):""}
-  qRecalc();
- }
-});
+document.addEventListener("change",x=>{if(x.target.id==="of"){S.of=x.target.value;render()}});
 document.addEventListener("submit",async x=>{
- const f=x.target;x.preventDefault();
- const d=Object.fromEntries(new FormData(f)),b=f.querySelector("button:not([type])");
+ const f=x.target;x.preventDefault();const d=Object.fromEntries(new FormData(f)),b=f.querySelector("button:not([type])");
+ if(f.id==="sq"){S.q=$("#q").value;if(route().v){location.hash="#/"}render();return}
  if(b)b.disabled=true;
  try{
-  if(f.id==="af")await auth(d);
-  else if(f.id==="nf")await createApp(d);
-  else if(f.id==="mf")await saveManage(f,d);
-  else if(f.id==="qf")await sendQuote(f);
-  else if(f.id==="cf")await sendMsg(f,d);
-  else if(f.id==="pf")await saveProfile(d);
-  else if(f.id==="sf")await saveService(d);
-  else if(f.id==="stf")await saveSettings(d);
+  if(f.id==="af")await auth(d);else if(f.id==="cf")await placeOrder(d);
+  else if(f.id==="mf")await setStatus(f.dataset.id,d.status);else if(f.id==="pf")await saveProduct(d);
  }catch(err){if(f.id==="af")authMsg(msg(err));else toast(msg(err),true)}
  finally{if(b)b.disabled=false}
 });
+window.addEventListener("hashchange",()=>{if(U){render();scrollTo(0,0)}});
 
-/* ---------- start ---------- */
+/* ---- start ---- */
 (function(){
  const local=/^(localhost|127\.0\.0\.1|\[::1\])?$/.test(location.hostname),has=!!CFG.apiKey;
- const stop=(t,p)=>{$("#app").innerHTML=`<div class="box" style="max-width:560px;margin:40px auto"><h2>${t}</h2><p>${p}</p></div>`};
- if(has&&!window.firebase)return stop("The portal could not load","The Firebase scripts did not load. Check your connection and reload the page.");
- if(!has&&!local)return stop("The portal is not connected yet","The site owner needs to add the Firebase configuration to this page. Until then, please call "+e(PHONE)+".");
- API=has?FB:DM;if(!has)$("#demo").hidden=false;
- API.init();
- window.addEventListener("hashchange",()=>{if(U){render();window.scrollTo(0,0)}});
- API.onAuth(au=>{if(S.busy)return;if(au)boot(au);else{U=null;render()}});
+ if(has&&!window.firebase){$("#app").innerHTML=`<div class="box auth">Firebase failed to load. Reload the page.</div>`;return}
+ if(!has&&!local){$("#app").innerHTML=`<div class="box auth">The store is not connected yet. Add the Firebase configuration to this page.</div>`;return}
+ API=has?FB:DM;if(!has)$("#demo").hidden=false;API.init();
+ API.onAuth(au=>{if(au)boot(au);else{U=null;render()}});
 })();
-</script>
-</body>
-</html>
+</script></body></html>
