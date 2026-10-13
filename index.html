@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<!-- Mirrored from bharatenvironmentconsultants.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2026 18:54:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
   <meta name="robots" content="index, follow" />
   <meta name="google-adsense-account" content="ca-pub-5032650705516653"/>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Bharat Environment Consultants | #1 Environment Audit | CTE CTO Applications | Carbon Footprint | ESG Reporting | Gurugram India</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&amp;family=DM+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
   <style>
     :root {
       --green-deep: #0d3b1e;
@@ -131,7 +134,7 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1800&q=85&fit=crop');
+      background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1800&amp;q=85&amp;fit=crop');
       background-size: cover;
       background-position: center 30%;
       transform: scale(1.03);
@@ -705,6 +708,18 @@
     .form-group select option { background: var(--green-deep); }
     .btn-submit { width: 100%; background: var(--gold); color: var(--green-deep); border: none; padding: 1rem; border-radius: 5px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; letter-spacing: 0.05em; transition: background 0.2s; }
     .btn-submit:hover { background: var(--gold-light); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    /* pre-query strip */
+    .prequery-strip { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.25); border-radius: 10px; padding: 1.4rem 1.8rem; margin-bottom: 1.8rem; }
+    .prequery-strip h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--gold); margin-bottom: 0.8rem; letter-spacing: 0.02em; }
+    .prequery-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .prequery-tag { font-size: 0.75rem; padding: 0.35rem 0.85rem; border: 1px solid rgba(201,168,76,0.35); border-radius: 20px; color: rgba(255,255,255,0.65); cursor: pointer; transition: all 0.2s; user-select: none; }
+    .prequery-tag:hover, .prequery-tag.active { background: rgba(201,168,76,0.18); border-color: var(--gold); color: var(--gold); }
+    /* form success */
+    .form-success { display: none; text-align: center; padding: 2rem 1rem; }
+    .form-success .success-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .form-success p { font-size: 0.88rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
 
     /* ── LEADERSHIP ── */
     .leadership-section { padding: 7rem 0; }
@@ -968,6 +983,74 @@
 @keyframes bec-spin { to { transform: rotate(360deg); } }
 .bec-loading-txt { color: #64748b; font-size: 0.85rem; }
 #bec-main { display: none; }
+
+/* ===== BHARAT ENVIRONMENT NEWS — HOMEPAGE HIGHLIGHT ===== */
+.news-highlight-section {
+  background: linear-gradient(135deg, var(--green-deep) 0%, #0a2e17 100%);
+  padding: 4.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.news-highlight-section::before {
+  content: "";
+  position: absolute;
+  top: -60%; right: -10%;
+  width: 480px; height: 480px;
+  background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.news-highlight-inner { max-width: 1180px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+.news-highlight-top {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;
+}
+.news-highlight-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold-light); font-weight: 600; margin-bottom: 0.9rem;
+}
+.news-highlight-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  font-weight: 600; line-height: 1.1; color: #fff; margin-bottom: 0.7rem;
+}
+.news-highlight-title span { color: var(--gold-light); }
+.news-highlight-sub { color: rgba(255,255,255,0.75); font-size: 1rem; max-width: 520px; line-height: 1.6; font-weight: 300; }
+.news-highlight-cta {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--gold); color: var(--green-deep);
+  padding: 0.9rem 1.7rem; border-radius: 40px; text-decoration: none;
+  font-weight: 700; font-size: 0.92rem; white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+.news-highlight-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+.news-highlight-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; }
+.news-highlight-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px; overflow: hidden; text-decoration: none;
+  display: block; transition: transform 0.2s, background 0.2s;
+}
+.news-highlight-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.08); }
+.news-highlight-card img { width: 100%; object-fit: cover; display: block; }
+.news-highlight-card-large img { height: 240px; }
+.news-highlight-card:not(.news-highlight-card-large) img { height: 140px; }
+.news-highlight-card-body { padding: 1.25rem 1.4rem; }
+.news-highlight-tag {
+  font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--gold-light); font-weight: 700; margin-bottom: 0.5rem; display: block;
+}
+.news-highlight-card h3 {
+  font-family: 'Cormorant Garamond', serif; color: #fff; font-weight: 600;
+  line-height: 1.3; margin-bottom: 0.4rem;
+}
+.news-highlight-card-large h3 { font-size: 1.4rem; }
+.news-highlight-card:not(.news-highlight-card-large) h3 { font-size: 1rem; }
+.news-highlight-card p { color: rgba(255,255,255,0.6); font-size: 0.84rem; line-height: 1.55; font-weight: 300; }
+@media (max-width: 860px) {
+  .news-highlight-grid { grid-template-columns: 1fr; }
+  .news-highlight-top { flex-direction: column; align-items: flex-start; }
+}
 </style>
 
 </head>
@@ -988,12 +1071,50 @@
     <li><a href="#sectors">Sectors</a></li>
     <li><a href="#process">Process</a></li>
     <li><a href="#blog">Articles</a></li>
-    <li><a href="https://bharatenvironmentconsultants.com/news.html">News</a></li>
+    <li><a href="news.html">News</a></li>
     <li><a href="#weather-aqi" class="nav-weather">🌦 Weather & AQI</a></li>
     <li><a href="#contact" class="nav-cta">Contact Us</a></li>
     <li><a href="ec-calculator.html" class="nav-ec">⚖️ EC Calculator</a></li>
   </ul>
 </nav>
+
+<!-- BHARAT ENVIRONMENT NEWS — HOMEPAGE HIGHLIGHT -->
+<section class="news-highlight-section" id="bec-news-highlight">
+  <div class="news-highlight-inner">
+    <div class="news-highlight-top">
+      <div>
+        <div class="news-highlight-badge">🌿 Independent Environmental Reporting</div>
+        <h2 class="news-highlight-title">Bharat Environment <span>News</span></h2>
+        <p class="news-highlight-sub">Real-time regulatory updates, investigative reporting, and expert analysis on India's environmental compliance landscape — from the team behind BEC.</p>
+      </div>
+      <a href="news.html" class="news-highlight-cta">Read Full Coverage →</a>
+    </div>
+    <div class="news-highlight-grid">
+      <a class="news-highlight-card news-highlight-card-large" href="ganga-vs-yamuna-comparison.html">
+        <img src="https://images.unsplash.com/photo-1622810822074-651b260a3721?w=800&q=80&fit=crop" alt="Ganga vs Yamuna" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Water</span>
+          <h3>Ganga vs Yamuna: Two Rivers, Two Clean-Up Programmes, One Clear Winner</h3>
+          <p>Namami Gange and Delhi's Yamuna effort have both spent tens of thousands of crores. Only one river is showing up better in the data.</p>
+        </div>
+      </a>
+      <a class="news-highlight-card" href="delhi-vs-indore-waste-management.html">
+        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&q=80&fit=crop" alt="Waste management" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Waste</span>
+          <h3>Delhi's Garbage Mountains vs Indore's Zero-Landfill Model</h3>
+        </div>
+      </a>
+      <a class="news-highlight-card" href="global-warming.html">
+        <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=500&q=80&fit=crop" alt="Global warming" />
+        <div class="news-highlight-card-body">
+          <span class="news-highlight-tag">Climate</span>
+          <h3>Global Warming in 2026: Where the Science Stands</h3>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
 <!-- HERO -->
 <section class="hero" id="hero">
@@ -1063,9 +1184,9 @@
   <div class="section-wrap">
     <div class="about-section">
       <div class="about-photo-grid">
-        <img class="about-img about-img-main" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&q=85&fit=crop" alt="Environmental field survey"/>
-        <img class="about-img about-img-top"  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&q=85&fit=crop" alt="Water quality testing"/>
-        <img class="about-img about-img-bot"  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&q=85&fit=crop" alt="Forest biodiversity study"/>
+        <img class="about-img about-img-main" src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=700&amp;q=85&amp;fit=crop" alt="Environmental field survey"/>
+        <img class="about-img about-img-top"  src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&amp;q=85&amp;fit=crop" alt="Water quality testing"/>
+        <img class="about-img about-img-bot"  src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=600&amp;q=85&amp;fit=crop" alt="Forest biodiversity study"/>
         <div class="about-year-badge">
           <div class="yr">20+</div>
           <div class="yr-sub">Years of<br/>Leadership</div>
@@ -1118,10 +1239,10 @@
 
 <!-- PHOTO BAND -->
 <div class="photo-band">
-  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=85&fit=crop" alt="Air quality monitoring"/><div class="photo-panel-overlay"><span class="photo-panel-label">Air Quality Monitoring</span></div></div>
-  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=85&fit=crop" alt="Water management"/><div class="photo-panel-overlay"><span class="photo-panel-label">Water Management</span></div></div>
-  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&q=85&fit=crop" alt="Biodiversity studies"/><div class="photo-panel-overlay"><span class="photo-panel-label">Biodiversity Studies</span></div></div>
-  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=700&q=85&fit=crop" alt="ESG Reporting"/><div class="photo-panel-overlay"><span class="photo-panel-label">ESG Reporting</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&amp;q=85&amp;fit=crop" alt="Air quality monitoring"/><div class="photo-panel-overlay"><span class="photo-panel-label">Air Quality Monitoring</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&amp;q=85&amp;fit=crop" alt="Water management"/><div class="photo-panel-overlay"><span class="photo-panel-label">Water Management</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=600&amp;q=85&amp;fit=crop" alt="Biodiversity studies"/><div class="photo-panel-overlay"><span class="photo-panel-label">Biodiversity Studies</span></div></div>
+  <div class="photo-panel"><img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=700&amp;q=85&amp;fit=crop" alt="ESG Reporting"/><div class="photo-panel-overlay"><span class="photo-panel-label">ESG Reporting</span></div></div>
 </div>
 
 <!-- WHY BEC -->
@@ -1129,7 +1250,7 @@
   <div class="section-wrap">
     <div class="why-grid">
       <div class="why-image-wrap">
-        <img class="why-img" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=900&q=85&fit=crop" alt="BEC team on field"/>
+        <img class="why-img" src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=900&amp;q=85&amp;fit=crop" alt="BEC team on field"/>
         <div class="why-accred-strip">
           <h4>Accreditations &amp; Memberships</h4>
           <div class="accred-pills">
@@ -1163,14 +1284,14 @@
       <h2 class="section-title">Sectors of Expertise</h2>
     </div>
     <div class="sectors-grid">
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80&fit=crop" alt="Power and Energy"/><div class="sector-overlay"><span class="sector-icon">⚡</span><div class="sector-name">Power &amp; Energy</div><div class="sector-sub">Thermal, Renewable, Nuclear</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80&fit=crop" alt="Infrastructure"/><div class="sector-overlay"><span class="sector-icon">🏗️</span><div class="sector-name">Infrastructure</div><div class="sector-sub">Highways, Bridges, Airports</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1565034958833-0a63eecc0bab?w=600&q=80&fit=crop" alt="Manufacturing"/><div class="sector-overlay"><span class="sector-icon">🏭</span><div class="sector-name">Manufacturing</div><div class="sector-sub">Steel, Cement, Chemicals</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1570654639102-bdd95efeca7a?w=600&q=80&fit=crop" alt="Mining"/><div class="sector-overlay"><span class="sector-icon">⛏️</span><div class="sector-name">Mining</div><div class="sector-sub">Coal, Iron Ore, Limestone</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=80&fit=crop" alt="Real Estate"/><div class="sector-overlay"><span class="sector-icon">🏘️</span><div class="sector-name">Real Estate</div><div class="sector-sub">Townships, Commercial</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&q=80&fit=crop" alt="Agro and Food"/><div class="sector-overlay"><span class="sector-icon">🌾</span><div class="sector-name">Agro &amp; Food</div><div class="sector-sub">Processing, Storage</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&q=80&fit=crop" alt="Oil and Gas"/><div class="sector-overlay"><span class="sector-icon">🛢️</span><div class="sector-name">Oil &amp; Gas</div><div class="sector-sub">Refineries, Pipelines</div></div></div>
-      <div class="sector-card"><img src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?w=600&q=80&fit=crop" alt="Government PSU"/><div class="sector-overlay"><span class="sector-icon">🏛️</span><div class="sector-name">Government / PSU</div><div class="sector-sub">Urban Dev, NHAI, NTPC</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&amp;q=80&amp;fit=crop" alt="Power and Energy"/><div class="sector-overlay"><span class="sector-icon">⚡</span><div class="sector-name">Power &amp; Energy</div><div class="sector-sub">Thermal, Renewable, Nuclear</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&amp;q=80&amp;fit=crop" alt="Infrastructure"/><div class="sector-overlay"><span class="sector-icon">🏗️</span><div class="sector-name">Infrastructure</div><div class="sector-sub">Highways, Bridges, Airports</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1565034958833-0a63eecc0bab?w=600&amp;q=80&amp;fit=crop" alt="Manufacturing"/><div class="sector-overlay"><span class="sector-icon">🏭</span><div class="sector-name">Manufacturing</div><div class="sector-sub">Steel, Cement, Chemicals</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1570654639102-bdd95efeca7a?w=600&amp;q=80&amp;fit=crop" alt="Mining"/><div class="sector-overlay"><span class="sector-icon">⛏️</span><div class="sector-name">Mining</div><div class="sector-sub">Coal, Iron Ore, Limestone</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&amp;q=80&amp;fit=crop" alt="Real Estate"/><div class="sector-overlay"><span class="sector-icon">🏘️</span><div class="sector-name">Real Estate</div><div class="sector-sub">Townships, Commercial</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=600&amp;q=80&amp;fit=crop" alt="Agro and Food"/><div class="sector-overlay"><span class="sector-icon">🌾</span><div class="sector-name">Agro &amp; Food</div><div class="sector-sub">Processing, Storage</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&amp;q=80&amp;fit=crop" alt="Oil and Gas"/><div class="sector-overlay"><span class="sector-icon">🛢️</span><div class="sector-name">Oil &amp; Gas</div><div class="sector-sub">Refineries, Pipelines</div></div></div>
+      <div class="sector-card"><img src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?w=600&amp;q=80&amp;fit=crop" alt="Government PSU"/><div class="sector-overlay"><span class="sector-icon">🏛️</span><div class="sector-name">Government / PSU</div><div class="sector-sub">Urban Dev, NHAI, NTPC</div></div></div>
     </div>
   </div>
 </section>
@@ -1200,9 +1321,9 @@
       <a href="#">View all articles →</a>
     </div>
     <div class="articles-grid">
-      <div class="article-card article-card-large"><img class="article-img" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&q=85&fit=crop" alt="Environmental compliance"/><div class="article-body"><div class="article-tag">Environmental Audit</div><h3>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h3><p>A comprehensive overview of the latest regulatory changes and what they mean for industries operating across India's environmental compliance landscape.</p></div></div>
-      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&q=85&fit=crop" alt="Carbon footprint"/><div class="article-body"><div class="article-tag">Carbon Footprint</div><h3>Scope 3 Emissions: Why They Matter for Indian Businesses</h3><p>How value-chain emissions are becoming central to ESG strategy and investor expectations.</p></div></div>
-      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=85&fit=crop" alt="Biodiversity"/><div class="article-body"><div class="article-tag">Biodiversity</div><h3>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h3><p>Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p></div></div>
+      <div class="article-card article-card-large"><img class="article-img" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=900&amp;q=85&amp;fit=crop" alt="Environmental compliance"/><div class="article-body"><div class="article-tag">Environmental Audit</div><h3>Understanding the New Environmental Compliance Framework Under MoEFCC 2024</h3><p>A comprehensive overview of the latest regulatory changes and what they mean for industries operating across India's environmental compliance landscape.</p></div></div>
+      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&amp;q=85&amp;fit=crop" alt="Carbon footprint"/><div class="article-body"><div class="article-tag">Carbon Footprint</div><h3>Scope 3 Emissions: Why They Matter for Indian Businesses</h3><p>How value-chain emissions are becoming central to ESG strategy and investor expectations.</p></div></div>
+      <div class="article-card"><img class="article-img" src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&amp;q=85&amp;fit=crop" alt="Biodiversity"/><div class="article-body"><div class="article-tag">Biodiversity</div><h3>Forest Clearance Under FCA: A Step-by-Step Guide for Infrastructure Projects</h3><p>Navigating the Forest Conservation Act approvals efficiently while meeting ecological standards.</p></div></div>
     </div>
   </div>
 </section>
@@ -1323,38 +1444,86 @@
         <p class="contact-intro">Whether you need an environment audit, CTE/CTO application support, carbon footprint assessment, or ESG reporting — our expert team is ready to guide you every step of the way.</p>
         <div class="contact-item"><div class="contact-icon">📍</div><div><h4>Office Address</h4><p>4th Floor, Green Tower, Sector 18, Gurugram, Haryana – 122015</p></div></div>
         <div class="contact-item"><div class="contact-icon">📞</div><div><h4>Phone</h4><p>+91 99589 17292</p></div></div>
-        <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p>info@bharatenvironmentconsultants.com</p></div></div>
+        <div class="contact-item"><div class="contact-icon">✉️</div><div><h4>Email</h4><p><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="15777d74677461707b637c677a767a7b66607961747b6166556f7a7d7a78747c793b7c7b">[email&#160;protected]</a></p></div></div>
         <div class="contact-item"><div class="contact-icon">🕐</div><div><h4>Working Hours</h4><p>Monday – Saturday, 9:00 AM – 6:30 PM IST</p></div></div>
       </div>
       <div class="contact-form">
-        <h3>Send Us a Message</h3>
-        <div class="form-row">
-          <div class="form-group"><label>First Name</label><input type="text" placeholder="Rahul"/></div>
-          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+        <h3>Send Us a Query</h3>
+
+        <!-- Pre-Query: quick topic selector -->
+        <div class="prequery-strip">
+          <h4>What can we help you with?</h4>
+          <div class="prequery-tags">
+            <span class="prequery-tag" onclick="selectPrequery(this,'Environment Audit')">🔍 Environment Audit</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'CTE / CTO Application')">📋 CTE / CTO Application</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Carbon Footprint Calculation')">🌿 Carbon Footprint</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'ESG Reporting')">📊 ESG Reporting</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Air Quality Monitoring')">💨 Air Quality</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Water &amp; Wastewater Management')">💧 Water Management</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Industrial Compliance Audit')">🏭 Compliance Audit</span>
+            <span class="prequery-tag" onclick="selectPrequery(this,'Other / General Query')">❓ Other Query</span>
+          </div>
         </div>
-        <div class="form-row">
-          <div class="form-group"><label>Email Address</label><input type="email" placeholder="rahul@company.in"/></div>
-          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"/></div>
+
+        <form id="becContactForm" action="https://formspree.io/f/xzdyqpya" method="POST" onsubmit="handleFormSubmit(event)">
+          <input type="hidden" name="_replyto" value="bharatenviroconsultants@zohomail.in"/>
+          <input type="hidden" name="_subject" id="hiddenSubject" value="New Enquiry – Bharat Environment Consultants"/>
+
+          <div class="form-row">
+            <div class="form-group"><label>First Name *</label><input type="text" name="first_name" placeholder="Rahul" required/></div>
+            <div class="form-group"><label>Last Name *</label><input type="text" name="last_name" placeholder="Sharma" required/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Email Address *</label><input type="email" name="email" placeholder="rahul@company.in" required/></div>
+            <div class="form-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 98765 43210"/></div>
+          </div>
+          <div class="form-group">
+            <label>Subject / Query Type *</label>
+            <select name="subject" id="subjectSelect" required onchange="updateSubject(this.value)">
+              <option value="">Select query type…</option>
+              <option>General Enquiry</option>
+              <option>Environment Audit</option>
+              <option>CTE Application</option>
+              <option>CTO Application</option>
+              <option>Carbon Footprint Calculation</option>
+              <option>ESG Reporting</option>
+              <option>Air Quality Monitoring</option>
+              <option>Water &amp; Wastewater Management</option>
+              <option>Waste Management Planning</option>
+              <option>Biodiversity &amp; Ecology Studies</option>
+              <option>Industrial Compliance Audit</option>
+              <option>BRSR Reporting</option>
+              <option>EIA / Environment Clearance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Service Required</label>
+            <select name="service">
+              <option value="">Select a service…</option>
+              <option>Environment Audit</option>
+              <option>CTE Application</option>
+              <option>CTO Application</option>
+              <option>Carbon Footprint Calculation</option>
+              <option>ESG Reporting</option>
+              <option>Air Quality Monitoring</option>
+              <option>Water &amp; Wastewater Management</option>
+              <option>Waste Management Planning</option>
+              <option>Biodiversity &amp; Ecology Studies</option>
+              <option>Industrial Compliance Audit</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Your Message *</label><textarea name="message" placeholder="Describe your requirement, project location, industry type, or any specific compliance need…" required></textarea></div>
+          <button type="submit" class="btn-submit" id="submitBtn">Send Enquiry →</button>
+        </form>
+
+        <!-- Success message shown after submission -->
+        <div class="form-success" id="formSuccess">
+          <div class="success-icon">✅</div>
+          <h4>Query Received!</h4>
+          <p>Thank you for reaching out. Our team will get back to you within 1 business day at <strong style="color:var(--gold)"><a href="cdn-cgi/l/email-protection.html" class="__cf_email__" data-cfemail="fd9f959c8f9c8998938b948f929e92938e8891899c93898ebd87929592909c9491d39493">[email&#160;protected]</a></strong></p>
         </div>
-        <div class="form-group">
-          <label>Service Required</label>
-          <select>
-            <option value="">Select a service…</option>
-            <option>Environment Audit</option>
-            <option>CTE Application</option>
-            <option>CTO Application</option>
-            <option>Carbon Footprint Calculation</option>
-            <option>ESG Reporting</option>
-            <option>Air Quality Monitoring</option>
-            <option>Water &amp; Wastewater Management</option>
-            <option>Waste Management Planning</option>
-            <option>Biodiversity &amp; Ecology Studies</option>
-            <option>Industrial Compliance Audit</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group"><label>Message</label><textarea placeholder="Tell us about your project…"></textarea></div>
-        <button class="btn-submit">Send Enquiry →</button>
       </div>
     </div>
   </div>
@@ -1364,6 +1533,61 @@
 <footer>
   <strong>Bharat Environment Consultants</strong> &nbsp;|&nbsp; Est. 2005 &nbsp;|&nbsp; Gurugram, Haryana &nbsp;|&nbsp; +91 99589 17292 &nbsp;|&nbsp; All rights reserved © 2025
 </footer>
+
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Pre-query tag selection
+function selectPrequery(el, value) {
+  document.querySelectorAll('.prequery-tag').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  var sel = document.getElementById('subjectSelect');
+  // Try to match option
+  for (var i = 0; i < sel.options.length; i++) {
+    if (sel.options[i].text.toLowerCase().indexOf(value.split('index.html')[0].trim().toLowerCase()) !== -1) {
+      sel.value = sel.options[i].value || sel.options[i].text;
+      updateSubject(sel.value);
+      break;
+    }
+  }
+  // Also pre-fill service dropdown if matching
+  var svc = document.querySelector('select[name="service"]');
+  for (var j = 0; j < svc.options.length; j++) {
+    if (svc.options[j].text.toLowerCase().indexOf(value.split('index.html')[0].trim().toLowerCase()) !== -1) {
+      svc.value = svc.options[j].value || svc.options[j].text;
+      break;
+    }
+  }
+}
+
+function updateSubject(val) {
+  if (val) {
+    document.getElementById('hiddenSubject').value = 'Query: ' + val + ' – Bharat Environment Consultants';
+  }
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  var form = document.getElementById('becContactForm');
+  var data = new FormData(form);
+  try {
+    var res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      btn.disabled = false;
+      btn.textContent = 'Send Enquiry →';
+      alert('Something went wrong. Please email us directly at bharatenviroconsultants@zohomail.in');
+    }
+  } catch(err) {
+    btn.disabled = false;
+    btn.textContent = 'Send Enquiry →';
+    alert('Network error. Please email us directly at bharatenviroconsultants@zohomail.in');
+  }
+}
+</script>
 
 <script>
 (function(){
@@ -1658,5 +1882,7 @@
   </div>
 </section>
 
-</body>
+<!-- Cloudflare Pages Analytics --><script defer src='../static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "2884fb192e0e40589a98dd53d983ed4f"}'></script><!-- Cloudflare Pages Analytics --></body>
+
+<!-- Mirrored from bharatenvironmentconsultants.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 31 Jul 2026 18:54:10 GMT -->
 </html>
