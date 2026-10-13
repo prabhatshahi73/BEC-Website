@@ -1,0 +1,30 @@
+title: Forest Conservation Act (India)
+category: law
+region: India
+status: draft
+written: 2026-10-13
+summary: The Forest (Conservation) Act, 1980 restricts the use of forest land for non-forest purposes in India without prior approval of the Central Government. An amendment in 2023 renamed it the Van (Sanrakshan Evam Samvardhan) Adhiniyam, 1980 and changed which lands it covers.
+keywords: forest clearance, FCA, Godavarman, compensatory afforestation, CAMPA, Van Adhiniyam, diversion of forest land, PARIVESH
+infobox: Enacted | 1980
+infobox: Amended | 2023, renamed the Van (Sanrakshan Evam Samvardhan) Adhiniyam
+infobox: Key judgment | T.N. Godavarman Thirumulpad v. Union of India (1996)
+infobox: Application portal | PARIVESH
+related: environmental-clearance-india, biodiversity-loss
+source: Government of India | Forest (Conservation) Act | 1980 | https://www.indiacode.nic.in/
+source: Government of India | Forest (Conservation) Amendment Act | 2023 | https://www.indiacode.nic.in/
+source: Supreme Court of India | T.N. Godavarman Thirumulpad v. Union of India | 1996 | https://www.sci.gov.in/
+---
+## What the Act does
+The Act says that a State cannot de-reserve a reserved forest, or allow forest land to be used for a non-forest purpose such as mining or a project, without prior approval from the Central Government. It was passed in 1980 to slow the diversion of forest land.
+
+## The 1996 Godavarman judgment
+In 1996 the Supreme Court, in a continuing case brought by T.N. Godavarman Thirumulpad, held that the word forest in the Act should be read according to its dictionary meaning and applies to areas that are forests in fact, whether or not they are recorded as forest. This brought a much larger area within the Act.
+
+## How approval works
+A project that needs forest land applies through the PARIVESH portal. Approval usually comes in two stages: an in-principle approval, followed by a final approval once conditions are met. Conditions typically include compensatory afforestation on other land and payment into the funds set up under the Compensatory Afforestation Fund Act, 2016.
+
+## The 2023 amendment
+The Forest (Conservation) Amendment Act, 2023 renamed the law and changed the lands it covers, including exemptions for some categories of land and for some linear projects. The amendment has been debated, and its interpretation has been subject to court proceedings. Read the current text and any court directions before relying on a summary.
+
+## Other approvals
+Forest approval is separate from environmental clearance (see [[environmental-clearance-india]]). A project may need both.

@@ -1,0 +1,26 @@
+title: Polluter pays principle
+category: law
+region: Global
+status: draft
+written: 2026-10-13
+summary: The polluter pays principle says that whoever causes pollution should bear the cost of preventing it, controlling it and repairing the harm it causes. It is recognised in international environmental law and is part of Indian law.
+keywords: environmental compensation, Rio Declaration, precautionary principle, NGT, Bichhri, Vellore Citizens, liability
+infobox: International statement | Principle 16, Rio Declaration on Environment and Development (1992)
+infobox: Indian statute | Section 20, National Green Tribunal Act, 2010
+infobox: Leading Indian cases | Indian Council for Enviro-Legal Action v. Union of India (1996); Vellore Citizens Welfare Forum v. Union of India (1996)
+related: environmental-clearance-india, consent-to-establish-and-operate
+source: United Nations | Rio Declaration on Environment and Development | 1992 | https://www.un.org/
+source: Government of India | National Green Tribunal Act | 2010 | https://www.indiacode.nic.in/
+source: Supreme Court of India | Indian Council for Enviro-Legal Action v. Union of India | 1996 | https://www.sci.gov.in/
+---
+## Meaning
+The principle treats environmental damage as a cost that should not be passed to the public. If a polluter pays for pollution control and clean-up, the price of its goods or services reflects the real cost of making them. This gives an incentive to pollute less.
+
+## International law
+Principle 16 of the Rio Declaration of 1992 asks national authorities to promote the internalisation of environmental costs, taking the approach that the polluter should, in principle, bear the cost of pollution. The idea was developed earlier by the OECD in the 1970s.
+
+## India
+Indian courts have treated the principle as part of the law of the land. In the 1996 Indian Council for Enviro-Legal Action case, which concerned chemical pollution in Bichhri village, the Supreme Court held that polluting industries must pay for the harm and for restoring the environment. In Vellore Citizens Welfare Forum, decided the same year, the Court recognised the polluter pays principle and the precautionary principle as part of Indian environmental law. The National Green Tribunal Act of 2010 directs the Tribunal to apply the principles of sustainable development, precaution and polluter pays when it decides cases.
+
+## Environmental compensation
+In practice, pollution control authorities and the Tribunal can require a polluter to pay environmental compensation, which is calculated using methods set by the Central Pollution Control Board. You can estimate it with the [Environmental Compensation Calculator](/ec-calculator.html).

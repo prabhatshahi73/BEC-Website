@@ -1,0 +1,29 @@
+title: Hazardous waste management (India)
+category: waste
+region: India
+status: draft
+written: 2026-10-13
+summary: In India, hazardous waste is regulated under the Hazardous and Other Wastes (Management and Transboundary Movement) Rules, 2016. Anyone who generates, stores, transports, treats or disposes of such waste needs authorisation and must follow the handling rules.
+keywords: hazardous waste, HW rules 2016, manifest, Form 4, TSDF, authorisation, Basel Convention, used oil
+infobox: Main rules | Hazardous and Other Wastes (Management and Transboundary Movement) Rules, 2016
+infobox: Made under | Environment (Protection) Act, 1986
+infobox: Authorisation by | State Pollution Control Board
+infobox: International link | Basel Convention on transboundary movement of hazardous wastes
+related: consent-to-establish-and-operate, extended-producer-responsibility-india, plastic-pollution
+source: MoEFCC | Hazardous and Other Wastes (Management and Transboundary Movement) Rules | 2016 | https://moef.gov.in/
+source: UNEP | Basel Convention on the Control of Transboundary Movements of Hazardous Wastes and their Disposal | 1989 | https://www.basel.int/
+---
+## What counts as hazardous waste
+The rules define hazardous waste by its characteristics, such as toxicity, flammability, corrosivity and reactivity, and list specific waste streams and concentration limits in their schedules. Examples include used oil, spent solvents, sludge from some industrial processes and discarded lead-acid batteries.
+
+## Duties of a waste generator
+A generator must get authorisation from the State Pollution Control Board, store the waste safely, keep records, send it only to authorised recyclers or disposal facilities, and file an annual return. Movement of waste off site is tracked using a manifest that follows the consignment. The rules also expect generators to reduce waste at source and to reuse or recycle where possible.
+
+## Treatment and disposal
+Waste that cannot be recycled goes to authorised treatment, storage and disposal facilities (TSDFs). These include secure landfills and incinerators that meet design and operating standards.
+
+## Imports and exports
+Import and export of hazardous waste is controlled, and some wastes are prohibited. These controls follow India's obligations under the Basel Convention.
+
+## Check the current text
+Schedules, forms and procedures are amended from time to time. Check the current consolidated rules before preparing any filing.

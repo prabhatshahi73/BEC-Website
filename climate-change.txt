@@ -1,0 +1,29 @@
+title: Climate change
+category: climate
+region: Global
+status: draft
+written: 2026-10-13
+summary: Climate change is the long-term shift in Earth's temperatures and weather patterns. Since the 1800s, human activity, mainly the burning of coal, oil and gas, has been the main driver.
+keywords: global warming, greenhouse effect, IPCC, warming, carbon dioxide
+infobox: Main cause | Greenhouse gas emissions from fossil fuels, land-use change and agriculture
+infobox: Main assessment body | Intergovernmental Panel on Climate Change (IPCC)
+infobox: Main treaty | UN Framework Convention on Climate Change (1992)
+infobox: Key agreement | Paris Agreement (2015)
+related: paris-agreement, greenhouse-gas-scopes, ocean-acidification, biodiversity-loss
+source: IPCC | Climate Change 2023: Synthesis Report, Sixth Assessment Report | 2023 | https://www.ipcc.ch/
+source: UNFCCC | United Nations Framework Convention on Climate Change | 1992 | https://unfccc.int/
+---
+## Overview
+Climate is the average pattern of weather in a region over decades. Climate change means a lasting change in that pattern. Natural factors such as volcanic eruptions and changes in the Sun's output have always influenced climate, but the IPCC's Sixth Assessment Report states that it is unequivocal that human influence has warmed the atmosphere, ocean and land.
+
+## How the greenhouse effect works
+Some gases in the atmosphere, including carbon dioxide, methane and nitrous oxide, absorb heat radiated from Earth's surface and release it again. This keeps the planet warmer than it would otherwise be. Burning fossil fuels, clearing forests and some farming practices add to these gases. That strengthens the effect and raises global temperatures.
+
+## Observed effects
+Documented effects include a rising global average temperature, melting glaciers and ice sheets, rising sea level, more intense heatwaves, changes in rainfall patterns and the acidification of the ocean (see [[ocean-acidification]]). The effects are uneven. Some regions face more frequent floods and others longer droughts. Warming also adds pressure on species and ecosystems (see [[biodiversity-loss]]).
+
+## Responses
+Responses fall into two groups. Mitigation reduces or removes greenhouse gas emissions, for example through cleaner energy and energy efficiency. Adaptation reduces harm from changes that are already under way, such as heat action plans and flood defences. International cooperation is organised mainly under the UNFCCC and the [[paris-agreement]]. Organisations measure their own emissions using the categories described in [[greenhouse-gas-scopes]].
+
+## Climate change in India
+India is exposed to heatwaves, erratic monsoon rainfall, floods, and coastal risks such as sea-level rise and cyclones. At the COP26 climate conference in Glasgow in 2021, India announced a goal of net zero emissions by 2070.

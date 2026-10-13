@@ -1,0 +1,25 @@
+title: Ocean acidification
+category: water
+region: Global
+status: draft
+written: 2026-10-13
+summary: Ocean acidification is the ongoing fall in the pH of the ocean, caused mainly by the ocean absorbing carbon dioxide from the atmosphere. It makes it harder for shell-building and reef-building organisms to form their skeletons.
+keywords: pH, carbon dioxide, coral reefs, shellfish, carbonate chemistry, marine ecosystems
+infobox: Main cause | Absorption of atmospheric carbon dioxide by seawater
+infobox: Observed change | Surface ocean pH has fallen by roughly 0.1 units since the pre-industrial era
+infobox: Main assessment | IPCC Special Report on the Ocean and Cryosphere in a Changing Climate (2019)
+related: climate-change, biodiversity-loss
+source: IPCC | Special Report on the Ocean and Cryosphere in a Changing Climate | 2019 | https://www.ipcc.ch/
+source: NOAA | Ocean acidification | https://www.noaa.gov/
+---
+## The chemistry
+The ocean takes up a large share of the carbon dioxide that people release, roughly a quarter according to commonly cited estimates. When carbon dioxide dissolves in seawater it forms carbonic acid, which releases hydrogen ions and lowers the pH. It also reduces the amount of carbonate ions that organisms use to build shells and skeletons of calcium carbonate.
+
+## Scale of change
+Surface ocean pH has fallen by about 0.1 units since the start of the industrial era. Because the pH scale is logarithmic, this is an increase of around 30 per cent in acidity. The ocean is still slightly alkaline overall, so the term describes a shift towards lower pH, not a change to an acid.
+
+## Effects on marine life
+Corals, molluscs, some plankton and other organisms that build calcium carbonate structures find it harder to do so as carbonate availability falls. Effects on the growth, behaviour and survival of fish and other species are also being studied. Ocean acidification is a separate problem from marine heatwaves and coral bleaching, although they often act together on the same reefs.
+
+## Response
+The main remedy is to cut carbon dioxide emissions (see [[climate-change]]). Local measures such as reducing pollution and overfishing can help ecosystems cope while emissions are reduced.

@@ -1,0 +1,30 @@
+title: Fine particulate matter (PM2.5)
+category: air
+region: Global
+status: draft
+written: 2026-10-13
+summary: PM2.5 is the name for airborne particles smaller than 2.5 micrometres across. They are small enough to travel deep into the lungs and bloodstream, and they are among the air pollutants most strongly linked to ill health.
+keywords: particulate matter, PM10, smog, haze, air pollution, WHO guidelines, NAAQS
+infobox: Size | 2.5 micrometres or smaller
+infobox: WHO annual guideline (2021) | 5 micrograms per cubic metre
+infobox: WHO 24-hour guideline (2021) | 15 micrograms per cubic metre
+infobox: India annual standard (2009) | 40 micrograms per cubic metre
+infobox: India 24-hour standard (2009) | 60 micrograms per cubic metre
+related: national-air-quality-index-india, climate-change
+source: WHO | WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide | 2021 | https://www.who.int/
+source: MoEFCC and CPCB | National Ambient Air Quality Standards | 2009 | https://cpcb.nic.in/
+---
+## What it is
+PM2.5 is a mixture of solid and liquid particles. PM10 refers to particles of 10 micrometres or smaller, which include the PM2.5 fraction. For comparison, a human hair is around 50 to 70 micrometres wide.
+
+## Where it comes from
+Primary particles come directly from combustion in vehicles, power plants, industry, burning of biomass and waste, and from dust. Secondary particles form in the air when gases such as sulphur dioxide, nitrogen oxides and ammonia react with each other. This is why particle levels can be high far from the original source.
+
+## Health effects
+Because of their size, fine particles reach the deepest parts of the lungs and can enter the bloodstream. Long-term exposure is linked to heart and lung disease, and both short-term and long-term exposure are linked to premature death. Children, older adults and people with existing illness are most at risk.
+
+## Guidelines and standards
+The World Health Organization's 2021 guidelines recommend an annual average of 5 micrograms per cubic metre and a 24-hour average of 15 for PM2.5. For PM10 the figures are 15 and 45. India's National Ambient Air Quality Standards of 2009 set PM2.5 limits of 40 (annual) and 60 (24-hour), and PM10 limits of 60 and 100. India's limits are less strict than the WHO guideline values. Standards can be revised, so check the current notification.
+
+## Measurement
+Regulatory monitors weigh particles collected on a filter or use methods calibrated against that approach. Low-cost sensors are widely used and useful for spotting trends, but they need calibration and can over- or under-read in humid conditions.

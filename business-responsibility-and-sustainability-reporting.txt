@@ -1,0 +1,32 @@
+title: Business Responsibility and Sustainability Reporting (BRSR)
+category: reporting
+region: India
+status: draft
+written: 2026-10-13
+summary: The Business Responsibility and Sustainability Report (BRSR) is the format in which listed companies in India disclose their environmental, social and governance performance. It was introduced by the Securities and Exchange Board of India (SEBI) in 2021.
+keywords: BRSR, SEBI, ESG reporting, NGRBC, sustainability disclosure, BRSR Core, listed companies
+infobox: Introduced by | Securities and Exchange Board of India (SEBI), 2021
+infobox: Mandatory for | The top 1,000 listed companies by market capitalisation, from financial year 2022-23
+infobox: Framework | Based on the nine principles of the National Guidelines on Responsible Business Conduct (2019)
+infobox: Replaced | Business Responsibility Report
+related: greenhouse-gas-scopes, climate-change
+source: SEBI | Business responsibility and sustainability reporting by listed entities, circular | 2021 | https://www.sebi.gov.in/
+source: Ministry of Corporate Affairs | National Guidelines on Responsible Business Conduct | 2019 | https://www.mca.gov.in/
+---
+## Purpose
+BRSR asks companies to report on how they manage environmental and social impacts alongside financial results, so that investors and other stakeholders can compare them. It replaced the earlier Business Responsibility Report.
+
+## Who must report
+SEBI made BRSR mandatory for the top 1,000 listed companies by market capitalisation from the financial year 2022-23. Other companies may report voluntarily. SEBI has revised the scope and added requirements since then, so check the current regulations.
+
+## Structure
+The report has three sections.
+- **Section A** gives general disclosures about the company.
+- **Section B** describes management processes, policies and governance.
+- **Section C** reports performance against the nine principles of the National Guidelines on Responsible Business Conduct, using essential indicators that all reporting companies must answer and leadership indicators that are optional.
+
+## Environmental disclosures
+Under the principle on the environment, companies report on energy use, water use and discharge, air emissions, waste and Scope 1 and Scope 2 greenhouse gas emissions (see [[greenhouse-gas-scopes]]).
+
+## Assurance
+SEBI later introduced a BRSR Core set of key indicators that require independent assurance. The list of indicators and the phasing of assurance have been updated over time. Check the latest SEBI circulars before preparing a report.

@@ -1,0 +1,29 @@
+title: Paris Agreement
+category: climate
+region: Global
+status: draft
+written: 2026-10-13
+summary: The Paris Agreement is an international treaty on climate change adopted in 2015. Its goal is to hold the rise in global average temperature to well below 2 °C above pre-industrial levels and to pursue efforts to limit it to 1.5 °C.
+keywords: COP21, NDC, nationally determined contributions, net zero, 1.5 degrees, UNFCCC
+infobox: Adopted | 12 December 2015, Paris (COP21)
+infobox: Entered into force | 4 November 2016
+infobox: Temperature goal | Well below 2 °C, pursuing 1.5 °C above pre-industrial levels
+infobox: Main tool | Nationally Determined Contributions (NDCs), renewed every five years
+infobox: Secretariat | UNFCCC
+related: climate-change, greenhouse-gas-scopes
+source: UNFCCC | The Paris Agreement | 2015 | https://unfccc.int/
+source: UNFCCC | Report of the Conference of the Parties on its twenty-first session, Decision 1/CP.21 | 2015 | https://unfccc.int/
+---
+## Background
+Countries negotiate climate action under the UN Framework Convention on Climate Change (UNFCCC), agreed in 1992. The Kyoto Protocol of 1997 set binding targets for developed countries only. The Paris Agreement, adopted at the 21st Conference of the Parties (COP21) on 12 December 2015, applies to all Parties and came into force on 4 November 2016.
+
+## Key provisions
+- **Temperature goal.** Hold warming well below 2 °C and pursue efforts to limit it to 1.5 °C.
+- **Nationally Determined Contributions (NDCs).** Each Party sets and communicates its own climate targets and renews them every five years. Each new target is expected to go further than the last.
+- **Transparency.** Parties report on their emissions and on progress towards their targets.
+- **Global stocktake.** Collective progress is assessed every five years. The first stocktake concluded at COP28 in Dubai in 2023.
+- **Finance and support.** Developed countries are to provide finance to help developing countries act.
+- **Carbon markets.** Article 6 sets out how countries can cooperate voluntarily, including by transferring emission reductions.
+
+## India and the Paris Agreement
+India ratified the agreement in October 2016. At COP26 in Glasgow in 2021 it announced a goal of net zero emissions by 2070. Countries update their NDCs from time to time, so check the UNFCCC NDC registry for India's current submission.

@@ -1,0 +1,28 @@
+title: Circular economy
+category: waste
+region: Global
+status: draft
+written: 2026-10-13
+summary: A circular economy keeps products, components and materials in use for as long as possible and designs waste out of the system. It is usually contrasted with the linear model of take, make and dispose.
+keywords: recycling, reuse, repair, resource efficiency, waste hierarchy, EPR, closed loop
+infobox: Linear model | Take, make, use, dispose
+infobox: Circular model | Design out waste, keep materials in use, regenerate nature
+infobox: Common strategies | Refuse, reduce, reuse, repair, refurbish, recycle
+related: extended-producer-responsibility-india, plastic-pollution
+source: Ellen MacArthur Foundation | Towards the Circular Economy | 2013 | https://www.ellenmacarthurfoundation.org/
+source: UNEP | Circularity and resource efficiency work | https://www.unep.org/
+---
+## The idea
+In a linear economy, resources are extracted, made into products, used and thrown away. A circular economy tries to close the loop. Products are designed to last, be repaired and be taken apart. Materials are recovered and used again at the highest value possible, and waste and pollution are avoided at the design stage.
+
+## Principles
+The Ellen MacArthur Foundation summarises the approach in three principles: eliminate waste and pollution, circulate products and materials at their highest value, and regenerate nature.
+
+## Strategies
+Strategies are often ordered by how much resource they save. Refusing and reducing use come first. Reuse, repair, refurbishing and remanufacturing keep products in service. Recycling recovers the material when a product can no longer be used. Disposal in landfills and by incineration is the last resort.
+
+## Policy tools
+Governments use tools such as extended producer responsibility (see [[extended-producer-responsibility-india]]), recycled-content requirements, bans on problem products such as certain single-use plastics (see [[plastic-pollution]]), and standards for product design and repairability.
+
+## Limits
+Recycling often loses some quality, and moving materials around uses energy. A circular approach works best when it reduces the total amount of material used, not only when it recycles more of it.

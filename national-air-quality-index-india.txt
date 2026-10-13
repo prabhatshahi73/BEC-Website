@@ -1,0 +1,31 @@
+title: National Air Quality Index (India)
+category: air
+region: India
+status: draft
+written: 2026-10-13
+summary: The National Air Quality Index (NAQI) is India's system for turning air pollutant measurements into one number and a colour-coded category, from Good to Severe. It was launched in 2014 and is run by the Central Pollution Control Board (CPCB).
+keywords: AQI, CPCB, air quality, PM2.5, PM10, pollution index, NCAP
+infobox: Launched | 2014
+infobox: Run by | Central Pollution Control Board (CPCB)
+infobox: Scale | 0 to 500, in six categories
+infobox: Pollutants covered | PM10, PM2.5, NO2, SO2, CO, O3, NH3, Pb
+related: fine-particulate-matter-pm25
+source: CPCB | National Air Quality Index | 2014 | https://cpcb.nic.in/
+source: MoEFCC | National Ambient Air Quality Standards | 2009 | https://moef.gov.in/
+---
+## How it works
+The index covers eight pollutants: PM10, PM2.5, nitrogen dioxide, sulphur dioxide, carbon monoxide, ozone, ammonia and lead. Each pollutant's concentration is converted into a sub-index. The overall AQI at a monitoring station is the highest of the sub-indices, so whichever pollutant is worst sets the number. A station needs data for at least three pollutants, and at least one must be PM2.5 or PM10, before an AQI is reported.
+
+## The six categories
+- **Good (0 to 50):** minimal health impact.
+- **Satisfactory (51 to 100):** minor breathing discomfort for sensitive people.
+- **Moderate (101 to 200):** discomfort for people with lung or heart disease, children and older adults.
+- **Poor (201 to 300):** breathing discomfort for most people on prolonged exposure.
+- **Very Poor (301 to 400):** respiratory illness on prolonged exposure.
+- **Severe (401 to 500):** affects healthy people and seriously affects those with existing illness.
+
+## Reading an AQI from other sources
+AQI scales differ between countries. A value on India's scale is not directly comparable with the US AQI or the European Air Quality Index, because the breakpoints, pollutants and category names differ. Websites and apps may also show modelled values rather than readings from a CPCB monitoring station. Always check which scale and which source a figure comes from.
+
+## Standards versus the index
+The index describes current conditions. Legal limits are set separately, in India by the National Ambient Air Quality Standards of 2009 (see [[fine-particulate-matter-pm25]] for the PM2.5 limits).

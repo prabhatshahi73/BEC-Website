@@ -1,0 +1,23 @@
+title: Kunming-Montreal Global Biodiversity Framework
+category: land
+region: Global
+status: draft
+written: 2026-10-13
+summary: The Kunming-Montreal Global Biodiversity Framework is the global plan to halt and reverse biodiversity loss, adopted by the countries of the Convention on Biological Diversity in December 2022. It sets four goals for 2050 and 23 targets for 2030.
+keywords: GBF, 30 by 30, CBD, COP15, biodiversity targets, NBSAP
+infobox: Adopted | December 2022, at COP15 of the Convention on Biological Diversity (Montreal)
+infobox: Structure | 4 goals for 2050 and 23 targets for 2030
+infobox: Best-known target | Protect at least 30 per cent of land and sea by 2030
+related: biodiversity-loss, climate-change
+source: Convention on Biological Diversity | Decision 15/4, Kunming-Montreal Global Biodiversity Framework | 2022 | https://www.cbd.int/
+---
+## Background
+The Convention on Biological Diversity, agreed in 1992, is the main international treaty on biodiversity. Its earlier ten-year targets, the Aichi Targets for 2011 to 2020, were largely not met. The Kunming-Montreal framework was adopted to replace them.
+
+## Main elements
+- **Four goals for 2050** cover protecting ecosystems and species, using biodiversity sustainably, sharing the benefits of genetic resources fairly, and providing the finance and means to carry out the plan.
+- **Twenty-three targets for 2030** cover areas such as restoring degraded ecosystems, reducing the harm from pollution, invasive species and harmful subsidies, and mainstreaming biodiversity in business and finance.
+- **The 30 by 30 target** asks countries to bring at least 30 per cent of the world's land, inland waters, coasts and oceans under effective conservation by 2030, and to restore at least 30 per cent of degraded ecosystems.
+
+## Implementation
+Countries translate the framework into national biodiversity strategies and action plans and report on progress. Finance for developing countries and the measurement of progress are among the most debated parts. Check the Convention on Biological Diversity website for the current status of reporting and finance commitments.

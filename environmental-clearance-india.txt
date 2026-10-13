@@ -1,0 +1,33 @@
+title: Environmental Clearance (India)
+category: law
+region: India
+status: draft
+written: 2026-10-13
+summary: Environmental Clearance (EC) is the approval that certain new or expanding projects in India must obtain, after an impact assessment, before they can start. It is required under the Environmental Impact Assessment (EIA) Notification of 2006.
+keywords: EIA, EC, MoEFCC, SEIAA, public hearing, PARIVESH, category A, category B, scoping
+infobox: Legal basis | Environment (Protection) Act, 1986 and EIA Notification, 14 September 2006
+infobox: Category A projects | Appraised by the Expert Appraisal Committee, cleared by the Union environment ministry (MoEFCC)
+infobox: Category B projects | Appraised by the State Expert Appraisal Committee, cleared by the State Environment Impact Assessment Authority (SEIAA)
+infobox: Application portal | PARIVESH
+related: consent-to-establish-and-operate, forest-conservation-act-india, polluter-pays-principle
+source: MoEFCC | Environment Impact Assessment Notification S.O. 1533(E) | 2006 | https://moef.gov.in/
+source: Government of India | Environment (Protection) Act | 1986 | https://www.indiacode.nic.in/
+---
+## What needs clearance
+The EIA Notification lists categories of projects, such as mining, thermal power, industrial estates, infrastructure and some building and construction projects. Whether a project needs clearance depends on its type and size. The list is amended over time, so check the current schedule.
+
+## Category A and Category B
+Category A projects are appraised at national level by an Expert Appraisal Committee and cleared by the Union environment ministry. Category B projects are appraised by a State Expert Appraisal Committee and cleared by the State Environment Impact Assessment Authority. Category B is further divided into B1, which needs a full EIA report, and B2, which does not.
+
+## The stages
+- **Screening**, for Category B projects, decides whether a full EIA is needed.
+- **Scoping** fixes the Terms of Reference for the EIA study.
+- **Public consultation** includes a public hearing near the site and a period for written comments. Some projects are exempt.
+- **Appraisal** is the expert committee's detailed review of the EIA report and public feedback.
+- **Decision** is the grant or rejection of clearance, usually with conditions.
+
+## After clearance
+Clearance comes with conditions on pollution control, monitoring, green belts and other measures. Project owners submit periodic compliance reports to the regulator. Changes to capacity, technology or location can require a fresh approval or an amendment. Applications are filed through the PARIVESH portal. EIA reports are prepared by consultants accredited under the Quality Council of India and NABET scheme.
+
+## Other approvals
+Clearance does not replace other approvals. Projects also need consent from the State Pollution Control Board (see [[consent-to-establish-and-operate]]) and, where forest land is involved, approval under the forest law (see [[forest-conservation-act-india]]).

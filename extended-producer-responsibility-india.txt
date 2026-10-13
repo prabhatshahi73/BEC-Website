@@ -1,0 +1,28 @@
+title: Extended Producer Responsibility (India)
+category: waste
+region: India
+status: draft
+written: 2026-10-13
+summary: Extended Producer Responsibility (EPR) makes the producers, importers and brand owners of a product responsible for managing it after it is used. In India, EPR rules cover plastic packaging, electronic waste and batteries, among others.
+keywords: EPR, plastic waste, e-waste, battery waste, PIBO, producer, brand owner, CPCB portal, EPR certificate
+infobox: Plastic | Plastic Waste Management Rules, 2016, with EPR guidelines for plastic packaging notified in 2022
+infobox: Electronics | E-Waste (Management) Rules, 2022
+infobox: Batteries | Battery Waste Management Rules, 2022
+infobox: Regulator | Central Pollution Control Board (CPCB) and State Pollution Control Boards
+related: plastic-pollution, circular-economy, hazardous-waste-management-india
+source: MoEFCC | Plastic Waste Management Rules | 2016 | https://moef.gov.in/
+source: MoEFCC | E-Waste (Management) Rules | 2022 | https://moef.gov.in/
+source: MoEFCC | Battery Waste Management Rules | 2022 | https://moef.gov.in/
+source: CPCB | Extended Producer Responsibility portals and guidelines | https://cpcb.nic.in/
+---
+## The idea
+Under EPR, the cost and duty of collecting and recycling a product at the end of its life sit with the company that put it on the market, instead of with municipalities and the public. The aim is to raise collection and recycling rates and to encourage products that are easier to recycle.
+
+## Who is covered
+Rules refer to producers, importers and brand owners, often shortened to PIBOs. Depending on the rule, recyclers, refurbishers and manufacturers of covered goods also have duties. Which entities and products are covered, and the size of the duty, differ from rule to rule.
+
+## How it works in India
+Covered entities must register on an online portal run by the Central Pollution Control Board. They are given targets for collecting, recycling or reusing a share of what they place on the market. They can meet targets through authorised recyclers or other registered entities, and the work is documented through certificates and annual returns. Non-compliance can lead to environmental compensation and other action.
+
+## Keeping up with changes
+EPR rules, targets and portal procedures have been amended often since 2016. Check the current notification and the CPCB portal before relying on any figure or deadline.

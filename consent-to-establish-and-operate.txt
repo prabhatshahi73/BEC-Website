@@ -1,0 +1,28 @@
+title: Consent to Establish and Consent to Operate (India)
+category: law
+region: India
+status: draft
+written: 2026-10-13
+summary: Consent to Establish (CTE) and Consent to Operate (CTO) are permissions that industries in India must obtain from the State Pollution Control Board, under the Water Act and the Air Act, before they are built and before they start operating.
+keywords: CTE, CTO, SPCB, pollution control board, consent renewal, Water Act 1974, Air Act 1981, red orange green white
+infobox: Legal basis | Water (Prevention and Control of Pollution) Act, 1974 and Air (Prevention and Control of Pollution) Act, 1981
+infobox: Issued by | State Pollution Control Board or Pollution Control Committee
+infobox: Categories | Red, Orange, Green and White, set by the Central Pollution Control Board
+related: environmental-clearance-india, hazardous-waste-management-india, polluter-pays-principle
+source: Government of India | Water (Prevention and Control of Pollution) Act | 1974 | https://www.indiacode.nic.in/
+source: Government of India | Air (Prevention and Control of Pollution) Act | 1981 | https://www.indiacode.nic.in/
+source: CPCB | Directions on categorisation of industries | https://cpcb.nic.in/
+---
+## What the law requires
+The Water Act and the Air Act both say that a person must not set up, or operate, an industry, operation or process that discharges effluent or emits air pollutants beyond permitted limits without the consent of the State Pollution Control Board. In practice this works as two steps.
+- **Consent to Establish (CTE)** is obtained before construction of the unit or a major expansion begins.
+- **Consent to Operate (CTO)** is obtained before the unit starts operating, and renewed before it expires.
+
+## Conditions
+Consent letters set conditions such as pollution control equipment, discharge and emission limits, monitoring, waste handling and the quantity of water used. Breaking the conditions can lead to closure directions, penalties or prosecution under the Acts. The Acts have been amended over the years, so check the current penalty provisions.
+
+## Categories of industry
+The Central Pollution Control Board classifies industries by their pollution potential into Red (most polluting), Orange, Green and White (least polluting). The category affects how the application is handled and how long consent is valid. White category industries are generally exempt from the consent requirement. The lists are revised from time to time and States apply their own procedures, so check the current CPCB list and your Board's rules.
+
+## Related requirements
+Consent is separate from environmental clearance (see [[environmental-clearance-india]]) and from authorisation to handle hazardous waste (see [[hazardous-waste-management-india]]). Industries that use water above notified limits also pay water cess under the Water (Prevention and Control of Pollution) Cess Act, 1977.

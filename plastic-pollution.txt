@@ -1,0 +1,28 @@
+title: Plastic pollution
+category: waste
+region: Global
+status: draft
+written: 2026-10-13
+summary: Plastic pollution is the build-up of plastic waste in land, rivers and oceans. Plastic breaks down very slowly, and it fragments into microplastics that spread through water, soil, air and food chains.
+keywords: microplastics, single-use plastic, marine litter, plastics treaty, PWM rules, nanoplastics
+infobox: Microplastics | Plastic fragments smaller than 5 millimetres
+infobox: India's single-use plastic ban | Identified items banned from 1 July 2022
+infobox: Global process | UN negotiations on a legally binding plastics instrument, started in 2022
+related: extended-producer-responsibility-india, circular-economy, hazardous-waste-management-india
+source: UNEP | Resolution 5/14, End plastic pollution: towards an international legally binding instrument | 2022 | https://www.unep.org/
+source: MoEFCC | Plastic Waste Management (Amendment) Rules | 2021 | https://moef.gov.in/
+---
+## The problem
+Plastics are cheap, light and durable, which is why they are used so widely, especially in packaging. The same durability means they persist for a very long time. Plastic enters the environment through littering, poorly managed waste, drains and rivers, fishing gear, the wear of tyres and the shedding of synthetic textiles.
+
+## Harm
+Animals can be injured by entanglement or by swallowing plastic. Waste can block drains and add to urban flooding. Plastics also contain additives, and fragments can carry other pollutants. Microplastics have been found in oceans, soils, drinking water and food. Research into their effects on human health is continuing.
+
+## Policy in India
+India regulates plastic through the Plastic Waste Management Rules, 2016, as amended. Identified single-use plastic items were banned from 1 July 2022. Producers, importers and brand owners also have responsibilities under extended producer responsibility (see [[extended-producer-responsibility-india]]).
+
+## Global negotiations
+In 2022, the UN Environment Assembly agreed to start negotiating an international legally binding instrument on plastic pollution, covering the full life cycle of plastics. Negotiating sessions have continued since. The status of the talks changes, so check the UNEP website for the latest position.
+
+## Approaches
+Common approaches are reducing unnecessary plastic use, redesigning products and packaging, reuse systems, better collection and recycling, and ending leakage to the environment (see [[circular-economy]]).

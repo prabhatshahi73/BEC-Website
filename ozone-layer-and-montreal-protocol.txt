@@ -1,0 +1,30 @@
+title: Ozone layer and the Montreal Protocol
+category: climate
+region: Global
+status: draft
+written: 2026-10-13
+summary: The ozone layer is a region of the stratosphere that absorbs most of the Sun's harmful ultraviolet-B radiation. The Montreal Protocol of 1987 phased out the chemicals that were destroying it and is widely regarded as one of the most successful environmental treaties.
+keywords: CFC, ozone hole, ODS, Kigali Amendment, HFC, Vienna Convention
+infobox: Parent treaty | Vienna Convention for the Protection of the Ozone Layer (1985)
+infobox: Montreal Protocol adopted | 16 September 1987
+infobox: Entered into force | 1 January 1989
+infobox: Latest major amendment | Kigali Amendment (2016), on hydrofluorocarbons
+infobox: Secretariat | UNEP Ozone Secretariat
+related: climate-change, extended-producer-responsibility-india
+source: UNEP Ozone Secretariat | The Montreal Protocol on Substances that Deplete the Ozone Layer | 1987 | https://ozone.unep.org/
+source: WMO and UNEP | Scientific Assessment of Ozone Depletion: 2022 | 2022 | https://ozone.unep.org/
+---
+## The ozone layer
+Ozone is a form of oxygen with three atoms. Most of it sits in the stratosphere, and it absorbs much of the ultraviolet-B radiation that would otherwise reach the surface. More UV-B exposure is linked to skin cancer, eye damage and harm to crops and aquatic life.
+
+## What damaged it
+Chemicals such as chlorofluorocarbons (CFCs), halons and some solvents were widely used in refrigeration, air conditioning, foam and aerosols. When they reach the stratosphere they release chlorine and bromine, which destroy ozone molecules. The thinning of the ozone layer over Antarctica, often called the ozone hole, was reported in 1985.
+
+## The Montreal Protocol
+Countries adopted the Montreal Protocol in 1987. It sets timetables to phase out the production and use of ozone-depleting substances, with later amendments tightening the controls. It was the first UN treaty to be ratified by every country. Scientific assessments report that the ozone layer is recovering, with a return to earlier levels expected over the coming decades.
+
+## The Kigali Amendment
+Hydrofluorocarbons (HFCs) replaced many ozone-depleting substances. They do not harm the ozone layer but they are powerful greenhouse gases. The Kigali Amendment of 2016 phases down HFCs, which links the ozone treaty to climate action (see [[climate-change]]).
+
+## India
+India has ratified the Montreal Protocol and regulates ozone-depleting substances under the Ozone Depleting Substances (Regulation and Control) Rules, 2000. India has also ratified the Kigali Amendment.
