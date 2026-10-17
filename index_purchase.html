@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Orders | Bharat Environment Consultants</title>
+<style>
+:root{--g:#1f4d3a;--gd:#0f3326;--bg:#eef3ee;--gold:#e0a526;--t:#17261f;--m:#5d6d64;--l:#d5ded7}
+@media(prefers-color-scheme:dark){:root{--bg:#0e1a14;--t:#e8efe9;--m:#9baba1;--l:#2a3d33;--card:#15251d}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:16px/1.5 system-ui,sans-serif;padding-bottom:5rem}
+.card,input,select,textarea{background:var(--card,#fff)}
+header{background:var(--gd);color:#fff;padding:.9rem 1.2rem;display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+header b{font-size:1.1rem;margin-right:auto}header button{background:none;border:0;color:#fff;font:inherit;cursor:pointer;padding:.3rem .6rem;border-radius:6px}header button.on{background:var(--g)}
+main{max-width:1000px;margin:1.5rem auto;padding:0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.card{border:1px solid var(--l);border-radius:10px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.card h3{margin:0;font-size:1.05rem}.card p{margin:0;color:var(--m);font-size:.92rem;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;gap:.6rem;flex-wrap:wrap}
+.price{font-weight:700;font-size:1.15rem}
+button.b,.btn{background:var(--g);color:#fff;border:0;border-radius:8px;padding:.55rem 1rem;font:inherit;font-weight:600;cursor:pointer}
+button.b.alt{background:transparent;color:var(--t);border:1px solid var(--g)}button.gold{background:var(--gold);color:#201600}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+input,select,textarea{width:100%;padding:.6rem;border:1px solid var(--l);border-radius:8px;font:inherit;color:inherit}
+label{display:block;margin:.6rem 0 .2rem;font-size:.9rem}
+.chip{font-size:.8rem;padding:.15rem .6rem;border-radius:99px;background:#d9e8e0;color:var(--gd);font-weight:600}.chip.w{background:#f7e6bd;color:#5a4000}
+#bar{position:fixed;left:0;right:0;bottom:0;background:var(--gd);color:#fff;padding:.8rem 1.2rem;display:none;justify-content:space-between;align-items:center}
+dialog{border:0;border-radius:12px;max-width:460px;width:92%;padding:1.4rem;background:var(--bg);color:var(--t)}dialog::backdrop{background:#0008}
+.err{color:#b3261e;min-height:1.3em;font-size:.9rem}small{color:var(--m)}
+</style></head><body>
+<header><b>Bharat Environment Consultants</b><button id="n-shop" class="on">Services</button><button id="n-ord">My orders</button><button id="n-adm" hidden>All orders</button><button id="n-auth">Sign in</button></header>
+<main id="main"></main>
+<div id="bar"><span id="cnt"></span><button class="b gold" id="review">Review and send request</button></div>
+<dialog id="dlg"></dialog>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const inr=n=>'₹'+Number(n).toLocaleString('en-IN');
+const LBL={under_review:'Under review',quoted:'Quote ready',awaiting_payment:'Awaiting payment',paid:'Paid',in_progress:'In progress',delivered:'Delivered',closed:'Closed'};
+let me=null,cat=[],cart={},view='shop';
+async function api(p,o={}){const r=await fetch('/api/'+p,{credentials:'same-origin',...o,headers:o.raw?{}:{'content-type':'application/json'},body:o.raw?o.body:o.body&&JSON.stringify(o.body)});const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||'Something went wrong.');return d}
+function nav(v){view=v;['shop','ord','adm'].forEach(k=>$('#n-'+k).classList.toggle('on',k===v));render()}
+function bar(){const n=Object.keys(cart).length;$('#bar').style.display=n?'flex':'none';$('#cnt').textContent=n+' selected'}
+function head(){$('#n-adm').hidden=me?.role!=='admin';$('#n-auth').textContent=me?'Sign out ('+me.name.split(' ')[0]+')':'Sign in'}
+async function render(){const m=$('#main');
+ if(view==='shop'){m.innerHTML='<div class="grid">'+cat.map(c=>`<div class="card"><small>${c.price===null?'Quote after scope review':'Ready to order'}</small><h3>${esc(c.name)}</h3><p>${esc(c.desc)}</p><div class="row"><span class="price">${c.price===null?'Quote':inr(c.price)}</span><button class="b ${cart[c.id]?'alt':''}" data-id="${c.id}">${cart[c.id]?'Added':'Add to request'}</button></div></div>`).join('')+'</div>';
+  m.querySelectorAll('[data-id]').forEach(b=>b.onclick=()=>{cart[b.dataset.id]?delete cart[b.dataset.id]:cart[b.dataset.id]=1;bar();render()});return}
+ if(!me){m.innerHTML='<p>Sign in to see your orders.</p>';return authDlg()}
+ m.innerHTML='<p>Loading orders…</p>';let rows;try{rows=await api('orders')}catch(e){m.innerHTML=`<p class="err">${esc(e.message)}</p>`;return}
+ const adm=view==='adm';if(!rows.length){m.innerHTML='<p>No orders yet. Pick a service and send your first request.</p>';return}
+ m.innerHTML=rows.map(o=>`<div class="card" style="margin-bottom:1rem"><div class="row"><b>BEC-${1000+o.id}</b><span class="chip ${['under_review','quoted','awaiting_payment'].includes(o.status)?'w':''}">${LBL[o.status]||o.status}</span></div>
+ ${adm?`<small>${esc(o.cname)} · ${esc(o.cemail)}</small>`:''}
+ <div>${o.items.map(i=>esc(i.name)+(i.qty>1?' × '+i.qty:'')).join('<br>')}</div>
+ ${o.note?`<small>Note: ${esc(o.note)}</small>`:''}${o.admin_note?`<small>From BEC: ${esc(o.admin_note)}</small>`:''}
+ <div class="row"><span class="price">${o.total?inr(o.total):'Quote pending'}</span>${!adm&&['awaiting_payment','quoted'].includes(o.status)?`<button class="b" data-pay="${o.id}">Pay now</button>`:''}</div>
+ ${o.files.map(f=>`<a href="/api/files/${f.id}">Download ${esc(f.name)}</a>`).join('')}
+ ${adm?`<div class="row"><select data-st="${o.id}">${Object.entries(LBL).map(([k,v])=>`<option value="${k}" ${k===o.status?'selected':''}>${v}</option>`).join('')}</select><input data-q="${o.id}" type="number" min="1" placeholder="Quote ₹" style="width:110px"><input data-nt="${o.id}" placeholder="Note to customer" value="${esc(o.admin_note)}"><button class="b alt" data-save="${o.id}">Save</button><input type="file" data-up="${o.id}"></div>`:''}</div>`).join('');
+ m.querySelectorAll('[data-pay]').forEach(b=>b.onclick=()=>pay(+b.dataset.pay));
+ m.querySelectorAll('[data-save]').forEach(b=>b.onclick=async()=>{const i=b.dataset.save;await api('orders/'+i,{method:'PATCH',body:{status:m.querySelector(`[data-st="${i}"]`).value,quote:+m.querySelector(`[data-q="${i}"]`).value||0,admin_note:m.querySelector(`[data-nt="${i}"]`).value}});render()});
+ m.querySelectorAll('[data-up]').forEach(f=>f.onchange=async()=>{const x=f.files[0];if(!x)return;await api(`orders/${f.dataset.up}/files?name=${encodeURIComponent(x.name)}`,{method:'POST',raw:1,body:x});render()})}
+function authDlg(){const d=$('#dlg');d.innerHTML=`<h3 style="margin-top:0">Sign in or create an account</h3><label>Name (new accounts)<input id="a-n" autocomplete="name"></label><label>Email<input id="a-e" type="email" autocomplete="email"></label><label>Password (8+ characters)<input id="a-p" type="password" autocomplete="current-password"></label><p class="err" id="a-err"></p><div class="row"><button class="b" id="a-in">Sign in</button><button class="b alt" id="a-up">Create account</button></div>`;
+ const go=p=>async()=>{try{const r=await api(p,{method:'POST',body:{name:$('#a-n').value,email:$('#a-e').value,password:$('#a-p').value}});me=r.user;head();d.close();render()}catch(e){$('#a-err').textContent=e.message}};
+ $('#a-in').onclick=go('login');$('#a-up').onclick=go('register');d.showModal()}
+function reviewDlg(){if(!me)return authDlg();const d=$('#dlg'),it=Object.keys(cart).map(id=>cat.find(c=>c.id===id)),q=it.some(i=>i.price===null),t=it.reduce((a,i)=>a+(i.price||0),0);
+ d.innerHTML=`<h3 style="margin-top:0">Review your request</h3>${it.map(i=>`<div class="row"><span>${esc(i.name)}</span><b>${i.price===null?'Quote':inr(i.price)}</b></div>`).join('')}<hr><div class="row"><span>${q?'Fixed-price items total':'Total'}</span><b>${inr(t)}</b></div>${q?'<small>Quote items are priced after we review your scope. You pay only after you approve the quote.</small>':''}<label>Unit name, location and anything we should know<textarea id="r-n" rows="3"></textarea></label><p class="err" id="r-err"></p><div class="row"><button class="b alt" id="r-x">Keep editing</button><button class="b gold" id="r-s">Send request</button></div>`;
+ $('#r-x').onclick=()=>d.close();$('#r-s').onclick=async()=>{try{await api('orders',{method:'POST',body:{items:Object.keys(cart).map(id=>({id,qty:1})),note:$('#r-n').value}});cart={};bar();d.close();nav('ord')}catch(e){$('#r-err').textContent=e.message}};d.showModal()}
+async function pay(id){try{const s=await api(`orders/${id}/pay`,{method:'POST'});if(!window.Razorpay)await new Promise((ok,no)=>{const x=document.createElement('script');x.src='https://checkout.razorpay.com/v1/checkout.js';x.onload=ok;x.onerror=no;document.head.appendChild(x)});
+ new Razorpay({key:s.key,order_id:s.order_id,amount:s.amount,currency:'INR',name:'Bharat Environment Consultants',prefill:{name:me.name,email:me.email},theme:{color:'#1f4d3a'},handler:async r=>{try{await api(`orders/${id}/verify`,{method:'POST',body:r});render()}catch(e){alert(e.message)}}}).open()}catch(e){alert(e.message)}}
+$('#n-shop').onclick=()=>nav('shop');$('#n-ord').onclick=()=>nav('ord');$('#n-adm').onclick=()=>nav('adm');$('#review').onclick=reviewDlg;
+$('#n-auth').onclick=async()=>{if(me){await api('logout',{method:'POST'});me=null;head();nav('shop')}else authDlg()};
+(async()=>{cat=await api('catalog');try{me=(await api('me')).user}catch{}head();render()})();
+</script></body></html>
