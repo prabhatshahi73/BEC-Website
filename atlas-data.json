@@ -1,0 +1,717 @@
+{
+ "oceans": {
+  "title": "Oceans and seas",
+  "items": [
+   {
+    "name": "Andaman Sea",
+    "place": "India, Myanmar, Thailand, Indonesia",
+    "text": "A marginal sea of the Indian Ocean east of the Andaman and Nicobar Islands, with depths of more than 4,000 m.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Arabian Sea",
+    "place": "India, Pakistan, Oman, Yemen, Somalia",
+    "text": "About 3.9 million km², with a maximum depth near 4,600 m. Its winds and temperatures drive the Indian monsoon.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Baltic Sea",
+    "place": "Northern Europe",
+    "text": "About 377,000 km². A shallow, brackish sea with limited exchange with the North Sea, so it is sensitive to nutrient pollution.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Bay of Bengal",
+    "place": "India, Bangladesh, Myanmar, Sri Lanka",
+    "text": "Roughly 2.2 million km², the largest bay in the world. It receives the Ganga, Brahmaputra, Irrawaddy and many other rivers.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Bering Sea",
+    "place": "USA (Alaska), Russia",
+    "text": "About 2.3 million km², linking the Pacific and the Arctic through the Bering Strait; major commercial fisheries.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Black Sea",
+    "place": "Europe, Turkey, Caucasus",
+    "text": "About 436,000 km² and up to about 2,200 m deep. Its deep waters contain almost no oxygen.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Caribbean Sea",
+    "place": "Central America, Caribbean, northern South America",
+    "text": "About 2.75 million km², a warm sea with extensive coral reefs, mangroves and seagrass beds.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Coral Sea",
+    "place": "Australia, Papua New Guinea, Pacific islands",
+    "text": "Lies off north-eastern Australia and includes the waters of the Great Barrier Reef.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Laccadive Sea",
+    "place": "India, Sri Lanka, Maldives",
+    "text": "The sea off India’s south-west coast that surrounds Lakshadweep and the Maldives, with coral atolls.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Mediterranean Sea",
+    "place": "Europe, North Africa, Western Asia",
+    "text": "About 2.5 million km², linked to the Atlantic by the Strait of Gibraltar, which is only about 14 km wide at its narrowest.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "North Sea",
+    "place": "North-western Europe",
+    "text": "About 570,000 km² and shallow, averaging roughly 95 m. A major fishing ground and offshore energy region.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Persian Gulf",
+    "place": "Iran, Gulf Arab states, Iraq",
+    "text": "About 250,000 km² and shallow, averaging around 50 m. Very saline and warm, and central to global oil shipping.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Red Sea",
+    "place": "Egypt, Saudi Arabia, Sudan, Eritrea, Yemen",
+    "text": "About 2,250 km long and linked to the Mediterranean by the Suez Canal. Known for coral reefs that tolerate warm water.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Sargasso Sea",
+    "place": "North Atlantic",
+    "text": "Defined by ocean currents rather than coastlines, and named for the floating Sargassum seaweed that gathers there.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Sea of Japan",
+    "place": "Japan, Korea, Russia",
+    "text": "A nearly enclosed marginal sea of the Pacific with a maximum depth of about 3,700 m.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "South China Sea",
+    "place": "China, Southeast Asia",
+    "text": "About 3.5 million km², one of the busiest shipping routes in the world; maritime boundaries are disputed.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Tasman Sea",
+    "place": "Australia, New Zealand",
+    "text": "The part of the south-west Pacific between Australia and New Zealand.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Arctic Ocean",
+    "place": "Arctic",
+    "text": "About 14.1 million km². The smallest and shallowest ocean, largely covered by sea ice and bordered by Russia, Norway, Greenland, Canada and the United States.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Atlantic Ocean",
+    "place": "Americas, Europe, Africa",
+    "text": "About 106 million km². Split by the Mid-Atlantic Ridge; its deepest point, in the Puerto Rico Trench, is roughly 8,400 m.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Indian Ocean",
+    "place": "Asia, Africa, Australia",
+    "text": "About 70.6 million km². Drives the South Asian monsoon; deepest point is in the Java Trench, roughly 7,300 m.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Pacific Ocean",
+    "place": "Asia, Americas, Oceania",
+    "text": "About 165 million km². The largest and deepest ocean; Challenger Deep in the Mariana Trench is roughly 10,900 m deep.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Southern Ocean",
+    "place": "Antarctica",
+    "text": "About 21.9 million km². Circles Antarctica and carries the Antarctic Circumpolar Current. Treated as a distinct ocean by the IHO since 2000 and by National Geographic since 2021.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   }
+  ]
+ },
+ "rivers": {
+  "title": "Rivers",
+  "items": [
+   {
+    "name": "Amazon River",
+    "place": "South America",
+    "text": "About 6,400 km. Carries the largest discharge of any river, around 209,000 m³/s.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Congo River",
+    "place": "Central Africa",
+    "text": "About 4,700 km. The deepest known river, with depths beyond 220 m.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Danube",
+    "place": "Europe",
+    "text": "About 2,850 km. Flows through or along the border of ten countries to the Black Sea.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Ganga (Ganges)",
+    "place": "India, Bangladesh",
+    "text": "About 2,525 km. Rises at Gangotri and reaches the Bay of Bengal, forming the Sundarbans delta with the Brahmaputra.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Godavari",
+    "place": "India",
+    "text": "About 1,465 km. The longest river of peninsular India and the second longest in India after the Ganga.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Mahanadi",
+    "place": "India (Chhattisgarh, Odisha)",
+    "text": "About 858 km. Rises in Chhattisgarh and is dammed at Hirakud before reaching the Bay of Bengal.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Mekong",
+    "place": "Southeast Asia",
+    "text": "About 4,350 km. Flows from the Tibetan Plateau through six countries to Vietnam.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Mississippi–Missouri",
+    "place": "North America",
+    "text": "About 6,275 km combined. The main river system of the United States, draining into the Gulf of Mexico.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Nile",
+    "place": "Africa",
+    "text": "About 6,650 km. Often cited as the longest river; its basin covers eleven countries. Length versus the Amazon is debated.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Volga",
+    "place": "Russia",
+    "text": "About 3,530 km. The longest river in Europe, flowing into the Caspian Sea.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Yangtze",
+    "place": "China",
+    "text": "About 6,300 km. The longest river in Asia, flowing entirely within China.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Brahmaputra",
+    "place": "India, China, Bangladesh",
+    "text": "About 2,900 km in total. Rises in Tibet as the Yarlung Tsangpo and flows through Arunachal Pradesh and Assam before joining the Ganga delta.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Chambal",
+    "place": "India",
+    "text": "About 960 km. A Yamuna tributary through Madhya Pradesh, Rajasthan and Uttar Pradesh, known for its ravines and a protected gharial sanctuary.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Indus",
+    "place": "Pakistan, India, China",
+    "text": "About 3,180 km in total, flowing from Tibet through Ladakh and Pakistan to the Arabian Sea. Its basin supports the Indus irrigation system.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Kaveri (Cauvery)",
+    "place": "India",
+    "text": "About 800 km from the Western Ghats in Karnataka to the Bay of Bengal in Tamil Nadu; the subject of a long-running water-sharing dispute.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Krishna",
+    "place": "India",
+    "text": "About 1,400 km from the Western Ghats in Maharashtra through Karnataka, Telangana and Andhra Pradesh to the Bay of Bengal.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Narmada",
+    "place": "India",
+    "text": "About 1,312 km, flowing west through Madhya Pradesh, Maharashtra and Gujarat to the Arabian Sea, unlike most peninsular rivers.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Tapti",
+    "place": "India",
+    "text": "About 724 km, flowing west through Madhya Pradesh, Maharashtra and Gujarat to the Arabian Sea.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Yamuna",
+    "place": "India",
+    "text": "About 1,376 km. The largest tributary of the Ganga, rising at Yamunotri and joining it at Prayagraj.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   }
+  ]
+ },
+ "lakes": {
+  "title": "Lakes",
+  "items": [
+   {
+    "name": "Caspian Sea",
+    "place": "Central Asia, Europe",
+    "text": "About 371,000 km². The largest inland body of water; salinity is roughly a third of ocean water.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Chilika Lake",
+    "place": "India (Odisha)",
+    "text": "A large brackish-water lagoon on the Bay of Bengal coast and a Ramsar wetland, known for wintering waterbirds.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Dead Sea",
+    "place": "Israel, Jordan, Palestine",
+    "text": "Shoreline about 430 m below sea level, the lowest land elevation on Earth. Hypersaline and shrinking.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Lake Baikal",
+    "place": "Russia",
+    "text": "Deepest lake at about 1,642 m and among the oldest, with roughly a fifth of the world’s unfrozen surface fresh water.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Lake Superior",
+    "place": "USA, Canada",
+    "text": "About 82,100 km². The largest freshwater lake in the world by surface area.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Lake Tanganyika",
+    "place": "East and Central Africa",
+    "text": "About 1,470 m deep, the second deepest lake, and the longest freshwater lake at roughly 673 km.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Lake Titicaca",
+    "place": "Peru, Bolivia",
+    "text": "At about 3,810 m, the highest large navigable lake in the world.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Lake Victoria",
+    "place": "East Africa",
+    "text": "About 68,800 km². Africa’s largest lake and a source of the White Nile.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Wular Lake",
+    "place": "India (Jammu and Kashmir)",
+    "text": "One of Asia’s largest freshwater lakes and a Ramsar wetland.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   }
+  ]
+ },
+ "sanctuaries": {
+  "title": "Wildlife sanctuaries and protected areas",
+  "items": [
+   {
+    "name": "Achanakmar Wildlife Sanctuary",
+    "place": "India (Chhattisgarh)",
+    "text": "Part of the Achanakmar–Amarkantak Biosphere Reserve; forest habitat that supports tigers and leopards.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Great Barrier Reef Marine Park",
+    "place": "Australia",
+    "text": "About 344,000 km². The largest coral reef system in the world, a World Heritage Site since 1981.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Galápagos Islands",
+    "place": "Ecuador",
+    "text": "World Heritage Site since 1978, with a marine reserve and endemic species that shaped Darwin’s ideas.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Kaziranga National Park",
+    "place": "India (Assam)",
+    "text": "Home to most of the world’s greater one-horned rhinoceroses; World Heritage Site since 1985.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Keoladeo National Park",
+    "place": "India (Rajasthan)",
+    "text": "Bharatpur’s wetland reserve; a Ramsar site and World Heritage Site famous for migratory waterbirds.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Kruger National Park",
+    "place": "South Africa",
+    "text": "About 19,500 km². A national park since 1926 and a stronghold for the Big Five.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Ranthambore National Park",
+    "place": "India (Rajasthan)",
+    "text": "A tiger reserve of dry deciduous forest around a medieval fort.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Serengeti",
+    "place": "Tanzania",
+    "text": "Site of the Great Migration, with well over a million wildebeest moving with the rains.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Sundarbans",
+    "place": "India, Bangladesh",
+    "text": "The largest mangrove forest in the world and a refuge of the Bengal tiger; World Heritage Site.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Yellowstone National Park",
+    "place": "USA",
+    "text": "Established in 1872 and widely regarded as the first national park in the world.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   }
+  ]
+ },
+ "canals": {
+  "title": "Canals",
+  "items": [
+   {
+    "name": "Canal du Midi",
+    "place": "France",
+    "text": "About 240 km, completed in 1681, linking the Atlantic and the Mediterranean; World Heritage Site since 1996.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Corinth Canal",
+    "place": "Greece",
+    "text": "About 6.3 km, opened in 1893, cut through rock only about 21 m wide.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Erie Canal",
+    "place": "USA",
+    "text": "Opened in 1825, about 584 km from the Hudson River to Lake Erie.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Ganga Canal (Upper)",
+    "place": "India",
+    "text": "Opened in 1854 to irrigate the Ganga–Yamuna doab from Haridwar.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Grand Canal",
+    "place": "China",
+    "text": "About 1,776 km from Beijing to Hangzhou, the longest artificial waterway in the world.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Indira Gandhi Canal",
+    "place": "India (Rajasthan)",
+    "text": "A canal system of roughly 650 km that carries Himalayan river water into the Thar Desert.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Kiel Canal",
+    "place": "Germany",
+    "text": "About 98 km, opened in 1895, joining the North Sea and the Baltic; one of the busiest artificial waterways.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Panama Canal",
+    "place": "Panama",
+    "text": "About 82 km, opened in 1914 and widened in 2016, using locks to cross the isthmus.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   },
+   {
+    "name": "Suez Canal",
+    "place": "Egypt",
+    "text": "About 193 km, opened in 1869, joining the Mediterranean and the Red Sea.",
+    "img": "",
+    "alt": "",
+    "credit": "",
+    "license": "",
+    "source_url": ""
+   }
+  ]
+ }
+}
