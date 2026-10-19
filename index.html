@@ -735,7 +735,20 @@
     /* ── FOOTER ── */
     footer { background: #060f09; color: rgba(255,255,255,0.4); text-align: center; padding: 2.5rem; font-size: 0.78rem; letter-spacing: 0.05em; border-top: 1px solid rgba(201,168,76,0.2); }
     footer strong { color: var(--gold); }
-
+/* ── HAMBURGER MENU ── */
+.nav-toggle{display:none;background:none;border:1px solid rgba(201,168,76,.5);border-radius:6px;width:44px;height:44px;cursor:pointer;padding:0;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--gold);transition:transform .25s,opacity .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+@media (max-width:1180px){
+  .nav-toggle{display:flex}
+  .nav-links{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;margin:0;padding:.5rem 5vw 1rem;background:rgba(13,59,30,.98);border-bottom:1px solid rgba(201,168,76,.25);max-height:calc(100vh - 72px);overflow-y:auto}
+  .nav-links.open{display:flex}
+  .nav-links li{border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-links a{display:block;padding:.9rem 0;font-size:.9rem}
+  .nav-links a.nav-cta,.nav-links a.nav-ec,.nav-links a.nav-weather{margin:.5rem 0;text-align:center}
+}
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
       .about-section, .why-grid, .contact-grid { grid-template-columns: 1fr; }
