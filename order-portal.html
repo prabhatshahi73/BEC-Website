@@ -1,9 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEC Client Portal | Order environmental services online</title>
-<!-- BEC ORDER PORTAL, single file. Upload to the BEC-Website repo as order-portal.html (it does not touch index.html or /portal).
-SETUP: 1) Edit prices in Admin > Catalogue. 2) Demo mode keeps all data in this browser only. For real multi-user use, back it with
-Cloudflare Pages Functions + D1 and set CFG.rzpKey, CFG.createUrl, CFG.verifyUrl below. 3) Change the default admin login (see seed()). -->
+<!-- BEC ORDER PORTAL, server version. Needs functions/papi/[[path]].js and a D1 database bound as PDB. -->
 <style>
 :root{--g:#0b3b17;--g2:#14532d;--au:#c9a63f;--bg:#f3f6f2;--c:#fff;--b:#d5e0d7;--t:#1a2a1f;--m:#5b6b60;--hd:#0b3b17}
 @media(prefers-color-scheme:dark){:root{--bg:#0e1511;--c:#16201a;--b:#27372c;--t:#e6eee8;--m:#9db0a3;--hd:#e6eee8}}
@@ -35,26 +33,17 @@ footer{text-align:center;color:var(--m);font-size:.8rem;padding:0 5vw 30px}
 </style></head><body>
 <header><b>Bharat Environment <span>Consultants</span></b><span id="who"></span><nav id="nav"></nav></header>
 <main id="app"></main>
-<footer>Demo mode: orders and files are stored only in this browser until the portal is connected to a server. Prices include 18% GST at checkout.</footer>
+<footer>Your orders, messages and reports are stored securely on the BEC server. Prices include 18% GST at checkout.</footer>
 <script>
 const CFG={rzpKey:"",createUrl:"/api/create-order",verifyUrl:"/api/verify-payment",gst:.18},K="bec_portal_v1";
-const seed=()=>({n:1,users:[{id:"u0",role:"admin",name:"BEC Admin",email:"admin@bec.local",pw:"admin123"}],cat:[
-{id:"s1",name:"EC calculation report",d:"Environmental compensation worked out to CPCB methodology for your unit.",p:4999,days:3,q:0},
-{id:"s2",name:"CTO document review",d:"Gap check of your Consent to Operate file, with a list of corrections.",p:7500,days:5,q:0},
-{id:"s3",name:"Carbon footprint, Scope 1 and 2",d:"GHG inventory with a reduction roadmap.",p:24999,days:10,q:0},
-{id:"s4",name:"CTE or CTO application",d:"Preparation and filing support before the State Pollution Control Board.",p:0,days:15,q:1},
-{id:"s5",name:"Environment audit",d:"Site audit of compliance, waste handling and pollution load.",p:0,days:20,q:1},
-{id:"s6",name:"ESG and BRSR reporting",d:"Disclosure report aligned to GRI and BRSR.",p:0,days:30,q:1}],orders:[]});
-let D;try{D=JSON.parse(localStorage.getItem(K))}catch(_){}D=D||seed();
-const save=()=>{try{localStorage.setItem(K,JSON.stringify(D));return 1}catch(_){alert("Storage is full. Remove large files and try again.")}};
-let me=null,V="cat",cart=[],am="cl";
-try{me=D.users.find(u=>u.id==sessionStorage.getItem("bec_u"))||null;if(me&&me.role=="admin")V="ao"}catch(_){}
+let D={cat:[],orders:[]},me=null,V="cat",cart=[],am="cl";const save=()=>{};
+const API=async(p,m="GET",b,q)=>{try{const r=await fetch("/papi"+p,{method:m,headers:b!==undefined?{"content-type":"application/json"}:{},body:b!==undefined?JSON.stringify(b):undefined,credentials:"same-origin"}),j=await r.json().catch(()=>({}));if(!r.ok){if(!q)alert(j.error||"Something went wrong. Try again.");return null}return j}catch(_){if(!q)alert("Cannot reach the server. Check your connection and try again.");return null}};
 const $=s=>document.querySelector(s),e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN"),fd=t=>new Date(t).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
 const O=id=>D.orders.find(o=>o.id==id),S=id=>D.cat.find(s=>s.id==id),isA=()=>me&&me.role=="admin";
 const TL=["Ordered","Paid","In progress","Delivered"],ti=s=>({Paid:1,"In progress":2,Delivered:3}[s]||0);
 const wd=(t,n)=>{let d=new Date(t);while(n>0){d.setDate(d.getDate()+1);if(d.getDay()%6)n--}return d.getTime()};
-const go=v=>{V=v;draw()};
+async function go(v){V=v;const[k,a]=v.split(":");if(me){const o=await API("/orders");if(o)D.orders=o;if(k=="o"){const x=await API("/orders/"+a);if(x){const i=D.orders.findIndex(y=>y.id==a);i<0?D.orders.push(x):D.orders[i]=x}}}if(!D.cat.length||k=="ac"||k=="cat"){const c=await API("/catalog");if(c)D.cat=c}draw()}
 function draw(){
  const tabs=isA()?[["ao","Orders"],["ac","Catalogue"]]:[["cat","Services"],["cart","Cart ("+cart.length+")"],["ord","My orders"]];
  $("#nav").innerHTML=me?tabs.map(([v,t])=>`<button class="${V.split(":")[0]==v?"on":""}" onclick="go('${v}')">${t}</button>`).join("")+`<button onclick="out()">Sign out</button>`:"";
@@ -66,41 +55,35 @@ const authV=()=>`<div class="card narrow"><h2>Sign in to your portal</h2><div cl
 ${am=="reg"?`<label>Your name<input id="n"></label><label>Company<input id="c"></label><label>Phone<input id="ph" type="tel"></label>`:""}
 <label>Email<input id="em" type="email"></label><label>Password<input id="pw" type="password"></label>
 <button onclick="${am=="reg"?"reg()":"login()"}">${am=="reg"?"Create account":"Sign in"}</button></div>`;
-function login(){const em=$("#em").value.trim().toLowerCase(),u=D.users.find(u=>u.email==em&&u.pw==$("#pw").value&&(u.role=="admin")==(am=="ad"));if(!u)return alert("Email or password is not correct for this login type.");start(u)}
-function start(u){me=u;try{sessionStorage.setItem("bec_u",u.id)}catch(_){}V=isA()?"ao":"cat";draw()}
-function reg(){const em=$("#em").value.trim().toLowerCase(),n=$("#n").value.trim(),pw=$("#pw").value;if(!n||!em||pw.length<6)return alert("Enter your name, your email and a password of at least 6 characters.");if(D.users.some(u=>u.email==em))return alert("This email already has an account. Sign in instead.");const u={id:"u"+Date.now(),role:"client",name:n,co:$("#c").value.trim(),ph:$("#ph").value.trim(),email:em,pw};D.users.push(u);save();start(u)}
-function out(){me=null;cart=[];try{sessionStorage.removeItem("bec_u")}catch(_){}draw()}
+async function login(){const u=await API("/login","POST",{email:$("#em").value.trim(),pw:$("#pw").value,admin:am=="ad"});if(u)start(u)}
+function start(u){me=u;go(isA()?"ao":"cat")}
+async function reg(){const n=$("#n").value.trim(),pw=$("#pw").value;if(!n||!$("#em").value.trim()||pw.length<8)return alert("Enter your name, your email and a password of at least 8 characters.");const u=await API("/register","POST",{name:n,company:$("#c").value,phone:$("#ph").value,email:$("#em").value.trim(),pw});if(u)start(u)}
+async function out(){await API("/logout","POST",{},1);me=null;cart=[];D.orders=[];V="cat";draw()}
 const catV=()=>`<h1>Order environmental services</h1><p class="m">Choose a service, pay online, and follow the work here until your final report is delivered.</p><div class="grid">${D.cat.map(s=>`<div class="card"><h3>${e(s.name)}</h3><p class="m">${e(s.d)}</p><p><b>${s.q?"Quote after scope review":inr(s.p)}</b><br><span class="m">Delivery in about ${s.days} working days</span></p>${s.q?`<button onclick="go('q:${s.id}')">Request a quote</button>`:`<button onclick="add('${s.id}')">Add to cart</button>`}</div>`).join("")}</div>`;
 const qV=id=>{const s=S(id);return `<div class="card narrow"><h2>Request a quote: ${e(s.name)}</h2><p class="m">Describe your site or project. We will reply here with a price and a delivery date.</p><label>Project details<textarea id="qd" rows="5"></textarea></label><button onclick="rq('${id}')">Send request</button> <button class="s" onclick="go('cat')">Back</button></div>`};
-function mk(items,st,sub){const o={id:"BEC"+String(D.n++).padStart(4,"0"),uid:me.id,items,st,sub,total:sub*(1+CFG.gst),days:Math.max(...items.map(i=>S(i.id)?.days||1)),at:Date.now(),msgs:[]};D.orders.unshift(o);return o}
-function rq(id){const d=$("#qd").value.trim();if(!d)return alert("Describe your project so we can scope it.");const s=S(id),o=mk([{id,name:s.name,qty:1,p:0}],"Quote requested",0);o.msgs.push({f:"c",t:d,at:Date.now()});save();go("o:"+o.id)}
+async function rq(id){const d=$("#qd").value.trim();if(!d)return alert("Describe your project so we can scope it.");const o=await API("/orders","POST",{quote:id,text:d});if(o)go("o:"+o.id)}
 const add=id=>{const l=cart.find(c=>c.id==id);l?l.qty++:cart.push({id,qty:1});draw()};
 const qty=(i,d)=>{cart[i].qty+=d;if(cart[i].qty<1)cart.splice(i,1);draw()};
 const cartV=()=>{if(!cart.length)return `<div class="card narrow"><h2>Your cart is empty</h2><p class="m">Add a service to start an order.</p><button onclick="go('cat')">Browse services</button></div>`;const sub=cart.reduce((a,c)=>a+S(c.id).p*c.qty,0);return `<h1>Your cart</h1><div class="card">${cart.map((c,i)=>`<div class="line"><span>${e(S(c.id).name)}</span><span><button class="s sm" onclick="qty(${i},-1)">−</button> ${c.qty} <button class="s sm" onclick="qty(${i},1)">+</button></span><b>${inr(S(c.id).p*c.qty)}</b></div>`).join("")}<div class="line"><span>GST (${Math.round(CFG.gst*100)}%)</span><b>${inr(sub*CFG.gst)}</b></div><div class="line"><span>Total</span><b>${inr(sub*(1+CFG.gst))}</b></div></div><p class="m">Expected delivery: about ${Math.max(...cart.map(c=>S(c.id).days))} working days after payment.</p><button onclick="chk()">Pay and place order</button>`};
-function chk(){const o=mk(cart.map(c=>({id:c.id,name:S(c.id).name,qty:c.qty,p:S(c.id).p})),"Awaiting payment",cart.reduce((a,c)=>a+S(c.id).p*c.qty,0));cart=[];save();go("o:"+o.id);pay(o.id)}
-const ld=u=>new Promise((r,j)=>{if(window.Razorpay)return r();const s=document.createElement("script");s.src=u;s.onload=r;s.onerror=j;document.head.appendChild(s)});
-function paid(o,pid){o.st="Paid";o.pay=pid;o.due=wd(Date.now(),o.days);o.msgs.push({f:"s",t:"Payment received. Expected delivery by "+fd(o.due)+".",at:Date.now()});save();go("o:"+o.id)}
-async function pay(id){const o=O(id);
- if(!CFG.rzpKey){if(confirm("Demo mode: no payment gateway is connected. Mark "+inr(o.total)+" as paid?"))paid(o,"demo-"+Date.now());return}
- try{await ld("https://checkout.razorpay.com/v1/checkout.js");
- const r=await(await fetch(CFG.createUrl,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({amount:Math.round(o.total*100),receipt:o.id})})).json();
- new Razorpay({key:CFG.rzpKey,amount:r.amount,currency:"INR",order_id:r.id,name:"Bharat Environment Consultants",prefill:{name:me.name,email:me.email},theme:{color:"#0b3b17"},
- handler:async x=>{const v=await(await fetch(CFG.verifyUrl,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify(x)})).json();v.ok?paid(o,x.razorpay_payment_id):alert("Payment could not be verified. Contact us with your order number.")}}).open()}
- catch(_){alert("Payment could not be started. Open the order and choose Pay now to try again.")}}
-const listV=()=>{const L=D.orders.filter(o=>isA()||o.uid==me.id);return `<h1>${isA()?"All orders":"My orders"}</h1>`+(L.length?`<div class="grid">${L.map(o=>`<div class="card"><b>${o.id}</b> <span class="pill">${o.st}</span><p>${o.items.map(i=>e(i.name)).join(", ")}</p>${isA()?`<p class="m">${e(D.users.find(u=>u.id==o.uid)?.name)}</p>`:""}<p class="m">${o.total?inr(o.total):"Awaiting quote"}</p>${o.due?`<p class="m">Due ${fd(o.due)}</p>`:""}<button class="s" onclick="go('o:${o.id}')">Open order</button></div>`).join("")}</div>`:`<p class="m">No orders yet.${isA()?"":" Choose a service to place your first order."}</p>`)};
-const oV=id=>{const o=O(id);if(!o||(!isA()&&o.uid!=me.id))return `<p>Order not found.</p>`;const c=D.users.find(u=>u.id==o.uid)||{},i=ti(o.st),canPay=o.total&&(o.st=="Awaiting payment"||o.st=="Quote sent");
+async function chk(){const o=await API("/orders","POST",{items:cart.map(c=>({id:c.id,qty:c.qty}))});if(o){cart=[];go("o:"+o.id)}}
+const pay=()=>alert("Online payment is being switched on. For now, pay by bank transfer or UPI and send your payment reference in Messages. BEC will mark the order as paid.");
+const listV=()=>{const L=D.orders.filter(o=>isA()||o.uid==me.id);return `<h1>${isA()?"All orders":"My orders"}</h1>`+(L.length?`<div class="grid">${L.map(o=>`<div class="card"><b>${o.id}</b> <span class="pill">${o.st}</span><p>${o.items.map(i=>e(i.name)).join(", ")}</p>${isA()?`<p class="m">${e(o.uname)}</p>`:""}<p class="m">${o.total?inr(o.total):"Awaiting quote"}</p>${o.due?`<p class="m">Due ${fd(o.due)}</p>`:""}<button class="s" onclick="go('o:${o.id}')">Open order</button></div>`).join("")}</div>`:`<p class="m">No orders yet.${isA()?"":" Choose a service to place your first order."}</p>`)};
+const oV=id=>{const o=O(id);if(!o||(!isA()&&o.uid!=me.id))return `<p>Order not found.</p>`;const c={name:o.uname},i=ti(o.st),canPay=o.total&&(o.st=="Awaiting payment"||o.st=="Quote sent");
 return `<button class="s sm" onclick="go('${isA()?"ao":"ord"}')">Back to orders</button><h1>${o.id} <span class="pill">${o.st}</span></h1>
 <div class="tl">${TL.map((t,k)=>`<div class="${k<=i?"on":""}">${t}</div>`).join("")}</div>
 <div class="two"><div class="card"><h3>Order</h3>${o.items.map(x=>`<div class="line"><span>${e(x.name)} × ${x.qty}</span><b>${x.p?inr(x.p*x.qty):""}</b></div>`).join("")}<div class="line"><span>Total with GST</span><b>${o.total?inr(o.total):"Quote pending"}</b></div>${o.due?`<p>Expected delivery: <b>${fd(o.due)}</b></p>`:`<p class="m">The delivery date is set once payment is received.</p>`}${o.pay?`<p class="m">Payment reference: ${e(o.pay)}</p>`:""}${!isA()&&canPay?`<button onclick="pay('${o.id}')">${o.st=="Quote sent"?"Accept quote and pay":"Pay now"}</button>`:""}</div>
-<div class="card"><h3>Final report</h3>${o.rep?`<a class="btn" download="${e(o.rep.n)}" href="${o.rep.d}">Download ${e(o.rep.n)}</a>`:`<p class="m">Your report will appear here when the work is delivered.</p>`}${isA()?adm(o):""}</div></div>
+<div class="card"><h3>Final report</h3>${o.rep?`<button onclick="dl('${o.id}')">Download ${e(o.rep.n)}</button>`:`<p class="m">Your report will appear here when the work is delivered.</p>`}${isA()?adm(o):""}</div></div>
 <div class="card"><h3>Messages with ${isA()?e(c.name):"BEC consultants"}</h3><div class="chat">${o.msgs.map(m=>`<div class="bb ${m.f}"><small>${m.f=="s"?"Update":m.f=="a"?"BEC":e(c.name)}, ${fd(m.at)}</small><br>${e(m.t)}</div>`).join("")||`<p class="m">No messages yet. Ask your question here.</p>`}</div><textarea id="mt" rows="2" aria-label="Message"></textarea><button onclick="msg('${o.id}')">Send message</button></div>`};
-const adm=o=>`<hr><h4>Admin actions</h4>${o.st=="Quote requested"?`<label>Quote amount before GST (₹)<input id="qa" type="number" min="0"></label><label>Delivery in working days<input id="qdays" type="number" min="1" value="${o.days}"></label><button onclick="sq('${o.id}')">Send quote</button>`:`<label>Status<select onchange="stt('${o.id}',this.value)">${["Quote sent","Awaiting payment","Paid","In progress","Delivered"].map(s=>`<option ${s==o.st?"selected":""}>${s}</option>`).join("")}</select></label>`}${o.due?`<label>Delivery date<input type="date" value="${new Date(o.due).toISOString().slice(0,10)}" onchange="dd('${o.id}',this.value)"></label>`:""}<label>Upload final report (up to 1.5 MB)<input type="file" onchange="up('${o.id}',this)"></label>`;
-function sq(id){const o=O(id),a=+$("#qa").value,d=+$("#qdays").value;if(!a||!d)return alert("Enter the quote amount and the delivery days.");o.sub=a;o.total=a*(1+CFG.gst);o.days=d;o.items[0].p=a;o.st="Quote sent";o.msgs.push({f:"a",t:"Your quote is "+inr(o.total)+" including GST, with delivery in about "+d+" working days after payment. Choose Accept quote and pay to start the work.",at:Date.now()});save();draw()}
-function stt(id,s){const o=O(id);o.st=s;if(s=="Paid"&&!o.due)o.due=wd(Date.now(),o.days);o.msgs.push({f:"s",t:"Status changed to "+s+".",at:Date.now()});save();draw()}
-const dd=(id,v)=>{const o=O(id);o.due=new Date(v+"T12:00").getTime();o.msgs.push({f:"s",t:"Delivery date updated to "+fd(o.due)+".",at:Date.now()});save();draw()};
-function up(id,el){const f=el.files[0];if(!f)return;if(f.size>1.5e6)return alert("This file is larger than 1.5 MB. Use a smaller file.");const r=new FileReader();r.onload=()=>{const o=O(id);o.rep={n:f.name,d:r.result};o.st="Delivered";o.msgs.push({f:"a",t:"Your final report is ready to download on this page.",at:Date.now()});if(save())draw()};r.readAsDataURL(f)}
-function msg(id){const t=$("#mt").value.trim();if(!t)return;O(id).msgs.push({f:isA()?"a":"c",t,at:Date.now()});save();draw()}
-const edV=()=>`<h1>Catalogue and prices</h1><p class="m">Changes apply to new orders. Prices are before GST.</p><div class="card"><div class="ed m"><span>Service</span><span>Price (₹)</span><span>Days</span><span>Sold as</span><span></span></div>${D.cat.map((s,i)=>`<div class="ed"><input value="${e(s.name)}" onchange="ce(${i},'name',this.value)" aria-label="Name"><input type="number" value="${s.p}" onchange="ce(${i},'p',+this.value)" aria-label="Price"><input type="number" value="${s.days}" onchange="ce(${i},'days',+this.value)" aria-label="Days"><select onchange="ce(${i},'q',+this.value)" aria-label="Sold as"><option value="0" ${s.q?"":"selected"}>Fixed price</option><option value="1" ${s.q?"selected":""}>Quote</option></select><button class="s sm" onclick="D.cat.splice(${i},1);save();draw()">Remove</button></div>`).join("")}</div><p><button onclick="D.cat.push({id:'s'+Date.now(),name:'New service',d:'Describe this service.',p:0,days:7,q:1});save();draw()">Add service</button></p>`;
-const ce=(i,k,v)=>{D.cat[i][k]=v;save()};
-draw();
+const adm=o=>`<hr><h4>Admin actions</h4>${o.st=="Quote requested"?`<label>Quote amount before GST (₹)<input id="qa" type="number" min="0"></label><label>Delivery in working days<input id="qdays" type="number" min="1" value="${o.days}"></label><button onclick="sq('${o.id}')">Send quote</button>`:`<label>Status<select onchange="stt('${o.id}',this.value)">${["Quote sent","Awaiting payment","Paid","In progress","Delivered"].map(s=>`<option ${s==o.st?"selected":""}>${s}</option>`).join("")}</select></label>`}${o.due?`<label>Delivery date<input type="date" value="${new Date(o.due).toISOString().slice(0,10)}" onchange="dd('${o.id}',this.value)"></label>`:""}<label>Upload final report (up to 1 MB)<input type="file" onchange="up('${o.id}',this)"></label>`;
+const A=async(id,p,b)=>{if(await API("/orders/"+id+"/"+p,"POST",b))go(V)};
+function sq(id){const a=+$("#qa").value,d=+$("#qdays").value;if(!a||!d)return alert("Enter the quote amount and the delivery days.");A(id,"quote",{amount:a,days:d})}
+const stt=(id,s)=>A(id,"status",{st:s});
+const dd=(id,v)=>A(id,"due",{due:v});
+function up(id,el){const f=el.files[0];if(!f)return;if(f.size>1e6)return alert("This file is larger than 1 MB. Use a smaller file.");const r=new FileReader();r.onload=()=>A(id,"report",{n:f.name,d:r.result});r.readAsDataURL(f)}
+async function dl(id){const r=await API("/orders/"+id+"/report");if(r){const a=document.createElement("a");a.href=r.d;a.download=r.n;a.click()}}
+function msg(id){const t=$("#mt").value.trim();if(t)A(id,"msg",{t})}
+const edV=()=>`<h1>Catalogue and prices</h1><p class="m">Changes apply to new orders. Prices are before GST.</p><div class="card"><div class="ed m"><span>Service</span><span>Price (₹)</span><span>Days</span><span>Sold as</span><span></span></div>${D.cat.map((s,i)=>`<div class="ed"><input value="${e(s.name)}" onchange="ce(${i},'name',this.value)" aria-label="Name"><input type="number" value="${s.p}" onchange="ce(${i},'p',+this.value)" aria-label="Price"><input type="number" value="${s.days}" onchange="ce(${i},'days',+this.value)" aria-label="Days"><select onchange="ce(${i},'q',+this.value)" aria-label="Sold as"><option value="0" ${s.q?"":"selected"}>Fixed price</option><option value="1" ${s.q?"selected":""}>Quote</option></select><button class="s sm" onclick="D.cat.splice(${i},1);save();draw()">Remove</button></div>`).join("")}</div><p><button onclick="D.cat.push({id:'s'+Date.now(),name:'New service',d:'Describe this service.',p:0,days:7,q:1});save();draw()">Add service</button> <button onclick="savecat()">Save catalogue</button></p>`;
+const ce=(i,k,v)=>{D.cat[i][k]=v};
+async function savecat(){if(await API("/catalog","PUT",D.cat))alert("Catalogue saved.")}
+(async()=>{const m=await API("/me","GET",undefined,1);if(m)me=m;go(isA()?"ao":"cat")})();
 </script></body></html>
