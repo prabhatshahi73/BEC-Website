@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BEC Client Portal | Bharat Environment Consultants</title>
+<style>
+:root{
+  --green:#0b3a17; --green-2:#14532a; --gold:#c9a43a; --gold-dark:#a98625;
+  --paper:#f4f6f3; --card:#ffffff; --ink:#18241b; --muted:#56655a; --line:#d9e0d8;
+  --serif:Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;font-size:16px}
+a{color:var(--green-2)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* header */
+.top{background:var(--green);border-bottom:1px solid var(--gold)}
+.top-in{max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.2rem;color:#fff;text-decoration:none}
+.brand span{color:var(--gold)}
+.top nav a{color:#dfe9e0;text-decoration:none;margin-left:20px;font-size:.95rem}
+.top nav a:hover{color:#fff;text-decoration:underline}
+
+/* hero grid */
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:48px;padding:48px 0 40px;align-items:start}
+.hero h1{font-family:var(--serif);font-size:2.3rem;line-height:1.15;margin:0 0 12px;color:var(--green)}
+.hero p.lead{font-size:1.1rem;color:var(--muted);max-width:56ch;margin:0 0 28px}
+
+.svc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.svc{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:6px;padding:14px 16px}
+.svc h3{margin:0 0 4px;font-size:1rem;font-family:var(--serif);color:var(--green)}
+.svc p{margin:0 0 8px;font-size:.9rem;color:var(--muted)}
+.svc .price{font-size:.85rem;font-weight:600;color:var(--gold-dark)}
+
+/* sign-in card */
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:24px;position:sticky;top:20px}
+.card h2{font-family:var(--serif);font-size:1.5rem;margin:0 0 14px;color:var(--green)}
+.tabs{display:flex;gap:8px;margin-bottom:16px}
+.tabs button{font:inherit;font-weight:600;padding:9px 16px;border:1px solid var(--line);background:#fff;border-radius:6px;cursor:pointer;color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--gold);border-color:var(--gold);color:#1b1500}
+label{display:block;font-weight:600;font-size:.92rem;margin:12px 0 4px}
+input{width:100%;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:6px;background:#fff}
+input:focus{border-color:var(--green-2)}
+.pw{position:relative}
+.pw button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;color:var(--green-2);font:inherit;font-size:.85rem;font-weight:600;cursor:pointer;padding:6px 8px}
+.btn{margin-top:18px;font:inherit;font-weight:700;padding:11px 20px;border:0;border-radius:6px;background:var(--gold);color:#1b1500;cursor:pointer}
+.btn:hover{background:var(--gold-dark);color:#fff}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:.88rem}
+.note{margin:16px 0 0;padding:10px 12px;background:#eef3ec;border-radius:6px;font-size:.88rem;color:var(--muted)}
+.msg{margin-top:12px;font-size:.9rem;color:var(--green-2);font-weight:600;min-height:1.2em}
+.admin-link{display:block;margin-top:14px;font-size:.82rem;color:var(--muted);text-align:center}
+[hidden]{display:none!important}
+
+/* trust strip */
+.trust{background:var(--green);color:#e6efe7}
+.trust-in{max-width:1180px;margin:0 auto;padding:22px 24px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.trust strong{display:block;color:var(--gold);font-family:var(--serif);font-size:1.05rem}
+.trust span{font-size:.88rem}
+
+/* sections */
+section.block{padding:52px 0 0}
+section.block h2{font-family:var(--serif);font-size:1.6rem;color:var(--green);margin:0 0 6px}
+section.block > .wrap > p.sub{margin:0 0 22px;color:var(--muted);max-width:62ch}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;padding:0;list-style:none;margin:0}
+.steps li{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:18px;counter-increment:s}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--green);color:#fff;font-weight:700;font-size:.9rem;margin-bottom:8px}
+.steps b{display:block;font-family:var(--serif);color:var(--green)}
+.steps span{font-size:.9rem;color:var(--muted)}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:20px}
+.panel h3{font-family:var(--serif);margin:0 0 10px;color:var(--green);font-size:1.15rem}
+.panel ul{margin:0;padding-left:18px}
+.panel li{margin:6px 0}
+.news li{list-style:none;margin-left:-18px;padding:8px 0;border-bottom:1px solid var(--line)}
+.news li:last-child{border:0}
+.news small{display:block;color:var(--muted)}
+
+.support{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;align-items:start}
+.support dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}
+.support dt{font-weight:600}
+.support dd{margin:0}
+.cb{display:flex;gap:8px;flex-wrap:wrap}
+.cb input{flex:1 1 200px}
+.cb .btn{margin:0}
+
+details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:0 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;padding:14px 0;color:var(--green)}
+details p{margin:0 0 14px;color:var(--muted)}
+
+footer{margin-top:56px;background:var(--green);color:#cfdcd1;font-size:.88rem}
+footer .wrap{padding:22px 24px}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:28px}
+  .card{position:static;order:-1}
+  .trust-in,.steps{grid-template-columns:repeat(2,1fr)}
+  .two,.support{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .svc-grid,.trust-in,.steps{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+  .top nav{display:none}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="/">Bharat Environment <span>Consultants</span></a>
+    <nav aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#resources">Resources</a>
+      <a href="#support">Support</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Order environmental compliance services online</h1>
+    <p class="lead">Choose a service, pay or request a quote, track progress, and download your final report. Orders, messages and delivery all stay on this portal.</p>
+
+    <div id="services" class="svc-grid" aria-label="Popular services">
+      <article class="svc"><h3>CTE / CTO applications</h3><p>Consent to Establish and Operate, including healthcare facilities.</p><span class="price">Quote after scope review</span></article>
+      <article class="svc"><h3>EIA and Environmental Clearance</h3><p>Screening, scoping, EIA reports and EC support.</p><span class="price">Quote after scope review</span></article>
+      <article class="svc"><h3>Hazardous waste</h3><p>Authorisation, annual returns and manifest compliance.</p><span class="price">Quote after scope review</span></article>
+      <article class="svc"><h3>ESG reporting</h3><p>Data collection, disclosures and report drafting.</p><span class="price">Quote after scope review</span></article>
+      <article class="svc"><h3>Air and water monitoring</h3><p>Sampling plans and NABL-compliant test reports.</p><span class="price">Quote after scope review</span></article>
+      <article class="svc"><h3>Consent fee calculation</h3><p>Fee workings for Red, Orange and Green category industries.</p><span class="price">Quote after scope review</span></article>
+    </div>
+  </div>
+
+  <aside class="card" aria-labelledby="signin-h">
+    <h2 id="signin-h">Sign in to your portal</h2>
+    <div class="tabs" role="tablist" aria-label="Portal access">
+      <button role="tab" id="t-login" aria-selected="false" aria-controls="form">Sign in</button>
+      <button role="tab" id="t-create" aria-selected="true" aria-controls="form">Create account</button>
+    </div>
+
+    <form id="form" novalidate>
+      <div data-only="create">
+        <label for="f-name">Your name</label><input id="f-name" autocomplete="name">
+        <label for="f-company">Company</label><input id="f-company" autocomplete="organization">
+        <label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel">
+      </div>
+      <label for="f-email">Email</label><input id="f-email" type="email" autocomplete="email">
+      <label for="f-pass">Password</label>
+      <div class="pw">
+        <input id="f-pass" type="password" autocomplete="current-password">
+        <button type="button" id="toggle-pw" aria-label="Show password">Show</button>
+      </div>
+      <div class="row" data-only="login"><span></span><a href="#" id="forgot">Forgot password?</a></div>
+      <button class="btn" id="submit" type="submit">Create account</button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+    </form>
+
+    <p class="note">All communication and delivery happen only on this portal.</p>
+    <a class="admin-link" href="#" id="admin-link">Administrator sign in</a>
+  </aside>
+</div>
+
+<div class="trust">
+  <div class="trust-in">
+    <div><strong>Since 2005</strong><span>Environmental compliance consulting</span></div>
+    <div><strong>Public sector clients</strong><span>Including major PSUs</span></div>
+    <div><strong>NABL-compliant reporting</strong><span>ULR numbers on test reports</span></div>
+    <div><strong>Gurugram and Korba</strong><span>Head office and regional office</span></div>
+  </div>
+</div>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <h2>How ordering works</h2>
+    <p class="sub">The same flow whether your service has a fixed price or needs a scope review first.</p>
+    <ol class="steps">
+      <li><b>Choose a service</b><span>Add it to your cart, or request a quote for custom scope.</span></li>
+      <li><b>Pay or approve the quote</b><span>Pay online for fixed-price services. For others, pay after you approve our quote.</span></li>
+      <li><b>Track progress</b><span>See status updates and message your consultant on the portal.</span></li>
+      <li><b>Download your report</b><span>The final report is uploaded to your order for download.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="resources">
+  <div class="wrap">
+    <h2>Resources and news</h2>
+    <p class="sub">Free references from our team, and the latest from Bharat Environment News.</p>
+    <div class="two">
+      <div class="panel">
+        <h3>Regulation quick links</h3>
+        <ul>
+          <li><a href="https://cpcb.nic.in" target="_blank" rel="noopener">Central Pollution Control Board (CPCB)</a></li>
+          <li><a href="https://moef.gov.in" target="_blank" rel="noopener">Ministry of Environment, Forest and Climate Change</a></li>
+          <li><a href="https://greentribunal.gov.in" target="_blank" rel="noopener">National Green Tribunal (NGT)</a></li>
+          <li><a href="#">Guidebook: 17 Red Category industries (free download)</a></li>
+          <li><a href="#">CECB CTO checklist for healthcare facilities</a></li>
+        </ul>
+      </div>
+      <div class="panel news">
+        <h3>Latest from Bharat Environment News</h3>
+        <ul id="news-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="support">
+  <div class="wrap">
+    <h2>Need help choosing?</h2>
+    <p class="sub">Tell us what you need and we will call you back.</p>
+    <div class="support">
+      <div class="panel">
+        <dl id="contact-dl"></dl>
+      </div>
+      <div class="panel">
+        <h3>Request a callback</h3>
+        <form class="cb" id="cb-form" novalidate>
+          <label class="sr" for="cb-phone" style="position:absolute;left:-9999px">Phone number</label>
+          <input id="cb-phone" type="tel" placeholder="Your phone number" autocomplete="tel">
+          <button class="btn" type="submit">Request callback</button>
+        </form>
+        <div class="msg" id="cb-msg" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <h2>Frequently asked questions</h2>
+    <p class="sub">&nbsp;</p>
+    <details><summary>How do I pay?</summary><p>Fixed-price services are paid online at checkout. For services that need a scope review, we send a quote on the portal and you pay after approving it.</p></details>
+    <details><summary>How is my work delivered?</summary><p>Your final report is uploaded to your order on the portal. Status updates and all messages with your consultant also stay there, so everything for an order is in one place.</p></details>
+    <details><summary>How long does a quote take?</summary><p>Submit your requirements from the service page. Our team reviews the scope and posts a quote and expected timeline on your order.</p></details>
+    <details><summary>What if I need changes to a report?</summary><p>Message your consultant from the order page. Revisions are handled on the same order and the updated report is uploaded there.</p></details>
+    <details><summary>Can I order for more than one site or unit?</summary><p>Yes. Mention each site in your order notes or request a quote, and we will scope them together.</p></details>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">Bharat Environment Consultants, Gurugram. Regional office: H. No. 100, Village Tiwarta, Post Office Tiwarta, Tehsil Hardibazar, District Korba, Chhattisgarh 495449.</div>
+</footer>
+
+<script>
+/* ===== Edit these ===== */
+var BEC_CONTACT = [
+  ["Phone", "Add phone number"],
+  ["Email", "Add email address"],
+  ["WhatsApp", "Add WhatsApp number"],
+  ["Head office", "Gurugram, Haryana"],
+  ["Regional office", "Village Tiwarta, Hardibazar, Korba, Chhattisgarh 495449"]
+];
+var BEC_NEWS = [
+  { title: "Replace with a Bharat Environment News headline", date: "Date", url: "/" },
+  { title: "Replace with a Bharat Environment News headline", date: "Date", url: "/" },
+  { title: "Replace with a Bharat Environment News headline", date: "Date", url: "/" }
+];
+/* Connect your existing portal logic here. Return true if you handled the action. */
+window.BEC_PORTAL = window.BEC_PORTAL || {
+  onSubmit: function(mode, data){ return false; },   // mode: "login" | "create" | "admin" | "forgot"
+  onCallback: function(phone){ return false; }
+};
+/* ===================== */
+
+var mode = "create";
+var $ = function(id){ return document.getElementById(id); };
+var msg = $("msg");
+
+function setMode(m){
+  mode = m;
+  $("t-login").setAttribute("aria-selected", m === "login" || m === "admin");
+  $("t-create").setAttribute("aria-selected", m === "create");
+  document.querySelectorAll("[data-only]").forEach(function(el){
+    el.hidden = (el.dataset.only === "create" && m !== "create") ||
+                (el.dataset.only === "login" && m === "create");
+  });
+  $("signin-h").textContent = m === "admin" ? "Administrator sign in" : "Sign in to your portal";
+  $("submit").textContent = m === "create" ? "Create account" : (m === "admin" ? "Admin sign in" : "Sign in");
+  $("admin-link").textContent = m === "admin" ? "Back to client sign in" : "Administrator sign in";
+  $("f-pass").autocomplete = m === "create" ? "new-password" : "current-password";
+  msg.textContent = "";
+}
+$("t-login").onclick = function(){ setMode("login"); };
+$("t-create").onclick = function(){ setMode("create"); };
+$("admin-link").onclick = function(e){ e.preventDefault(); setMode(mode === "admin" ? "login" : "admin"); };
+
+$("toggle-pw").onclick = function(){
+  var p = $("f-pass"), show = p.type === "password";
+  p.type = show ? "text" : "password";
+  this.textContent = show ? "Hide" : "Show";
+  this.setAttribute("aria-label", show ? "Hide password" : "Show password");
+};
+
+function data(){
+  return { name:$("f-name").value.trim(), company:$("f-company").value.trim(), phone:$("f-phone").value.trim(),
+           email:$("f-email").value.trim(), password:$("f-pass").value };
+}
+$("form").addEventListener("submit", function(e){
+  e.preventDefault();
+  var d = data();
+  if(!d.email || !d.password){ msg.textContent = "Enter your email and password."; return; }
+  if(mode === "create" && (!d.name || !d.phone)){ msg.textContent = "Enter your name and phone number."; return; }
+  if(!BEC_PORTAL.onSubmit(mode, d)){
+    msg.textContent = "Form is ready. Connect it to your portal logic through BEC_PORTAL.onSubmit.";
+  }
+});
+$("forgot").onclick = function(e){
+  e.preventDefault();
+  var email = $("f-email").value.trim();
+  if(!email){ msg.textContent = "Enter your email above, then select Forgot password."; return; }
+  if(!BEC_PORTAL.onSubmit("forgot", { email: email })){
+    msg.textContent = "Password reset is not connected yet.";
+  }
+};
+
+$("cb-form").addEventListener("submit", function(e){
+  e.preventDefault();
+  var p = $("cb-phone").value.trim(), out = $("cb-msg");
+  if(!p){ out.textContent = "Enter your phone number."; return; }
+  out.textContent = BEC_PORTAL.onCallback(p) ? "We will call you back." : "Callback is not connected yet.";
+});
+
+/* render news and contact */
+var nl = $("news-list");
+BEC_NEWS.forEach(function(n){
+  var li = document.createElement("li"), a = document.createElement("a"), s = document.createElement("small");
+  a.href = n.url; a.textContent = n.title; s.textContent = n.date;
+  li.appendChild(a); li.appendChild(s); nl.appendChild(li);
+});
+var dl = $("contact-dl");
+BEC_CONTACT.forEach(function(r){
+  var dt = document.createElement("dt"), dd = document.createElement("dd");
+  dt.textContent = r[0]; dd.textContent = r[1]; dl.appendChild(dt); dl.appendChild(dd);
+});
+
+setMode("create");
+</script>
+</body>
+</html>
