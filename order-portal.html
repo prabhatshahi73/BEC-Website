@@ -5,11 +5,12 @@
 <style>
 :root{--g:#0b3b17;--g2:#14532d;--au:#c9a63f;--bg:#f3f6f2;--c:#fff;--b:#d5e0d7;--t:#1a2a1f;--m:#5b6b60;--hd:#0b3b17}
 @media(prefers-color-scheme:dark){:root{--bg:#0e1511;--c:#16201a;--b:#27372c;--t:#e6eee8;--m:#9db0a3;--hd:#e6eee8}}
-*{box-sizing:border-box}body{margin:0;font:15px/1.55 system-ui,sans-serif;background:var(--bg);color:var(--t)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font:15px/1.55 system-ui,sans-serif;background:var(--bg);color:var(--t)}
 h1,h2,h3,h4{font-family:Georgia,"Times New Roman",serif;color:var(--hd);margin:.4em 0}
 header{background:var(--g);color:#fff;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding:12px 5vw;position:sticky;top:0;z-index:5;border-bottom:2px solid var(--au)}
 header b{font:700 1.15rem Georgia,serif}header b span{color:var(--au)}#who{font-size:.85rem;opacity:.85}
 nav{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto}
+nav a{color:#dfe9e0;text-decoration:none;padding:6px 10px;font-size:.9rem}nav a:hover{color:#fff;text-decoration:underline}
 button,.btn{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:9px 16px;background:var(--au);color:#1b1500;font-weight:700;text-decoration:none;display:inline-block}
 nav button{background:transparent;color:#fff;border:1px solid rgba(201,166,63,.55)}nav button.on{background:var(--au);color:#1b1500}
 button.s{background:transparent;border:1px solid var(--au);color:var(--t)}button.sm{padding:4px 10px}
@@ -30,12 +31,52 @@ input,select,textarea{width:100%;font:inherit;padding:9px;margin-top:4px;font-we
 .ed{display:grid;grid-template-columns:2fr 1fr 70px 1fr auto;gap:6px;margin-bottom:8px;align-items:center}.ed input,.ed select{margin:0}
 footer{text-align:center;color:var(--m);font-size:.8rem;padding:0 5vw 30px}
 @media(max-width:700px){.ed{grid-template-columns:1fr 1fr}.tl{font-size:.75rem}}
+
+/* signed-out landing layout */
+main.land{max-width:none;margin:0;padding:0 0 40px}
+.l-wrap{max-width:1180px;margin:0 auto;padding:0 5vw}
+.l-hero{max-width:1180px;margin:0 auto;padding:44px 5vw 36px;display:grid;grid-template-columns:1.25fr 1fr;gap:44px;align-items:start}
+.l-hero h1{font-size:2.2rem;line-height:1.15;margin:0 0 10px}
+.l-lead{font-size:1.05rem;max-width:56ch;margin:0 0 24px}
+.l-svc{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.l-svc .card{border-left:4px solid var(--au);padding:14px 16px}
+.l-svc h3{margin:0 0 4px;font-size:1rem}.l-svc p{margin:0 0 8px;font-size:.9rem}
+.l-card{position:sticky;top:76px;padding:22px}
+.l-pw{position:relative;display:block}
+.l-eye{position:absolute;right:4px;top:50%;transform:translateY(-45%);margin-top:2px;background:none;color:var(--g2);padding:6px 8px;font-size:.85rem}
+@media(prefers-color-scheme:dark){.l-eye{color:var(--au)}}
+.l-note{margin:16px 0 0;padding:10px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--m)}
+.l-admin{display:block;margin-top:14px;font-size:.82rem;color:var(--m);text-align:center}
+.l-trust{background:var(--g);color:#e6efe7}
+.l-trust-in{max-width:1180px;margin:0 auto;padding:22px 5vw;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.l-trust strong{display:block;color:var(--au);font-family:Georgia,serif;font-size:1.05rem}.l-trust span{font-size:.88rem}
+.l-sec{padding-top:48px;scroll-margin-top:70px}
+.l-sec h2{font-size:1.55rem;margin:0 0 6px}.l-sec .sub{margin:0 0 20px;max-width:62ch}
+.l-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;counter-reset:s;padding:0;list-style:none;margin:0}
+.l-steps li{background:var(--c);border:1px solid var(--b);border-radius:8px;padding:18px;counter-increment:s}
+.l-steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--g2);color:#fff;font-weight:700;font-size:.9rem;margin-bottom:8px}
+.l-steps b{display:block;font-family:Georgia,serif;color:var(--hd)}.l-steps span{font-size:.9rem;color:var(--m)}
+.l-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;align-items:start}
+.l-two h3{margin-top:0}.l-two ul{margin:0;padding-left:18px}.l-two li{margin:6px 0}
+.l-dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 16px}.l-dl dt{font-weight:600}.l-dl dd{margin:0}
+details{background:var(--c);border:1px solid var(--b);border-radius:8px;padding:0 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600;padding:14px 0;color:var(--hd)}details p{margin:0 0 14px;color:var(--m)}
+@media(max-width:900px){.l-hero{grid-template-columns:1fr;gap:26px;padding-top:26px}.l-card{position:static;order:-1}.l-trust-in,.l-steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.l-svc,.l-trust-in,.l-steps{grid-template-columns:1fr}.l-hero h1{font-size:1.75rem}nav a{display:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style></head><body>
 <header><b>Bharat Environment <span>Consultants</span></b><span id="who"></span><nav id="nav"></nav></header>
 <main id="app"></main>
 <footer>Your orders, messages and reports are stored securely on the BEC server. Prices include 18% GST at checkout.</footer>
 <script>
 const CFG={rzpKey:"",createUrl:"/api/create-order",verifyUrl:"/api/verify-payment",gst:.18},K="bec_portal_v1";
+/* Sign-in page content. Add details here; empty items are hidden. */
+const SITE={
+ contact:[["Phone",""],["Email",""],["WhatsApp",""]],
+ offices:[["Head office","Gurugram, Haryana"],["Regional office","H. No. 100, Village Tiwarta, Post Office Tiwarta, Tehsil Hardibazar, District Korba, Chhattisgarh 495449"]],
+ news:[],   /* e.g. [{t:"Headline",u:"https://...",d:"23 Oct 2026"}] */
+ links:[]   /* extra resource links, e.g. [{t:"Guidebook: 17 Red Category industries",u:"https://..."}] */
+};
 let D={cat:[],orders:[]},me=null,V="cat",cart=[],am="cl";const save=()=>{};
 const API=async(p,m="GET",b,q)=>{try{const r=await fetch("/papi"+p,{method:m,headers:b!==undefined?{"content-type":"application/json"}:{},body:b!==undefined?JSON.stringify(b):undefined,credentials:"same-origin"}),j=await r.json().catch(()=>({}));if(!r.ok){if(!q)alert(j.error||"Something went wrong. Try again.");return null}return j}catch(_){if(!q)alert("Cannot reach the server. Check your connection and try again.");return null}};
 const $=s=>document.querySelector(s),e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -46,15 +87,40 @@ const wd=(t,n)=>{let d=new Date(t);while(n>0){d.setDate(d.getDate()+1);if(d.getD
 async function go(v){V=v;const[k,a]=v.split(":");if(me){const o=await API("/orders");if(o)D.orders=o;if(k=="o"){const x=await API("/orders/"+a);if(x){const i=D.orders.findIndex(y=>y.id==a);i<0?D.orders.push(x):D.orders[i]=x}}}if(!D.cat.length||k=="ac"||k=="cat"){const c=await API("/catalog");if(c)D.cat=c}draw()}
 function draw(){
  const tabs=isA()?[["ao","Orders"],["ac","Catalogue"]]:[["cat","Services"],["cart","Cart ("+cart.length+")"],["ord","My orders"]];
- $("#nav").innerHTML=me?tabs.map(([v,t])=>`<button class="${V.split(":")[0]==v?"on":""}" onclick="go('${v}')">${t}</button>`).join("")+`<button onclick="out()">Sign out</button>`:"";
+ $("#nav").innerHTML=me?tabs.map(([v,t])=>`<button class="${V.split(":")[0]==v?"on":""}" onclick="go('${v}')">${t}</button>`).join("")+`<button onclick="out()">Sign out</button>`:`<a href="#services">Services</a><a href="#how">How it works</a><a href="#resources">Resources</a><a href="#support">Support</a><a href="#faq">FAQ</a>`;
  $("#who").textContent=me?me.name+(isA()?" (admin)":""):"";
+ $("#app").className=me?"":"land";
  const [k,a]=V.split(":");
  $("#app").innerHTML=!me?authV():({cat:catV,cart:cartV,ord:listV,ao:listV,ac:edV,q:qV,o:oV}[k]||catV)(a);
 }
-const authV=()=>`<div class="card narrow"><h2>Sign in to your portal</h2><div class="tabs"><button class="${am=="cl"?"on":""}" onclick="am='cl';draw()">Client login</button><button class="${am=="reg"?"on":""}" onclick="am='reg';draw()">Create account</button><button class="${am=="ad"?"on":""}" onclick="am='ad';draw()">Admin login</button></div>
-${am=="reg"?`<label>Your name<input id="n"></label><label>Company<input id="c"></label><label>Phone<input id="ph" type="tel"></label>`:""}
-<label>Email<input id="em" type="email"></label><label>Password<input id="pw" type="password"></label>
-<button onclick="${am=="reg"?"reg()":"login()"}">${am=="reg"?"Create account":"Sign in"}</button></div>`;
+
+/* ---------- signed-out landing page ---------- */
+const svcL=()=>D.cat.length?`<div class="l-svc">${D.cat.map(s=>`<article class="card"><h3>${e(s.name)}</h3><p class="m">${e(s.d)}</p><b>${s.q?"Quote after scope review":inr(s.p)+" + GST"}</b><br><span class="m">About ${s.days} working days</span></article>`).join("")}</div>`:"";
+const formL=()=>`<h2>${am=="ad"?"Administrator sign in":"Sign in to your portal"}</h2><div class="tabs"><button class="${am!="reg"?"on":""}" onclick="am='cl';draw()">Sign in</button><button class="${am=="reg"?"on":""}" onclick="am='reg';draw()">Create account</button></div>
+${am=="reg"?`<label>Your name<input id="n" autocomplete="name"></label><label>Company<input id="c" autocomplete="organization"></label><label>Phone<input id="ph" type="tel" autocomplete="tel"></label>`:""}
+<label>Email<input id="em" type="email" autocomplete="email"></label><label>Password<span class="l-pw"><input id="pw" type="password" autocomplete="${am=="reg"?"new-password":"current-password"}"><button type="button" class="l-eye" onclick="pwt(this)" aria-label="Show password">Show</button></span></label>
+<button onclick="${am=="reg"?"reg()":"login()"}">${am=="reg"?"Create account":(am=="ad"?"Admin sign in":"Sign in")}</button>
+<p class="l-note">All communication and delivery happen only on this portal.</p>
+<a href="#" class="l-admin" onclick="am=am=='ad'?'cl':'ad';draw();return false">${am=="ad"?"Back to client sign in":"Administrator sign in"}</a>`;
+function pwt(b){const p=$("#pw"),h=p.type=="password";p.type=h?"text":"password";b.textContent=h?"Hide":"Show";b.setAttribute("aria-label",h?"Hide password":"Show password")}
+const resL=()=>{const L=[["Central Pollution Control Board (CPCB)","https://cpcb.nic.in"],["Ministry of Environment, Forest and Climate Change","https://moef.gov.in"],["National Green Tribunal (NGT)","https://greentribunal.gov.in"]].concat(SITE.links.map(x=>[x.t,x.u]));
+ return `<div class="card"><h3>Regulation quick links</h3><ul>${L.map(x=>`<li><a href="${e(x[1])}" target="_blank" rel="noopener">${e(x[0])}</a></li>`).join("")}</ul></div>`+(SITE.news.length?`<div class="card"><h3>Latest from Bharat Environment News</h3><ul style="list-style:none;padding:0">${SITE.news.map(n=>`<li><a href="${e(n.u)}">${e(n.t)}</a>${n.d?`<br><span class="m">${e(n.d)}</span>`:""}</li>`).join("")}</ul></div>`:"")};
+const supL=()=>{const R=SITE.contact.filter(x=>x[1]).concat(SITE.offices.filter(x=>x[1]));return `<div class="card"><h3>Contact</h3><dl class="l-dl">${R.map(x=>`<dt>${e(x[0])}</dt><dd>${e(x[1])}</dd>`).join("")}</dl></div><div class="card"><h3>Not sure which service you need?</h3><p class="m">Create an account and request a quote on any service. Describe your site or project and we will reply on the portal with a price and a delivery date.</p><a class="btn" href="#signin" onclick="am='reg';draw()">Create account</a></div>`};
+const authV=()=>`<div class="l-hero"><div id="services" style="scroll-margin-top:80px"><h1>Order environmental compliance services online</h1><p class="m l-lead">Choose a service, pay or request a quote, track progress, and download your final report. Orders, messages and delivery all stay on this portal.</p>${svcL()}</div><aside class="card l-card" id="signin">${formL()}</aside></div>
+<div class="l-trust"><div class="l-trust-in"><div><strong>Since 2005</strong><span>Environmental compliance consulting</span></div><div><strong>Public sector clients</strong><span>Including major PSUs</span></div><div><strong>NABL ULR compliance</strong><span>Test reports with ULR numbers</span></div><div><strong>Gurugram and Korba</strong><span>Head office and regional office</span></div></div></div>
+<section class="l-sec" id="how"><div class="l-wrap"><h2>How ordering works</h2><p class="sub m">The same flow whether your service has a fixed price or needs a scope review first.</p><ol class="l-steps"><li><b>Choose a service</b><span>Add it to your cart, or request a quote for custom scope.</span></li><li><b>Pay or approve the quote</b><span>Pay for fixed-price services. For others, pay after you approve our quote.</span></li><li><b>Track progress</b><span>See status updates and message your consultant on the portal.</span></li><li><b>Download your report</b><span>The final report is uploaded to your order for download.</span></li></ol></div></section>
+<section class="l-sec" id="resources"><div class="l-wrap"><h2>Resources</h2><p class="sub m">Official regulator websites and references from our team.</p><div class="l-two">${resL()}</div></div></section>
+<section class="l-sec" id="support"><div class="l-wrap"><h2>Need help choosing?</h2><p class="sub m">Reach us or start with a quote request.</p><div class="l-two">${supL()}</div></div></section>
+<section class="l-sec" id="faq"><div class="l-wrap"><h2>Frequently asked questions</h2><p class="sub"></p>
+<details><summary>How do I pay?</summary><p>Online payment is being switched on. For now, pay by bank transfer or UPI and send your payment reference in Messages on your order. BEC then marks the order as paid and sets the delivery date.</p></details>
+<details><summary>How is my work delivered?</summary><p>Your final report is uploaded to your order on the portal. Status updates and all messages with your consultant also stay there.</p></details>
+<details><summary>How does a quote work?</summary><p>For services sold by quote, describe your project and send the request. We review the scope and reply on your order with a price and a delivery date.</p></details>
+<details><summary>Can I order for more than one site or unit?</summary><p>Yes. Describe each site in your quote request and we will scope them together.</p></details>
+<details><summary>What if I have a question during the work?</summary><p>Open your order and send a message. Your consultant replies there.</p></details>
+</div></section>`;
+document.addEventListener("keydown",ev=>{if(ev.key=="Enter"&&!me&&ev.target.tagName=="INPUT"){am=="reg"?reg():login()}});
+
+/* ---------- original portal logic (unchanged) ---------- */
 async function login(){const u=await API("/login","POST",{email:$("#em").value.trim(),pw:$("#pw").value,admin:am=="ad"});if(u)start(u)}
 function start(u){me=u;go(isA()?"ao":"cat")}
 async function reg(){const n=$("#n").value.trim(),pw=$("#pw").value;if(!n||!$("#em").value.trim()||pw.length<8)return alert("Enter your name, your email and a password of at least 8 characters.");const u=await API("/register","POST",{name:n,company:$("#c").value,phone:$("#ph").value,email:$("#em").value.trim(),pw});if(u)start(u)}
