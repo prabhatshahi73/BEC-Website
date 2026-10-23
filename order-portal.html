@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>BEC Client Portal | Order environmental services online</title>
-<!-- BEC ORDER PORTAL, server version. Needs functions/papi/[[path]].js and a D1 database bound as PDB. -->
+<!-- BEC ORDER PORTAL, server version. Needs functions/papi/[[path]].js and a D1 database bound as PDB. Callback, forgot-password and reset routes: see papi-additions.js. -->
 <style>
 :root{--g:#0b3b17;--g2:#14532d;--au:#c9a63f;--bg:#f3f6f2;--c:#fff;--b:#d5e0d7;--t:#1a2a1f;--m:#5b6b60;--hd:#0b3b17}
 @media(prefers-color-scheme:dark){:root{--bg:#0e1511;--c:#16201a;--b:#27372c;--t:#e6eee8;--m:#9db0a3;--hd:#e6eee8}}
@@ -45,6 +45,7 @@ main.land{max-width:none;margin:0;padding:0 0 40px}
 .l-pw{position:relative;display:block}
 .l-eye{position:absolute;right:4px;top:50%;transform:translateY(-45%);margin-top:2px;background:none;color:var(--g2);padding:6px 8px;font-size:.85rem}
 @media(prefers-color-scheme:dark){.l-eye{color:var(--au)}}
+.cb-msg{min-height:1.3em;margin:10px 0 0;font-size:.9rem}
 .l-note{margin:16px 0 0;padding:10px 12px;background:var(--bg);border-radius:6px;font-size:.88rem;color:var(--m)}
 .l-admin{display:block;margin-top:14px;font-size:.82rem;color:var(--m);text-align:center}
 .l-trust{background:var(--g);color:#e6efe7}
@@ -72,45 +73,58 @@ summary{cursor:pointer;font-weight:600;padding:14px 0;color:var(--hd)}details p{
 const CFG={rzpKey:"",createUrl:"/api/create-order",verifyUrl:"/api/verify-payment",gst:.18},K="bec_portal_v1";
 /* Sign-in page content. Add details here; empty items are hidden. */
 const SITE={
- contact:[["Phone",""],["Email",""],["WhatsApp",""]],
+ contact:[["Phone","+91 99589 17292"],["Email","bharatenviroconsultants@zohomail.in"],["WhatsApp","+91 99589 17292"]],  /* Phone and WhatsApp: include country code, e.g. "+91 98765 43210" */
  offices:[["Head office","Gurugram, Haryana"],["Regional office","H. No. 100, Village Tiwarta, Post Office Tiwarta, Tehsil Hardibazar, District Korba, Chhattisgarh 495449"]],
- news:[],   /* e.g. [{t:"Headline",u:"https://...",d:"23 Oct 2026"}] */
- links:[]   /* extra resource links, e.g. [{t:"Guidebook: 17 Red Category industries",u:"https://..."}] */
+ news:[
+  {t:"Ganga vs Yamuna: What India's River-Cleaning Data Really Tells Us",u:"https://bharatenvironmentconsultants.com/ganga-vs-yamuna-comparison",d:"9 Aug 2026"},
+  {t:"Climate Change and the Common Indian",u:"https://bharatenvironmentconsultants.com/climate-change-impact-india",d:"8 Aug 2026"},
+  {t:"India's Nutrition Reckoning: What the Data Says About Feeding a Billion Children",u:"https://bharatenvironmentconsultants.com/child-malnutrition-india",d:"8 Aug 2026"},
+  {t:"Ground Zero: Why India's Biodiversity Is Losing the Ground Beneath It",u:"https://bharatenvironmentconsultants.com/biodiversity-crisis-india"}
+ ],
+ links:[],  /* extra resource links, e.g. [{t:"CPCB Red Category list",u:"https://..."}] */
+ downloads:[["Guidebook: 17 Red Category industries",""],["CECB application checklist",""]]  /* put the file URL as the second item; entries without a URL stay hidden */
 };
-let D={cat:[],orders:[]},me=null,V="cat",cart=[],am="cl";const save=()=>{};
+let D={cat:[],orders:[]},CB=[],me=null,V="cat",cart=[],am="cl";const save=()=>{};const RT=new URLSearchParams(location.search).get("reset")||"";if(RT)am="rs";
 const API=async(p,m="GET",b,q)=>{try{const r=await fetch("/papi"+p,{method:m,headers:b!==undefined?{"content-type":"application/json"}:{},body:b!==undefined?JSON.stringify(b):undefined,credentials:"same-origin"}),j=await r.json().catch(()=>({}));if(!r.ok){if(!q)alert(j.error||"Something went wrong. Try again.");return null}return j}catch(_){if(!q)alert("Cannot reach the server. Check your connection and try again.");return null}};
 const $=s=>document.querySelector(s),e=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const inr=n=>"₹"+Math.round(n).toLocaleString("en-IN"),fd=t=>new Date(t).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
 const O=id=>D.orders.find(o=>o.id==id),S=id=>D.cat.find(s=>s.id==id),isA=()=>me&&me.role=="admin";
 const TL=["Ordered","Paid","In progress","Delivered"],ti=s=>({Paid:1,"In progress":2,Delivered:3}[s]||0);
 const wd=(t,n)=>{let d=new Date(t);while(n>0){d.setDate(d.getDate()+1);if(d.getDay()%6)n--}return d.getTime()};
-async function go(v){V=v;const[k,a]=v.split(":");if(me){const o=await API("/orders");if(o)D.orders=o;if(k=="o"){const x=await API("/orders/"+a);if(x){const i=D.orders.findIndex(y=>y.id==a);i<0?D.orders.push(x):D.orders[i]=x}}}if(!D.cat.length||k=="ac"||k=="cat"){const c=await API("/catalog");if(c)D.cat=c}draw()}
+async function go(v){V=v;const[k,a]=v.split(":");if(me){const o=await API("/orders");if(o)D.orders=o;if(k=="o"){const x=await API("/orders/"+a);if(x){const i=D.orders.findIndex(y=>y.id==a);i<0?D.orders.push(x):D.orders[i]=x}}}if(me&&k=="acb"){const c=await API("/callbacks");if(c)CB=c}if(!D.cat.length||k=="ac"||k=="cat"){const c=await API("/catalog");if(c)D.cat=c}draw()}
 function draw(){
- const tabs=isA()?[["ao","Orders"],["ac","Catalogue"]]:[["cat","Services"],["cart","Cart ("+cart.length+")"],["ord","My orders"]];
+ const tabs=isA()?[["ao","Orders"],["ac","Catalogue"],["acb","Callbacks"]]:[["cat","Services"],["cart","Cart ("+cart.length+")"],["ord","My orders"]];
  $("#nav").innerHTML=me?tabs.map(([v,t])=>`<button class="${V.split(":")[0]==v?"on":""}" onclick="go('${v}')">${t}</button>`).join("")+`<button onclick="out()">Sign out</button>`:`<a href="#services">Services</a><a href="#how">How it works</a><a href="#resources">Resources</a><a href="#support">Support</a><a href="#faq">FAQ</a>`;
  $("#who").textContent=me?me.name+(isA()?" (admin)":""):"";
  $("#app").className=me?"":"land";
  const [k,a]=V.split(":");
- $("#app").innerHTML=!me?authV():({cat:catV,cart:cartV,ord:listV,ao:listV,ac:edV,q:qV,o:oV}[k]||catV)(a);
+ $("#app").innerHTML=!me?authV():({cat:catV,cart:cartV,ord:listV,ao:listV,ac:edV,acb:cbV,q:qV,o:oV}[k]||catV)(a);
 }
 
 /* ---------- signed-out landing page ---------- */
 const svcL=()=>D.cat.length?`<div class="l-svc">${D.cat.map(s=>`<article class="card"><h3>${e(s.name)}</h3><p class="m">${e(s.d)}</p><b>${s.q?"Quote after scope review":inr(s.p)+" + GST"}</b><br><span class="m">About ${s.days} working days</span></article>`).join("")}</div>`:"";
-const formL=()=>`<h2>${am=="ad"?"Administrator sign in":"Sign in to your portal"}</h2><div class="tabs"><button class="${am!="reg"?"on":""}" onclick="am='cl';draw()">Sign in</button><button class="${am=="reg"?"on":""}" onclick="am='reg';draw()">Create account</button></div>
+const formMain=()=>`<h2>${am=="ad"?"Administrator sign in":"Sign in to your portal"}</h2><div class="tabs"><button class="${am!="reg"?"on":""}" onclick="am='cl';draw()">Sign in</button><button class="${am=="reg"?"on":""}" onclick="am='reg';draw()">Create account</button></div>
 ${am=="reg"?`<label>Your name<input id="n" autocomplete="name"></label><label>Company<input id="c" autocomplete="organization"></label><label>Phone<input id="ph" type="tel" autocomplete="tel"></label>`:""}
 <label>Email<input id="em" type="email" autocomplete="email"></label><label>Password<span class="l-pw"><input id="pw" type="password" autocomplete="${am=="reg"?"new-password":"current-password"}"><button type="button" class="l-eye" onclick="pwt(this)" aria-label="Show password">Show</button></span></label>
 <button onclick="${am=="reg"?"reg()":"login()"}">${am=="reg"?"Create account":(am=="ad"?"Admin sign in":"Sign in")}</button>
+${am=="cl"?`<a href="#" class="l-admin" onclick="am='fp';draw();return false">Forgot password?</a>`:""}
 <p class="l-note">All communication and delivery happen only on this portal.</p>
 <a href="#" class="l-admin" onclick="am=am=='ad'?'cl':'ad';draw();return false">${am=="ad"?"Back to client sign in":"Administrator sign in"}</a>`;
 function pwt(b){const p=$("#pw"),h=p.type=="password";p.type=h?"text":"password";b.textContent=h?"Hide":"Show";b.setAttribute("aria-label",h?"Hide password":"Show password")}
+const formL=()=>am=="fp"?fpV():am=="rs"?rsV():formMain();
+const fpV=()=>`<h2>Reset your password</h2><p class="m">Enter your account email. If it matches an account, we will send you a reset link.</p><label>Email<input id="em" type="email" autocomplete="email"></label><button onclick="fp()">Send reset link</button><p id="fps" class="cb-msg m" role="status"></p><a href="#" class="l-admin" onclick="am='cl';draw();return false">Back to sign in</a>`;
+async function fp(){const m=$("#em").value.trim();if(!m){$("#fps").textContent="Enter your email.";return}const r=await API("/forgot","POST",{email:m});if(r)$("#fps").textContent="If that email has an account, a reset link is on its way. The link works for 1 hour."}
+const rsV=()=>`<h2>Choose a new password</h2><label>New password (at least 8 characters)<span class="l-pw"><input id="pw" type="password" autocomplete="new-password"><button type="button" class="l-eye" onclick="pwt(this)" aria-label="Show password">Show</button></span></label><button onclick="rs()">Save new password</button><p id="rss" class="cb-msg m" role="status"></p><a href="#" class="l-admin" onclick="history.replaceState(null,'',location.pathname);am='cl';draw();return false">Back to sign in</a>`;
+async function rs(){const pw=$("#pw").value;if(pw.length<8){$("#rss").textContent="Use at least 8 characters.";return}const r=await API("/reset","POST",{token:RT,pw});if(r){history.replaceState(null,"",location.pathname);am="cl";draw();alert("Password changed. Sign in with your new password.")}}
 const resL=()=>{const L=[["Central Pollution Control Board (CPCB)","https://cpcb.nic.in"],["Ministry of Environment, Forest and Climate Change","https://moef.gov.in"],["National Green Tribunal (NGT)","https://greentribunal.gov.in"]].concat(SITE.links.map(x=>[x.t,x.u]));
- return `<div class="card"><h3>Regulation quick links</h3><ul>${L.map(x=>`<li><a href="${e(x[1])}" target="_blank" rel="noopener">${e(x[0])}</a></li>`).join("")}</ul></div>`+(SITE.news.length?`<div class="card"><h3>Latest from Bharat Environment News</h3><ul style="list-style:none;padding:0">${SITE.news.map(n=>`<li><a href="${e(n.u)}">${e(n.t)}</a>${n.d?`<br><span class="m">${e(n.d)}</span>`:""}</li>`).join("")}</ul></div>`:"")};
-const supL=()=>{const R=SITE.contact.filter(x=>x[1]).concat(SITE.offices.filter(x=>x[1]));return `<div class="card"><h3>Contact</h3><dl class="l-dl">${R.map(x=>`<dt>${e(x[0])}</dt><dd>${e(x[1])}</dd>`).join("")}</dl></div><div class="card"><h3>Not sure which service you need?</h3><p class="m">Create an account and request a quote on any service. Describe your site or project and we will reply on the portal with a price and a delivery date.</p><a class="btn" href="#signin" onclick="am='reg';draw()">Create account</a></div>`};
+ return `<div class="card"><h3>Regulation quick links</h3><ul>${L.map(x=>`<li><a href="${e(x[1])}" target="_blank" rel="noopener">${e(x[0])}</a></li>`).join("")}</ul></div>`+(SITE.downloads.some(x=>x[1])?`<div class="card"><h3>Downloads</h3><ul>${SITE.downloads.filter(x=>x[1]).map(x=>`<li><a href="${e(x[1])}" target="_blank" rel="noopener">${e(x[0])}</a></li>`).join("")}</ul></div>`:"")+(SITE.news.length?`<div class="card"><h3>Latest from Bharat Environment News</h3><ul style="list-style:none;padding:0">${SITE.news.map(n=>`<li><a href="${e(n.u)}" target="_blank" rel="noopener">${e(n.t)}</a>${n.d?`<br><span class="m">${e(n.d)}</span>`:""}</li>`).join("")}</ul></div>`:"")};
+const cl=x=>{const v=x[1],d=v.replace(/[^\d+]/g,"");return x[0]=="Phone"?`<a href="tel:${e(d)}">${e(v)}</a>`:x[0]=="Email"?`<a href="mailto:${e(v)}">${e(v)}</a>`:x[0]=="WhatsApp"?`<a href="https://wa.me/${e(d.replace(/\D/g,""))}" target="_blank" rel="noopener">${e(v)}</a>`:e(v)};
+const supL=()=>{const R=SITE.contact.filter(x=>x[1]).concat(SITE.offices.filter(x=>x[1]));return `<div class="card"><h3>Contact</h3><dl class="l-dl">${R.map(x=>`<dt>${e(x[0])}</dt><dd>${cl(x)}</dd>`).join("")}</dl></div><div class="card" id="callback"><h3>Request a callback</h3><p class="m">Leave your number and a consultant will call you back.</p><label>Your name<input id="cbn" autocomplete="name"></label><label>Phone<input id="cbp" type="tel" autocomplete="tel"></label><label>Best time to call<select id="cbt"><option>Morning</option><option>Afternoon</option><option>Evening</option></select></label><label>What do you need help with? (optional)<textarea id="cbm" rows="3"></textarea></label><button onclick="cb()">Request callback</button><p id="cbs" class="cb-msg m" role="status"></p></div><div class="card"><h3>Not sure which service you need?</h3><p class="m">Create an account and request a quote on any service. Describe your site or project and we will reply on the portal with a price and a delivery date.</p><a class="btn" href="#signin" onclick="am='reg';draw()">Create account</a></div>`};
 const authV=()=>`<div class="l-hero"><div id="services" style="scroll-margin-top:80px"><h1>Order environmental compliance services online</h1><p class="m l-lead">Choose a service, pay or request a quote, track progress, and download your final report. Orders, messages and delivery all stay on this portal.</p>${svcL()}</div><aside class="card l-card" id="signin">${formL()}</aside></div>
 <div class="l-trust"><div class="l-trust-in"><div><strong>Since 2005</strong><span>Environmental compliance consulting</span></div><div><strong>Public sector clients</strong><span>Including major PSUs</span></div><div><strong>NABL ULR compliance</strong><span>Test reports with ULR numbers</span></div><div><strong>Gurugram and Korba</strong><span>Head office and regional office</span></div></div></div>
 <section class="l-sec" id="how"><div class="l-wrap"><h2>How ordering works</h2><p class="sub m">The same flow whether your service has a fixed price or needs a scope review first.</p><ol class="l-steps"><li><b>Choose a service</b><span>Add it to your cart, or request a quote for custom scope.</span></li><li><b>Pay or approve the quote</b><span>Pay for fixed-price services. For others, pay after you approve our quote.</span></li><li><b>Track progress</b><span>See status updates and message your consultant on the portal.</span></li><li><b>Download your report</b><span>The final report is uploaded to your order for download.</span></li></ol></div></section>
 <section class="l-sec" id="resources"><div class="l-wrap"><h2>Resources</h2><p class="sub m">Official regulator websites and references from our team.</p><div class="l-two">${resL()}</div></div></section>
-<section class="l-sec" id="support"><div class="l-wrap"><h2>Need help choosing?</h2><p class="sub m">Reach us or start with a quote request.</p><div class="l-two">${supL()}</div></div></section>
+<section class="l-sec" id="support"><div class="l-wrap"><h2>Need help choosing?</h2><p class="sub m">Call us, request a callback, or start with a quote request.</p><div class="l-two">${supL()}</div></div></section>
 <section class="l-sec" id="faq"><div class="l-wrap"><h2>Frequently asked questions</h2><p class="sub"></p>
 <details><summary>How do I pay?</summary><p>Online payment is being switched on. For now, pay by bank transfer or UPI and send your payment reference in Messages on your order. BEC then marks the order as paid and sets the delivery date.</p></details>
 <details><summary>How is my work delivered?</summary><p>Your final report is uploaded to your order on the portal. Status updates and all messages with your consultant also stay there.</p></details>
@@ -118,7 +132,10 @@ const authV=()=>`<div class="l-hero"><div id="services" style="scroll-margin-top
 <details><summary>Can I order for more than one site or unit?</summary><p>Yes. Describe each site in your quote request and we will scope them together.</p></details>
 <details><summary>What if I have a question during the work?</summary><p>Open your order and send a message. Your consultant replies there.</p></details>
 </div></section>`;
-document.addEventListener("keydown",ev=>{if(ev.key=="Enter"&&!me&&ev.target.tagName=="INPUT"){am=="reg"?reg():login()}});
+document.addEventListener("keydown",ev=>{if(ev.key=="Enter"&&!me&&ev.target.tagName=="INPUT"&&ev.target.closest("#signin,#callback")){ev.target.closest("#callback")?cb():am=="reg"?reg():am=="fp"?fp():am=="rs"?rs():login()}});
+async function cb(){const n=$("#cbn").value.trim(),p=$("#cbp").value.trim(),m=$("#cbs");if(!n||p.replace(/\D/g,"").length<8){m.textContent="Enter your name and a phone number we can call.";return}const r=await API("/callback","POST",{name:n,phone:p,when:$("#cbt").value,note:$("#cbm").value.trim()});if(r){m.textContent="Request received. We will call you on "+p+".";["#cbn","#cbp","#cbm"].forEach(i=>$(i).value="")}}
+const cbV=()=>`<h1>Callback requests</h1>`+(CB.length?`<div class="grid">${CB.map(r=>`<div class="card"><b>${e(r.name)}</b> <span class="pill">${r.done?"Called":"New"}</span><p><a href="tel:${e(String(r.phone).replace(/[^\d+]/g,""))}">${e(r.phone)}</a><br><span class="m">Best time: ${e(r.when)}. Requested ${fd(r.at)}.</span></p>${r.note?`<p>${e(r.note)}</p>`:""}${r.done?"":`<button class="s sm" onclick="cbd('${e(r.id)}')">Mark as called</button>`}</div>`).join("")}</div>`:`<p class="m">No callback requests yet.</p>`);
+async function cbd(id){if(await API("/callbacks/"+id+"/done","POST",{}))go("acb")}
 
 /* ---------- original portal logic (unchanged) ---------- */
 async function login(){const u=await API("/login","POST",{email:$("#em").value.trim(),pw:$("#pw").value,admin:am=="ad"});if(u)start(u)}
