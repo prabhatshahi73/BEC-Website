@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Environment Clearance, CTE and CTO explained | Bharat Environment Consultants</title>
+<style>
+:root{--g:#0b3b17;--g2:#14532d;--au:#c9a63f;--au2:#f0d37a;--ink:#f3f8f3}
+*{box-sizing:border-box}
+body{margin:0;background:#06180b;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink)}
+.wrap{max-width:1100px;margin:0 auto;padding:12px}
+#stage{container-type:inline-size;position:relative;width:100%;aspect-ratio:16/9;overflow:hidden;border-radius:12px;border:1px solid rgba(201,166,63,.5);
+ background:linear-gradient(135deg,#06240e,#0b3b17 45%,#14532d 80%,#0b3b17);background-size:200% 200%;animation:bg 18s ease-in-out infinite alternate}
+@keyframes bg{to{background-position:100% 100%}}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.brand{position:absolute;top:2.2cqw;left:3cqw;font:700 1.7cqw Georgia,serif;z-index:3}
+.brand span{color:var(--au)}
+.scene{position:absolute;inset:0;padding:6.5cqw 5cqw 9.5cqw;display:flex;flex-direction:column;justify-content:center;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;z-index:2}
+.scene.on{opacity:1;visibility:visible}
+h1,h2{font-family:Georgia,"Times New Roman",serif;margin:0;line-height:1.12}
+h1{font-size:5.4cqw}h2{font-size:3.9cqw}
+.tag{display:inline-block;align-self:flex-start;margin-top:1cqw;padding:.4cqw 1.2cqw;border:1px solid var(--au);border-radius:99px;color:var(--au2);font-size:1.5cqw}
+.sub{font-size:2.1cqw;color:#cfe3d2;margin-top:1.2cqw}
+small,.fn{font-size:1.35cqw;color:#b7cfba}
+.gold{color:var(--au)}
+/* generic entrance effects, restart each time a scene gets .on */
+.a{opacity:0;transform-box:fill-box;transform-origin:center}
+.on .a{animation:rise .8s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d,0s)}
+.on .a.pop{animation-name:pop}.on .a.wipe{animation-name:wipe}.on .a.fade{animation-name:fade}
+@keyframes rise{from{opacity:0;transform:translateY(2.4cqw)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:scale(.4)}70%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}
+@keyframes wipe{from{opacity:1;clip-path:inset(0 100% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+@keyframes fade{to{opacity:1}}
+.draw{stroke-dasharray:1;stroke-dashoffset:1}
+.on .draw{animation:draw 1.4s ease forwards;animation-delay:var(--d,0s)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.paused *{animation-play-state:paused!important}
+/* scene 1 */
+.sky{position:absolute;left:0;right:0;bottom:0;height:42%;z-index:0}
+.bld{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0)}
+.on .bld{animation:grow .9s cubic-bezier(.2,.8,.2,1) forwards;animation-delay:var(--d)}
+@keyframes grow{to{transform:scaleY(1)}}
+.puff{opacity:0;transform-box:fill-box;transform-origin:center}
+.on .puff{animation:puff 3.2s ease-out infinite;animation-delay:var(--d)}
+@keyframes puff{0%{opacity:.7;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(12px,-48px) scale(2.4)}}
+.sun{animation:pulse 3s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.12);opacity:.85}}
+/* roadmap */
+.road{position:relative;display:grid;grid-template-columns:repeat(5,1fr);margin-top:4cqw;text-align:center}
+.road .line{position:absolute;left:10%;right:10%;top:3.6cqw;height:.5cqw;background:rgba(255,255,255,.15);border-radius:9px;overflow:hidden}
+.road .line i{display:block;height:100%;background:linear-gradient(90deg,var(--au),var(--au2));transform:scaleX(0);transform-origin:left}
+.on .road .line i{animation:grow-x 4s .6s linear forwards}
+@keyframes grow-x{to{transform:scaleX(1)}}
+.road .dot{position:absolute;top:2.9cqw;left:10%;width:1.9cqw;height:1.9cqw;margin-left:-.95cqw;border-radius:50%;background:#fff;box-shadow:0 0 1.6cqw var(--au2);opacity:0}
+.on .road .dot{animation:travel 4s .6s linear forwards}
+@keyframes travel{0%{opacity:1;left:10%}99%{opacity:1}100%{opacity:0;left:90%}}
+.node b{width:7.2cqw;height:7.2cqw;border-radius:50%;display:grid;place-items:center;margin:0 auto 1cqw;font:700 2cqw Georgia,serif;background:var(--g);border:.3cqw solid rgba(201,166,63,.6);position:relative;z-index:1}
+.on .node b{animation:lit .5s forwards;animation-delay:var(--t)}
+@keyframes lit{to{background:var(--au);color:#1b1500;border-color:var(--au2);box-shadow:0 0 2.5cqw rgba(240,211,122,.7)}}
+.node span{display:block;font-weight:700;font-size:1.9cqw}.node small{display:block}
+/* steps */
+.steps{display:grid;gap:1.2cqw;margin-top:2.4cqw}
+.steps.five{grid-template-columns:repeat(5,1fr)}
+.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:1cqw;padding:1.3cqw 1.2cqw;position:relative;overflow:hidden}
+.step em{font:700 2.6cqw Georgia,serif;color:var(--au);font-style:normal;display:block}
+.step b{display:block;font-size:1.7cqw;margin:.2cqw 0}.step small{display:block}
+.step::after{content:"";position:absolute;left:0;bottom:0;height:.35cqw;width:100%;background:var(--au);transform:scaleX(0);transform-origin:left}
+.on .step::after{animation:grow-x .9s forwards;animation-delay:calc(var(--d) + .5s)}
+.stamp{position:absolute;right:5cqw;bottom:11cqw;font:700 2.6cqw Georgia,serif;color:var(--au2);border:.4cqw solid var(--au2);border-radius:1cqw;padding:.6cqw 1.6cqw;transform:rotate(-8deg);opacity:0;letter-spacing:.1cqw}
+.on .stamp{animation:slam .5s cubic-bezier(.3,1.6,.5,1) forwards;animation-delay:var(--d)}
+@keyframes slam{0%{opacity:0;transform:rotate(-8deg) scale(2.4)}100%{opacity:1;transform:rotate(-8deg) scale(1)}}
+.chips{display:flex;gap:1cqw;flex-wrap:wrap;margin-top:1.6cqw}
+.chip{padding:.5cqw 1.3cqw;border-radius:99px;background:rgba(201,166,63,.16);border:1px solid rgba(201,166,63,.5);font-size:1.5cqw}
+/* split layouts */
+.split{display:grid;grid-template-columns:1.1fr .9fr;gap:3cqw;align-items:center}
+.list{list-style:none;padding:0;margin:2cqw 0 0;display:grid;gap:1.1cqw}
+.list li{display:flex;align-items:center;gap:1.2cqw;font-size:1.9cqw}
+.tick{flex:none;width:3cqw;height:3cqw}
+.ill{overflow:visible;width:100%;height:auto;max-height:30cqw}
+.arm{transform-box:view-box;transform-origin:150px 40px;animation:sway 4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-6deg)}to{transform:rotate(7deg)}}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3cqw;margin-top:2.2cqw}
+.cards.two{grid-template-columns:repeat(2,1fr)}
+.cardx{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:1cqw;padding:1.5cqw}
+.cardx i{font:normal 700 2.6cqw Georgia,serif;color:var(--au)}.cardx b{display:block;font-size:1.8cqw;margin:.4cqw 0}.cardx small{display:block}
+.warn{display:grid;place-items:center;width:4.2cqw;height:4.2cqw;border-radius:50%;background:#e0a526;color:#2a1c00;font:700 2.4cqw system-ui;margin-bottom:.8cqw}
+.on .warn{animation:shake 1.2s ease-in-out infinite;animation-delay:calc(var(--d) + .8s)}
+@keyframes shake{0%,60%,100%{transform:none}10%,30%,50%{transform:rotate(-12deg)}20%,40%{transform:rotate(12deg)}}
+.result{margin-top:2cqw;font:700 2.4cqw Georgia,serif;color:#ffd0c8}
+.cta{display:inline-block;margin-top:2.4cqw;padding:1.2cqw 3cqw;border-radius:1cqw;background:var(--au);color:#1b1500;font-weight:700;font-size:2.1cqw;text-decoration:none;position:relative}
+.on .cta{animation:rise .8s forwards,ring 2s infinite;animation-delay:var(--d),calc(var(--d) + .9s)}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(240,211,122,.7)}100%{box-shadow:0 0 0 2.2cqw rgba(240,211,122,0)}}
+/* caption + progress */
+#cap{position:absolute;left:5cqw;right:5cqw;bottom:2.4cqw;z-index:4;font-size:1.75cqw;line-height:1.35;background:rgba(0,0,0,.42);padding:.9cqw 1.6cqw;border-radius:.8cqw;text-align:center;opacity:0}
+#cap.in{animation:fade .6s .2s forwards}
+.bar{position:absolute;left:0;right:0;bottom:0;height:.6cqw;background:rgba(255,255,255,.12);z-index:5}.bar i{display:block;height:100%;width:0;background:var(--au)}
+/* controls */
+.ctl{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;align-items:center}
+.ctl button{font:inherit;font-weight:600;cursor:pointer;border:1px solid rgba(201,166,63,.6);background:transparent;color:var(--ink);padding:8px 14px;border-radius:8px}
+.ctl button:hover,.ctl button[aria-pressed="true"]{background:var(--au);color:#1b1500}
+.chap{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}.chap button{padding:8px 11px}.chap button.cur{background:var(--au);color:#1b1500}
+:focus-visible{outline:3px solid var(--au2);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){#stage{animation:none}}
+</style></head><body>
+<div class="wrap">
+<div id="stage" role="region" aria-label="Animated explainer: environment clearance, CTE and CTO">
+ <canvas id="fx" aria-hidden="true"></canvas>
+ <div class="brand">Bharat Environment <span>Consultants</span></div>
+
+ <!-- 1 Title -->
+ <section class="scene" data-dur="7000" data-cap="Setting up or expanding a project in India? Environmental approvals decide when you can build and when you can run.">
+  <h1 class="a wipe" style="--d:.2s">Environmental approvals,<br><span class="gold">explained</span></h1>
+  <p class="sub a" style="--d:1s">Environment Clearance &middot; CTE &middot; CTO</p>
+  <svg class="sky" viewBox="0 0 800 200" preserveAspectRatio="none" aria-hidden="true">
+   <circle class="sun" cx="640" cy="60" r="34" fill="#f0d37a" opacity=".9" style="transform-box:fill-box;transform-origin:center"/>
+   <g fill="#0f4a20" stroke="#c9a63f" stroke-opacity=".5">
+    <rect class="bld" style="--d:.4s" x="60" y="110" width="60" height="90"/><rect class="bld" style="--d:.6s" x="130" y="70" width="50" height="130"/>
+    <rect class="bld" style="--d:.8s" x="190" y="125" width="70" height="75"/><rect class="bld" style="--d:1s" x="280" y="90" width="55" height="110"/>
+    <rect class="bld" style="--d:1.2s" x="350" y="130" width="90" height="70"/><rect class="bld" style="--d:1.4s" x="460" y="60" width="26" height="140"/>
+    <rect class="bld" style="--d:1.6s" x="500" y="105" width="80" height="95"/><rect class="bld" style="--d:1.8s" x="600" y="140" width="110" height="60"/>
+   </g>
+   <circle class="puff" style="--d:1.9s" cx="473" cy="55" r="9" fill="#cfe3d2"/><circle class="puff" style="--d:3s" cx="473" cy="55" r="9" fill="#cfe3d2"/><circle class="puff" style="--d:4.1s" cx="473" cy="55" r="9" fill="#cfe3d2"/>
+  </svg>
+ </section>
+
+ <!-- 2 Roadmap -->
+ <section class="scene" data-dur="9500" data-cap="Clearance where required, consent to establish before construction, consent to operate before production. Each stage has its own authority and documents.">
+  <h2 class="a" style="--d:.1s">The approval journey</h2>
+  <p class="sub a" style="--d:.4s">Most industrial projects follow this path</p>
+  <div class="road"><div class="line"><i></i></div><div class="dot"></div>
+   <div class="node a pop" style="--d:.6s;--t:.7s"><b>EC</b><span>Clearance</span><small>where required</small></div>
+   <div class="node a pop" style="--d:.9s;--t:1.8s"><b>CTE</b><span>Consent to Establish</span><small>before construction</small></div>
+   <div class="node a pop" style="--d:1.2s;--t:2.7s"><b>&#9874;</b><span>Build</span><small>set up the plant</small></div>
+   <div class="node a pop" style="--d:1.5s;--t:3.6s"><b>CTO</b><span>Consent to Operate</span><small>before production</small></div>
+   <div class="node a pop" style="--d:1.8s;--t:4.5s"><b>&#10003;</b><span>Operate</span><small>renew and report</small></div>
+  </div>
+ </section>
+
+ <!-- 3 EC -->
+ <section class="scene" data-dur="13000" data-cap="Environment Clearance follows the EIA Notification 2006: screening, scoping, public consultation, expert appraisal, then a decision with conditions.">
+  <h2 class="a" style="--d:.1s">Environment Clearance <span class="gold">(EC)</span></h2>
+  <span class="tag a" style="--d:.4s">EIA Notification 2006 &middot; MoEFCC or State SEIAA</span>
+  <div class="steps five">
+   <div class="step a" style="--d:1s"><em>1</em><b>Screening</b><small>Is clearance needed, and in which category?</small></div>
+   <div class="step a" style="--d:2.2s"><em>2</em><b>Scoping</b><small>Terms of Reference for the EIA study</small></div>
+   <div class="step a" style="--d:3.4s"><em>3</em><b>EIA and public consultation</b><small>Report and hearing where required</small></div>
+   <div class="step a" style="--d:4.6s"><em>4</em><b>Appraisal</b><small>Expert committee reviews the project</small></div>
+   <div class="step a" style="--d:5.8s"><em>5</em><b>Decision</b><small>Clearance granted with conditions</small></div>
+  </div>
+  <div class="chips"><span class="chip a" style="--d:7s">Category A: Central (MoEFCC)</span><span class="chip a" style="--d:7.3s">Category B: State (SEIAA)</span></div>
+  <p class="fn a fade" style="--d:7.8s;margin:1cqw 0 0">Requirements depend on project type, size and location.</p>
+  <div class="stamp" style="--d:8.6s">EC GRANTED</div>
+ </section>
+
+ <!-- 4 CTE -->
+ <section class="scene" data-dur="10000" data-cap="Consent to Establish comes from the State Pollution Control Board before construction. It needs site, process and pollution control details.">
+  <div class="split">
+   <div>
+    <h2 class="a" style="--d:.1s">Consent to Establish <span class="gold">(CTE)</span></h2>
+    <span class="tag a" style="--d:.4s">Water Act 1974 &middot; Air Act 1981 &middot; State Pollution Control Board</span>
+    <p class="sub a" style="--d:.7s;margin-bottom:0">Apply before you start construction</p>
+    <ul class="list">
+     <li class="a" style="--d:1.3s"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#c9a63f"/><path class="draw" pathLength="1" style="--d:1.5s" d="M6 12.5l4 4 8-9" fill="none" stroke="#1b1500" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Site, land and layout plan</li>
+     <li class="a" style="--d:2.3s"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#c9a63f"/><path class="draw" pathLength="1" style="--d:2.5s" d="M6 12.5l4 4 8-9" fill="none" stroke="#1b1500" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Process flow and raw materials</li>
+     <li class="a" style="--d:3.3s"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#c9a63f"/><path class="draw" pathLength="1" style="--d:3.5s" d="M6 12.5l4 4 8-9" fill="none" stroke="#1b1500" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Pollution control plan</li>
+     <li class="a" style="--d:4.3s"><svg class="tick" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#c9a63f"/><path class="draw" pathLength="1" style="--d:4.5s" d="M6 12.5l4 4 8-9" fill="none" stroke="#1b1500" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>EC copy, where applicable</li>
+    </ul>
+    <p class="fn a fade" style="--d:5.6s;margin-top:1.4cqw">Category (Red, Orange, Green or White) decides what you need.</p>
+   </div>
+   <svg class="ill a fade" style="--d:.8s" viewBox="0 0 300 220" aria-hidden="true">
+    <line x1="10" y1="200" x2="290" y2="200" stroke="#c9a63f" stroke-width="3"/>
+    <g fill="#1f6e3a" stroke="#c9a63f" stroke-opacity=".8">
+     <rect class="bld" style="--d:1.5s" x="40" y="150" width="70" height="50"/><rect class="bld" style="--d:2.5s" x="40" y="105" width="70" height="45"/><rect class="bld" style="--d:3.5s" x="40" y="60" width="70" height="45"/>
+    </g>
+    <g stroke="#f0d37a" stroke-width="4" fill="none"><line x1="200" y1="200" x2="200" y2="40"/><line x1="188" y1="200" x2="188" y2="40" stroke-width="1.5"/></g>
+    <g class="arm" stroke="#f0d37a" stroke-width="4"><line x1="90" y1="40" x2="250" y2="40"/><line x1="235" y1="40" x2="235" y2="85" stroke-width="1.5"/><rect x="228" y="85" width="14" height="10" fill="#c9a63f" stroke="none"/></g>
+   </svg>
+  </div>
+  <div class="stamp" style="--d:6.4s">CTE ISSUED</div>
+ </section>
+
+ <!-- 5 CTO -->
+ <section class="scene" data-dur="10000" data-cap="Consent to Operate is granted after inspection, before production starts. It carries conditions, and must be renewed before it expires.">
+  <div class="split">
+   <div>
+    <h2 class="a" style="--d:.1s">Consent to Operate <span class="gold">(CTO)</span></h2>
+    <span class="tag a" style="--d:.4s">Needed before production begins</span>
+    <div class="steps" style="grid-template-columns:1fr;gap:.9cqw">
+     <div class="step a" style="--d:1s;padding:.8cqw 1.2cqw"><b>Plant ready, pollution control installed</b></div>
+     <div class="step a" style="--d:2.2s;padding:.8cqw 1.2cqw"><b>Inspection by the State Board</b></div>
+     <div class="step a" style="--d:3.4s;padding:.8cqw 1.2cqw"><b>Consent granted with conditions</b></div>
+     <div class="step a" style="--d:4.6s;padding:.8cqw 1.2cqw"><b>Monitor, report and renew before expiry</b></div>
+    </div>
+   </div>
+   <svg class="ill a fade" style="--d:.8s" viewBox="0 0 300 220" aria-hidden="true">
+    <line x1="10" y1="200" x2="290" y2="200" stroke="#c9a63f" stroke-width="3"/>
+    <rect x="40" y="110" width="170" height="90" fill="#1f6e3a" stroke="#c9a63f" stroke-opacity=".7"/>
+    <rect x="60" y="70" width="26" height="40" fill="#175a2e" stroke="#c9a63f" stroke-opacity=".8"/><rect x="110" y="40" width="22" height="70" fill="#0f4a20" stroke="#c9a63f" stroke-opacity=".7"/>
+    <g fill="#e6efe7"><circle class="puff" style="--d:1s" cx="121" cy="38" r="8"/><circle class="puff" style="--d:2.1s" cx="121" cy="38" r="8"/><circle class="puff" style="--d:3.2s" cx="121" cy="38" r="8"/></g>
+    <g fill="#f0d37a" opacity=".9"><rect x="58" y="130" width="22" height="16"/><rect x="95" y="130" width="22" height="16"/><rect x="132" y="130" width="22" height="16"/><rect x="169" y="130" width="22" height="16"/></g>
+    <g class="a pop" style="--d:3.8s"><path d="M240 60l38 12v34c0 24-16 40-38 50-22-10-38-26-38-50V72z" fill="#c9a63f"/><path class="draw" pathLength="1" style="--d:4.2s" d="M224 112l12 12 22-26" fill="none" stroke="#1b1500" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g>
+   </svg>
+  </div>
+  <div class="stamp" style="--d:6.4s">CTO GRANTED</div>
+ </section>
+
+ <!-- 6 Pitfalls -->
+ <section class="scene" data-dur="9000" data-cap="Projects usually stall on incomplete documents, a wrong category, missed renewals, or conditions that were never met.">
+  <h2 class="a" style="--d:.1s">Where projects get <span class="gold">stuck</span></h2>
+  <div class="cards">
+   <div class="cardx a" style="--d:.8s"><div class="warn" style="--d:.8s">!</div><b>Incomplete documents</b><small>Applications returned for queries</small></div>
+   <div class="cardx a" style="--d:1.5s"><div class="warn" style="--d:1.5s">!</div><b>Wrong category</b><small>Wrong process or wrong authority</small></div>
+   <div class="cardx a" style="--d:2.2s"><div class="warn" style="--d:2.2s">!</div><b>Missed renewals</b><small>Consents expire unnoticed</small></div>
+   <div class="cardx a" style="--d:2.9s"><div class="warn" style="--d:2.9s">!</div><b>Conditions not met</b><small>Returns and monitoring skipped</small></div>
+  </div>
+  <p class="result a wipe" style="--d:4.4s">Result: delays, notices and penalties.</p>
+ </section>
+
+ <!-- 7 BEC -->
+ <section class="scene" data-dur="13000" data-cap="Bharat Environment Consultants has handled compliance since 2005, from checking what you need to staying compliant after approval.">
+  <h2 class="a" style="--d:.1s">How <span class="gold">Bharat Environment Consultants</span> helps</h2>
+  <span class="tag a" style="--d:.4s">Environmental compliance consulting since 2005</span>
+  <div class="cards">
+   <div class="cardx a" style="--d:1s"><i>1</i><b>Know what you need</b><small>Applicability, category and the right authority</small></div>
+   <div class="cardx a" style="--d:2.2s"><i>2</i><b>Prepare the case</b><small>Reports, plans and application documents</small></div>
+   <div class="cardx a" style="--d:3.4s"><i>3</i><b>Submit and follow up</b><small>Queries, hearings and inspections handled</small></div>
+   <div class="cardx a" style="--d:4.6s"><i>4</i><b>Stay compliant</b><small>Monitoring, returns and timely renewals</small></div>
+  </div>
+  <div class="chips"><span class="chip a" style="--d:6.2s">Hazardous waste</span><span class="chip a" style="--d:6.5s">Bio-medical waste</span><span class="chip a" style="--d:6.8s">Solid waste management</span><span class="chip a" style="--d:7.1s">Consent renewals</span></div>
+ </section>
+
+ <!-- 8 CTA -->
+ <section class="scene" data-dur="8000" data-cap="Ready to start? Place your order or request a quote on the BEC client portal.">
+  <h1 class="a wipe" style="--d:.2s">Start your <span class="gold">application</span></h1>
+  <p class="sub a" style="--d:.9s">Order a service or request a quote, then track it online until your report is delivered.</p>
+  <div><a class="cta a" style="--d:1.5s" href="https://bharatenvironmentconsultants.com/order-portal" target="_top">Open the client portal</a></div>
+  <p class="fn a fade" style="--d:2.4s;margin-top:1.4cqw">bharatenvironmentconsultants.com/order-portal</p>
+ </section>
+
+ <div id="cap" aria-live="polite"></div>
+ <div class="bar" aria-hidden="true"><i id="prog"></i></div>
+</div>
+
+<div class="ctl">
+ <button id="b-prev">Previous</button><button id="b-play">Pause</button><button id="b-next">Next</button><button id="b-re">Replay</button>
+ <button id="b-voice" aria-pressed="false">Narration: off</button><button id="b-full">Fullscreen</button>
+ <div class="chap" id="chap" aria-label="Scenes"></div>
+</div>
+</div>
+
+<script>
+(function(){
+var stage=document.getElementById("stage"),sc=[].slice.call(stage.querySelectorAll(".scene")),cap=document.getElementById("cap"),prog=document.getElementById("prog");
+var names=["Intro","Journey","EC","CTE","CTO","Pitfalls","How BEC helps","Start"];
+var total=sc.reduce(function(a,s){return a+ +s.dataset.dur},0),i=0,el=0,last=performance.now(),playing=true,voice=false;
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var chap=document.getElementById("chap"),cb=names.map(function(n,k){var b=document.createElement("button");b.textContent=n;b.onclick=function(){show(k)};chap.appendChild(b);return b});
+function speak(t){if(!("speechSynthesis" in window))return;speechSynthesis.cancel();if(!voice)return;var u=new SpeechSynthesisUtterance(t);u.lang="en-IN";u.rate=1.05;speechSynthesis.speak(u)}
+function show(n){i=(n+sc.length)%sc.length;sc.forEach(function(s,k){s.classList.toggle("on",k===i)});
+ cap.className="";void cap.offsetWidth;cap.textContent=sc[i].dataset.cap;cap.className="in";
+ cb.forEach(function(b,k){b.classList.toggle("cur",k===i)});el=0;last=performance.now();speak(sc[i].dataset.cap);setPlay(true)}
+function setPlay(p){playing=p;stage.classList.toggle("paused",!p);document.getElementById("b-play").textContent=p?"Pause":"Play";if(!p&&"speechSynthesis" in window)speechSynthesis.pause();if(p&&"speechSynthesis" in window)speechSynthesis.resume()}
+function tick(now){var dt=now-last;last=now;
+ if(playing){el+=dt;var done=0;for(var k=0;k<i;k++)done+=+sc[k].dataset.dur;
+  prog.style.width=Math.min(100,(done+el)/total*100)+"%";
+  if(el>=+sc[i].dataset.dur){if(i<sc.length-1)show(i+1);else{setPlay(false);document.getElementById("b-play").textContent="Play"}}}
+ requestAnimationFrame(tick)}
+document.getElementById("b-prev").onclick=function(){show(i-1)};
+document.getElementById("b-next").onclick=function(){show(i+1)};
+document.getElementById("b-re").onclick=function(){show(0)};
+document.getElementById("b-play").onclick=function(){if(!playing&&i===sc.length-1&&el>=+sc[i].dataset.dur){show(0)}else setPlay(!playing)};
+document.getElementById("b-voice").onclick=function(){voice=!voice;this.setAttribute("aria-pressed",voice);this.textContent="Narration: "+(voice?"on":"off");speak(sc[i].dataset.cap)};
+document.getElementById("b-full").onclick=function(){var f=stage.requestFullscreen||stage.webkitRequestFullscreen;if(f)f.call(stage)};
+document.addEventListener("keydown",function(e){if(e.target.tagName==="BUTTON"&&e.key===" ")return;
+ if(e.key===" "){e.preventDefault();document.getElementById("b-play").click()}else if(e.key==="ArrowRight")show(i+1);else if(e.key==="ArrowLeft")show(i-1)});
+
+/* floating leaves and light particles */
+var cv=document.getElementById("fx"),cx=cv.getContext("2d"),P=[];
+function fit(){cv.width=stage.clientWidth*devicePixelRatio;cv.height=stage.clientHeight*devicePixelRatio}
+function mk(){return{x:Math.random(),y:Math.random(),r:2+Math.random()*5,v:.0006+Math.random()*.0012,s:Math.random()*6.28,g:Math.random()<.45}}
+for(var k=0;k<38;k++)P.push(mk());
+function fx(){cx.clearRect(0,0,cv.width,cv.height);
+ P.forEach(function(p){if(playing){p.y-=p.v;p.s+=.01}if(p.y<-.05){p.y=1.05;p.x=Math.random()}
+  var x=(p.x+Math.sin(p.s)*.02)*cv.width,y=p.y*cv.height,r=p.r*devicePixelRatio;
+  cx.globalAlpha=.35;cx.fillStyle=p.g?"#f0d37a":"#5fbf72";cx.beginPath();
+  if(p.g)cx.arc(x,y,r*.5,0,6.28);else cx.ellipse(x,y,r*1.6,r*.8,p.s,0,6.28);cx.fill()});
+ if(!reduce)requestAnimationFrame(fx)}
+fit();addEventListener("resize",fit);fx();
+show(0);requestAnimationFrame(tick);
+if(reduce)setPlay(false);
+})();
+</script>
+</body></html>
