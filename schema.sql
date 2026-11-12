@@ -1,4 +1,6 @@
-CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY AUTOINCREMENT,name TEXT,email TEXT UNIQUE,salt TEXT,hash TEXT,role TEXT DEFAULT 'customer');
-CREATE TABLE IF NOT EXISTS sessions(sid TEXT PRIMARY KEY,user_id INTEGER,exp INTEGER);
-CREATE TABLE IF NOT EXISTS orders(id INTEGER PRIMARY KEY AUTOINCREMENT,user_id INTEGER,items TEXT,total INTEGER,status TEXT,note TEXT,admin_note TEXT,rzp_order TEXT,rzp_payment TEXT,created INTEGER);
-CREATE TABLE IF NOT EXISTS files(id INTEGER PRIMARY KEY AUTOINCREMENT,order_id INTEGER,name TEXT,key TEXT);
+CREATE TABLE IF NOT EXISTS orders (
+  id TEXT PRIMARY KEY, rzp_order_id TEXT UNIQUE, rzp_payment_id TEXT, status TEXT NOT NULL,
+  book_id TEXT, qty INTEGER, amount_paise INTEGER, delivery_inr INTEGER,
+  name TEXT, email TEXT, phone TEXT, street1 TEXT, city TEXT, state TEXT, postcode TEXT,
+  lulu_job_id TEXT, lulu_status TEXT, tracking TEXT, error TEXT, created_at TEXT
+);
